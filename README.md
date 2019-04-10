@@ -1,1 +1,1 @@
-# Metalearnerless Semantic Reinforcement Learning
+# Meta-learnerless Semantic Reinforcement Learning
