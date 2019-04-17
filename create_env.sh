@@ -1,3 +1,4 @@
+# https://www.novatec-gmbh.de/en/blog/creating-a-gym-environment/
 # gym-NAME/
 #     README.md
 #     setup.py
@@ -8,7 +9,12 @@
 #             NAME_env.py
 
 NAME=$1
-VERSION=$2
+if [ -z "$2" ]; 
+then
+    VERSION=0.1;
+else
+    VERSION=$2
+fi;
 
 mkdir -p gym-$NAME/gym_$NAME/envs/
 
