@@ -123,7 +123,7 @@ class language_env(object):
         return p, vocab, H_D
 
 
-    def mmi_norm(x, y, tuples):
+    def mmi_norm(self, x, y, tuples):
         """Mutual Information by Entropy norm between specific items. """
         P_ = {x: self.P(x, tuples), y: self.P(y, tuples)}
         P_xy = self.condP(x, y, tuples)
@@ -140,72 +140,88 @@ class language_env(object):
     def cmi_norm(self, query, tuples):
         """Mutual Information by Entropy norm between specific item and the D_k
             text sample. """
-            P_, vocab, H_D = self.entropy_norm(tuples)
-            query = list(compress(query, self.actions[:-1]))
-            I_D = []  # I(D; q) =  H(D) - H(D|q)
-            I_as = H_D  # I(D; q1, q2,...,qn) =  H(D) - H(D|q1) - ... - H(D|qn)
+        P_, vocab, H_D = self.entropy_norm(tuples)
+        #query = list(compress(query, self.actions[:-1]))
+        I_D = []  # I(D; q) =  H(D) - H(D|q)
+        I_as = H_D  # I(D; q1, q2,...,qn) =  H(D) - H(D|q1) - ... - H(D|qn)
             
-            for q in query:
-                P_wq = odict({w + '|' + q: self.condP(w, q, tuples) 
+        for q in query:
+            P_wq = odict({w + '|' + q: self.condP(w, q, tuples) 
                                                             for w in vocab})
-                H_Dq = -P_[q] * sum(P_wq[pwq] * log2(P_wq[pwq]) 
+            H_Dq = -P_[q] * sum(P_wq[pwq] * log2(P_wq[pwq]) 
                                                     for pwq in P_wq.keys())
-                I_D.append((q, H_D - H_Dq)) 
-                I_as -= H_Dq
-            # TODO: define a,b,c,d for giving negative reward
-            # if not mmi_norm(a,b) > mmi_norm(b,c) > mmi_norm(c,d):
-            #       I_as = self.zeta 
-            return I_D, I_as
+            I_D.append((q, H_D - H_Dq)) 
+            I_as -= H_Dq
+        # TODO: define a,b,c for giving negative reward
+        # if not (mmi_norm(a,b, tuples) > mmi_norm(b,c, tuples) > mmi_norm(a,c, tuples)):
+        #       I_as = self.zeta 
+        return I_D, I_as
 
 
     def __iter__(self):
         init = 0
         
         for sample in self.samples:
-            tuples = stream(size=self.tuple_size, input_data=sample, 
+            self.tuples = stream(size=self.tuple_size, input_data=sample, 
                                                             give_strings=False)
             if init < self.entropy_norm_size / 2:
-                for t in tuples: 
-                
+                for t in self.tuples: 
+                    tup = list(compress(t, self.actions[:-1]))
                     if init < self.entropy_norm_size / 2:
                         init += 1
-                        yield self.cmi_norm(t, tuples)
+                        yield self.cmi_norm(tup, self.tuples)
                     else:
-                        break
-                
+                        yield self.cmi_norm(list(self.tuples)[1 \
+                                    + int(self.entropy_norm_size / 2)], self.tuples)
             else:
                 #tuples = stream(size=self.tuple_size, input_data=sample, give_strings=False)
                 #print(list(tuples))
-                yield self.cmi_norm(list(tuples)[1 \
-                                    + int(self.entropy_norm_size / 2)], tuples)
+                yield self.cmi_norm(list(compress(list(self.tuples)[1 \
+                                    + int(self.entropy_norm_size / 2)], self.actions[:-1])), self.tuples)
 
 
 input_data = "LICENSE"
-t_size = 5
+t_size = 3
 N = 100
 mi_ = []
 Ias = []
 ws_ = []
 
 env = language_env(input_data=input_data, entropy_norm_size=150, tuple_size=t_size)
-env.set_actions(np.random.choice([0, 1], 
+while True:
+    actions = np.random.choice([0, 1], 
                                  size=(t_size + 1,), 
                                  p=np.random \
                                      .dirichlet(alpha=[1, 1], 
-                                                size=1)[0].tolist()).tolist())
+                                                size=1)[0].tolist()).tolist()
+    if np.nonzero(actions)[0].shape[0] > 2:
+        break
+
+env.set_actions(actions)
+
 for i, s in enumerate(env):
-    #print(env.actions)
     ws_.append(" ".join(tuple(odict(s[0]))))
     mi_.append(np.std(list(odict(s[0]).values()))) #[int(1 + t_size / 2)])
     Ias.append(s[1])
+    
+    if len(s[0]) == 1: 
+        continue
+    elif len(s[0]) == 2: 
+        env.set_actions([1] * (t_size + 1))
+    else:    
     # TODO: Incorporate direction of the relation (order of actions 1,2,3)
-    env.set_actions(np.random \
-                      .choice([0, 1], 
+        while True:
+            actions = np.random \
+                        .choice([0, 1], 
                               size=(t_size + 1,), 
                               p=np.random \
                                   .dirichlet(alpha=[1, 1], 
-                                             size=1)[0].tolist()).tolist())
-    if i > N and N > 0: break 
+                                             size=1)[0].tolist()).tolist()
+            if np.nonzero(actions)[0].shape[0] > 2:
+                break
+    env.set_actions(actions)
+    print(np.nonzero(actions)[0].shape[0], s)        
+    if i > N > 0: break 
 
 info = pd.DataFrame({"tuple": ws_, "MI_avg": mi_, "Ias": Ias})
 
