@@ -209,7 +209,11 @@ for i, s in enumerate(env):
     elif len(s[0]) == 2: 
         env.set_actions([1] * (t_size + 1))
     else:    
-    # TODO: Incorporate direction of the relation (order of actions 1,2,3)
+    # TODO: Incorporate direction of the relation (order of actions 1,2,3),
+    # however, how to group words so as to form noun prhases ordered from 
+    # agent to pacient? The easiest way is to learn parameters of the dis-
+    # tributions chosing integers {1,2,3} with repetitions, where repeated
+    # numbers form groups. But, this controls directly the grouping action?
         while True:
             actions = np.random \
                         .choice([0, 1], 
