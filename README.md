@@ -1,1 +1,2 @@
-# Meta-learnerless Semantic Reinforcement Learning
+# Semantic Reinforcement Learning
+Let $W$ be a random set... 
