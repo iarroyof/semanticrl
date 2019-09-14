@@ -1,4 +1,4 @@
-
+from srl_env_class import textEnv
 import itertools
 import random, csv
 import numpy as np
@@ -19,24 +19,27 @@ from scipy.spatial.distance import directed_hausdorff as hsdff
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.feature_extraction.text import CountVectorizer
 
+from pdb import set_trace as st
+
 logging.basicConfig(format='%(asctime)s %(message)s',
                     datefmt='%m/%d/%Y %I:%M:%S %p',
                                         level=logging.INFO)
 
-fitting_sim_oie = "data/sim_train.txt.oie"
-develop_sim_oie = "data/sim_test.txt.oie"
-fitting_unr_oie = "data/dis_train.txt.oie"
-develop_unr_oie = "data/dis_test.txt.oie"
+input_oie = "data/sim_train.txt.oie"
+#fitting_sim_oie = "data/sim_train.txt.oie"
+#develop_sim_oie = "data/sim_test.txt.oie"
+#fitting_unr_oie = "data/dis_train.txt.oie"
+#develop_unr_oie = "data/dis_test.txt.oie"
+input_plain = "data/sim_train_.txt"
+#fitting_sim = "data/sim_train_.txt"
+#develop_sim = "data/sim_test_.txt"
+#fitting_unr = "data/dis_train_.txt"
+#develop_unr = "data/dis_test_.txt"
 
-fitting_sim = "data/sim_train_.txt"
-develop_sim = "data/sim_test_.txt"
-fitting_unr = "data/dis_train_.txt"
-develop_unr = "data/dis_test_.txt"
-
-SAMPLE_SIZE = 15
-N_STEPS = 50
+SAMPLE_SIZE = 100
+perimeter = 30
+N_STEPS = 200
 dev_sample = 0.30
-perimeter = 10
 ngramr = (1, 3)
 cols=['X', 'Y', 'Z']
 
@@ -111,12 +114,11 @@ def set_valued_gaussian(S, M, sigma=1.0, metric='h'):
         assert isinstance(S, str) and isinstance(M, str)
         distance = dlbsh(S, M)
     elif metric == 'hmm':
-        distance = dot_distance(S, M, binary=False, euclid=True )
-    #print(distance)
-    if distance == 0:
-        return 1.0
+        distance = dot_distance(S, M, binary=True, euclid=False)
+    if distance <= 1.0:
+        return 1.0/(np.sqrt(2 * np.pi * sigma ** 2))
     else:
-        return (1/(np.sqrt(2 * np.pi * sigma ** 2))) * math.exp(
+        return (1.0/(np.sqrt(2 * np.pi * sigma ** 2))) * math.exp(
                                             -distance ** 2/(2 * sigma ** 2))
 
 def computeNab(df, ca, cb):
@@ -125,71 +127,124 @@ def computeNab(df, ca, cb):
 
 def compute_set_probability(Akdf, perimeter_samples=50, sigma=5.0,
                                                         cols=['X', 'Y', 'Z']):
-    
-    assert len(Akdf.index) >= perimeter_samples, ("The number of perimeter" 
-                                                "samples must be less or equal"
+    try:
+        assert len(Akdf.index) >= perimeter_samples, ("The number of perimeter " 
+                                                "samples must be less or equal "
                                                 "than the number of samples")
-        
+    except AssertionError:
+        return None
+            
     v = TfidfVectorizer(analyzer='char', ngram_range=ngramr)
     ngramer = v.build_analyzer()
-    m = perimeter_samples
-    Akddf = dd.from_pandas(Akdf, npartitions=5)  # Convert to Dask
     deps = []
     for a, b in itertools.product(*[cols] * 2):
         if not ((a, b) in deps and (b, a) in deps):
             deps.append((a, b))
-            Akddf['+'.join((a, b))] = Akddf[[a, b]].apply(lambda x: ' '.join(x),
-                                                          axis=1, meta=('str'))
+            Akdf['+'.join((a, b))] = Akdf[[a, b]].apply(lambda x: ' '.join(x),
+                                                          axis=1)
     prod_cols = []
     for a, b in itertools.product(*[cols + ['Y+Z', 'X+Z', 'X+Y']] * 2):
         if not ((a, b) in prod_cols or (b, a) in prod_cols):
             prod_cols.append((a, b))
             measures = []
-            for _ in range(m):
-                B = Akddf[b].sample(frac=1)
+            for _ in range(perimeter_samples):
+                B = Akdf[b].sample(frac=1)
                 measures.append(
                     np.vectorize(set_valued_gaussian)(
-                        Akddf[a].str.lower(), B.str.lower(), sigma=sigma,
+                        Akdf[a].str.lower(), B.str.lower(), sigma=sigma,
                         metric='hmm')
                 )
-                                                            
-            Akddf['P{hamming(' + ', '.join((a, b)) + ')}'] = dd.from_array(
-                                            np.vstack(measures).mean(axis=0))
 
-    return Akddf.compute()
+            Akdf['$N_\sigma\{h(' + ', '.join((a, b)) + ')\}$'] = np.vstack(measures).mean(axis=0)
+    return Akdf.dropna()
 
+import random
+#txt = "If you have to control for the case where k is larger than len(population)"
+
+def rdn_partition(state):
+    tokens = state.split()
+    idxs = sorted(random.sample(range(1, len(tokens) - 1), 2))
+    return {'X': " ".join(tokens[:idxs[0]]),
+            'Y': " ".join(tokens[idxs[0]:idxs[1]]), 
+            'Z': " ".join(tokens[idxs[1]:])}
+
+def compute_mutuals(df, cols):
+
+    patt = r'N_\\sigma\\{h\(([XYZ]\+?[XYZ]?), ([XYZ]\+?[XYZ]?)\)'
+    pairs = sum([re.findall(patt, c) for c in cols], [])
+    selfs = ["$N_\sigma\{h(" + ', '.join(p) + ")\}$"
+                    for p in pairs if p[0] == p[1]]
+    joins = [("$N_\sigma\{h(" + ', '.join(p) + ")\}$",  
+              "$N_\sigma\{h(" + ', '.join([p[1], p[1]]) + ")\}$",
+              "$N_\sigma\{h(" + ', '.join([p[0], p[0]]) + ")\}$")
+                    for p in pairs if p[0] != p[1]]
+    for s in selfs:
+        try:
+            df['I[h(' + ', '.join(re.findall(patt, s)[0]) + ')]'] = df[s].apply(
+                                   lambda x: x * np.log2(x) if x > 0 else 0.0)
+        except:
+            st()
+    for j in joins:
+        df['I[h(' + ', '.join(re.findall(patt, j[0])[0]) + ')]'] = df[list(j)] \
+                                                                .apply(
+                                 lambda x: x[0] * np.log2(x[0]/(x[2] * x[1])) \
+                                 if (x[2] * x[1] > 0 and x[0]/(x[2] * x[1]) > 0) \
+                                    else 0.0,
+                                 axis=1)
+
+    return df[[c for c in df.columns if c.startswith('I[')]].sum().to_dict()
+
+
+def compute_mi_steps(Akdf, out_csv):
+    A_tau = [ #fit_sim_gs_Akdf[i:i + SAMPLE_SIZE]
+            Akdf[i:i + SAMPLE_SIZE]
+                for i in range(0, N_STEPS * SAMPLE_SIZE, SAMPLE_SIZE)]
+
+    logging.info(f"Computing probabilities of random sets for {N_STEPS} steps...")
+#fit_Psim_gsAks = Parallel(n_jobs=-1)(
+    Psim_Aks = Parallel(n_jobs=-1)(
+                    delayed(compute_set_probability)(
+                        A_k, perimeter_samples=perimeter)
+                                                for A_k in A_tau)
+    probcs = [
+        '$N_\sigma\{h(X, Y)\}$', '$N_\sigma\{h(Y, Z)\}$', '$N_\sigma\{h(X, Z)\}$',
+        '$N_\sigma\{h(X, X)\}$', '$N_\sigma\{h(Y, Y)\}$', '$N_\sigma\{h(Z, Z)\}$',
+        '$N_\sigma\{h(X, Y+Z)\}$', '$N_\sigma\{h(Y, X+Z)\}$',
+        '$N_\sigma\{h(Z, X+Y)\}$']
+    info_steps =  Parallel(n_jobs=-1)(
+                    delayed(compute_mutuals)(df, probcs)
+                                           for df in Psim_Aks if not df is None)
+    pd.DataFrame(info_steps).to_csv(
+                out_csv + "_Dk-{}_rho-{}_tau-{}_ng-{}.csv" \
+                         .format(SAMPLE_SIZE, perimeter, N_STEPS, ngramr))
 
 v = TfidfVectorizer(analyzer='char', ngram_range=ngramr)
 ngramer = v.build_analyzer()
-logging.info("Reading input file '{}'".format(fitting_sim_oie))
-gsAkdf = pd.read_csv(fitting_sim_oie, delimiter='\t',
+logging.info("Reading input file '{}'".format(input_oie))
+
+gsAkdf = pd.read_csv(input_oie, delimiter='\t',
                             names=['score'] + cols)[cols]
 dev_sim_gs_Akdf = gsAkdf.sample(frac=dev_sample)
-dev_sim_gs_Akdf.shape
+fit_sim_gs_Akdf = gsAkdf.drop(dev_sim_gs_Akdf.index)
+# Take N_STEPS and compute their marginal and joint informations
+logging.info("Computing MI for OpenIE actions...")
+compute_mi_steps(fit_sim_gs_Akdf, input_oie.split('.')[0])
 
-start = 0
-end = SAMPLE_SIZE
-dev_Psim_gsAks = []
-A_tau = []
-for s in range(N_STEPS):
-#    dev_Psim_gsAks.append(compute_set_probability(
-#                            dev_sim_gs_Akdf[start:end],
-#                            perimeter_samples=perimeter))
-    A_tau.append(dev_sim_gs_Akdf[start:end])
-    #dev_Psim_gsAks[-1].head()
-    end = end + SAMPLE_SIZE
-    start = end
-logging.info("Computing probabilities of random sets...")
-dev_Psim_gsAks = Parallel(n_jobs=-1)(delayed(compute_set_probability)(
-                                    A_k, perimeter_samples=perimeter)
-                                        for A_k in A_tau)
+t_size = 10
+env = textEnv(input_file_name=input_plain, wsize=t_size, traject_length=N_STEPS, 
+              n_trajects=N_TRAJECTORIES, beta_rwd=1.5, sample_size=SAMPLE_SIZE)
 
-#dev_Psim_gsAkdf = compute_set_probability(dev_sim_gs_Akdf,
-#                                          perimeter_samples=perimeter)
-#dev_Psim_gsAkdf = dev_Psim_gsAkdf.dropna()
-#print(f"Fit sample size: {len(dev_Psim_gsAkdf.index)}")
-#fit_sim_gs_Akdf = gsAkdf.drop(dev_sim_gs_Akdf.index)
-#fit_Psim_gsAkdf = compute_set_probability(fit_sim_gs_Akdf,
-#                                          perimeter_samples=perimeter)
-#fit_Psim_gsAkdf = fit_Psim_gsAkdf.dropna()
-#print(f"Dev sample size: {len(fit_Psim_gsAkdf.index)}")
+env.reset()
+S, rt, done, _ = env.step()
+A = []
+logging.info("Simulating random actions for file '{}'".format(input_plain))
+for t in range(N_STEPS):
+    Ak = [rdn_partition(s[0]) for s in S]   
+    S, rt, done, _ = env.step()
+    A.append(Ak)
+    if done: break
+
+rdn_Akdf = pd.DataFrame(sum(A, []))
+logging.info("Computing MI for random actions...")
+compute_mi_steps(rdn_Akdf, input_plain.split('.')[0])
+logging.info("Terminado..."
