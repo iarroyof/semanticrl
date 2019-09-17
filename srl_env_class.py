@@ -1,8 +1,13 @@
 
-
+import math
+import os
 import gym
+import re
 from gym import spaces
-
+from sklearn.feature_extraction.text import TfidfVectorizer
+import random
+import pandas as pd
+import numpy as np
 
 
 class weigher(object):

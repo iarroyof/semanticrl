@@ -1,0 +1,107 @@
+import itertools
+import random, csv
+import numpy as np
+import pandas as pd
+from dask import dataframe as dd
+import tensorflow as tf
+import os, re, random, math
+import matplotlib
+matplotlib.style.use('ggplot')
+import matplotlib.pyplot as plt
+from sklearn.feature_extraction.text import TfidfVectorizer
+from jellyfish import damerau_levenshtein_distance as dlbsh
+from scipy.spatial.distance import directed_hausdorff as hsdff
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.feature_extraction.text import CountVectorizer
+
+
+fitting_sim_oie = "data/sim_train.txt.oie"
+develop_sim_oie = "data/sim_test.txt.oie"
+fitting_unr_oie = "data/dis_train.txt.oie"
+develop_unr_oie = "data/dis_test.txt.oie"
+
+fitting_sim = "data/sim_train.txt"
+develop_sim = "data/sim_test.txt"
+fitting_unr = "data/dis_train.txt"
+develop_unr = "data/dis_test.txt"
+
+
+def intersect(r, s):
+        return set(r).intersection(s)
+        
+        def unify(r, s):
+                return set(r).union(s)
+                
+                def ref_jaccard(sizes, item):
+                    try:
+                            return [i/sizes[item] for i in sizes]
+                                except ZeroDivisionError:
+                                        return 0
+                                        
+                                        def lev_hausdorff(A, B):
+                                            #return max([min([dlbsh(a, b) for b in B]) for a in A])
+                                                D = {}
+                                                    h = 0
+                                                        for a in A:
+                                                                shortest = np.inf
+                                                                        for b in B:
+                                                                                    D[(a, b)] = dlbsh(a, b)
+                                                                                                if D[(a, b)] < shortest:
+                                                                                                                shortest = D[(a, b)]
+                                                                                                                        if shortest > h:
+                                                                                                                                    h = shortest
+                                                                                                                                    
+                                                                                                                                        return h
+                                                                                                                                        
+                                                                                                                                            
+                                                                                                                                            def dot_distance(A, B, binary=True, euclid=False):
+                                                                                                                                                try:
+                                                                                                                                                        assert isinstance(A, str) and isinstance(B, str)
+                                                                                                                                                            except AssertionError:
+                                                                                                                                                                    if np.nan in [A, B]:
+                                                                                                                                                                                return 10000.0
+                                                                                                                                                                                        
+                                                                                                                                                                                            vectorizer = CountVectorizer(binary=binary, analyzer='char',
+                                                                                                                                                                                                                             ngram_range=(1, 3))
+                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                     X = vectorizer.fit_transform([A, B])
+                                                                                                                                                                                                                                         if euclid:
+                                                                                                                                                                                                                                                 return (X[0] - X[1]).dot((X[0] - X[1]).T).sum()
+                                                                                                                                                                                                                                                     else:
+                                                                                                                                                                                                                                                             return (X[0].toarray() ^ X[1].toarray()).sum()
+                                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                 def euc_hausdorff(A, B):
+                                                                                                                                                                                                                                                                     discret = LabelEncoder()
+                                                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                                         hausdorff = lambda u, v: max(hsdff(u, v)[0], hsdff(v, u)[0])
+                                                                                                                                                                                                                                                                             discret.fit(A + B)
+                                                                                                                                                                                                                                                                                 a = discret.transform(A)
+                                                                                                                                                                                                                                                                                     b = discret.transform(B)
+                                                                                                                                                                                                                                                                                         if len(a) - len(b) < 0:
+                                                                                                                                                                                                                                                                                                 a = a.tolist() + [-1] * abs(len(a) - len(b))
+                                                                                                                                                                                                                                                                                                     elif len(a) - len(b) > 0:
+                                                                                                                                                                                                                                                                                                             b = b.tolist() + [-1] * (len(a) - len(b))
+                                                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                 return hausdorff(np.array(a).reshape(1, -1), np.array(b).reshape(1, -1))
+                                                                                                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                                                                                     def set_valued_gaussian(S, M, sigma=1.0, metric='h'):
+                                                                                                                                                                                                                                                                                                                         if metric == 'h':
+                                                                                                                                                                                                                                                                                                                                 if not(isinstance(S, list) and isinstance(M, list)):
+                                                                                                                                                                                                                                                                                                                                             S = ngramer(S)
+                                                                                                                                                                                                                                                                                                                                                         M = ngramer(M)
+                                                                                                                                                                                                                                                                                                                                                                 #distance = cat_hausdorff(S, M)
+                                                                                                                                                                                                                                                                                                                                                                         distance = lev_hausdorff(S, M)
+                                                                                                                                                                                                                                                                                                                                                                             elif metric == 'l':
+                                                                                                                                                                                                                                                                                                                                                                                     assert isinstance(S, str) and isinstance(M, str)
+                                                                                                                                                                                                                                                                                                                                                                                             distance = dlbsh(S, M)
+                                                                                                                                                                                                                                                                                                                                                                                                 elif metric == 'hmm':
+                                                                                                                                                                                                                                                                                                                                                                                                         distance = dot_distance(S, M, binary=False, euclid=True )
+                                                                                                                                                                                                                                                                                                                                                                                                             #print(distance)
+                                                                                                                                                                                                                                                                                                                                                                                                                 if distance == 0:
+                                                                                                                                                                                                                                                                                                                                                                                                                         return 1.0
+                                                                                                                                                                                                                                                                                                                                                                                                                             else:
+                                                                                                                                                                                                                                                                                                                                                                                                                                     return (1/(np.sqrt(2 * np.pi * sigma ** 2))) * math.exp(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 -distance ** 2/(2 * sigma ** 2))
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 def computeNab(df, ca, cb):
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     list(map(intersect, df[[ca, cb]]))
