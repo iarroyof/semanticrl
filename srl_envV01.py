@@ -163,19 +163,23 @@ def compute_mutuals(df, cols):
               "$N_\sigma\{h(" + ', '.join([p[1], p[1]]) + ")\}$",
               "$N_\sigma\{h(" + ', '.join([p[0], p[0]]) + ")\}$")
                     for p in pairs if p[0] != p[1]]
+    entropy = lambda x: -x * np.log2(x) if x > 0.0 else 0.0
+    centropy = lambda x: -x[1] * np.log2(x[1]/x[0]) \
+                            if x[0] > 0 and x[1] > 0 else 0.0
     for s in selfs:
         try:
             icol = '$H[h(' + ', '.join(re.findall(patt, s)[0]) + ')]$'
-            df[icol] = df[s].apply(lambda x: -x * np.log2(x) if x > 0 else 0.0)
+            df[icol] = df[s].apply(entropy)
         except:
             st()
     for j in joins:
-        icol = '$I[h(' + ', '.join(re.findall(patt, j[0])[0]) + ')]$'
-        df[icol] = df[list(j)].apply(
-                                 lambda x: x[0] * np.log2(x[0]/(x[2] * x[1])) \
-                                 if (x[2] * x[1] > 0 
-                                        and x[0]/(x[2] * x[1]) > 0) else 0.0,
-                                 axis=1)
+        vars = re.findall(patt, j[0])[0]
+        icol = '$I[h(' + ', '.join([vars[1], vars[0]]) + ')]$'
+        try:
+            df[icol] = df[list(j)].apply(lambda p: entropy(p[1]) - centropy(p),
+                                         axis=1)
+        except:
+            st()
 
     return df[[c for c in df.columns
                     if True in ('$I[' in c, '$H[h(' in c)]].sum().to_dict()
@@ -185,7 +189,7 @@ def compute_mi_steps(Akdf, out_csv):
                 for i in range(0, N_STEPS * SAMPLE_SIZE, SAMPLE_SIZE)]
 
     logging.info(f"Computing probabilities of random sets for {N_STEPS} steps.")
-    Psim_Aks = Parallel(n_jobs=-1)(
+    Psim_Aks = Parallel(n_jobs=NJOBS)(
                     delayed(compute_set_probability)(
                         A_k, perimeter_samples=perimeter)
                                                 for A_k in A_tau)
@@ -196,7 +200,7 @@ def compute_mi_steps(Akdf, out_csv):
         '$N_\sigma\{h(Z, Z)\}$',
         '$N_\sigma\{h(X, Y+Z)\}$', '$N_\sigma\{h(Y, X+Z)\}$',
         '$N_\sigma\{h(Z, X+Y)\}$']
-    info_steps =  Parallel(n_jobs=-1)(
+    info_steps =  Parallel(n_jobs=NJOBS)(
                     delayed(compute_mutuals)(df, probcs)
                                            for df in Psim_Aks if not df is None)
     pd.DataFrame(info_steps).to_csv(
@@ -224,6 +228,8 @@ parser.add_argument("--sample",  help="Sample size for text environment steps",
                     type=int, default=100)
 parser.add_argument("--nsteps",  help="Number of steps to simulate",
                     type=int, default=50)
+parser.add_argument("--njobs",  help="Number of cores to use for simulating",
+                    type=int, default=-1)
 args = parser.parse_args()
 
 input_oie = args.in_oie
@@ -236,7 +242,7 @@ input_plain = args.in_txt
 #develop_sim = "data/sim_test_.txt"
 #fitting_unr = "data/dis_train_.txt"
 #develop_unr = "data/dis_test_.txt"
-
+NJOBS = args.njobs
 SAMPLE_SIZE = args.sample  # eg. 100
 N_STEPS =  args.nsteps # 120  # e.g.: n_input_oie/SAMPLE_SIZE = 12167/100 = 121.67
 ngramr =  tuple(args.ngrams) # (1, 3)
