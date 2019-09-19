@@ -7,6 +7,15 @@ plt.style.use('ggplot')
 import argparse
 
 def plot_mis(csv, comparing_cols, title, roll=20):
+    """
+    # Use example
+    title = 'Conditional Mutual Information (OpenIE agent, unrelated topics)'
+    csv = ("dis_train" 
+           "_Dk-100_rho-25_tau-120_ng-(1to3).csv")
+           comparing_cols = ['$I[h(Y+Z, X)]$', '$I[h(X+Z, Y)]$',
+                                '$I[h(X+Y, Z)]$']       
+    plot_mis(csv=csv, comparing_cols=comparing_cols, title=title, roll=50)
+    """
     df = pd.read_csv(csv) \
            .replace(np.inf, np.NaN) \
            .interpolate(method ='linear')
