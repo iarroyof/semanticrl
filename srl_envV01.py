@@ -168,7 +168,7 @@ def compute_mutuals(df, cols):
                             if x[0] > 0 and x[1] > 0 else 0.0
     for s in selfs:
         try:
-            icol = '$H[h(' + ', '.join(re.findall(patt, s)[0]) + ')]$'
+            icol = '$H[h(' + ', '.join(re.findall(patt, s)[0]) + "')]$"
             df[icol] = df[s].apply(entropy)
         except:
             st()
