@@ -11,7 +11,6 @@ matplotlib.use
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 from jellyfish import damerau_levenshtein_distance as dlbsh
-from scipy.spatial.distance import directed_hausdorff as hsdff
 import logging
 import argparse
 import string
@@ -22,7 +21,6 @@ with warnings.catch_warnings():
     warnings.filterwarnings("ignore", category=DeprecationWarning)
     from sklearn.feature_extraction.text import TfidfVectorizer
     from joblib import Parallel, delayed
-    from sklearn.preprocessing import LabelEncoder
     from sklearn.feature_extraction.text import CountVectorizer
 
 from pdb import set_trace as st
@@ -30,21 +28,6 @@ from pdb import set_trace as st
 logging.basicConfig(format='%(asctime)s %(message)s',
                     datefmt='%m/%d/%Y %I:%M:%S %p',
                     level=logging.INFO)
-
-
-def intersect(r, s):
-        return set(r).intersection(s)
-
-
-def unify(r, s):
-        return set(r).union(s)
-
-
-def ref_jaccard(sizes, item):
-    try:
-        return [i / sizes[item] for i in sizes]
-    except ZeroDivisionError:
-        return 0
 
 
 def lev_hausdorff(A, B):
@@ -80,21 +63,6 @@ def dot_distance(A, B, binary=True, euclid=False):
         return (X[0].toarray() ^ X[1].toarray()).sum()
 
 
-def euc_hausdorff(A, B):
-    discret = LabelEncoder()
-
-    hausdorff = lambda u, v: max(hsdff(u, v)[0], hsdff(v, u)[0])
-    discret.fit(A + B)
-    a = discret.transform(A)
-    b = discret.transform(B)
-    if len(a) - len(b) < 0:
-        a = a.tolist() + [-1] * abs(len(a) - len(b))
-    elif len(a) - len(b) > 0:
-        b = b.tolist() + [-1] * (len(a) - len(b))
-
-    return hausdorff(np.array(a).reshape(1, -1), np.array(b).reshape(1, -1))
-
-
 def set_valued_gaussian(S, M, sigma=1.0, metric='hmm'):
     if metric == 'h':
         if not(isinstance(S, list) and isinstance(M, list)):
@@ -112,10 +80,6 @@ def set_valued_gaussian(S, M, sigma=1.0, metric='hmm'):
     else:
         return (1.0 / (np.sqrt(2 * np.pi * sigma ** 2))) * math.exp(
                                             -distance ** 2 / (2 * sigma ** 2))
-
-
-def computeNab(df, ca, cb):
-    list(map(intersect, df[[ca, cb]]))
 
 
 def compute_set_probability(Akdf, perimeter_samples=50, sigma=5.0,
@@ -178,8 +142,8 @@ def compute_mutuals(df, cols):
         except:
             st()
     for j in joins:
-        vars = re.findall(patt, j[0])[0]
-        icol = '$I[h(' + ', '.join([vars[1], vars[0]]) + ')]$'
+        rsets = re.findall(patt, j[0])[0]
+        icol = '$I[h(' + ', '.join([rsets[1], rsets[0]]) + ')]$'
         try:
             df[icol] = df[list(j)].apply(lambda p: entropy(p[1]) - centropy(p),
                                          axis=1)
@@ -269,7 +233,7 @@ gsAkdf = pd.read_csv(input_oie, delimiter='\t', keep_default_na=False,
 for c in cols:
     gsAkdf[c] = gsAkdf[c].apply(clean)
 
-gsAkdf = gsAkdf[  ~gsAkdf['X'].isin(['', ' ']) \
+gsAkdf = gsAkdf[~gsAkdf['X'].isin(['', ' ']) \
                 & ~gsAkdf['Y'].isin(['', ' ']) \
                 & ~gsAkdf['Z'].isin(['', ' '])]
 # Take N_STEPS and compute their marginal and joint informations
@@ -281,14 +245,14 @@ env = textEnv(input_file_name=input_plain, wsize=t_size,
                 traject_length=N_STEPS, n_trajects=N_TRAJECTORIES,
                 beta_rwd=1.5, sample_size=SAMPLE_SIZE)
 env.reset()
-S, rt, done, _ = env.step()
+S, _, done, _ = env.step()
 A = []
 logging.info("Simulating random actions from file '{}'".format(input_plain))
 # The srl_env_class removes punctuation and empty strings before returning
 # states.
 for t in range(N_STEPS):
     Ak = [rdn_partition(s[0]) for s in S]
-    S, rt, done, _ = env.step()
+    S, _, done, _ = env.step()
     A.append(Ak)
     if done:
         break
