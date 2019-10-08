@@ -6,10 +6,6 @@ import numpy as np
 import pandas as pd
 import re
 import math
-import matplotlib
-matplotlib.use
-import matplotlib.pyplot as plt
-plt.style.use('ggplot')
 from jellyfish import damerau_levenshtein_distance as dlbsh
 import logging
 import argparse
@@ -38,10 +34,10 @@ def dot_distance(A, B, binary=True, euclid=False, ngramr=(1, 3)):
     (True) or as BoW (False) vectors. The 'euclid' (True) parameter is thought
     for BoW vectors and Euclidean distance. The case of BoW vectors operated
     by Hamming distance (binary=False, euclid=True) is not defined, but some
-    value is returned. 
+    value is returned.
     The 'ngramr' parameter defined n-grams range into which the strings are
     segmented. The 'ANALYZER' constant can be modified from 'char' to 'wb_char'
-    for sklearn >= 21.0 versions. Also 'word' is allowed. 
+    for sklearn >= 21.0 versions. Also 'word' is allowed.
     """
     try:
         assert isinstance(A, str) and isinstance(B, str)
@@ -68,10 +64,10 @@ def set_valued_gaussian(S, M, sigma=5.0, metric='hmm', ngramr=(1, 3)):
         assert isinstance(S, str) and isinstance(M, str)
         distance = dlbsh(S, M)
     elif metric == 'hmm':
-        distance = dot_distance(S, M, binary=True, 
+        distance = dot_distance(S, M, binary=True,
                                             euclid=False, ngramr=ngramr)
     elif metric == 'euc':
-        distance = dot_distance(S, M, binary=False, 
+        distance = dot_distance(S, M, binary=False,
                                             euclid=True, ngramr=ngramr)
 
     if distance <= 1.0:
@@ -103,7 +99,7 @@ def compute_set_probability(Akdf, hit_miss_samples=50, sigma=5.0,
             prod_cols.append((a, b))
             measures = []
             for _ in range(hit_miss_samples):
-                B = Akdf[b].sample(frac=1); st()
+                B = Akdf[b].sample(frac=1)
                 measures.append(
                     np.vectorize(set_valued_gaussian)(
                         Akdf[a].str.lower(), B.str.lower(), sigma=sigma,
@@ -215,7 +211,7 @@ parser.add_argument("--bw", help=("Bandwidth for the kernel estimator."
                     type=float, default=5.0)
 parser.add_argument("--hitmiss", help=("Number of samples to build the"
                                       " hit-and-missing topology (default: 50)"),
-                    type=int, default=50)                    
+                    type=int, default=50)
 parser.add_argument("--njobs", help=("Number of cores to use for simulating"
                                      " (default: -1)"),
                     type=int, default=-1)
@@ -240,8 +236,6 @@ cols = ['X', 'Y', 'Z']
 N_TRAJECTORIES = 2
 perimeter = int(SAMPLE_SIZE * 0.25)  # 25% of the sample size
 
-#v = TfidfVectorizer(analyzer='char', ngram_range=ngramr)
-#ngramer = v.build_analyzer()
 logging.info("Reading input file '{}'".format(input_oie))
 # Randomize the input gold standard
 gsAkdf = pd.read_csv(input_oie, delimiter='\t', keep_default_na=False,
