@@ -31,17 +31,12 @@ logging.basicConfig(format='%(asctime)s %(message)s',
 
 ANALYZER = 'char'
 
-
 def dot_distance(A, B, binary=True, euclid=False, ngramr=(1, 3)):
-    """ This method computes either Euclidean or Hamming distance between
-    two strings 'A' and 'B'. The input strings are encoded either as 'binary'
-    (True) or as BoW (False) vectors. The 'euclid' (True) parameter is thought
-    for BoW vectors and Euclidean distance. The case of BoW vectors operated
-    by Hamming distance (binary=False, euclid=True) is not defined, but some
-    value is returned. 
-    The 'ngramr' parameter defined n-grams range into which the strings are
-    segmented. The 'ANALYZER' constant can be modified from 'char' to 'wb_char'
-    for sklearn >= 21.0 versions. Also 'word' is allowed. 
+    """ This distance function can compute either the Hamming metric or the 
+    Euclidean metric. It takes a pair of strings and encodes them either as 
+    'binary' (True) or as 'bow' (False) vectors. After that it computes either
+    Hamming or  Euclidean distance between them. Hamming distance is senseless
+    for bow vectors as it oly takes binary differences.
     """
     try:
         assert isinstance(A, str) and isinstance(B, str)
@@ -59,20 +54,16 @@ def dot_distance(A, B, binary=True, euclid=False, ngramr=(1, 3)):
         return (X[0].toarray() ^ X[1].toarray()).sum()
 
 
-def set_valued_gaussian(S, M, sigma=5.0, metric='hmm', ngramr=(1, 3)):
-    """ The metric can be Levenshtein ('lev') or Hamming ('hmm') or Euclidean
-    ('euc', this encodes strings as simple BoW vectors).
-    Other parameters are inherited from the dot_distance() method.
+def set_valued_gaussian(S, M, sigma=1.0, metric='hmm', ngramr=(1, 3),
+                                            binary=True, euclid=False):
+    """ The metric can be Levenshtein ('lev') or Hamming ('hmm')
     """
     if metric == 'lev':
         assert isinstance(S, str) and isinstance(M, str)
         distance = dlbsh(S, M)
     elif metric == 'hmm':
-        distance = dot_distance(S, M, binary=True, 
-                                            euclid=False, ngramr=ngramr)
-    elif metric == 'euc':
-        distance = dot_distance(S, M, binary=False, 
-                                            euclid=True, ngramr=ngramr)
+        distance = dot_distance(S, M, binary=binary,
+                                        euclid=euclid, ngramr=(1, 3))
 
     if distance <= 1.0:
         return 1.0 / (np.sqrt(2 * np.pi * sigma ** 2))
@@ -81,10 +72,10 @@ def set_valued_gaussian(S, M, sigma=5.0, metric='hmm', ngramr=(1, 3)):
                                              -distance ** 2 / (2 * sigma ** 2))
 
 
-def compute_set_probability(Akdf, hit_miss_samples=50, sigma=5.0,
-                            cols=['X', 'Y', 'Z'], metric='hmm', ngramr=(1, 3)):
+def compute_set_probability(Akdf, perimeter_samples=50, sigma=5.0,
+                            cols=['X', 'Y', 'Z'], metric='hmm'):
     try:
-        assert len(Akdf.index) >= hit_miss_samples, (
+        assert len(Akdf.index) >= perimeter_samples, (
                                                 "The number of perimeter"
                                                 " samples must be less or equal"
                                                 " than the number of samples")
@@ -102,12 +93,12 @@ def compute_set_probability(Akdf, hit_miss_samples=50, sigma=5.0,
         if not ((a, b) in prod_cols or (b, a) in prod_cols):
             prod_cols.append((a, b))
             measures = []
-            for _ in range(hit_miss_samples):
-                B = Akdf[b].sample(frac=1); st()
+            for _ in range(perimeter_samples):
+                B = Akdf[b].sample(frac=1)
                 measures.append(
                     np.vectorize(set_valued_gaussian)(
                         Akdf[a].str.lower(), B.str.lower(), sigma=sigma,
-                        metric=metric, ngramr=ngramr)
+                        metric=metric)
                 )
             joincol = '$N_\sigma\{h(' + ', '.join((a, b)) + ')\}$'
             Akdf[joincol] = np.vstack(measures).mean(axis=0)
@@ -154,19 +145,14 @@ def compute_mutuals(df, cols):
                     if True in ("$I[" in c, "$H[h(" in c)]].sum().to_dict()
 
 
-def compute_mi_steps(Akdf, out_csv, metric='hmm', sigma=5.0,
-                                              n_hit_miss=50, ngramr=(1, 3)):
-    """ compute_set_probability(Akdf, hit_miss_samples=50, sigma=5.0,
-                                cols=['X', 'Y', 'Z'], metric='hmm'
-    """
+def compute_mi_steps(Akdf, out_csv, metric='hmm'):
     A_tau = [Akdf[i:i + SAMPLE_SIZE]
                 for i in range(0, N_STEPS * SAMPLE_SIZE, SAMPLE_SIZE)]
 
     logging.info(f"Computing probabilities of random sets for {N_STEPS} steps.")
     Psim_Aks = Parallel(n_jobs=NJOBS)(
                     delayed(compute_set_probability)(
-                        A_k, hit_miss_samples=n_hit_miss,
-                                     metric=metric, sigma=sigma, ngramr=ngramr)
+                        A_k, perimeter_samples=perimeter, metric=metric)
                                                             for A_k in A_tau)
     probcs = [
         '$N_\sigma\{h(X, Y)\}$', '$N_\sigma\{h(Y, Z)\}$',
@@ -180,7 +166,7 @@ def compute_mi_steps(Akdf, out_csv, metric='hmm', sigma=5.0,
                                            for df in Psim_Aks if not df is None)
     pd.DataFrame(info_steps).to_csv(
                 out_csv + "_Dk-{}_rho-{}_tau-{}_ng-{}.csv"
-                         .format(SAMPLE_SIZE, n_hit_miss, N_STEPS, ngramr)
+                         .format(SAMPLE_SIZE, perimeter, N_STEPS, ngramr)
                          .replace(' ', '').replace(',', 'to'))
 
 
@@ -210,12 +196,6 @@ parser.add_argument("--sample", help=("Sample size for text environment steps"
 parser.add_argument("--nsteps", help=("Number of steps to simulate"
                                       " (default: 50)"),
                     type=int, default=50)
-parser.add_argument("--bw", help=("Bandwidth for the kernel estimator."
-                                      " (default: 5.0)"),
-                    type=float, default=5.0)
-parser.add_argument("--hitmiss", help=("Number of samples to build the"
-                                      " hit-and-missing topology (default: 50)"),
-                    type=int, default=50)                    
 parser.add_argument("--njobs", help=("Number of cores to use for simulating"
                                      " (default: -1)"),
                     type=int, default=-1)
@@ -236,12 +216,13 @@ SAMPLE_SIZE = args.sample  # eg. 100
 N_STEPS = args.nsteps  # 120  #e.g.: n_input_oie/SAMPLE_SIZE=12167/100=121.67
 ngramr = tuple(args.ngrams)  # (1, 3)
 t_size = args.wsize  # 10
+
 cols = ['X', 'Y', 'Z']
 N_TRAJECTORIES = 2
 perimeter = int(SAMPLE_SIZE * 0.25)  # 25% of the sample size
 
-#v = TfidfVectorizer(analyzer='char', ngram_range=ngramr)
-#ngramer = v.build_analyzer()
+v = TfidfVectorizer(analyzer=ANALYZER, ngram_range=ngramr)
+ngramer = v.build_analyzer()
 logging.info("Reading input file '{}'".format(input_oie))
 # Randomize the input gold standard
 gsAkdf = pd.read_csv(input_oie, delimiter='\t', keep_default_na=False,
@@ -255,9 +236,7 @@ gsAkdf = gsAkdf[~gsAkdf['X'].isin(['', ' '])
                 & ~gsAkdf['Z'].isin(['', ' '])]
 # Take N_STEPS and compute their marginal and joint informations
 logging.info("Computing MI for OpenIE actions...")
-compute_mi_steps(gsAkdf, input_oie.split('.')[0],
-                    metric=args.metric, sigma=args.bw,
-                    ngramr=ngramr, n_hit_miss=args.hitmiss)
+compute_mi_steps(gsAkdf, input_oie.split('.')[0], metric=args.metric)
 
 # Create text environment sampler
 env = textEnv(input_file_name=input_plain, wsize=t_size,
