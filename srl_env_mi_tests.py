@@ -86,7 +86,7 @@ def compute_set_probability(Akdf, hit_miss_samples=50, sigma=5.0,
                                                 " than the number of samples")
     except AssertionError:
         return None
-
+    
     deps = []
     for a, b in itertools.product(*[cols] * 2):
         if not ((a, b) in deps and (b, a) in deps):
@@ -101,9 +101,11 @@ def compute_set_probability(Akdf, hit_miss_samples=50, sigma=5.0,
             for _ in range(hit_miss_samples):
                 B = Akdf[b].sample(frac=1)
                 measures.append(
-                    np.vectorize(set_valued_gaussian)(
+                    np.vectorize(set_valued_gaussian,
+                                 excluded=set(['ngramr']))(
                         Akdf[a].str.lower(), B.str.lower(), sigma=sigma,
-                        metric=metric, ngramr=ngramr)
+                        metric=metric, ngramr=ngramr
+                        )
                 )
             joincol = '$N_\sigma\{h(' + ', '.join((a, b)) + ')\}$'
             Akdf[joincol] = np.vstack(measures).mean(axis=0)
