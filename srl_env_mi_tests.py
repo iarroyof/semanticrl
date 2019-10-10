@@ -26,7 +26,8 @@ logging.basicConfig(format='%(asctime)s %(message)s',
                     level=logging.INFO)
 
 ANALYZER = 'char'
-
+STRUCTCOLS = ['X', 'Y', 'Z']
+COMBINATIONS= ['Y+Z', 'X+Z', 'X+Y']
 
 def dot_distance(A, B, binary=True, euclid=False, ngramr=(1, 3)):
     """ This method computes either Euclidean or Hamming distance between
@@ -78,7 +79,7 @@ def set_valued_gaussian(S, M, sigma=5.0, metric='hmm', ngramr=(1, 3)):
 
 
 def compute_set_probability(Akdf, hit_miss_samples=50, sigma=5.0,
-                            cols=['X', 'Y', 'Z'], metric='hmm', ngramr=(1, 3)):
+                            cols=STRUCTCOLS, metric='hmm', ngramr=(1, 3)):
     try:
         assert len(Akdf.index) >= hit_miss_samples, (
                                                 "The number of perimeter"
@@ -94,7 +95,8 @@ def compute_set_probability(Akdf, hit_miss_samples=50, sigma=5.0,
             Akdf['+'.join((a, b))] = Akdf[[a, b]].apply(lambda x: ' '.join(x),
                                                           axis=1)
     prod_cols = []
-    for a, b in itertools.product(*[cols + ['Y+Z', 'X+Z', 'X+Y']] * 2):
+    #for a, b in itertools.product(*[cols + ['Y+Z', 'X+Z', 'X+Y']] * 2):
+    for a, b in itertools.product(*[cols + COMBINATIONS] * 2):
         if not ((a, b) in prod_cols or (b, a) in prod_cols):
             prod_cols.append((a, b))
             measures = []
@@ -115,14 +117,18 @@ def compute_set_probability(Akdf, hit_miss_samples=50, sigma=5.0,
 def rdn_partition(state):
     tokens = state.split()
     idxs = sorted(random.sample(list(range(1, len(tokens) - 1)), 2))
-    return {'X': " ".join(tokens[:idxs[0]]),
-            'Y': " ".join(tokens[idxs[0]:idxs[1]]),
-            'Z': " ".join(tokens[idxs[1]:])}
+    action = np.split(tokens, idxs)
+    return {c: " ".join(a) for c, a in zip(STRUCTCOLS, action)} 
+    #{STRUCTCOLS[0]: " ".join(tokens[:idxs[0]]),
+    #STRUCTCOLS[1]: " ".join(tokens[idxs[0]:idxs[1]]),
+    #STRUCTCOLS[2]: " ".join(tokens[idxs[1]:])}
 
 
 def compute_mutuals(df, cols):
-
-    patt = r'N_\\sigma\\{h\(([XYZ]\+?[XYZ]?), ([XYZ]\+?[XYZ]?)\)'
+    # patt = r'N_\\sigma\\{h\(([XYZ]\+?[XYZ]?), ([XYZ]\+?[XYZ]?)\)'
+    scs = ''.join(STRUCTCOLS)
+    patt = patt = r"N_\\sigma\{{h\(([{0}]\+?[{0}]?), ([{0}]\+?[{0}]?)\)\}}" \
+                    .format(scs)
     pairs = sum([re.findall(patt, c) for c in cols], [])
     selfs = ["$N_\sigma\{h(" + ', '.join(p) + ")\}$"
                     for p in pairs if p[0] == p[1]]
@@ -154,8 +160,7 @@ def compute_mutuals(df, cols):
 
 def compute_mi_steps(Akdf, out_csv, metric='hmm', sigma=5.0,
                                               n_hit_miss=50, ngramr=(1, 3)):
-    """ compute_set_probability(Akdf, hit_miss_samples=50, sigma=5.0,
-                                cols=['X', 'Y', 'Z'], metric='hmm'
+    """ This method calls 'compute_set_probability()' 
     """
     A_tau = [Akdf[i:i + SAMPLE_SIZE]
                 for i in range(0, N_STEPS * SAMPLE_SIZE, SAMPLE_SIZE)]
@@ -234,21 +239,24 @@ SAMPLE_SIZE = args.sample  # eg. 100
 N_STEPS = args.nsteps  # 120  #e.g.: n_input_oie/SAMPLE_SIZE=12167/100=121.67
 ngramr = tuple(args.ngrams)  # (1, 3)
 t_size = args.wsize  # 10
-cols = ['X', 'Y', 'Z']
 N_TRAJECTORIES = 2
 perimeter = int(SAMPLE_SIZE * 0.25)  # 25% of the sample size
 
 logging.info("Reading input file '{}'".format(input_oie))
 # Randomize the input gold standard
 gsAkdf = pd.read_csv(input_oie, delimiter='\t', keep_default_na=False,
-                     names=['score'] + cols)[cols].sample(frac=1.0)
+                     names=['score'] + STRUCTCOLS)[STRUCTCOLS].sample(frac=1.0)
 # Remove triplets with only punctuation
-for c in cols:
+for c in STRUCTCOLS:
     gsAkdf[c] = gsAkdf[c].apply(clean)
 
-gsAkdf = gsAkdf[~gsAkdf['X'].isin(['', ' '])
-                & ~gsAkdf['Y'].isin(['', ' '])
-                & ~gsAkdf['Z'].isin(['', ' '])]
+#gsAkdf = gsAkdf[~gsAkdf['X'].isin(['', ' '])
+#                & ~gsAkdf['Y'].isin(['', ' '])
+#                & ~gsAkdf['Z'].isin(['', ' '])]
+gsAkdf = gsAkdf[
+            ~gsAkdf[STRUCTCOLS].isin(['', ' '])
+                               .apply(np.any, axis=1)            
+         ]
 # Take N_STEPS and compute their marginal and joint informations
 logging.info("Computing MI for OpenIE actions...")
 compute_mi_steps(gsAkdf, input_oie.split('.')[0],
