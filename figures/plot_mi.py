@@ -1,10 +1,14 @@
 import pandas as pd
 import numpy as np
-import matplotlib                                            
+import matplotlib
+from matplotlib import rc
 matplotlib.use                                                         
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
+rc('font', **{'family': 'serif', 'serif': ['Computer Modern']})
+rc('text', usetex=True)
 import argparse
+
 
 def plot_mis(csv, comparing_cols, title, roll=20):
     df = pd.read_csv(csv) \

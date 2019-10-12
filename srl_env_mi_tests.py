@@ -78,8 +78,8 @@ def set_valued_gaussian(S, M, sigma=5.0, metric='hmm', ngramr=(1, 3)):
                                              -distance ** 2 / (2 * sigma ** 2))
 
 
-def compute_set_probability(Akdf, hit_miss_samples=50, sigma=5.0,
-                            cols=STRUCTCOLS, metric='hmm', ngramr=(1, 3)):
+def compute_set_probability(Akdf, prod_cols, hit_miss_samples=50, sigma=5.0,
+                            metric='hmm', ngramr=(1, 3)):
     try:
         assert len(Akdf.index) >= hit_miss_samples, (
                                                 "The number of perimeter"
@@ -88,29 +88,31 @@ def compute_set_probability(Akdf, hit_miss_samples=50, sigma=5.0,
     except AssertionError:
         return None
     
-    deps = []
-    for a, b in itertools.product(*[cols] * 2):
-        if not ((a, b) in deps and (b, a) in deps):
-            deps.append((a, b))
-            Akdf['+'.join((a, b))] = Akdf[[a, b]].apply(lambda x: ' '.join(x),
+    joints = []
+    for d in prod_cols:
+        if '+' in d[0]:
+            joints.append(tuple(d[0].split('+')))
+        elif '+' in d[1]:
+            joints.append(tuple(d[1].split('+')))
+        else:
+            continue
+
+    for a, b in joints:
+        Akdf['+'.join((a, b))] = Akdf[[a, b]].apply(lambda x: ' '.join(x),
                                                           axis=1)
-    prod_cols = []
-    #for a, b in itertools.product(*[cols + ['Y+Z', 'X+Z', 'X+Y']] * 2):
-    for a, b in itertools.product(*[cols + COMBINATIONS] * 2):
-        if not ((a, b) in prod_cols or (b, a) in prod_cols):
-            prod_cols.append((a, b))
-            measures = []
-            for _ in range(hit_miss_samples):
-                B = Akdf[b].sample(frac=1)
-                measures.append(
-                    np.vectorize(set_valued_gaussian,
+    for a, b in prod_cols:  # This lists already contains joints
+        measures = []
+        for _ in range(hit_miss_samples):
+            B = Akdf[b].sample(frac=1)
+            measures.append(
+                np.vectorize(set_valued_gaussian,
                                  excluded=set(['ngramr']))(
                         Akdf[a].str.lower(), B.str.lower(), sigma=sigma,
                         metric=metric, ngramr=ngramr
                         )
                 )
-            joincol = '$N_\sigma\{h(' + ', '.join((a, b)) + ')\}$'
-            Akdf[joincol] = np.vstack(measures).mean(axis=0)
+        joincol = '$\mathcal{N}\{h(' + ', '.join((a, b)) + '), \sigma\}$'
+        Akdf[joincol] = np.vstack(measures).mean(axis=0)
     return Akdf.dropna()
 
 
@@ -119,22 +121,18 @@ def rdn_partition(state):
     idxs = sorted(random.sample(list(range(1, len(tokens) - 1)), 2))
     action = np.split(tokens, idxs)
     return {c: " ".join(a) for c, a in zip(STRUCTCOLS, action)} 
-    #{STRUCTCOLS[0]: " ".join(tokens[:idxs[0]]),
-    #STRUCTCOLS[1]: " ".join(tokens[idxs[0]:idxs[1]]),
-    #STRUCTCOLS[2]: " ".join(tokens[idxs[1]:])}
 
 
 def compute_mutuals(df, cols):
-    # patt = r'N_\\sigma\\{h\(([XYZ]\+?[XYZ]?), ([XYZ]\+?[XYZ]?)\)'
     scs = ''.join(STRUCTCOLS)
     patt = patt = r"N_\\sigma\{{h\(([{0}]\+?[{0}]?), ([{0}]\+?[{0}]?)\)\}}" \
                     .format(scs)
     pairs = sum([re.findall(patt, c) for c in cols], [])
-    selfs = ["$N_\sigma\{h(" + ', '.join(p) + ")\}$"
+    selfs = ["$\mathcal{N}\{h(" + ', '.join(p) + "), \sigma\}$"
                     for p in pairs if p[0] == p[1]]
-    joins = [("$N_\sigma\{h(" + ', '.join(p) + ")\}$",
-              "$N_\sigma\{h(" + ', '.join([p[1], p[1]]) + ")\}$",
-              "$N_\sigma\{h(" + ', '.join([p[0], p[0]]) + ")\}$")
+    joins = [("$\mathcal{N}\{h(" + ', '.join(p) + "), \sigma\}$",
+              "$\mathcal{N}\{h(" + ', '.join([p[1], p[1]]) + "), \sigma\}$",
+              "$\mathcal{N}\{h(" + ', '.join([p[0], p[0]]) + "), \sigma\}$")
                     for p in pairs if p[0] != p[1]]
     entropy = lambda x: -x * np.log2(x) if x > 0.0 else 0.0
     centropy = lambda x: -x[1] * np.log2(x[1] / x[0]) \
@@ -158,26 +156,30 @@ def compute_mutuals(df, cols):
                     if True in ("$I[" in c, "$H[h(" in c)]].sum().to_dict()
 
 
-def compute_mi_steps(Akdf, out_csv, metric='hmm', sigma=5.0,
+def compute_mi_steps(Akdf, out_csv, metric='hmm', sigma=5.0, prod_cols=None,
                                               n_hit_miss=50, ngramr=(1, 3)):
     """ This method calls 'compute_set_probability()' 
     """
+    probcs = []
+    if prod_cols is None:
+        prod_cols = []
+        for a, b in itertools.product(*[STRUCTCOLS + COMBINATIONS] * 2):
+            if not ((a, b) in prod_cols or (b, a) in prod_cols):
+                probcs.append("$\mathcal{N}\{{h({0}, {1}), \sigma\}}$".format(a, b))
+                prod_cols.append((a, b))
+    else:
+        for a, b in prod_cols:
+            probcs.append("$\mathcal{N}\{{h({0}, {1}), \sigma\}}$".format(a, b))
+                        
     A_tau = [Akdf[i:i + SAMPLE_SIZE]
                 for i in range(0, N_STEPS * SAMPLE_SIZE, SAMPLE_SIZE)]
-
+ 
     logging.info(f"Computing probabilities of random sets for {N_STEPS} steps.")
     Psim_Aks = Parallel(n_jobs=NJOBS)(
                     delayed(compute_set_probability)(
-                        A_k, hit_miss_samples=n_hit_miss,
+                        A_k, prod_cols=prod_cols, hit_miss_samples=n_hit_miss,
                                      metric=metric, sigma=sigma, ngramr=ngramr)
                                                             for A_k in A_tau)
-    probcs = [
-        '$N_\sigma\{h(X, Y)\}$', '$N_\sigma\{h(Y, Z)\}$',
-        '$N_\sigma\{h(X, Z)\}$',
-        '$N_\sigma\{h(X, X)\}$', '$N_\sigma\{h(Y, Y)\}$',
-        '$N_\sigma\{h(Z, Z)\}$',
-        '$N_\sigma\{h(X, Y+Z)\}$', '$N_\sigma\{h(Y, X+Z)\}$',
-        '$N_\sigma\{h(Z, X+Y)\}$']
     info_steps = Parallel(n_jobs=NJOBS)(
                     delayed(compute_mutuals)(df, probcs)
                                            for df in Psim_Aks if not df is None)
@@ -196,13 +198,15 @@ def clean(x):
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--ngrams", help="N-gram range for sklearn ngramer",
+parser.add_argument("--ngrams", help=("N-gram range for sklearn ngramer"
+                                      " (default: (1, 3))"),
                     type=int, nargs='+')
 parser.add_argument("--wsize", help=("Window size for text environment states"
                                      " (default: 10)"),
                     type=int, default=10)
 parser.add_argument("--metric", help=("Metric of the measure space (default:"
-                                      " 'hmm' = Hamming)"),
+                                      " 'hmm' = Hamming, other options: 'euc' ="
+                                      " Euclidean, 'lev' = Levenshtein)"),
                     type=str, default='hmm')
 parser.add_argument("--in_oie", help="Input open IE triplets in csv")
 parser.add_argument("--in_txt", help=("Input plain text where triplets were"
@@ -220,7 +224,7 @@ parser.add_argument("--hitmiss", help=("Number of samples to build the"
                                       " hit-and-missing topology (default: 50)"),
                     type=int, default=50)
 parser.add_argument("--njobs", help=("Number of cores to use for simulating"
-                                     " (default: -1)"),
+                                     " (default: -1 = all available cores)"),
                     type=int, default=-1)
 args = parser.parse_args()
 
@@ -241,6 +245,14 @@ ngramr = tuple(args.ngrams)  # (1, 3)
 t_size = args.wsize  # 10
 N_TRAJECTORIES = 2
 perimeter = int(SAMPLE_SIZE * 0.25)  # 25% of the sample size
+TOANALYZE = "analysis_cols.txt"
+with open(TOANALYZE) as f: 
+    cols_results = f.readlines()
+TOANALYZE = []
+for s in cols_results:
+    c = s.strip()
+    if not c.startswith('#'):
+        exec("TOANALYZE.append(" + c.strip() + ")")
 
 logging.info("Reading input file '{}'".format(input_oie))
 # Randomize the input gold standard
@@ -250,20 +262,18 @@ gsAkdf = pd.read_csv(input_oie, delimiter='\t', keep_default_na=False,
 for c in STRUCTCOLS:
     gsAkdf[c] = gsAkdf[c].apply(clean)
 
-#gsAkdf = gsAkdf[~gsAkdf['X'].isin(['', ' '])
-#                & ~gsAkdf['Y'].isin(['', ' '])
-#                & ~gsAkdf['Z'].isin(['', ' '])]
 gsAkdf = gsAkdf[
             ~gsAkdf[STRUCTCOLS].isin(['', ' '])
                                .apply(np.any, axis=1)            
          ]
 # Take N_STEPS and compute their marginal and joint informations
 logging.info("Computing MI for OpenIE actions...")
-compute_mi_steps(gsAkdf, input_oie.split('.')[0],
-                    metric=args.metric, sigma=args.bw,
+
+compute_mi_steps(gsAkdf, prod_cols=TOANALYZE, out_csv=input_oie.split('.')[0],
+                 metric=args.metric, sigma=args.bw,
                     ngramr=ngramr, n_hit_miss=args.hitmiss)
 
-# Create text environment sampler
+# Create text environment sampler to simulate random actions
 env = textEnv(input_file_name=input_plain, wsize=t_size,
                 traject_length=N_STEPS, n_trajects=N_TRAJECTORIES,
                 beta_rwd=1.5, sample_size=SAMPLE_SIZE)
