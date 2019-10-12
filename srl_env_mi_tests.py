@@ -173,7 +173,7 @@ def compute_mi_steps(Akdf, out_csv, metric='hmm', sigma=5.0, prod_cols=None,
                         
     A_tau = [Akdf[i:i + SAMPLE_SIZE]
                 for i in range(0, N_STEPS * SAMPLE_SIZE, SAMPLE_SIZE)]
- 
+    st()
     logging.info(f"Computing probabilities of random sets for {N_STEPS} steps.")
     Psim_Aks = Parallel(n_jobs=NJOBS)(
                     delayed(compute_set_probability)(
