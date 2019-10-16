@@ -122,7 +122,7 @@ def rdn_partition(state):
     action = np.split(tokens, idxs)
     return {c: " ".join(a) for c, a in zip(STRUCTCOLS, action)} 
 
-
+# TODO: Verify how wrapping decorators work as they seem to be faster
 #@delayed
 #@wrap_non_picklable_objects
 def compute_mutuals(df, cols):
