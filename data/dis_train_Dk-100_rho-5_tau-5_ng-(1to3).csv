@@ -1,0 +1,71 @@
+,0,1,2
+0,<joblib.externals.loky.cloudpickle_wrapper.CallableObjectWrapper object at 0x7ff00d579b00>,"((<joblib.externals.loky.cloudpickle_wrapper.CallableObjectWrapper object at 0x7ff00e27cfd0>, (                   X                       Y                                  Z
+20136             It             s breakdown                  occurs frequently
+14630  God incarnate                   is in                              flesh
+17413           this                      Is                             common
+5050          others       monitor sometimes                        use insulin
+14994              I                    find  sorely lacking in most theologies
+...              ...                     ...                                ...
+22315        problem                 is with                               this
+21849     my illness                     was                                all
+14883             It    s really hot down at                    center of earth
+19749     Washington  just absolutely buries                                  5
+19585           they                     are                          when open
+
+[100 rows x 3 columns],), {'prod_cols': [('X', 'X'), ('X', 'Y'), ('X', 'Z'), ('X', 'Y+Z'), ('Y', 'Y'), ('Y', 'Z'), ('Y', 'X+Z'), ('Z', 'Z'), ('Z', 'X+Y'), ('Y+Z', 'Y+Z'), ('X+Z', 'X+Z'), ('X+Y', 'X+Y')], 'hit_miss_samples': 5, 'metric': 'hmm', 'sigma': 5.0, 'ngramr': (1, 3)}), ['$\\mathcal{N}\\{h(X, X), \\sigma\\}$', '$\\mathcal{N}\\{h(X, Y), \\sigma\\}$', '$\\mathcal{N}\\{h(X, Z), \\sigma\\}$', '$\\mathcal{N}\\{h(X, Y+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Y, Y), \\sigma\\}$', '$\\mathcal{N}\\{h(Y, Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Y, X+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Z, Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Z, X+Y), \\sigma\\}$', '$\\mathcal{N}\\{h(Y+Z, Y+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(X+Z, X+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(X+Y, X+Y), \\sigma\\}$'])",{}
+1,<joblib.externals.loky.cloudpickle_wrapper.CallableObjectWrapper object at 0x7ff00e23d0f0>,"((<joblib.externals.loky.cloudpickle_wrapper.CallableObjectWrapper object at 0x7ff00e23d5f8>, (                       X  ...                                                  Z
+19092                 it  ...                                            justice
+4253        disturbances  ...                                hepatic circulation
+18771               Paul  ...                                              anger
+14217              dents  ...                                              armor
+10217               none  ...                                           yourself
+...                  ...  ...                                                ...
+28439  thumbreak holster  ...                                 strap under hammer
+21289              Terms  ...                        are used in loaded way here
+10361           Condor 2  ...  also reportedly funded indirectly by Iraq in m...
+16253                she  ...                       difficulty sleeping at night
+763              athiest  ...                                           position
+
+[100 rows x 3 columns],), {'prod_cols': [('X', 'X'), ('X', 'Y'), ('X', 'Z'), ('X', 'Y+Z'), ('Y', 'Y'), ('Y', 'Z'), ('Y', 'X+Z'), ('Z', 'Z'), ('Z', 'X+Y'), ('Y+Z', 'Y+Z'), ('X+Z', 'X+Z'), ('X+Y', 'X+Y')], 'hit_miss_samples': 5, 'metric': 'hmm', 'sigma': 5.0, 'ngramr': (1, 3)}), ['$\\mathcal{N}\\{h(X, X), \\sigma\\}$', '$\\mathcal{N}\\{h(X, Y), \\sigma\\}$', '$\\mathcal{N}\\{h(X, Z), \\sigma\\}$', '$\\mathcal{N}\\{h(X, Y+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Y, Y), \\sigma\\}$', '$\\mathcal{N}\\{h(Y, Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Y, X+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Z, Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Z, X+Y), \\sigma\\}$', '$\\mathcal{N}\\{h(Y+Z, Y+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(X+Z, X+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(X+Y, X+Y), \\sigma\\}$'])",{}
+2,<joblib.externals.loky.cloudpickle_wrapper.CallableObjectWrapper object at 0x7ff00e256390>,"((<joblib.externals.loky.cloudpickle_wrapper.CallableObjectWrapper object at 0x7ff00e240588>, (                 X            Y                            Z
+741             it     time for                    Communion
+27174           it          has                     nice car
+8138        portal        is in                   your house
+10148           it       accept  destruction of relationship
+7460         woman          was                      created
+...            ...          ...                          ...
+6070       library           in                         Room
+16604      Someone          hit               our windshield
+27705     articles        is in        Online Bible software
+4563   Marc Foster  contact for        Oklahoma City Blazers
+7864           PWR          has                         work
+
+[100 rows x 3 columns],), {'prod_cols': [('X', 'X'), ('X', 'Y'), ('X', 'Z'), ('X', 'Y+Z'), ('Y', 'Y'), ('Y', 'Z'), ('Y', 'X+Z'), ('Z', 'Z'), ('Z', 'X+Y'), ('Y+Z', 'Y+Z'), ('X+Z', 'X+Z'), ('X+Y', 'X+Y')], 'hit_miss_samples': 5, 'metric': 'hmm', 'sigma': 5.0, 'ngramr': (1, 3)}), ['$\\mathcal{N}\\{h(X, X), \\sigma\\}$', '$\\mathcal{N}\\{h(X, Y), \\sigma\\}$', '$\\mathcal{N}\\{h(X, Z), \\sigma\\}$', '$\\mathcal{N}\\{h(X, Y+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Y, Y), \\sigma\\}$', '$\\mathcal{N}\\{h(Y, Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Y, X+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Z, Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Z, X+Y), \\sigma\\}$', '$\\mathcal{N}\\{h(Y+Z, Y+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(X+Z, X+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(X+Y, X+Y), \\sigma\\}$'])",{}
+3,<joblib.externals.loky.cloudpickle_wrapper.CallableObjectWrapper object at 0x7ff00e23d710>,"((<joblib.externals.loky.cloudpickle_wrapper.CallableObjectWrapper object at 0x7ff00e26f128>, (                   X  ...                                                  Z
+16892       evidence  ...                                  PARTICULAR FIELDS
+2310         service  ...  Spanishspeaking information specialists available
+5566              we  ...                                                Mat
+26760           they  ...                              substantial knowledge
+21385              I  ...                interesting product in NY Auto Show
+...              ...  ...                                                ...
+11646        members  ...                                         their arms
+18502            WoD  ...                                            streets
+20763             it  ...                                       real science
+4723      St Hillary  ...                                             Psalms
+25542  small benefit  ...                                        steroid use
+
+[100 rows x 3 columns],), {'prod_cols': [('X', 'X'), ('X', 'Y'), ('X', 'Z'), ('X', 'Y+Z'), ('Y', 'Y'), ('Y', 'Z'), ('Y', 'X+Z'), ('Z', 'Z'), ('Z', 'X+Y'), ('Y+Z', 'Y+Z'), ('X+Z', 'X+Z'), ('X+Y', 'X+Y')], 'hit_miss_samples': 5, 'metric': 'hmm', 'sigma': 5.0, 'ngramr': (1, 3)}), ['$\\mathcal{N}\\{h(X, X), \\sigma\\}$', '$\\mathcal{N}\\{h(X, Y), \\sigma\\}$', '$\\mathcal{N}\\{h(X, Z), \\sigma\\}$', '$\\mathcal{N}\\{h(X, Y+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Y, Y), \\sigma\\}$', '$\\mathcal{N}\\{h(Y, Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Y, X+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Z, Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Z, X+Y), \\sigma\\}$', '$\\mathcal{N}\\{h(Y+Z, Y+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(X+Z, X+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(X+Y, X+Y), \\sigma\\}$'])",{}
+4,<joblib.externals.loky.cloudpickle_wrapper.CallableObjectWrapper object at 0x7ff00e26bc18>,"((<joblib.externals.loky.cloudpickle_wrapper.CallableObjectWrapper object at 0x7ff00e23d630>, (                       X                        Y                        Z
+3228                 You              did compare                      him
+12007        brown sugar              quantity of               brown rice
+15990                  I             decade after                   decade
+10970            anybody                access to  PP  inclucing criminals
+7347                They                   proved                       it
+...                  ...                      ...                      ...
+1739   ORBIT PROGRAM SDI                       TO                     SSRT
+26749            Roussel    excellent job against                Pittsurgh
+21063            morning             According to              PostGazette
+1785         1978 report  including References is         Project Daedalus
+7453                   I               M SEXY FOR                    COBOL
+
+[100 rows x 3 columns],), {'prod_cols': [('X', 'X'), ('X', 'Y'), ('X', 'Z'), ('X', 'Y+Z'), ('Y', 'Y'), ('Y', 'Z'), ('Y', 'X+Z'), ('Z', 'Z'), ('Z', 'X+Y'), ('Y+Z', 'Y+Z'), ('X+Z', 'X+Z'), ('X+Y', 'X+Y')], 'hit_miss_samples': 5, 'metric': 'hmm', 'sigma': 5.0, 'ngramr': (1, 3)}), ['$\\mathcal{N}\\{h(X, X), \\sigma\\}$', '$\\mathcal{N}\\{h(X, Y), \\sigma\\}$', '$\\mathcal{N}\\{h(X, Z), \\sigma\\}$', '$\\mathcal{N}\\{h(X, Y+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Y, Y), \\sigma\\}$', '$\\mathcal{N}\\{h(Y, Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Y, X+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Z, Z), \\sigma\\}$', '$\\mathcal{N}\\{h(Z, X+Y), \\sigma\\}$', '$\\mathcal{N}\\{h(Y+Z, Y+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(X+Z, X+Z), \\sigma\\}$', '$\\mathcal{N}\\{h(X+Y, X+Y), \\sigma\\}$'])",{}

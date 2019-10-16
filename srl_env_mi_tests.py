@@ -1,4 +1,5 @@
 
+from jellyfish import damerau_levenshtein_distance as dlbsh
 from srl_env_v01 import textEnv
 import itertools
 import random
@@ -6,18 +7,18 @@ import numpy as np
 import pandas as pd
 import re
 import math
-from jellyfish import damerau_levenshtein_distance as dlbsh
 import logging
 import argparse
 import string
-
 import warnings
-
-with warnings.catch_warnings():
-    warnings.filterwarnings("ignore", category=DeprecationWarning)
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    from joblib import Parallel, delayed
-    from sklearn.feature_extraction.text import CountVectorizer
+def noop(*args, **kargs): pass
+from sklearn.feature_extraction.text import TfidfVectorizer
+warnings.warn = noop
+from joblib import Parallel, delayed
+from joblib import wrap_non_picklable_objects
+from joblib import parallel_backend
+from sklearn.feature_extraction.text import CountVectorizer
+import time
 
 from pdb import set_trace as st
 
@@ -78,6 +79,8 @@ def set_valued_gaussian(S, M, sigma=5.0, metric='hmm', ngramr=(1, 3)):
                                              -distance ** 2 / (2 * sigma ** 2))
 
 
+#@delayed
+#@wrap_non_picklable_objects
 def compute_set_probability(Akdf, prod_cols, hit_miss_samples=50, sigma=5.0,
                             metric='hmm', ngramr=(1, 3)):
     try:
@@ -111,7 +114,7 @@ def compute_set_probability(Akdf, prod_cols, hit_miss_samples=50, sigma=5.0,
                         metric=metric, ngramr=ngramr
                         )
                 )
-        joincol = '$\mathcal{N}\{h(' + ', '.join((a, b)) + '), \sigma\}$'
+        joincol = "$\mathcal{{N}}\{{h(" + ', '.join((a, b)) + "), \sigma\}}$"
         Akdf[joincol] = np.vstack(measures).mean(axis=0)
     return Akdf.dropna()
 
@@ -123,23 +126,25 @@ def rdn_partition(state):
     return {c: " ".join(a) for c, a in zip(STRUCTCOLS, action)} 
 
 
+#@delayed
+#@wrap_non_picklable_objects
 def compute_mutuals(df, cols):
     scs = ''.join(STRUCTCOLS)
-    patt = patt = r"N_\\sigma\{{h\(([{0}]\+?[{0}]?), ([{0}]\+?[{0}]?)\)\}}" \
+    patt = r"\{{h\(([{0}]\+?[{0}]?), ([{0}]\+?[{0}]?)\)" \
                     .format(scs)
     pairs = sum([re.findall(patt, c) for c in cols], [])
-    selfs = ["$\mathcal{N}\{h(" + ', '.join(p) + "), \sigma\}$"
+    selfs = ["$\mathcal{{N}}\{{h(" + ', '.join(p) + "), \sigma\}}$"
                     for p in pairs if p[0] == p[1]]
-    joins = [("$\mathcal{N}\{h(" + ', '.join(p) + "), \sigma\}$",
-              "$\mathcal{N}\{h(" + ', '.join([p[1], p[1]]) + "), \sigma\}$",
-              "$\mathcal{N}\{h(" + ', '.join([p[0], p[0]]) + "), \sigma\}$")
+    joins = [("$\mathcal{{N}}\{{h(" + ', '.join(p) + "), \sigma\}}$",
+              "$\mathcal{{N}}\{{h(" + ', '.join([p[1], p[1]]) + "), \sigma\}}$",
+              "$\mathcal{{N}}\{{h(" + ', '.join([p[0], p[0]]) + "), \sigma\}}$")
                     for p in pairs if p[0] != p[1]]
     entropy = lambda x: -x * np.log2(x) if x > 0.0 else 0.0
     centropy = lambda x: -x[1] * np.log2(x[1] / x[0]) \
                             if x[0] > 0 and x[1] > 0 else 0.0
     for s in selfs:
         try:
-            icol = "$H[h(" + ', '.join(re.findall(patt, s)[0]) + "')]$"
+            icol = "$H[h(" + ', '.join(re.findall(patt, s)[0]) + ")]$"
             df[icol] = df[s].apply(entropy)
         except:
             st()
@@ -165,24 +170,36 @@ def compute_mi_steps(Akdf, out_csv, metric='hmm', sigma=5.0, prod_cols=None,
         prod_cols = []
         for a, b in itertools.product(*[STRUCTCOLS + COMBINATIONS] * 2):
             if not ((a, b) in prod_cols or (b, a) in prod_cols):
-                probcs.append("$\mathcal{N}\{{h({0}, {1}), \sigma\}}$".format(a, b))
+                probcs.append("$\mathcal{{N}}\{{h({0}, {1}), \sigma\}}$" \
+                                .format(a, b))
                 prod_cols.append((a, b))
     else:
         for a, b in prod_cols:
-            probcs.append("$\mathcal{N}\{{h({0}, {1}), \sigma\}}$".format(a, b))
+            probcs.append("$\mathcal{{N}}\{{h({0}, {1}), \sigma\}}$" \
+                                .format(a, b))
                         
     A_tau = [Akdf[i:i + SAMPLE_SIZE]
                 for i in range(0, N_STEPS * SAMPLE_SIZE, SAMPLE_SIZE)]
-    st()
+    
     logging.info(f"Computing probabilities of random sets for {N_STEPS} steps.")
-    Psim_Aks = Parallel(n_jobs=NJOBS)(
+    with parallel_backend('multiprocessing'):
+        t = time.time()
+        P_Aks = Parallel(n_jobs=NJOBS)(
                     delayed(compute_set_probability)(
                         A_k, prod_cols=prod_cols, hit_miss_samples=n_hit_miss,
                                      metric=metric, sigma=sigma, ngramr=ngramr)
                                                             for A_k in A_tau)
-    info_steps = Parallel(n_jobs=NJOBS)(
+        logging.info("Estimated set probabilities in {}s..." \
+                        .format(time.time() - t))
+    
+    with parallel_backend('multiprocessing'):  #'loky'):
+        t = time.time()
+        info_steps = Parallel(n_jobs=NJOBS)(
                     delayed(compute_mutuals)(df, probcs)
-                                           for df in Psim_Aks if not df is None)
+                                           for df in P_Aks if not df is None)
+        logging.info("Estimated MIs in {}s..." \
+                                .format(time.time() - t))
+                                
     pd.DataFrame(info_steps).to_csv(
                 out_csv + "_Dk-{}_rho-{}_tau-{}_ng-{}.csv"
                          .format(SAMPLE_SIZE, n_hit_miss, N_STEPS, ngramr)
@@ -244,7 +261,12 @@ N_STEPS = args.nsteps  # 120  #e.g.: n_input_oie/SAMPLE_SIZE=12167/100=121.67
 ngramr = tuple(args.ngrams)  # (1, 3)
 t_size = args.wsize  # 10
 N_TRAJECTORIES = 2
-perimeter = int(SAMPLE_SIZE * 0.25)  # 25% of the sample size
+
+if args.hitmiss == 0:
+    n_hit_miss = int(SAMPLE_SIZE * 0.25)  # 25% of the sample size
+else:
+    n_hit_miss = args.hitmiss
+    
 TOANALYZE = "analysis_cols.txt"
 with open(TOANALYZE) as f: 
     cols_results = f.readlines()
@@ -253,6 +275,8 @@ for s in cols_results:
     c = s.strip()
     if not c.startswith('#'):
         exec("TOANALYZE.append(" + c.strip() + ")")
+
+t_start = time.time()
 
 logging.info("Reading input file '{}'".format(input_oie))
 # Randomize the input gold standard
@@ -271,7 +295,7 @@ logging.info("Computing MI for OpenIE actions...")
 
 compute_mi_steps(gsAkdf, prod_cols=TOANALYZE, out_csv=input_oie.split('.')[0],
                  metric=args.metric, sigma=args.bw,
-                    ngramr=ngramr, n_hit_miss=args.hitmiss)
+                    ngramr=ngramr, n_hit_miss=n_hit_miss)
 
 # Create text environment sampler to simulate random actions
 env = textEnv(input_file_name=input_plain, wsize=t_size,
@@ -291,6 +315,10 @@ for t in range(N_STEPS):
         break
 
 rdn_Akdf = pd.DataFrame(sum(A, []))
+
 logging.info("Computing MI for random actions...")
-compute_mi_steps(rdn_Akdf, input_plain)
-logging.info("Terminated...")
+compute_mi_steps(rdn_Akdf, prod_cols=TOANALYZE,
+                    out_csv=input_plain.split('.')[0],
+                    metric=args.metric, sigma=args.bw,
+                    ngramr=ngramr, n_hit_miss=n_hit_miss)
+logging.info("Terminated in {}s...".format(time.time() - t_start))
