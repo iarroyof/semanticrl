@@ -10,13 +10,10 @@ import math
 import logging
 import argparse
 import string
-import warnings
-def noop(*args, **kargs): pass
-from sklearn.feature_extraction.text import TfidfVectorizer
-warnings.warn = noop
 from joblib import Parallel, delayed
 from joblib import wrap_non_picklable_objects
 from joblib import parallel_backend
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 import time
 
