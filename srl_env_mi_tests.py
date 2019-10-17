@@ -82,7 +82,7 @@ def compute_set_probability(Akdf, prod_cols, hit_miss_samples=50, sigma=5.0,
                             metric='hmm', ngramr=(1, 3)):
     try:
         assert len(Akdf.index) >= hit_miss_samples, (
-                                                "The number of perimeter"
+                                                "The number of hit-and-miss"
                                                 " samples must be less or equal"
                                                 " than the number of samples")
     except AssertionError:
