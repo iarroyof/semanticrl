@@ -33,9 +33,9 @@ def plot_mis(csv, comparing_cols, title, roll=20):
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--cols", help="Comparing columns to plot "
-					"(semicolon spaced strings, being column names. "
-                    "Special characters like '$' must be scaped.)",
+parser.add_argument("--cols", help="Comparing columns to plot (semicolon "
+					"spaced strings, being column names. Special characters "
+                    "like the latex '$' must be scaped, e.g. '\$'.)",
                     type=str, nargs='+')
 parser.add_argument("--in_csv", help="Input csv file name")
 parser.add_argument("--title", help="Title of the figure")
