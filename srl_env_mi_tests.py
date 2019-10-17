@@ -26,6 +26,7 @@ logging.basicConfig(format='%(asctime)s %(message)s',
 ANALYZER = 'char'
 STRUCTCOLS = ['X', 'Y', 'Z']
 COMBINATIONS= ['Y+Z', 'X+Z', 'X+Y']
+BACKEND = 'lk'
 
 def dot_distance(A, B, binary=True, euclid=False, ngramr=(1, 3)):
     """ This method computes either Euclidean or Hamming distance between
@@ -76,8 +77,8 @@ def set_valued_gaussian(S, M, sigma=5.0, metric='hmm', ngramr=(1, 3)):
                                              -distance ** 2 / (2 * sigma ** 2))
 
 
-#@delayed
-#@wrap_non_picklable_objects
+@delayed
+@wrap_non_picklable_objects
 def compute_set_probability(Akdf, prod_cols, hit_miss_samples=50, sigma=5.0,
                             metric='hmm', ngramr=(1, 3)):
     try:
@@ -123,8 +124,8 @@ def rdn_partition(state):
     return {c: " ".join(a) for c, a in zip(STRUCTCOLS, action)} 
 
 # TODO: Verify how wrapping decorators work as they seem to be faster
-#@delayed
-#@wrap_non_picklable_objects
+@delayed
+@wrap_non_picklable_objects
 def compute_mutuals(df, cols):
     scs = ''.join(STRUCTCOLS)
     patt = r"\{{h\(([{0}]\+?[{0}]?), ([{0}]\+?[{0}]?)\)" \
@@ -179,7 +180,7 @@ def compute_mi_steps(Akdf, out_csv, metric='hmm', sigma=5.0, prod_cols=None,
                 for i in range(0, N_STEPS * SAMPLE_SIZE, SAMPLE_SIZE)]
     
     logging.info(f"Computing probabilities of random sets for {N_STEPS} steps.")
-    with parallel_backend('multiprocessing'):
+    with parallel_backend('multiprocessing' if BACKEND == 'mp' else 'loky'):
         t = time.time()
         P_Aks = Parallel(n_jobs=NJOBS)(
                     delayed(compute_set_probability)(
@@ -189,7 +190,7 @@ def compute_mi_steps(Akdf, out_csv, metric='hmm', sigma=5.0, prod_cols=None,
         logging.info("Estimated set probabilities in {}s..." \
                         .format(time.time() - t))
     
-    with parallel_backend('multiprocessing'):  #'loky'):
+    with parallel_backend('multiprocessing' if BACKEND == 'mp' else 'loky'):
         t = time.time()
         info_steps = Parallel(n_jobs=NJOBS)(
                     delayed(compute_mutuals)(df, probcs)
