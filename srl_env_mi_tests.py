@@ -16,6 +16,7 @@ from joblib import parallel_backend
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 import time
+import warnings
 
 from pdb import set_trace as st
 
@@ -56,7 +57,7 @@ def dot_distance(A, B, binary=True, euclid=False, ngramr=(1, 3)):
         return (X[0].toarray() ^ X[1].toarray()).sum()
 
 
-def set_valued_gaussian(S, M, sigma=5.0, metric='hmm', ngramr=(1, 3)):
+def set_valued_gaussian(S, M, sigma=5.0, ngramr=(1, 3), metric='hmm'):
     """ The metric can be Levenshtein ('lev') or Hamming ('hmm') or Euclidean
     ('euc', this encodes strings as simple BoW vectors).
     Other parameters are inherited from the dot_distance() method.
@@ -79,23 +80,49 @@ def set_valued_gaussian(S, M, sigma=5.0, metric='hmm', ngramr=(1, 3)):
         return (1.0 / (np.sqrt(2 * np.pi * sigma ** 2))) * math.exp(
                                              -distance ** 2 / (2 * sigma ** 2))
 
+## https://www.statlect.com/fundamentals-of-probability/legitimate-probability-density-functions 
+#def gausset(S, ngramr=(1, 3), sigma=5.0):
+#    S = list(S)
+#    s = analyzer(S[0])
+#    hit_miss = [analyzer(m) for m in S[1:]]
+#    measure = lambda a, b: len(set(a).union(b) - set(a).intersection(b))
+#    likelihood = lambda filter_trap: np.mean([math.exp(
+#                                            -measure(filter_trap, hm)**2/
+#                                                               2*sigma**2)
+#                                                          for hm in hit_miss])
+#    rlh = likelihood(s)
+#    evidence = [likelihood(s) for s in hit_miss]
+#    evidence.append(rlh)
+#    return rlh/sum(evidence)
+                                                                
 
-def gausset(S, ngramr=(1, 3), sigma=5.0):
+def expset(S, ngramr=(1, 3), sigma=1.0, bias=0.1):
     S = list(S)
     s = analyzer(S[0])
     hit_miss = [analyzer(m) for m in S[1:]]
-    measure = lambda a, b: len(set(a).union(b) - set(a).intersection(b))
-    likelihood = lambda filter_trap: sum([math.exp(
-                                            -measure(filter_trap, hm)**2/
-                                                               2*sigma**2)
-                                                          for hm in hit_miss])
-    rlh = likelihood(s)
-    evidence = [likelihood(s) for s in hit_miss]
-    evidence.append(rlh)
-    return rlh/sum(evidence)
-                                                                
+    inner = lambda a, b: len(set(a).intersection(b))
+    probability = lambda filter_trap: np.mean([
+                            sigma * math.exp(
+                                -sigma * inner(filter_trap, hm) + bias)
+                                                  for hm in hit_miss])
+    return probability(s)
 
-def setmax(S, bias=None, ngramr=(1, 3), sigma=1.0):
+
+def gausset(S, ngramr=(1, 3), sigma=1.0, bias=1.0):
+    S = list(S)
+    s = analyzer(S[0])
+    hit_miss = [analyzer(m) for m in S[1:]]
+    metric = lambda a, b: len(set(a).union(b) - set(a).intersection(b))
+    probability = lambda filter_trap: np.mean([
+                                      np.sqrt(sigma/np.pi) * math.exp(
+                                          -sigma * (
+                                            metric(filter_trap, hm) + bias)**2)
+                                                  for hm in hit_miss])
+
+    return probability(s)
+
+
+def setmax(S, ngramr=(1, 3), sigma=1.0, bias=0.1):
     """This function takes a row 'S' where the fisrt item S[0] is the string
     we want to know its probability, with respect to the reamining items.
     The returned value es the needed Bayesian probability (a real number
@@ -109,8 +136,9 @@ def setmax(S, bias=None, ngramr=(1, 3), sigma=1.0):
     measure = lambda a, b: len(set(a).intersection(b))
                   #if comparer == 'intersect' else len(set(a).union(b)
                   #                                - set(a).intersection(b)))
-    likelihood = lambda filter_trap: sum([math.exp(
-                                            -sigma * measure(filter_trap, hm))
+    likelihood = lambda filter_trap: np.mean([sigma * math.exp(
+                                     sigma * bias) * math.exp(
+                                       -sigma * measure(filter_trap, hm) + bias)
                                                             for hm in hit_miss])
     # Likelihood
     rlh = likelihood(s)
@@ -122,8 +150,8 @@ def setmax(S, bias=None, ngramr=(1, 3), sigma=1.0):
 
 #@delayed
 #@wrap_non_picklable_objects
-def compute_set_probability(Akdf, prod_cols, hit_miss_samples=50, sigma=5.0,
-                            metric='hmm', ngramr=(1, 3), density='setmax'):
+def compute_set_probability(Akdf, prod_cols, hit_miss_samples=50, sigma=5.0, #metric='hmm',
+                            ngramr=(1, 3), density='setmax', bias=1.0):
     try:
         assert len(Akdf.index) >= hit_miss_samples, (
                                                 "The number of hit-and-miss"
@@ -133,10 +161,12 @@ def compute_set_probability(Akdf, prod_cols, hit_miss_samples=50, sigma=5.0,
         return None
     
     if density == 'gausset':
-        capacity = partial(gausset, ngramr=ngramr, sigma=sigma)
+        capacity = partial(gausset, ngramr=ngramr, sigma=sigma, bias=bias)
     if density == 'setmax':
         capacity = partial(setmax, ngramr=ngramr, sigma=sigma)
-    
+    if density == 'expset':
+        capacity = partial(expset, ngramr=ngramr, sigma=sigma, bias=bias)
+        
     joints = []
     for d in prod_cols:
         if '+' in d[0]:
@@ -189,6 +219,18 @@ def rdn_partition(state):
 #@delayed
 #@wrap_non_picklable_objects
 def compute_mutuals(df, cols):
+    def zlog(p):
+        with warnings.catch_warnings():
+            warnings.filterwarnings('error')
+            try:
+                return -p[1] * np.log2(p[1] / p[0])
+            except Warning as e:
+                logging.warning("Warningx: %s" % e)
+                return 0.0
+            except ZeroDivisionError as e:
+                logging.warning("Errorx: %s" % e)        
+                return 0.0
+            
     scs = ''.join(STRUCTCOLS)
     patt = r"\{{h\(([{0}]\+?[{0}]?), ([{0}]\+?[{0}]?)\)" \
                     .format(scs)
@@ -200,8 +242,7 @@ def compute_mutuals(df, cols):
               "$\mathcal{{N}}\{{h(" + ', '.join([p[0], p[0]]) + "), \sigma\}}$")
                     for p in pairs if p[0] != p[1]]
     entropy = lambda x: -x * np.log2(x) if x > 0.0 else 0.0
-    centropy = lambda x: -x[1] * np.log2(x[1] / x[0]) \
-                            if x[0] > 0 and x[1] > 0 else 0.0
+    centropy = lambda x: zlog(x)
     for s in selfs:
         try:
             icol = "$H[h(" + ', '.join(re.findall(patt, s)[0]) + ")]$"
@@ -221,8 +262,8 @@ def compute_mutuals(df, cols):
                     if True in ("$I[" in c, "$H[h(" in c)]].sum().to_dict()
 
 
-def compute_mi_steps(Akdf, out_csv, metric='hmm', sigma=5.0, prod_cols=None,
-                              density='setmax', n_hit_miss=50, ngramr=(1, 3)):
+def compute_mi_steps(Akdf, out_csv, sigma=5.0, prod_cols=None, bias=1.0,
+                        density='setmax', n_hit_miss=50, ngramr=(1, 3)):
     """ This method calls 'compute_set_probability()' 
     """
     probcs = []
@@ -247,7 +288,7 @@ def compute_mi_steps(Akdf, out_csv, metric='hmm', sigma=5.0, prod_cols=None,
         P_Aks = Parallel(n_jobs=NJOBS)(
                     delayed(compute_set_probability)(
                         A_k, prod_cols=prod_cols, hit_miss_samples=n_hit_miss,
-                        density=density, metric=metric, sigma=sigma, ngramr=ngramr)
+                        density=density, bias=bias, sigma=sigma, ngramr=ngramr)
                                                             for A_k in A_tau)
         logging.info("Estimated set probabilities in {}s..." \
                         .format(time.time() - t))
@@ -274,38 +315,48 @@ def clean(x):
         return "__NULL__"
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--ngrams", help=("N-gram range for sklearn ngramer"
-                                      " (default: (1, 3))"),
+parser = argparse.ArgumentParser(description=("This script takes a csv of openIE"
+                                " triplets and the plain text where they were"
+                                " extracted as inputs. The process consists in"
+                                " compute entropy-based metrics between the"
+                                " items of the openIE triplets, as well as between"
+                                " the items of randomly defined triplets. The"
+                                " results of the computation are deposited as a"
+                                " csv file specified with the --output argument" 
+                                " of this script."))
+parser.add_argument("--ngrams", help=("N-gram range to form elementary text"
+                                      " strings to form sets (default: (1, 3))"),
                     type=int, nargs='+')
-parser.add_argument("--wsize", help=("Window size for text environment states"
-                                     " (default: 10)"),
+parser.add_argument("--wsize", help=("Window size for text environment samples"
+                                     " or contexts (default: 10)"),
                     type=int, default=10)
-parser.add_argument("--metric", help=("Metric of the measure space (default:"
-                                      " 'hmm' = Hamming, other options: 'euc' ="
-                                      " Euclidean, 'lev' = Levenshtein)"),
-                    type=str, default='hmm')
+#parser.add_argument("--metric", help=("Metric of the measure space (default:"
+#                                      " 'hmm' = Hamming, other options: 'euc' ="
+#                                      " Euclidean, 'lev' = Levenshtein)"),
+#                    type=str, default='hmm')
 parser.add_argument("--in_oie", help="Input open IE triplets in csv")
 parser.add_argument("--in_txt", help=("Input plain text where triplets were"
                                       " extracted"))
+parser.add_argument("--output", help=("Output results in csv. (default:"
+                    " 'rdn_output.csv' and 'oie_output.csv')."), default="output.csv")
 parser.add_argument("--sample", help=("Sample size for text environment steps"
-                                      " (default: 100)"),
+                    " (default: 100)"),
                     type=int, default=100)
 parser.add_argument("--nsteps", help=("Number of steps to simulate"
-                                      " (default: 50)"),
-                    type=int, default=50)
+                    " (default: 50)"), type=int, default=50)
 parser.add_argument("--density", help=("Density function/kernel estimator."
-                                  " ('gausset', 'setmax'; default: 'gausset')"),
-                                  default='gausset')
+                    " ('expset', 'gausset', 'setmax'; default: 'gausset')"),
+                    default='gausset')
 parser.add_argument("--bw", help=("Bandwidth/strinctness for the kernel estimator."
-                                      " (default: 5.0)"),
-                    type=float, default=5.0)
+                    " (default: 5.0)"), type=float, default=5.0)
 parser.add_argument("--hitmiss", help=("Number of samples to build the"
-                                      " hit-and-missing topology (default: 50)"),
+                                      " hit-and-missing topology (0 --> 25%% of"
+                                      " '--sample'; default: 50)"),
                     type=int, default=50)
 parser.add_argument("--njobs", help=("Number of cores to use for simulating"
-                                     " (default: -1 = all available cores)"),
-                    type=int, default=-1)
+                    " (default: -1 = all available cores)"), type=int, default=-1)
+parser.add_argument("--bias", help=("Bias parameter for linear separator argument"
+                    " densities (default: 1.0)"), type=float, default=1.0)
 args = parser.parse_args()
 
 input_oie = args.in_oie
@@ -358,9 +409,9 @@ gsAkdf = gsAkdf[
 # Take N_STEPS and compute their marginal and joint informations
 logging.info("Computing MI for OpenIE actions...")
 
-compute_mi_steps(gsAkdf, prod_cols=TOANALYZE, out_csv=input_oie.split('.')[0],
-                 metric=args.metric, sigma=args.bw, density=args.density,
-                    ngramr=ngramr, n_hit_miss=n_hit_miss)
+compute_mi_steps(gsAkdf, prod_cols=TOANALYZE, out_csv="oie_" + args.output,
+                    sigma=args.bw, density=args.density, #metric=args.metric,
+                    ngramr=ngramr, n_hit_miss=n_hit_miss, bias=args.bias)
 
 # Create text environment sampler to simulate random actions
 env = textEnv(input_file_name=input_plain, wsize=t_size,
@@ -383,7 +434,8 @@ rdn_Akdf = pd.DataFrame(sum(A, []))
 
 logging.info("Computing MI for random actions...")
 compute_mi_steps(rdn_Akdf, prod_cols=TOANALYZE, density=args.density,
-                    out_csv=input_plain.split('.')[0],
-                    metric=args.metric, sigma=args.bw,
+                    out_csv="rdn_" + args.output, #input_plain.split('.')[0],
+                    #metric=args.metric, 
+                    sigma=args.bw,
                     ngramr=ngramr, n_hit_miss=n_hit_miss)
 logging.info("Terminated in {}s...".format(time.time() - t_start))
