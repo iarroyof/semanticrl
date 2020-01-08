@@ -263,7 +263,9 @@ parser = argparse.ArgumentParser(description=("This script takes a csv of openIE
                                 " csv file specified with the --output argument" 
                                 " of this script."))
 parser.add_argument("--ngrams", help=("N-gram range to form elementary text"
-                                      " strings to form sets (default: (1, 3))"),
+                                      " strings to form sets (default: (1, 3)"
+                                      " set as '1 3' (two space-separated"
+                                      " integers))"),
                     type=int, nargs='+', default=[1, 3])
 parser.add_argument("--wsize", help=("Window size for text environment samples"
                                      " or contexts (default: 10)"),
