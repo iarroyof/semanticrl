@@ -324,7 +324,8 @@ if args.output is None:
     out_name = make_output_name(args)
 else:
     out_name = args.output
-    
+
+logging.info("Processing input parameters:\n{}".format(args))    
 t_start = time.time()
 
 logging.info("Reading input file '{}'".format(input_oie))
@@ -370,5 +371,6 @@ compute_mi_steps(rdn_Akdf, prod_cols=TOANALYZE, density=args.density,
                     out_csv="rdn_" + out_name,
                     sigma=args.bw,
                     ngramr=ngramr, n_hit_miss=n_hit_miss)
-                    
+logging.info("Results saved to: \n{}\n{}".format("oie_" + out_name,
+                                                "rdn_" + out_name))                    
 logging.info("Terminated in {}s...".format(time.time() - t_start))
