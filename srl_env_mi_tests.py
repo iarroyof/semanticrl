@@ -30,71 +30,15 @@ COMBINATIONS= ['Y+Z', 'X+Z', 'X+Y']
 BACKEND = 'mp'
 
 
-def dot_distance(A, B, binary=True, euclid=False, ngramr=(1, 3)):
-    """ This method computes either Euclidean or Hamming distance between
-    two strings 'A' and 'B'. The input strings are encoded either as 'binary'
-    (True) or as BoW (False) vectors. The 'euclid' (True) parameter is thought
-    for BoW vectors and Euclidean distance. The case of BoW vectors operated
-    by Hamming distance (binary=False, euclid=True) is not defined, but some
-    value is returned.
-    The 'ngramr' parameter defined n-grams range into which the strings are
-    segmented. The 'ANALYZER' constant can be modified from 'char' to 'wb_char'
-    for sklearn >= 21.0 versions. Also 'word' is allowed.
-    """
-    try:
-        assert isinstance(A, str) and isinstance(B, str)
-    except AssertionError:
-        if np.nan in [A, B]:
-            return 10000.0
+def make_output_name(namespace, nonh=["in_oie", "in_txt", "output", "njobs"]):
+    names = [a[0] + "-" + "t".join(map(str, a[1]))
+                if isinstance(a[1], list)
+                else "-".join(map(str,a))
+                    for a in args._get_kwargs()
+                        if not a[0] in nonh]
+            
+    return "_".join(names) + ".csv"
 
-    vectorizer = CountVectorizer(binary=binary, analyzer=ANALYZER,
-                                 ngram_range=ngramr)
-
-    X = vectorizer.fit_transform([A, B])
-    if euclid:
-        return (X[0] - X[1]).dot((X[0] - X[1]).T).sum()
-    else:
-        return (X[0].toarray() ^ X[1].toarray()).sum()
-
-
-def set_valued_gaussian(S, M, sigma=5.0, ngramr=(1, 3), metric='hmm'):
-    """ The metric can be Levenshtein ('lev') or Hamming ('hmm') or Euclidean
-    ('euc', this encodes strings as simple BoW vectors).
-    Other parameters are inherited from the dot_distance() method.
-    """
-    if metric == 'lev':
-        assert isinstance(S, str) and isinstance(M, str)
-        distance = dlbsh(S, M)
-    elif metric == 'hmm':
-        A = set(analyzer(S))
-        B = set(analyzer(M))
-        # |Symmetric difference| == sum(xor)
-        distance = len(A.union(B) - A.intersection(B))
-    elif metric == 'euc':
-        distance = dot_distance(S, M, binary=False,
-                                            euclid=True, ngramr=ngramr)
-
-    if distance <= 1.0:
-        return 1.0 / (np.sqrt(2 * np.pi * sigma ** 2))
-    else:
-        return (1.0 / (np.sqrt(2 * np.pi * sigma ** 2))) * math.exp(
-                                             -distance ** 2 / (2 * sigma ** 2))
-
-## https://www.statlect.com/fundamentals-of-probability/legitimate-probability-density-functions 
-#def gausset(S, ngramr=(1, 3), sigma=5.0):
-#    S = list(S)
-#    s = analyzer(S[0])
-#    hit_miss = [analyzer(m) for m in S[1:]]
-#    measure = lambda a, b: len(set(a).union(b) - set(a).intersection(b))
-#    likelihood = lambda filter_trap: np.mean([math.exp(
-#                                            -measure(filter_trap, hm)**2/
-#                                                               2*sigma**2)
-#                                                          for hm in hit_miss])
-#    rlh = likelihood(s)
-#    evidence = [likelihood(s) for s in hit_miss]
-#    evidence.append(rlh)
-#    return rlh/sum(evidence)
-                                                                
 
 def expset(S, ngramr=(1, 3), sigma=1.0, bias=0.1):
     S = list(S)
@@ -124,25 +68,32 @@ def gausset(S, ngramr=(1, 3), sigma=1.0, bias=1.0):
 
 def setmax(S, ngramr=(1, 3), sigma=1.0, bias=0.1):
     """This function takes a row 'S' where the fisrt item S[0] is the string
-    we want to know its probability, with respect to the reamining items.
+    we want to know its probability (likelihood), with respect to the 
+    reamining items.
     The returned value es the needed Bayesian probability (a real number
     in [0, 1]). This is the Boltzman (softmax) distribution defined on 
-    Linguistic Random Sets (setmax).
+    Linguistic Random Sets (setmax) taking into account S[1:] as evidence 
+    normalizing the exponential and making setmax a density/pmass function.
+    Observation: Notice that setmax does not distinguish instances where S[0] 
+    is true and where it is not true so as to collect evidence, but rather it
+    measures how much S[0] may be observed (its possibility) through all of the
+    remaining S[1:]s (a Bayesian normalizing integral). To do this, each of the
+    remaining S[1:] are considered an S[0] separately and its possibility is
+    collected as evidence. Take care of this observation before using setmax as
+    a density on sets. In additon, it may require O(n^2) extra computations.
     """
     S = list(S)
     s = analyzer(S[0])
     hit_miss = [analyzer(m) for m in S[1:]]
     # We need to specify the sign given cardinalities are always positive
     measure = lambda a, b: len(set(a).intersection(b))
-                  #if comparer == 'intersect' else len(set(a).union(b)
-                  #                                - set(a).intersection(b)))
     likelihood = lambda filter_trap: np.mean([sigma * math.exp(
                                      sigma * bias) * math.exp(
                                        -sigma * measure(filter_trap, hm) + bias)
                                                             for hm in hit_miss])
     # Likelihood
     rlh = likelihood(s)
-    # Evicence
+    # Evicence, O(n^2) !!
     evidence = [likelihood(s) for s in hit_miss]
     evidence.append(rlh)
     return rlh/sum(evidence)
@@ -181,15 +132,6 @@ def compute_set_probability(Akdf, prod_cols, hit_miss_samples=50, sigma=5.0, #me
                                                           axis=1)
     for a, b in prod_cols:  # This lists already contains joints
         measures = []
-        #for _ in range(hit_miss_samples):
-        #    B = Akdf[b].sample(frac=1)
-        #    measures.append(
-        #        np.vectorize(set_valued_gaussian,
-        #                         excluded=set(['ngramr']))(
-        #                Akdf[a].str.lower(), B.str.lower(), sigma=sigma,
-        #                metric=metric, ngramr=ngramr
-        #                )
-        #        )
         rdns = ["b_" + str(i) for i in range(hit_miss_samples)]
         dupst = np.array([Akdf[b].values] * hit_miss_samples)
         _ = np.apply_along_axis(np.random.shuffle, 1, dupst)
@@ -205,7 +147,6 @@ def compute_set_probability(Akdf, prod_cols, hit_miss_samples=50, sigma=5.0, #me
         
         Akdf[joincol] = to_operate.apply(capacity, axis=1).tolist()
         
-        #Akdf[joincol] = np.vstack(measures).mean(axis=0)
     return Akdf.dropna()
 
 
@@ -301,10 +242,7 @@ def compute_mi_steps(Akdf, out_csv, sigma=5.0, prod_cols=None, bias=1.0,
         logging.info("Estimated MIs in {}s..." \
                                 .format(time.time() - t))
                                 
-    pd.DataFrame(info_steps).to_csv(
-                out_csv + "_Dk-{}_rho-{}_tau-{}_ng-{}.csv"
-                         .format(SAMPLE_SIZE, n_hit_miss, N_STEPS, ngramr)
-                         .replace(' ', '').replace(',', 'to'))
+    pd.DataFrame(info_steps).to_csv(out_csv)
 
 
 def clean(x):
@@ -326,19 +264,16 @@ parser = argparse.ArgumentParser(description=("This script takes a csv of openIE
                                 " of this script."))
 parser.add_argument("--ngrams", help=("N-gram range to form elementary text"
                                       " strings to form sets (default: (1, 3))"),
-                    type=int, nargs='+')
+                    type=int, nargs='+', default=[1, 3])
 parser.add_argument("--wsize", help=("Window size for text environment samples"
                                      " or contexts (default: 10)"),
                     type=int, default=10)
-#parser.add_argument("--metric", help=("Metric of the measure space (default:"
-#                                      " 'hmm' = Hamming, other options: 'euc' ="
-#                                      " Euclidean, 'lev' = Levenshtein)"),
-#                    type=str, default='hmm')
 parser.add_argument("--in_oie", help="Input open IE triplets in csv")
 parser.add_argument("--in_txt", help=("Input plain text where triplets were"
                                       " extracted"))
 parser.add_argument("--output", help=("Output results in csv. (default:"
-                    " 'rdn_output.csv' and 'oie_output.csv')."), default="output.csv")
+                    " 'rdn_<params-values>.csv' and"
+                    " 'oie_<params-values>.csv')."), default=None)
 parser.add_argument("--sample", help=("Sample size for text environment steps"
                     " (default: 100)"),
                     type=int, default=100)
@@ -360,15 +295,8 @@ parser.add_argument("--bias", help=("Bias parameter for linear separator argumen
 args = parser.parse_args()
 
 input_oie = args.in_oie
-#fitting_sim_oie = "data/sim_train.txt.oie"
-#develop_sim_oie = "data/sim_test.txt.oie"
-#fitting_unr_oie = "data/dis_train.txt.oie"
-#develop_unr_oie = "data/dis_test.txt.oie"
 input_plain = args.in_txt
-#fitting_sim = "data/sim_train_.txt"
-#develop_sim = "data/sim_test_.txt"
-#fitting_unr = "data/dis_train_.txt"
-#develop_unr = "data/dis_test_.txt"
+
 NJOBS = args.njobs
 SAMPLE_SIZE = args.sample  # eg. 100
 N_STEPS = args.nsteps  # 120  #e.g.: n_input_oie/SAMPLE_SIZE=12167/100=121.67
@@ -379,7 +307,7 @@ analyzer = CountVectorizer(analyzer=ANALYZER, ngram_range=ngramr)\
                                 .build_analyzer()
 
 if args.hitmiss == 0:
-    n_hit_miss = int(SAMPLE_SIZE * 0.25)  # 25% of the sample size
+    n_hit_miss = int(SAMPLE_SIZE * 0.25)  # 25% of the step sample size
 else:
     n_hit_miss = args.hitmiss
     
@@ -392,6 +320,11 @@ for s in cols_results:
     if not c.startswith('#'):
         exec("TOANALYZE.append(" + c.strip() + ")")
 
+if args.output is None:
+    out_name = make_output_name(args)
+else:
+    out_name = args.output
+    
 t_start = time.time()
 
 logging.info("Reading input file '{}'".format(input_oie))
@@ -409,8 +342,8 @@ gsAkdf = gsAkdf[
 # Take N_STEPS and compute their marginal and joint informations
 logging.info("Computing MI for OpenIE actions...")
 
-compute_mi_steps(gsAkdf, prod_cols=TOANALYZE, out_csv="oie_" + args.output,
-                    sigma=args.bw, density=args.density, #metric=args.metric,
+compute_mi_steps(gsAkdf, prod_cols=TOANALYZE, out_csv="oie_" + out_name,
+                    sigma=args.bw, density=args.density,
                     ngramr=ngramr, n_hit_miss=n_hit_miss, bias=args.bias)
 
 # Create text environment sampler to simulate random actions
@@ -434,8 +367,8 @@ rdn_Akdf = pd.DataFrame(sum(A, []))
 
 logging.info("Computing MI for random actions...")
 compute_mi_steps(rdn_Akdf, prod_cols=TOANALYZE, density=args.density,
-                    out_csv="rdn_" + args.output, #input_plain.split('.')[0],
-                    #metric=args.metric, 
+                    out_csv="rdn_" + out_name,
                     sigma=args.bw,
                     ngramr=ngramr, n_hit_miss=n_hit_miss)
+                    
 logging.info("Terminated in {}s...".format(time.time() - t_start))
