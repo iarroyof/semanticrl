@@ -30,18 +30,7 @@ ANALYZER = 'char'
 STRUCTCOLS = ['X', 'Y', 'Z']
 COMBINATIONS= ['Y+Z', 'X+Z', 'X+Y']
 BACKEND = 'mp'
-
-
-def make_output_name(namespace, nonh=["in_oie", "in_txt", "output", "njobs",
-                                                                       "dir"]):
-    names = [a[0] + "-" + "t".join(map(str, a[1]))
-                if isinstance(a[1], list)
-                else "-".join(map(str,a))
-                    for a in args._get_kwargs()
-                        if not a[0] in nonh]
-            
-    return "_".join(names) + ".csv"
-
+    
 
 def expset(S, ngramr=(1, 3), sigma=1.0, bias=0.1):
     S = list(S)
@@ -256,159 +245,174 @@ def clean(x):
         return "__NULL__"
 
 
-parser = argparse.ArgumentParser(description=("This script takes a csv of "
-                                "openIE triplets and the plain text where they"
-                                " were extracted from as inputs. The process "
-                                "consists in compute entropy-based metrics "
-                                "between the items of the openIE triplets, as"
-                                " well as between the items of randomly "
-                                "defined triplets. The results of the "
-                                "computation are deposited as a csv file "
-                                "specified with the --output argument" 
-                                " of this script."))
-parser.add_argument("--ngrams", help=("N-gram range to form elementary text"
-                                      " strings to form sets (default: (1, 3)"
-                                      " set as '1 3' (two space-separated"
-                                      " integers))"),
-                    type=int, nargs='+', default=[1, 3])
-parser.add_argument("--wsize", help=("Window size for text environment samples"
-                                     " or contexts (default: 10)"),
-                    type=int, default=10)
-parser.add_argument("--in_oie", help="Input open IE triplets in csv")
-parser.add_argument("--in_txt", help=("Input plain text where triplets were"
-                                      " extracted"))
-parser.add_argument("--output", help=("Output results in csv. (default:"
-                    " 'rdn_<params-values>.csv' and"
-                    " 'oie_<params-values>.csv')."), default=None)
-parser.add_argument("--sample", help=("Sample size for text environment steps"
-                    " (default: 100)"),
-                    type=int, default=100)
-parser.add_argument("--nsteps", help=("Number of steps to simulate"
-                    " (default: 50)"), type=int, default=50)
-parser.add_argument("--density", help=("Density function/kernel estimator."
-                    " ('expset', 'gausset', 'setmax'; default: 'gausset')"),
-                    default='gausset')
-parser.add_argument("--bw", help=("Bandwidth/strinctness for the kernel"
-                    " estimator. (default: 5.0)"), type=float, default=5.0)
-parser.add_argument("--hitmiss", help=("Number of samples to build the"
-                                      " hit-and-missing topology (0 --> 25%% of"
-                                      " '--sample'; default: 50)"),
-                    type=int, default=50)
-parser.add_argument("--njobs", help=("Number of cores to use for simulating"
-                    " (default: -1 = all available cores)"), type=int,
-                    default=-1)
-parser.add_argument("--bias", help=("Bias parameter for linear separator"
-                    " argument densities (default: 1.0)"), type=float,
-                    default=1.0)
-parser.add_argument("--dir", help=("Directory where the results will be"
-                    " placed"), default='.')
-args = parser.parse_args()
+class srl_env_test(object):
+    """
+    This script takes a csv of openIE triplets and the plain text where they
+    were extracted from as inputs. The process consists in compute
+    entropy-based metrics between the items of the openIE triplets, as
+    well as between the items of randomly defined triplets. The results of
+    the computation are deposited as a csv file specified with the --output
+    argument of this script.
+    ...
+    
+    Attributes
+    ----------
+    
+    """
 
+    def __init__(self, ngrams, wsize, in_oie, in_txt, output, sample, nsteps, density, bw, 
+                    hitmiss, njobs, dir):
+        """
+        Parameters
+        ----------
+        ngrams : tuple([int, int])
+            N-gram range to form elementary text strings to form sets 
+            default: (1, 3) set as '1 3' (two space-separated integers).
+        wsize : int
+            Window size for text environment samples or contexts (default: 10).
+        in_oie : str
+            Input open IE triplets in csv.
+        in_txt : str
+            Input plain text where triplets were extracted.
+        output : str
+            Output results in csv. (default: 'rdn_<params-values>.csv' and
+            'oie_<params-values>.csv').
+        sample : int
+            Sample size for text environment steps (default: 100).
+        nsteps : int
+            Number of steps to simulate (default: 50).
+        density : str
+            Density function/kernel estimator. ('expset', 'gausset', 'setmax';
+            default: 'gausset').
+        bw : float
+            Bandwidth/strinctness for the kernel estimator. (default: 5.0)
+        hitmiss : int
+            Number of samples to build the hit-and-missing topology
+            (0 --> 25%% of 'sample'; default: 50).
+        njobs : int
+            Number of cores to use for simulating (default: -1 = all available
+            cores).
+        bias : float
+            Bias parameter for linear separator densities (default: 1.0).
+        dir : str
+            Directory where the results will be placed.
+        """
 
-input_oie   = args.in_oie
-input_plain = args.in_txt
+        self.input_oie   = in_oie
+        self.input_plain = in_txt
 
-NJOBS       = args.njobs
-SAMPLE_SIZE = args.sample  # eg. 100
-N_STEPS     = args.nsteps  # 120  #e.g.: n_input_oie/SAMPLE_SIZE=12167/100=121.67
-ngramr      = tuple(args.ngrams)  # (1, 3)
-t_size      = args.wsize  # 10
+        self.self        = njobs
+        self.sample_size = sample  # eg. 100
+        self.n_steps     = nsteps  # 120  #e.g.: n_input_oie/SAMPLE_SIZE=12167/100=121.67
+        self.ngramr      = ngrams  # (1, 3)
+        self.t_size      = wsize  # 10
 
-N_TRAJECTORIES = 2
+        self.n_trajectories = 2
 
-analyzer = CountVectorizer(analyzer=ANALYZER, ngram_range=ngramr)\
+        self.analyzer = CountVectorizer(analyzer=ANALYZER, ngram_range=ngramr)\
                                 .build_analyzer()
 
-if args.hitmiss == 0:
-    n_hit_miss = int(SAMPLE_SIZE * 0.25)  # 25% of the step sample size
-else:
-    n_hit_miss = args.hitmiss
+        if hitmiss == 0:
+            self.n_hit_miss = int(self.sample_size * 0.25)  # 25% of the step sample size
+        else:
+            self.n_hit_miss = hitmiss
     
-TOANALYZE = "analysis_cols.txt"
-with open(TOANALYZE) as f: 
-    cols_results = f.readlines()
-TOANALYZE = []
-for s in cols_results:
-    c = s.strip()
-    if not c.startswith('#'):
-        exec("TOANALYZE.append(" + c.strip() + ")")
+        TOANALYZE = "analysis_cols.txt"
+        with open(TOANALYZE) as f: 
+            cols_results = f.readlines()
+        TOANALYZE = []
+        for s in cols_results:
+            c = s.strip()
+            if not c.startswith('#'):
+                exec("TOANALYZE.append(" + c.strip() + ")")
         
-output_dir = args.dir
+        self.output_dir = dir
 
-if args.output is None:
-    oie_out_name = make_output_name(args)
-    rdn_out_name = make_output_name(args, nonh=["in_oie", "in_txt", "output",
-                                                "njobs", "dir", "density",
-                                                "bw", "bias"])
-    donot_make_oie, donot_make_rdn = (
+        if output is None:
+            self.oie_out_name = self._make_output_name(self.__dict__)
+            self.rdn_out_name = self._make_output_name(self.__dict__, 
+                                            nonh=["in_oie", "in_txt", "output",
+                                              "njobs", "dir", "density",
+                                              "bw", "bias"])
+            self.donot_make_oie, self.donot_make_rdn = (
                             os.path.isfile(args.dir + "/oie_" + oie_out_name),
                             os.path.isfile(args.dir + "/rdn_" + rdn_out_name))
-    if donot_make_oie and donot_make_rdn:
-        sys.exit()
-else:
-    oie_out_name = args.output
-    rdn_out_name = args.output
-    donot_make_oie, donot_make_rdn = (
+            
+        else:
+            self.oie_out_name = args.output
+            self.rdn_out_name = args.output
+            self.donot_make_oie, self.donot_make_rdn = (
                             os.path.isfile(args.dir + "/oie_" + oie_out_name),
                             os.path.isfile(args.dir + "/rdn_" + rdn_out_name))
-    if donot_make_oie and donot_make_rdn:
-        sys.exit()
 
-logging.info("Processing input parameters:\n{}".format(args))    
-t_start = time.time()
+        logging.info("Processing input parameters:\n{}".format(args))    
+        t_start = time.time()
 
-logging.info("Reading input file '{}'".format(input_oie))
-# Randomize the input gold standard
-gsAkdf = pd.read_csv(input_oie, delimiter='\t', keep_default_na=False,
+        logging.info("Reading input file '{}'".format(input_oie))
+        # Randomize the input gold standard
+        self.gsAkdf = pd.read_csv(input_oie, delimiter='\t', keep_default_na=False,
                      names=['score'] + STRUCTCOLS)[STRUCTCOLS].sample(frac=1.0)
-# Remove triplets with only punctuation
-for c in STRUCTCOLS:
-    gsAkdf[c] = gsAkdf[c].apply(clean)
+        # Remove triplets with only punctuation
+        for c in STRUCTCOLS:
+            self.gsAkdf[c] = self.gsAkdf[c].apply(clean)
 
-gsAkdf = gsAkdf[
-            ~gsAkdf[STRUCTCOLS].isin(['', ' '])
+        self.gsAkdf = self.gsAkdf[
+            ~self.gsAkdf[STRUCTCOLS].isin(['', ' '])
                                .apply(np.any, axis=1)            
          ]
+         
+         
+def _make_output_name(self, namespace, nonh=["in_oie", "in_txt", "output",
+                                                            "njobs", "dir"]):
+    names = [a + "-" + "t".join(map(str, a[1]))
+                if isinstance(a[1], tuple)
+                else "-".join(map(str, a))
+                    for a in namespace.items()
+                        if not a[0] in nonh]
+                        
+    return "_".join(names) + ".csv"
+
+         
 # Take N_STEPS and compute their marginal and joint informations
+    def fit():
+        if donot_make_oie:
+            logging.info("MI for OpenIE actions already exists (SKIPPED)...")
+        else:
+            logging.info("Computing MI for OpenIE actions...")
 
-if donot_make_oie:
-    logging.info("MI for OpenIE actions already exists (SKIPPED)...")
-else:
-    logging.info("Computing MI for OpenIE actions...")
-
-    compute_mi_steps(gsAkdf, prod_cols=TOANALYZE,
+            compute_mi_steps(gsAkdf, prod_cols=TOANALYZE,
                     out_csv=args.dir + "/oie_" + oie_out_name,
                     sigma=args.bw, density=args.density,
                     ngramr=ngramr, n_hit_miss=n_hit_miss, bias=args.bias)
 
-if donot_make_rdn:
-    logging.info("MI for random actions already exists (SKIPPED)...")
-else:
+        if donot_make_rdn:
+            logging.info("MI for random actions already exists (SKIPPED)...")
+        else:
 # Create text environment sampler to simulate random actions
-    env = textEnv(input_file_name=input_plain, wsize=t_size,
+            env = textEnv(input_file_name=input_plain, wsize=t_size,
                 traject_length=N_STEPS, n_trajects=N_TRAJECTORIES,
                 beta_rwd=1.5, sample_size=SAMPLE_SIZE)
-    env.reset()
-    S, _, done, _ = env.step()
-    A = []
-    logging.info("Simulating random actions from file '{}'".format(input_plain))
+            env.reset()
+            S, _, done, _ = env.step()
+            A = []
+            logging.info("Simulating random actions from file '{}'".format(input_plain))
 # The srl_env_class removes punctuation and empty strings before returning
 # states.
-    for t in range(N_STEPS):
-        Ak = [rdn_partition(s[0]) for s in S]
-        S, _, done, _ = env.step()
-        A.append(Ak)
-        if done:
-            break
+            for t in range(N_STEPS):
+                Ak = [rdn_partition(s[0]) for s in S]
+                S, _, done, _ = env.step()
+                A.append(Ak)
+                if done:
+                    break
 
-    rdn_Akdf = pd.DataFrame(sum(A, []))
+            rdn_Akdf = pd.DataFrame(sum(A, []))
 
-    logging.info("Computing MI for random actions...")
-    compute_mi_steps(rdn_Akdf, prod_cols=TOANALYZE, density=args.density,
+            logging.info("Computing MI for random actions...")
+            compute_mi_steps(rdn_Akdf, prod_cols=TOANALYZE, density=args.density,
                     out_csv="rdn_" + rdn_out_name,
                     sigma=args.bw,
                     ngramr=ngramr, n_hit_miss=n_hit_miss)
                     
-logging.info("Results saved to: \n{}\n{}".format("oie_" + oie_out_name,
+        logging.info("Results saved to: \n{}\n{}".format("oie_" + oie_out_name,
                                                 "rdn_" + rdn_out_name))                    
-logging.info("Terminated in {}s...".format(time.time() - t_start))
+        logging.info("Terminated in {}s...".format(time.time() - t_start))
