@@ -245,6 +245,25 @@ def clean(x):
         return "__NULL__"
 
 
+def rdn_range(a, b, N=10):
+    possible = []
+    n = (a - b)
+    n = ((n ** 2) - n) / 2
+    if n < N:
+        print(
+            "ERROR: N = {}, and (((a - b) ** 2) - (a - b)) / 2 = {}" \
+                .format(N, n))
+        return "ERROR"
+    for x in range(a, b):
+        for y in range(a, b):
+            xy = tuple(sorted((x, y)))
+            if x != y and not xy in possible:
+                possible.append(xy)
+    
+    for tup in random.sample(possible, N):
+        yield tup
+
+
 class srl_env_test(object):
     """
     This script takes a csv of openIE triplets and the plain text where they
@@ -260,42 +279,23 @@ class srl_env_test(object):
     
     """
 
-    def __init__(self, ngrams, wsize, in_oie, in_txt, output, sample, nsteps, density, bw, 
-                    hitmiss, njobs, dir):
+    def __init__(self, ngrams, wsize, in_oie, in_txt, bw, sample, density,
+             hitmiss, dir, output=None, nsteps=200, njobs=-1, n_trajectories=2):
         """
         Parameters
         ----------
-        ngrams : tuple([int, int])
-            N-gram range to form elementary text strings to form sets 
-            default: (1, 3) set as '1 3' (two space-separated integers).
-        wsize : int
-            Window size for text environment samples or contexts (default: 10).
         in_oie : str
             Input open IE triplets in csv.
         in_txt : str
             Input plain text where triplets were extracted.
-        output : str
-            Output results in csv. (default: 'rdn_<params-values>.csv' and
-            'oie_<params-values>.csv').
-        sample : int
-            Sample size for text environment steps (default: 100).
         nsteps : int
             Number of steps to simulate (default: 50).
-        density : str
-            Density function/kernel estimator. ('expset', 'gausset', 'setmax';
-            default: 'gausset').
-        bw : float
-            Bandwidth/strinctness for the kernel estimator. (default: 5.0)
-        hitmiss : int
-            Number of samples to build the hit-and-missing topology
-            (0 --> 25%% of 'sample'; default: 50).
         njobs : int
             Number of cores to use for simulating (default: -1 = all available
             cores).
-        bias : float
-            Bias parameter for linear separator densities (default: 1.0).
         dir : str
             Directory where the results will be placed.
+
         """
 
         self.input_oie   = in_oie
@@ -306,8 +306,8 @@ class srl_env_test(object):
         self.n_steps     = nsteps  # 120  #e.g.: n_input_oie/SAMPLE_SIZE=12167/100=121.67
         self.ngramr      = ngrams  # (1, 3)
         self.t_size      = wsize  # 10
-
-        self.n_trajectories = 2
+        self.hitmiss     = hitmiss
+        self.n_trajectories = n_trajectories
 
         self.analyzer = CountVectorizer(analyzer=ANALYZER, ngram_range=ngramr)\
                                 .build_analyzer()
@@ -329,29 +329,29 @@ class srl_env_test(object):
         self.output_dir = dir
 
         if output is None:
-            self.oie_out_name = self._make_output_name(self.__dict__)
-            self.rdn_out_name = self._make_output_name(self.__dict__, 
-                                            nonh=["in_oie", "in_txt", "output",
-                                              "njobs", "dir", "density",
-                                              "bw", "bias"])
+            self.out_name = self._make_output_name(self.__dict__)
             self.donot_make_oie, self.donot_make_rdn = (
-                            os.path.isfile(args.dir + "/oie_" + oie_out_name),
-                            os.path.isfile(args.dir + "/rdn_" + rdn_out_name))
+                            os.path.isfile(self.dir + "/oie_" + self.out_name),
+                            os.path.isfile(self.dir + "/rdn_" + self.out_name))
             
         else:
-            self.oie_out_name = args.output
-            self.rdn_out_name = args.output
+            self.out_name = args.output
             self.donot_make_oie, self.donot_make_rdn = (
-                            os.path.isfile(args.dir + "/oie_" + oie_out_name),
-                            os.path.isfile(args.dir + "/rdn_" + rdn_out_name))
+                            os.path.isfile(args.dir + "/oie_" + self.out_name),
+                            os.path.isfile(args.dir + "/rdn_" + self.out_name))
 
-        logging.info("Processing input parameters:\n{}".format(args))    
+        logging.info("Processing input parameters:\n{}\n" \
+                        .format(self.out_name \
+                                    .replace('-', ' : ')[5:] \
+                                    .replace('_', '\n')))
         t_start = time.time()
 
         logging.info("Reading input file '{}'".format(input_oie))
         # Randomize the input gold standard
-        self.gsAkdf = pd.read_csv(input_oie, delimiter='\t', keep_default_na=False,
-                     names=['score'] + STRUCTCOLS)[STRUCTCOLS].sample(frac=1.0)
+        self.gsAkdf = pd.read_csv(input_oie, delimiter='\t',
+                                    keep_default_na=False,
+                                    names=['score'] + STRUCTCOLS)[STRUCTCOLS] \
+                                        .sample(frac=1.0)
         # Remove triplets with only punctuation
         for c in STRUCTCOLS:
             self.gsAkdf[c] = self.gsAkdf[c].apply(clean)
@@ -375,6 +375,31 @@ def _make_output_name(self, namespace, nonh=["in_oie", "in_txt", "output",
          
 # Take N_STEPS and compute their marginal and joint informations
     def fit():
+        """
+        Parameters
+        ----------
+
+        ngrams : tuple([int, int])
+            N-gram range to form elementary text strings to form sets 
+            default: (1, 3) set as '1 3' (two space-separated integers).
+        wsize : inta
+            Window size for text environment samples or contexts (default: 10).
+        output : str
+            Output results in csv. (default: 'rdn_<params-values>.csv' and
+            'oie_<params-values>.csv').
+        sample : int
+            Sample size for text environment steps (default: 100).
+        density : str
+            Density function/kernel estimator. ('expset', 'gausset', 'setmax';
+            default: 'gausset').
+        bw : float
+            Bandwidth/strinctness for the kernel estimator. (default: 5.0)
+        hitmiss : int
+            Number of samples to build the hit-and-missing topology
+            (0 --> 25%% of 'sample'; default: 50).
+        bias : float
+            Bias parameter for linear separator densities (default: 1.0).
+        """
         if donot_make_oie:
             logging.info("MI for OpenIE actions already exists (SKIPPED)...")
         else:
