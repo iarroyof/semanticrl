@@ -11,6 +11,7 @@ import math
 import sys
 import logging
 import argparse
+import inspect
 import string
 from joblib import Parallel, delayed
 from joblib import wrap_non_picklable_objects
@@ -246,6 +247,15 @@ def clean(x):
 
 
 def rdn_range(a, b, N=10):
+    """
+    This method generates tuples of random pairs for n-gram ranges.
+    The parameters must meet 
+    
+        N < (((a - b) ** 2) - (a - b)) / 2
+        
+    where a < b are the interval's start and end, respectively. N is
+    the desired number of pair tuples of integers.
+    """
     possible = []
     n = (a - b)
     n = ((n ** 2) - n) / 2
@@ -266,7 +276,7 @@ def rdn_range(a, b, N=10):
 
 class srl_env_test(object):
     """
-    This script takes a csv of openIE triplets and the plain text where they
+    This class takes a csv of openIE triplets and the plain text where they
     were extracted from as inputs. The process consists in compute
     entropy-based metrics between the items of the openIE triplets, as
     well as between the items of randomly defined triplets. The results of
@@ -279,8 +289,9 @@ class srl_env_test(object):
     
     """
 
-    def __init__(self, ngrams, wsize, in_oie, in_txt, bw, sample, density,
-             hitmiss, dir, output=None, nsteps=200, njobs=-1, n_trajectories=2):
+    def __init__(self, in_oie, in_txt, output_dir, sample=0, wsize=10,
+                        nsteps=200, njobs=-1, analyzer='char', n_trajectories=2,
+                        toanalyze = "analysis_cols.txt"):
         """
         Parameters
         ----------
@@ -295,56 +306,39 @@ class srl_env_test(object):
             cores).
         dir : str
             Directory where the results will be placed.
+        analyzer : str
+            Analyzer for the tokenizer \in ('char', 'word'); default: 'char'
+        wsize : int
+            Window size for text environment samples or contexts (default: 10).
+        sample : int
+            Sample size for text environment steps (default: 0).
+        n_trajectories : int
+            Number of trajectories the random agent is going to simulate
+        
 
         """
 
         self.input_oie   = in_oie
         self.input_plain = in_txt
-
-        self.self        = njobs
-        self.sample_size = sample  # eg. 100
-        self.n_steps     = nsteps  # 120  #e.g.: n_input_oie/SAMPLE_SIZE=12167/100=121.67
-        self.ngramr      = ngrams  # (1, 3)
-        self.t_size      = wsize  # 10
-        self.hitmiss     = hitmiss
+        self.output_dir = output_dir
+        self.njobs       = njobs
+        self.n_steps     = nsteps
         self.n_trajectories = n_trajectories
-
-        self.analyzer = CountVectorizer(analyzer=ANALYZER, ngram_range=ngramr)\
+        self.toanalyze = toanalyze
+        self.input_plain = input_plain
+        self.wsize = wsize,
+        self.n_trajectories = n_trajectories,
+        self.sample = sample
+        
+        self.analyzer = CountVectorizer(analyzer=analyzer, ngram_range=ngramr)\
                                 .build_analyzer()
-
-        if hitmiss == 0:
-            self.n_hit_miss = int(self.sample_size * 0.25)  # 25% of the step sample size
-        else:
-            self.n_hit_miss = hitmiss
-    
-        TOANALYZE = "analysis_cols.txt"
-        with open(TOANALYZE) as f: 
+        with open(self.toanalyze) as f: 
             cols_results = f.readlines()
-        TOANALYZE = []
+        self.toanalyze = []
         for s in cols_results:
             c = s.strip()
             if not c.startswith('#'):
-                exec("TOANALYZE.append(" + c.strip() + ")")
-        
-        self.output_dir = dir
-
-        if output is None:
-            self.out_name = self._make_output_name(self.__dict__)
-            self.donot_make_oie, self.donot_make_rdn = (
-                            os.path.isfile(self.dir + "/oie_" + self.out_name),
-                            os.path.isfile(self.dir + "/rdn_" + self.out_name))
-            
-        else:
-            self.out_name = args.output
-            self.donot_make_oie, self.donot_make_rdn = (
-                            os.path.isfile(args.dir + "/oie_" + self.out_name),
-                            os.path.isfile(args.dir + "/rdn_" + self.out_name))
-
-        logging.info("Processing input parameters:\n{}\n" \
-                        .format(self.out_name \
-                                    .replace('-', ' : ')[5:] \
-                                    .replace('_', '\n')))
-        t_start = time.time()
+                exec("self.toanalyze.append(" + c.strip() + ")")
 
         logging.info("Reading input file '{}'".format(input_oie))
         # Randomize the input gold standard
@@ -361,34 +355,55 @@ class srl_env_test(object):
                                .apply(np.any, axis=1)            
          ]
          
+         self.rdn_Akdf = self._simulate_rdn_actions() 
          
-def _make_output_name(self, namespace, nonh=["in_oie", "in_txt", "output",
-                                                            "njobs", "dir"]):
-    names = [a + "-" + "t".join(map(str, a[1]))
+         
+    def _make_output_name(self, namespace, nonh=["in_oie", "in_txt", "output",
+                                                    "njobs", "self.output_dir"]):
+        names = [a + "-" + "t".join(map(str, a[1]))
                 if isinstance(a[1], tuple)
                 else "-".join(map(str, a))
                     for a in namespace.items()
                         if not a[0] in nonh]
                         
-    return "_".join(names) + ".csv"
+        return "_".join(names) + ".csv"
 
+
+    def _simulate_rnd_actions(self):
+        
+        env = textEnv(input_file_name=self.input_plain, wsize=self.wsize,
+                traject_length=self.n_steps, n_trajects=self.n_trajectories,
+                beta_rwd=1.5, sample_size=self.sample)
+        env.reset()
+        S, _, done, _ = env.step()
+        A = []
+        logging.info("Simulating random actions from file '{}'" \
+                        .format(input_plain))
+# The srl_env_class removes punctuation and empty strings before returning
+# states.
+        for t in range(self.n_steps):
+            Ak = [rdn_partition(s[0]) for s in S]
+            S, _, done, _ = env.step()
+            A.append(Ak)
+            if done:
+                break
+
+        return pd.DataFrame(sum(A, []))
+            
          
 # Take N_STEPS and compute their marginal and joint informations
-    def fit():
+    def fit(self,  ngrams, wsize, bw, sample, density, hitmiss, output=None):
         """
         Parameters
         ----------
-
+                        
         ngrams : tuple([int, int])
             N-gram range to form elementary text strings to form sets 
             default: (1, 3) set as '1 3' (two space-separated integers).
-        wsize : inta
-            Window size for text environment samples or contexts (default: 10).
         output : str
             Output results in csv. (default: 'rdn_<params-values>.csv' and
             'oie_<params-values>.csv').
-        sample : int
-            Sample size for text environment steps (default: 100).
+
         density : str
             Density function/kernel estimator. ('expset', 'gausset', 'setmax';
             default: 'gausset').
@@ -400,37 +415,47 @@ def _make_output_name(self, namespace, nonh=["in_oie", "in_txt", "output",
         bias : float
             Bias parameter for linear separator densities (default: 1.0).
         """
+
+        self.properties = {k: v for k, v in locals().items()
+                          if k in inspect.getfullargspec(self.fit).args + ['output']}
+        if output is None:
+            self.out_name = self._make_output_name(self.properties)
+            self.donot_make_oie, self.donot_make_rdn = (
+                            os.path.isfile(self.output_dir + "/oie_" + self.out_name),
+                            os.path.isfile(self.output_dir + "/rdn_" + self.out_name))
+            
+        else:
+            self.out_name = output
+            self.donot_make_oie, self.donot_make_rdn = (
+                            os.path.isfile(self.output_dir + "/oie_" + self.out_name),
+                            os.path.isfile(self.output_dir + "/rdn_" + self.out_name))
+
+        logging.info("Processing input parameters:\n{}\n" \
+                        .format(self.out_name \
+                                    .replace('-', ' : ')[5:] \
+                                    .replace('_', '\n')))
+        t_start = time.time()
+
+        if hitmiss == 0:
+            n_hit_miss = int(self.sample_size * 0.25)  # 25% of the step sample size
+        else:
+            n_hit_miss = hitmiss
+            
         if donot_make_oie:
             logging.info("MI for OpenIE actions already exists (SKIPPED)...")
         else:
             logging.info("Computing MI for OpenIE actions...")
 
-            compute_mi_steps(gsAkdf, prod_cols=TOANALYZE,
-                    out_csv=args.dir + "/oie_" + oie_out_name,
-                    sigma=args.bw, density=args.density,
-                    ngramr=ngramr, n_hit_miss=n_hit_miss, bias=args.bias)
+            compute_mi_steps(self.gsAkdf, prod_cols=self.toanalyze,
+                    out_csv=self.output_dir + "/oie_" + out_name,
+                    sigma=bw, density=density,
+                    ngramr=ngramr, n_hit_miss=n_hit_miss, bias=bias)
 
         if donot_make_rdn:
             logging.info("MI for random actions already exists (SKIPPED)...")
         else:
 # Create text environment sampler to simulate random actions
-            env = textEnv(input_file_name=input_plain, wsize=t_size,
-                traject_length=N_STEPS, n_trajects=N_TRAJECTORIES,
-                beta_rwd=1.5, sample_size=SAMPLE_SIZE)
-            env.reset()
-            S, _, done, _ = env.step()
-            A = []
-            logging.info("Simulating random actions from file '{}'".format(input_plain))
-# The srl_env_class removes punctuation and empty strings before returning
-# states.
-            for t in range(N_STEPS):
-                Ak = [rdn_partition(s[0]) for s in S]
-                S, _, done, _ = env.step()
-                A.append(Ak)
-                if done:
-                    break
 
-            rdn_Akdf = pd.DataFrame(sum(A, []))
 
             logging.info("Computing MI for random actions...")
             compute_mi_steps(rdn_Akdf, prod_cols=TOANALYZE, density=args.density,
