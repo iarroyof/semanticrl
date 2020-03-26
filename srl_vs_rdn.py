@@ -317,8 +317,8 @@ class SrlEnvTest(object):
                         
         A_tau = [Akdf[i:i + sample_size]
                 for i in range(0, self.n_steps * sample_size, sample_size)]
-        if self.verbose:
-            logging.info(
+    
+        logging.info(
                 f"Computing probabilities of random sets for {self.n_steps} steps.")
         with parallel_backend('multiprocessing' if BACKEND == 'mp' else 'loky'):
             t = time.time()
@@ -407,7 +407,7 @@ class SrlEnvTest(object):
         n_hit_miss = int(self.sample * hitmiss)
     
         if self.donot_make_oie:
-            logging.warning("MI for OpenIE actions already exists (SKIPPED)...")
+            logging.info("MI for OpenIE actions already exists (SKIPPED)...")
         else:
             if self.verbose:
                 logging.info("Computing MI for OpenIE actions...")
@@ -417,7 +417,7 @@ class SrlEnvTest(object):
                     ngramr=ngrams, n_hit_miss=n_hit_miss, bias=bias)
 
         if self.donot_make_rdn:
-            logging.warning("MI for random actions already exists (SKIPPED)...")
+            logging.info("MI for random actions already exists (SKIPPED)...")
         else:
             if self.verbose:
                 logging.info("Computing MI for random actions...")
