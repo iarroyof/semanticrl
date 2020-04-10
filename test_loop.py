@@ -28,7 +28,8 @@ def test_settings(n_tests, max_tests, ranges=dict(
         bias=(0.0, 10.0),
         hitmiss=(0.1, 1.0),
         bw=(1.0, 5.0),
-        density=('setmax', 'gausset'),
+        # ['gausset', 'setmax', 'expset']
+        density=('expset', 'gausset'),
         ngrams={'low': 1, 'high': 5} )):
     """
     Generate random parameters:
