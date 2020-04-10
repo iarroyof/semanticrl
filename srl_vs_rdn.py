@@ -47,7 +47,8 @@ class SrlEnvTest(object):
 
     def __init__(self, in_oie, in_txt, output_dir, sample=100, wsize=10,
                         nsteps=200, tokenizer='char', n_trajectories=2,
-                        njobs=-1, toanalyze = "analysis_cols.txt", verbose=False):
+                        njobs=-1, toanalyze = "analysis_cols.txt",
+                        verbose=False):
         """
         Parameters
         ----------
@@ -104,10 +105,12 @@ class SrlEnvTest(object):
             try:
                 return -p[1] * np.log2(p[1] / p[0])
             except Warning as e:
-                logging.warning("Warningx: %s" % e)
+                if self.verbose:
+                    logging.warning("Warningx: %s" % e)
                 return 0.0
             except ZeroDivisionError as e:
-                logging.warning("Errorx: %s" % e)
+                if self.verbose:
+                    logging.warning("Errorx: %s" % e)
                 return 0.0
 
 
@@ -233,7 +236,7 @@ class SrlEnvTest(object):
         elif density == 'expset':
             capacity = partial(self.expset, ngramr=ngramr, sigma=sigma, bias=bias)
         else:
-            assert density in ['gausset', 'setmax', 'expset']
+            assert density in ['gausset', 'setmax', 'expset']  # Unknown density
 
         joints = []
         for d in prod_cols:
@@ -353,13 +356,21 @@ class SrlEnvTest(object):
             return "__NULL__"
 
 
+    def _formatf(self, param, decs=2):
+        if isinstance(param, float):
+            f = "{:." + str(decs) + "f}"
+            return f.format(param)
+        elif isinstance(param, str):
+            return param
+
+
     def _make_output_name(self, namespace, nonh=["in_oie", "in_txt", "output",
                                                     "njobs", "self.output_dir"]):
-        names = [a[0] + "-" + "t".join(map(str, a[1]))
-                    if isinstance(a[1], tuple)
-                    else "-".join(map(str, a))
-                        for a in namespace.items()
-                            if not a[0] in nonh]
+        names = [p + "-" + "t".join(map(str, v))
+                    if isinstance(v, tuple)
+                    else "-".join([p, self._formatf(v)])
+                        for p, v in namespace.items()
+                            if not p in nonh]
                         
         return "_".join(names) + ".csv"
             
@@ -387,21 +398,21 @@ class SrlEnvTest(object):
         bias : float
             Bias parameter for linear separator densities (default: 1.0).
         """
-        self.analyzer = CountVectorizer(analyzer=self.tokenizer, ngram_range=ngrams)\
-                                            .build_analyzer()
+        self.analyzer = CountVectorizer(analyzer=self.tokenizer,
+                                        ngram_range=ngrams).build_analyzer()
         self.properties = {k: v for k, v in locals().items()
                           if k in inspect.getfullargspec(self.fit).args}
         del self.properties['self']
         if output is None:
             self.out_name = self._make_output_name(self.properties)
             self.donot_make_oie, self.donot_make_rdn = (
-                            os.path.isfile(self.output_dir + "/oie_" + self.out_name),
-                            os.path.isfile(self.output_dir + "/rdn_" + self.out_name))
+                     os.path.isfile(self.output_dir + "/oie_" + self.out_name),
+                     os.path.isfile(self.output_dir + "/rdn_" + self.out_name))
         else:
             self.out_name = output
             self.donot_make_oie, self.donot_make_rdn = (
-                            os.path.isfile(self.output_dir + "/oie_" + self.out_name),
-                            os.path.isfile(self.output_dir + "/rdn_" + self.out_name))
+                     os.path.isfile(self.output_dir + "/oie_" + self.out_name),
+                     os.path.isfile(self.output_dir + "/rdn_" + self.out_name))
         if self.verbose:
             logging.info("Processing input parameters:\n{}\n" \
                         .format(self.properties))
@@ -430,7 +441,7 @@ class SrlEnvTest(object):
         if self.verbose:                
             logging.info("Results saved to: \n{}\n{}\ntime elapsed: {}" \
                         .format(self.output_dir + "/oie_" + self.out_name,
-                                self.output_dir + "/rdn_" +  self.out_name,
+                                self.output_dir + "/rdn_" + self.out_name,
                                 time.time() - t_start))
 
 

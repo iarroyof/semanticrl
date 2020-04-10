@@ -2,8 +2,11 @@ from srl_vs_rdn import SrlEnvTest
 import random
 import numpy as np
 import pandas as pd
-
-from pdb import set_trace as st
+import logging
+from os import path, makedirs
+logging.basicConfig(format='%(asctime)s %(message)s',
+                    datefmt='%m/%d/%Y %I:%M:%S %p',
+                    level=logging.INFO)
 
 NACTIONS = 28561  # Number of lines in openIE input file.
 
@@ -25,7 +28,7 @@ def test_settings(n_tests, max_tests, ranges=dict(
         bias=(0.0, 10.0),
         hitmiss=(0.1, 1.0),
         bw=(1.0, 5.0),
-        density=('expset', 'guasset'),
+        density=('setmax', 'gausset'),
         ngrams={'low': 1, 'high': 5} )):
     """
     Generate random parameters:
@@ -62,11 +65,15 @@ def main():
 
     for s in random.sample(range(sampran[0], sampran[1]), samples):
         nsteps = int(float(NACTIONS)/float(s))
-        out_dir = ("../results_srl_env/wsize-"
-                        + str(rdn_win) + "/sample-" + str(s))
+        out_dir = ("/almac/ignacio/results_srl_env/wsize-"
+                                + str(rdn_win) + "/sample-" + str(s))
+        if not path.exists(out_dir):
+            makedirs(out_dir)
         test = SrlEnvTest(in_oie=in_open, in_txt=in_text, output_dir=out_dir,
                         wsize=rdn_win, sample=s, nsteps=nsteps)
+        logging.info("Window and sample: {}".format(out_dir))
         for param in settings:
+            logging.info("Parameters test: {}".format(param))
             test.fit(**param)
 
 
