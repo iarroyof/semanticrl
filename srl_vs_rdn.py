@@ -431,3 +431,6 @@ class SrlEnvTest(object):
                                 self.output_dir + "/rdn_" +  self.out_name,
                                 time.time() - t_start))
 
+
+    def setattrs(self, kwargs):
+        self.__dict__.update(kwargs)
