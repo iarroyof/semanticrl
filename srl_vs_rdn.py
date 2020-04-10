@@ -214,7 +214,7 @@ class SrlEnvTest(object):
         evidence = [likelihood(s) for s in hit_miss]
         evidence.append(rlh)
         return rlh / sum(evidence)
-    
+
 
     def compute_set_probability(self, Akdf, prod_cols, hit_miss_samples=50, sigma=5.0, 
                             ngramr=(1, 3), density='setmax', bias=1.0):
@@ -225,14 +225,16 @@ class SrlEnvTest(object):
                                                 " than the number of samples")
         except AssertionError:
             return None
-    
+
         if density == 'gausset':
             capacity = partial(self.gausset, ngramr=ngramr, sigma=sigma, bias=bias)
-        if density == 'setmax':
+        elif density == 'setmax':
             capacity = partial(self.setmax, ngramr=ngramr, sigma=sigma)
-        if density == 'expset':
+        elif density == 'expset':
             capacity = partial(self.expset, ngramr=ngramr, sigma=sigma, bias=bias)
-        
+        else:
+            assert density in ['gausset', 'setmax', 'expset']
+
         joints = []
         for d in prod_cols:
             if '+' in d[0]:

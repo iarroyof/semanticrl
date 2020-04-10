@@ -44,12 +44,10 @@ def test_settings(n_tests, max_tests, ranges=dict(
                                                p=[1.0/len(v)] * len(v)).tolist()
         else:
             settings[p] = rand_ranges(v['low'], v['high'], N=n_tests)
-    
+
     for _, s in pd.DataFrame(settings).iterrows():
         yield dict(s.items())
-        
-        
-        
+
 
 def main():
     in_text = "data/dis_train_.txt"
@@ -61,7 +59,7 @@ def main():
     n_tests = 3
 
     settings = test_settings(n_tests, 80)
-    
+
     for s in random.sample(range(sampran[0], sampran[1]), samples):
         nsteps = int(float(NACTIONS)/float(s))
         out_dir = ("../results_srl_env/wsize-"
