@@ -356,7 +356,7 @@ class SrlEnvTest(object):
             return "__NULL__"
 
 
-    def _formatf(self, param, decs=2):
+    def _formatf(self, param, decs=1):
         if isinstance(param, float):
             f = "{:." + str(decs) + "f}"
             return f.format(param)
