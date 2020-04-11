@@ -24,7 +24,7 @@ def rand_ranges(a, b, N):
     return ranges
 
 
-def test_settings(n_tests, steps=10, stepper=1.0, ranges=dict(
+def test_settings(n_tests, max_tests, ranges=dict(
         bias=(0.0, 10.0),
         hitmiss=(0.1, 1.0),
         bw=(1.0, 5.0),
@@ -40,16 +40,14 @@ def test_settings(n_tests, steps=10, stepper=1.0, ranges=dict(
     for p, v in ranges.items():
         if not isinstance(v, dict):
             if not isinstance(v[0], str):
-                if v[1] > stepper:
-                    inter = int(v[1] - v[0])
-                    settings[p] = np.random.choice(
-                                    np.linspace(v[0], v[1], inter),
-                                    n_tests, p=[1.0/inter] * inter)
+                if v[1] > 1.0:
+                    settings[p] = np.random.choice(np.linspace(v[0], v[1],
+                                                               max_tests),
+                                         n_tests, p=[1.0/max_tests] * max_tests)
                 else:
                     settings[p] = np.random.choice(
-                                            np.linspace(v[0], v[1], steps),
-                                                n_tests, p=[1.0/steps] * steps)
-                
+                                      np.linspace(v[0], v[1], 10),
+                                      n_tests, p=[1.0/(v[1] - v[0])] * n_tests)
             else:
                 settings[p] = np.random.choice(v, n_tests,
                                                p=[1.0/len(v)] * len(v)).tolist()
@@ -59,22 +57,21 @@ def test_settings(n_tests, steps=10, stepper=1.0, ranges=dict(
     for _, s in pd.DataFrame(settings).iterrows():
         yield dict(s.items())
 
-from pdb import set_trace as st
+
 def main():
     in_text = "data/dis_train_.txt"
     in_open = "data/dis_train.txt.oie"
     rdn_win = 8  # 6 + 2 (mean + std)
     sampran = (10, 300)  # sample range
-    samples = int((sampran[1] - sampran[0]) * 0.1)
-    n_fit_params = 5 - 1  # all - ngrams
-    # (0 -100), (0 - 1), (0 - 5), (expset, gausset), (1, 5)
-    max_tests_possible =  100 *10 * 50 * 2 * (2 ** 5) # (sampran[1] - sampran[0]) * n_fit_params * (2 ** 5)
-    n_tests = int(max_tests_possible * 0.1) # 13920
+    samples = int((sampran[1] - sampran[0]) * 0.25)
+    n_fit_params = 5
+    max_tests_possible = (sampran[1] - sampran[0]) * n_fit_params * (2 ** 5)
+    n_tests = int(max_tests_possible * 0.25) # 13920
 
-    st()
-    settings = test_settings(n_tests=n_tests)
+
+    settings = test_settings(n_tests=n_tests, max_tests=max_tests_possible)
     logging.info("Performing {} experiments" \
-                                    .format(samples * n_tests))
+                                    .format(samples * n_tests * n_fit_params))
     for s in random.sample(range(sampran[0], sampran[1]), samples):
         nsteps = int(float(NACTIONS)/float(s))
         out_dir = ("/almac/ignacio/results_srl_env/wsize-"
