@@ -50,12 +50,11 @@ def test_settings(n_tests, steps=5, ranges=dict(
             settings[p] = rand_ranges(v['low'], v['high'], N=n_tests)
 
     sdf = pd.DataFrame(settings).drop_duplicates()
-    sdf = sdf.reset_index()
+    sdf = sdf.reset_index(drop=True)
     last = sdf.index[-1]
     for i, s in sdf.iterrows():
         yield (i, last, dict(s.items()))
 
-from pdb import set_trace as st
 def main():
     in_text = "data/dis_train_.txt"
     in_open = "data/dis_train.txt.oie"
@@ -69,9 +68,9 @@ def main():
     n_tests = int(max_tests_possible * 0.3)  # 25600 * 0.3 = 2560
 
     settings = test_settings(n_tests=n_tests, steps=range_steps)
-    logging.info("Performing {} experiments in {} minutes (approx.)" \
-                       .format(samples * n_tests, samples * n_tests * 3))
-    st()
+    logging.info("Performing {} experiments in {} minutes (max.)" \
+                   .format(len(samples) * n_tests, len(samples) * n_tests * 3))
+
     for s in samples:
         nsteps = int(float(NACTIONS)/float(s))
         out_dir = ("/almac/ignacio/results_srl_env/wsize-"
@@ -82,9 +81,12 @@ def main():
                             wsize=rdn_win, sample=s, nsteps=nsteps)
         logging.info("Window and sample: {}".format(out_dir))
         for i, l, param in settings:
-            logging.info("Parameters test {} ({:.1f} %%): {}" \
-                        .format(i, (i / l) * 100, param))
-            test.fit(**param)
+            logging.info("Parameters test {}/{} ({:.1f} %%): {}" \
+                        .format(i, l, (i / l) * 100, param))
+            try:
+                test.fit(**param)
+            except Exception as e:
+                print("ERROR: {}".format(e))
 
 
 if __name__ == "__main__":
