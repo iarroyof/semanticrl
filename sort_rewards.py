@@ -1,9 +1,14 @@
 import pandas as pd 
 import sys
 
+from pdb import set_trace as st
+rewards_f = sys.argv[1]
 
-s = sys.argv[1]
-df = pd.read_csv("/almac/ignacio/results_srl_env/wsize-8/sample-" + s
-                  + "/oie_rewards.csv", sep='\t', names=["file", "reward"])
-df.sort_values(by=['reward'], ascending=False, inplace=True)
-df.to_csv("oie_rewards_sorted_sample_" + s + ".csv")
+# rewards_f = "/almac/ignacio/results_srl_env/wsize-8/sample-310/rewards_oie.csv"
+df = pd.read_csv(rewards_f, sep='\t', names=["file", "reward"])
+
+out = "_".join(rewards_f.split('/')[-2:])
+
+df.sort_values('reward', ascending=False, inplace=True)
+
+df.to_csv("results/rewards_sorted_" + out)
