@@ -1,0 +1,364 @@
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))
+semantic_reward.py:21: RuntimeWarning: divide by zero encountered in double_scalars
+  z = abs(a - b) / (sigma * np.sqrt(2 * np.pi))
+semantic_reward.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  return z * np.exp(-dist ** 2/(2 * sigma ** 2))

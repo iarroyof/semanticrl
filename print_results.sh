@@ -1,5 +1,6 @@
 RESULTS=/almac/ignacio/results_srl_env/wsize-8
-AGENT="rdn"
+AGENT="oie"
+#POSFIJO=IZY_IZX_IYX
 POSFIJO=IXYZ_IYXZ_IZXY
 for d in `ls $RESULTS`;
 do
@@ -13,3 +14,5 @@ do
 done
 #sorted_sample-110_rdn_rewards_HX_HY_HZ.csv
 ## "\$H[h(Z, Z)]$" "\$H[h(Y, Y)]$" "\$H[h(X, X)]$"
+## "\$I[h(Y+Z, X)]$" "\$I[h(X+Z, Y)]$" "\$I[h(X+Y, Z)]$"
+## "\$I[h(Y, X)]$" "\$I[h(Z, X)]$" "\$I[h(Z, Y)]$"

@@ -14,8 +14,8 @@
 0,/almac/ignacio/results_srl_env/wsize-8/sample-110/oie_bias-0.0_hitmiss-1.0_bw-1.0_density-expset_ngrams-1t2.csv,1.25578898025
 1,/almac/ignacio/results_srl_env/wsize-8/sample-110/oie_bias-0.0_hitmiss-1.0_bw-1.0_density-expset_ngrams-1t3.csv,1.2548991959
 2,/almac/ignacio/results_srl_env/wsize-8/sample-110/oie_bias-0.0_hitmiss-1.0_bw-1.0_density-expset_ngrams-1t4.csv,1.2548186187600001
-156,/almac/ignacio/results_srl_env/wsize-8/sample-110/oie_bias-2.0_hitmiss-1.0_bw-4.0_density-expset_ngrams-1t4.csv,1.21673564526
 155,/almac/ignacio/results_srl_env/wsize-8/sample-110/oie_bias-2.0_hitmiss-1.0_bw-4.0_density-expset_ngrams-1t3.csv,1.21673564526
+156,/almac/ignacio/results_srl_env/wsize-8/sample-110/oie_bias-2.0_hitmiss-1.0_bw-4.0_density-expset_ngrams-1t4.csv,1.21673564526
 154,/almac/ignacio/results_srl_env/wsize-8/sample-110/oie_bias-2.0_hitmiss-1.0_bw-4.0_density-expset_ngrams-1t2.csv,1.2166995998299999
 167,/almac/ignacio/results_srl_env/wsize-8/sample-110/oie_bias-2.0_hitmiss-1.0_bw-5.0_density-expset_ngrams-1t3.csv,1.1744408491399998
 168,/almac/ignacio/results_srl_env/wsize-8/sample-110/oie_bias-2.0_hitmiss-1.0_bw-5.0_density-expset_ngrams-1t4.csv,1.1744408491399998
@@ -288,6 +288,7 @@
 65,/almac/ignacio/results_srl_env/wsize-8/sample-110/oie_bias-10.0_hitmiss-1.0_bw-1.0_density-expset_ngrams-3t4.csv,6.411475e-318
 298,/almac/ignacio/results_srl_env/wsize-8/sample-110/oie_rewards.csv,0.0
 299,/almac/ignacio/results_srl_env/wsize-8/sample-110/oie_rewards_IXYZ_IYXZ_IZXY.csv,0.0
+300,/almac/ignacio/results_srl_env/wsize-8/sample-110/oie_rewards_IZY_IZX_IYX.csv,0.0
 102,/almac/ignacio/results_srl_env/wsize-8/sample-110/oie_bias-10.0_hitmiss-1.0_bw-4.0_density-gausset_ngrams-1t2.csv,
 103,/almac/ignacio/results_srl_env/wsize-8/sample-110/oie_bias-10.0_hitmiss-1.0_bw-4.0_density-gausset_ngrams-1t3.csv,
 104,/almac/ignacio/results_srl_env/wsize-8/sample-110/oie_bias-10.0_hitmiss-1.0_bw-4.0_density-gausset_ngrams-1t4.csv,
