@@ -33,6 +33,8 @@ parser.add_argument("--in_csv", help="Input csv file name")
 
 args = parser.parse_args()
 
-
-reward = semantic_reward(csv=args.in_csv, comparing_cols=args.cols)
+try:
+    reward = semantic_reward(csv=args.in_csv, comparing_cols=args.cols)
+except TypeError:
+    reward = 0.0
 print(reward)
