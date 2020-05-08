@@ -5,13 +5,15 @@
 import re
 import sys
 import pandas as pd
-from pdb import set_trace as st
+
+
 in_csv = sys.argv[1]
 if in_csv.endswith('.csv.csv'): exit()
 out_df = []
 with open(in_csv) as f:
     wss = [
-           ('sample', int(re.findall("sample-(\d+)_", in_csv)[0])), 
+           ('sample', int(re.findall("sample-(\d+)_", in_csv)[0])),
+           ('measure', re.findall("_rewards_(\w+).csv", in_csv)[0]), 
            ('wsize', 8)
           ]
     for l in f.readlines()[1:]:
@@ -39,6 +41,8 @@ with open(in_csv) as f:
             st()
             line = dict(wss + [p if len(p) == 2 else (p[0], -0.0) for p in pars])
         line['reward'] = fields[2]
+        line['file'] = fields[1]
+
         for i in line.items():
             try:
                 line[i[0]] = int(i[1])
