@@ -7,6 +7,7 @@ from os import path, makedirs
 logging.basicConfig(format='%(asctime)s %(message)s',
                     datefmt='%m/%d/%Y %I:%M:%S %p',
                     level=logging.INFO)
+from pdb import set_trace as st
 
 NACTIONS = 28561  # Number of lines in openIE input file.
 
@@ -75,6 +76,7 @@ def main():
                    .format(len(samples) * n_tests, len(samples) * n_tests * 3))
 
     for s in samples:
+
         nsteps = int(float(NACTIONS)/float(s))
         out_dir = ("/almac/ignacio/results_srl_env/wsize-"
                                 + str(rdn_win) + "/sample-" + str(s))
