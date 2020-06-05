@@ -3,14 +3,14 @@ import numpy as np
 import re
 import math
 import argparse
+from functools import partial
 from scipy.stats import norm as Normal
 from os import walk
 import sys
 from joblib import Parallel, delayed
 
-from pdb import set_trace as st
 
-def semantic_reward(csv, cols, measure, sample, sort=True, sigma=1000.0):
+def semantic_reward(csv, cols, measure, sample):
     df = pd.read_csv(csv) \
            .replace(np.inf, np.NaN) \
            .interpolate(method='linear')
@@ -84,9 +84,9 @@ for measure_type in ['h', 'cmi', 'mi', 'jh']:
                         'bw' in f and 'density' in f and 'ngrams' in f)
                     ]
         srwd = partial(semantic_reward, cols=columns,
-                    measure=posfijo, sigma=1000.0, sample=sample)
+                    measure=posfijo, sample=sample)
         dicts = Parallel(n_jobs=-1, verbose=10)(
-                delayed(srwd)('/'.join([results_dir, sample, file]))
+                    delayed(srwd)('/'.join([results_dir, sample, file]))
                                                     for file in result_files)
         results += dicts
 
