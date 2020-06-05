@@ -11,4 +11,4 @@ out = "_".join(rewards_f.split('/')[-2:])
 
 df.sort_values('reward', ascending=False, inplace=True)
 
-df.to_csv("results/rewards_sorted_" + out)
+df.to_csv("results/__sorted_" + out)
