@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import re
 import math
-import argparse
 from functools import partial
 from scipy.stats import norm as Normal
 from os import walk
@@ -10,7 +9,7 @@ import sys
 from joblib import Parallel, delayed
 
 
-def semantic_reward(csv, cols, measure, sample):
+def semantic_reward(csv, cols, measure, sample, beta=1e8):
     df = pd.read_csv(csv) \
            .replace(np.inf, np.NaN) \
            .interpolate(method='linear')
@@ -42,25 +41,31 @@ def semantic_reward(csv, cols, measure, sample):
 
     mean_df = df[cols].mean().sort_values()
     a, b, c = mean_df.values
-    sigma = df[mean_df.index[1]].std()
+    #sigma = df[mean_df.index[1]].std()
+    sa, sb, sc = df[mean_df.index].std().values
     l = abs(a - c) / 2
     dist = abs(b - l)
     try:
-        z = abs(a - c) / (sigma * math.sqrt(2 * math.pi))
-        line["Reward"] = z * math.exp(-dist ** 2/(2 * sigma ** 2))
+        z = abs(a - c) / (sb * math.sqrt(2 * math.pi))
+        line["Reward"] = z * math.exp(-dist ** 2/(2 * sb ** 2))
     except:
         line["Reward"] = 0.0
         
-    pvals = (   Normal(loc=b, scale=sigma).pdf(a),
-                Normal(loc=c, scale=sigma).pdf(b),
-                Normal(loc=a, scale=sigma).pdf(c)
+    pvals = (   Normal(loc=a, scale=sa).pdf(b),
+                Normal(loc=b, scale=sb).pdf(c),
+                Normal(loc=c, scale=sc).pdf(a)
             )
     line.update(zip(['ABpvalue',
                      'BCpvalue',
                      'CApvalue'], pvals))
+    #line["pReward"] = math.exp(-100000 * max(pvals))
+    #line["pReward"] = math.exp(-0.00001 * np.log(max(pvals)))
+    line["pReward"] = math.exp(-beta * max(pvals))
 
     return line
 
+
+out_name = sys.argv[1]
 
 results = []
 
@@ -90,5 +95,4 @@ for measure_type in ['h', 'cmi', 'mi', 'jh']:
                                                     for file in result_files)
         results += dicts
 
-pd.DataFrame(results).to_csv("results/all_results_originalExtremaWeightedGaussian_rwd.csv",
-                                index=False)
+pd.DataFrame(results).to_csv("results/" + out_name, index=False)
