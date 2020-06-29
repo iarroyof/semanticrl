@@ -8,9 +8,10 @@ logging.basicConfig(format='%(asctime)s %(message)s',
                     datefmt='%m/%d/%Y %I:%M:%S %p',
                     level=logging.INFO)
 from pdb import set_trace as st
-
-NACTIONS = 28561  # Number of lines in openIE input file.
-
+# fit
+#NACTIONS = 28561  # Number of lines in openIE input file.
+# dev
+NACTIONS = 18404
 
 def rand_ranges(a, b, N):
     j = 0
@@ -51,8 +52,11 @@ def test_settings(n_tests, ranges, steps=5):
         yield (i, last, dict(s.items()))
 
 def main():
-    in_text = "data/dis_train_.txt"
-    in_open = "data/dis_train.txt.oie"
+    #in_text = "data/dis_train_.txt"
+    #in_open = "data/dis_train.txt.oie"
+    in_text = "data/dis_test_.txt"
+    in_open = "data/dis_test.txt.oie"
+    
     rdn_win = 8  # 6 + 2 (mean + std)
     sampran = (10, 320)  # sample range
     min_ngrams = 1
@@ -78,7 +82,7 @@ def main():
     for s in samples:
 
         nsteps = int(float(NACTIONS)/float(s))
-        out_dir = ("/almac/ignacio/results_srl_env/wsize-"
+        out_dir = ("/almac/ignacio/test_results_srl_env/wsize-"
                                 + str(rdn_win) + "/sample-" + str(s))
         if not path.exists(out_dir):
             makedirs(out_dir)
