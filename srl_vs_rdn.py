@@ -39,10 +39,10 @@ class SrlEnvTest(object):
     the computation are deposited as a csv file specified with the --output
     argument of this script.
     ...
-    
+
     Attributes
     ----------
-    
+
     """
 
     def __init__(self, in_oie, in_txt, output_dir, sample=100, wsize=10,
@@ -72,7 +72,7 @@ class SrlEnvTest(object):
         sample : int
             Sample size for text environment steps (default: 100).
         toanalyze : str
-            File where the resulting columns are indicated (default:        
+            File where the resulting columns are indicated (default:
             'analysis_cols.txt').
         """
 
@@ -97,7 +97,7 @@ class SrlEnvTest(object):
         idxs = sorted(random.sample(list(range(1, len(tokens) - 1)), 2))
         action = np.split(tokens, idxs)
         return {c: " ".join(a) for c, a in zip(STRUCTCOLS, action)}
-    
+
 
     def zlog(self, p):
         with warnings.catch_warnings():
@@ -141,7 +141,7 @@ class SrlEnvTest(object):
         with open(self.toanalyze) as f: 
             cols_results = f.readlines()
         self.toanalyze = []
-        
+
         for s in cols_results:
             c = s.strip()
             if not c.startswith('#'):
@@ -259,15 +259,15 @@ class SrlEnvTest(object):
             trap_df = Akdf[[a, b]]
             if a == b:
                 trap_df.set_axis([a, b + '_'], axis=1, inplace=True)
-            
+
             to_operate = pd.concat([trap_df.reset_index(drop=True),
                                     rdns_df.reset_index(drop=True)],
                                     axis=1, sort=False)[[a] + rdns]
             joincol = "$\mathcal{{N}}\{{h(" + ', '.join((a, b)) + "), \sigma\}}$"
-        
+
             Akdf[joincol] = to_operate.apply(capacity, axis=1).tolist()
-        
-        return Akdf.dropna()                
+
+        return Akdf.dropna()
 
 
     def compute_mutuals(self, df, cols):
@@ -319,10 +319,10 @@ class SrlEnvTest(object):
             for a, b in prod_cols:
                 probcs.append("$\mathcal{{N}}\{{h({0}, {1}), \sigma\}}$" \
                                 .format(a, b))
-                        
+
         A_tau = [Akdf[i:i + sample_size]
                 for i in range(0, self.n_steps * sample_size, sample_size)]
-    
+
         logging.info(
                 f"Computing probabilities of random sets for {self.n_steps} steps.")
         with parallel_backend('multiprocessing' if BACKEND == 'mp' else 'loky'):
@@ -335,7 +335,7 @@ class SrlEnvTest(object):
             if self.verbose:
                 logging.info("Estimated set probabilities in {}s..." \
                             .format(time.time() - t))
-    
+
         with parallel_backend('multiprocessing' if BACKEND == 'mp' else 'loky'):
             t = time.time()
             info_steps = Parallel(n_jobs=self.njobs)(
@@ -344,7 +344,7 @@ class SrlEnvTest(object):
             if self.verbose:
                 logging.info("Estimated MIs in {}s..." \
                                 .format(time.time() - t))
-                                
+
         pd.DataFrame(info_steps).to_csv(out_csv)
 
 
@@ -371,16 +371,16 @@ class SrlEnvTest(object):
                     else "-".join([p, self._formatf(v)])
                         for p, v in namespace.items()
                             if not p in nonh]
-                        
-        return "_".join(names) + ".csv"
-            
 
-    def fit(self, bias=1.0, hitmiss=0.25, bw=5.0, density='expset',
+        return "_".join(names) + ".csv"
+
+
+    def fit(self, bias=1.0, hitmiss=1.0, bw=5.0, density='expset',
                                                     ngrams=(1, 3), output=None):
         """
         Parameters
         ----------
-                        
+
         ngrams : tuple([int, int])
             N-gram range to form elementary text strings to form sets 
             default: (1, 3) set as '1 3' (two space-separated integers).
@@ -418,7 +418,7 @@ class SrlEnvTest(object):
                         .format(self.properties))
         t_start = time.time()
         n_hit_miss = int(self.sample * hitmiss)
-    
+
         if self.donot_make_oie:
             logging.info("MI for OpenIE actions already exists (SKIPPED)...")
         else:
@@ -438,7 +438,7 @@ class SrlEnvTest(object):
                     out_csv=self.output_dir + "/rdn_" + self.out_name,
                     sigma=bw, density=density, sample_size=self.sample,
                     ngramr=ngrams, n_hit_miss=n_hit_miss, bias=bias)
-        if self.verbose:                
+        if self.verbose:
             logging.info("Results saved to: \n{}\n{}\ntime elapsed: {}" \
                         .format(self.output_dir + "/oie_" + self.out_name,
                                 self.output_dir + "/rdn_" + self.out_name,

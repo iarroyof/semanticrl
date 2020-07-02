@@ -37,11 +37,12 @@ def test_settings(n_tests, ranges, steps=5):
         if not isinstance(v, dict):
             if not isinstance(v[0], str):
                 settings[p] = np.random.choice(
-                                        np.round(np.linspace(v[0], v[1], steps)),
-                                        n_tests, p=[1.0/steps] * steps)
+                    np.round(
+                        np.linspace(v[0], v[1], steps)),
+                        n_tests, p=[1.0/steps] * steps)
             else:
-                settings[p] = np.random.choice(v, n_tests,
-                                               p=[1.0/len(v)] * len(v)).tolist()
+                settings[p] = np.random.choice(
+                    v, n_tests, p=[1.0/len(v)] * len(v)).tolist()
         else:
             settings[p] = rand_ranges(v['low'], v['high'], N=n_tests)
 
@@ -56,7 +57,8 @@ def main():
     #in_open = "data/dis_train.txt.oie"
     in_text = "data/dis_test_.txt"
     in_open = "data/dis_test.txt.oie"
-    
+    out_dir = "/almac/ignacio/test_results_srl_env/"
+
     rdn_win = 8  # 6 + 2 (mean + std)
     sampran = (10, 320)  # sample range
     min_ngrams = 1
@@ -68,9 +70,8 @@ def main():
     n_tests = int(max_tests_possible * 0.3)  # 25600 * 0.3 = 2560
     param_ranges = dict(
         bias=(0.0, 10.0),  # 10
-        hitmiss=(0.1, 1.0),  # 10
+        #hitmiss=(0.1, 1.0),  # 10
         bw=(1.0, 5.0),  # 4
-        # ['gausset', 'setmax', 'expset']
         density=('expset', 'gausset'), # 2
         ngrams={'low': min_ngrams, 'high': max_ngrams} )
 
@@ -82,8 +83,8 @@ def main():
     for s in samples:
 
         nsteps = int(float(NACTIONS)/float(s))
-        out_dir = ("/almac/ignacio/test_results_srl_env/wsize-"
-                                + str(rdn_win) + "/sample-" + str(s))
+        out_dir = (
+            out_dir.strip('/') + "/wsize-" + str(rdn_win) + "/sample-" + str(s))
         if not path.exists(out_dir):
             makedirs(out_dir)
         else:
