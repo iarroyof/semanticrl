@@ -41,7 +41,6 @@ def semantic_reward(csv, cols, measure, sample, beta=1e8):
 
     mean_df = df[cols].mean().sort_values()
     a, b, c = mean_df.values
-    #sigma = df[mean_df.index[1]].std()
     sa, sb, sc = df[mean_df.index].std().values
     l = abs(a - c) / 2
     dist = abs(b - l)
@@ -58,8 +57,6 @@ def semantic_reward(csv, cols, measure, sample, beta=1e8):
     line.update(zip(['ABpvalue',
                      'BCpvalue',
                      'CApvalue'], pvals))
-    #line["pReward"] = math.exp(-100000 * max(pvals))
-    #line["pReward"] = math.exp(-0.00001 * np.log(max(pvals)))
     line["pReward"] = math.exp(-beta * max(pvals))
 
     return line
