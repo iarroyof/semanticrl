@@ -3,7 +3,7 @@ import sys
 from pdb import set_trace as st
 
 agent = 'oie'
-    
+
 try:
     results_incsv = sys.argv[1]
 except:
@@ -72,8 +72,10 @@ formats = {'bias': '{:.1f}', 'bw': '{:.1f}',
 
 for col, f in formats.items():
     results_df[col] = results_df[col].map(lambda x: f.format(x))
-    
-results_df.to_csv(results_outcsv, index=False)
+
+results_df[["Measure", "Sample", "bias", "bw", "density",
+	    "ngrams", "ABpvalue", "BCpvalue", "CApvalue", "pReward"]].to_csv(
+						results_outcsv, index=False)
 
 # For random agent
 rdn_dfs = []
@@ -93,5 +95,7 @@ rdn_df = pd.concat(rdn_dfs)
 for col, f in formats.items():
     rdn_df[col] = rdn_df[col].map(lambda x: f.format(x))
 rdn_df['Measure'] = rdn_df['Measure'].apply(map_measures)
-rdn_df.to_csv(results_outcsv.replace('oie', 'rdn'), index=False)
+rdn_df[["Measure", "Sample", "bias", "bw", "density",
+            "ngrams", "ABpvalue", "BCpvalue", "CApvalue", "pReward"]].to_csv(
+				results_outcsv.replace('oie', 'rdn'), index=False)
 
