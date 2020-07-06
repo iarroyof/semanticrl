@@ -63,11 +63,11 @@ def semantic_reward(csv, cols, measure, sample, beta=1e8):
 
 
 out_name = sys.argv[1]
+results_dir = "/almac/ignacio/test_results_srl_env/wsize-8"
 
 results = []
 
 for measure_type in ['h', 'cmi', 'mi', 'jh']:
-    results_dir = "/almac/ignacio/results_srl_env/wsize-8"
     columns, posfijo = {'h':
         (["$H[h(Z, Z)]$", "$H[h(Y, Y)]$", "$H[h(X, X)]$"], "HX_HY_HZ"),
                    'cmi':
@@ -92,4 +92,4 @@ for measure_type in ['h', 'cmi', 'mi', 'jh']:
                                                     for file in result_files)
         results += dicts
 
-pd.DataFrame(results).to_csv("results/" + out_name, index=False)
+pd.DataFrame(results).to_csv(out_name, index=False)
