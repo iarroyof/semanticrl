@@ -21,7 +21,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 import time
 import warnings
 
-
+from pdb import set_trace as st
 logging.basicConfig(format='%(asctime)s %(message)s',
                     datefmt='%m/%d/%Y %I:%M:%S %p',
                     level=logging.INFO)
@@ -346,6 +346,10 @@ class SrlEnvTest(object):
                                 .format(time.time() - t))
 
         pd.DataFrame(info_steps).to_csv(out_csv)
+        if os.path.exists(out_csv):
+            logging.info("Output csv saved to {}".format(out_csv))
+        else:
+            logging.warning("Output csv {} wasn't saved!".format(out_csv))
 
 
     def _clean(self, x):
@@ -358,7 +362,10 @@ class SrlEnvTest(object):
 
     def _formatf(self, param, decs=1):
         if isinstance(param, float):
-            f = "{:." + str(decs) + "f}"
+            if param >= 1.0 or param == 0.0:
+                f = "{:." + str(decs) + "f}"
+            else:
+                f = "{:." + str(decs) + "E}"
             return f.format(param)
         elif isinstance(param, str):
             return param
@@ -375,7 +382,7 @@ class SrlEnvTest(object):
         return "_".join(names) + ".csv"
 
 
-    def fit(self, bias=1.0, hitmiss=1.0, bw=5.0, density='expset',
+    def fit(self, bias=1.0, hitmiss=1.0, bw=5.0, density='gausset',
                                                     ngrams=(1, 3), output=None):
         """
         Parameters
