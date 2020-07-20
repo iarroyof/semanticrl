@@ -22,8 +22,16 @@ def semantic_reward(csv, cols, measure, sample, beta=1e8):
         pars = csv.split('/')[-1].split('csv')[0].strip('.')
     else:
         pars = csv.split('csv')[0].strip('.')
-    pars = 'Agent-' + pars
-    pars = list([tuple(i.split('-')) for i in pars.split('_')])
+    #pars = 'Agent-' + pars
+    pars = []
+    for i in pars.split('_'):
+        tup = i.split('-')
+        if len(tup) <= 2:
+            pars.append(tuple(tup))
+        else:
+            pars.append(
+                (tup[0], '-'.join(tup[1:]))
+            )
     try:
         line = dict(wss + pars)
     except ValueError:
