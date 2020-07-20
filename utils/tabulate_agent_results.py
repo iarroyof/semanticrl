@@ -16,7 +16,7 @@ except:
 
 def map_measures(m):
     mapp = {
-        'HX_HY_HZ': 'Joint E.',
+        'HX_HY_HZ': 'JE',
         'IXYZ_IYZX_IXZY': 'CMI',
         'IXY_IYZ_IXZ': 'MI',
         'HXY_HYZ_HXZ': 'Entropy'

@@ -18,11 +18,13 @@ def plot_mis(csv, comparing_cols, title, roll=20):
     colors = ['b','g','r','c','m','y','k','w','burlywood']
     plt.figure()
     ax = plt.subplot(111)
-    for column, color in zip(comparing_cols, colors):
+    
+    for col_map, color in zip(comparing_cols, colors):
+        column, name = col_map
         col = df[column]
         ma = col.rolling(roll).mean()
         mstd = col.rolling(roll).std()
-        plt.plot(ma.index, ma, color, label=column)
+        plt.plot(ma.index, ma, color, label=name)
         plt.fill_between(mstd.index, ma - 2 * mstd, ma + 2 * mstd,
                      color=color, alpha=0.2)
         plt.title(title)
@@ -43,15 +45,16 @@ parser.add_argument("--roll", help="Rolling mean window (default: 20).",
                     type=int, default=20)
 args = parser.parse_args()
 
-columns, posfijo = {'h':
-        (["$H[h(Z, Z)]$", "$H[h(Y, Y)]$", "$H[h(X, X)]$"], "HX_HY_HZ"),
+column_map, posfijo = {'h':
+        ([("$H[h(Z, Z)]$", "H(Z)"), ("$H[h(Y, Y)]$", "H(Y)"), ("$H[h(X, X)]$", "H(X)")], "HX_HY_HZ"),
                    'cmi':
-        (["$I[h(Y+Z, X)]$", "$I[h(X+Z, Y)]$", "$I[h(X+Y, Z)]$"], "IXYZ_IYZX_IXZY"),
+        ([("$I[h(Y+Z, X)]$", "I(Y,Z|X)"), ("$I[h(X+Z, Y)]$", "I(X,Z|Y)"), ("$I[h(X+Y, Z)]$", "I(X,Y|Z)")], "IXYZ_IYZX_IXZY"),
                     'mi':
-        (["$I[h(Y, X)]$", "$I[h(Z, X)]$", "$I[h(Z, Y)]$"], "IXY_IYZ_IXZ"),
+        ([("$I[h(Y, X)]$", "I(X,Y)"), ("$I[h(Z, X)]$", "I(Z,X)"), ("$I[h(Z, Y)]$", "I(Y,Z)")], "IXY_IYZ_IXZ"),
                     'jh':
-        (["$H[h(Y+Z, Y+Z)]$", "$H[h(X+Z, X+Z)]$", "$H[h(X+Y, X+Y)]$"], "HXY_HYZ_HZX")
+        ([("$H[h(Y+Z, Y+Z)]$", "H(Y,Z)"), ("$H[h(X+Z, X+Z)]$", "H(X,Z)"), ("$H[h(X+Y, X+Y)]$", "H(X,Y)")], "HXY_HYZ_HZX")
     }[args.measure]
 title = args.title if args.title is None \
             else "Entropy-Based measure: " + posfijo
-plot_mis(csv=args.in_csv, comparing_cols=columns, title=title, roll=args.roll)
+plot_mis(csv=args.in_csv, comparing_cols=column_map, title=title, roll=args.roll)
+
