@@ -9,9 +9,9 @@ logging.basicConfig(format='%(asctime)s %(message)s',
                     level=logging.INFO)
 from pdb import set_trace as st
 # fit
-NACTIONS = 28561  # Number of lines in openIE input file.
+#NACTIONS = 28561  # Number of lines in openIE input file.
 # dev
-#NACTIONS = 18404
+NACTIONS = 18404
 
 def rand_ranges(a, b, N):
     j = 0
@@ -58,12 +58,12 @@ def test_settings(n_tests, ranges, steps=5):
         yield (i, last, dict(s.items()))
 
 def main():
-    in_text = "data/dis_train_.txt"
-    in_open = "data/dis_train.txt.oie"
-    out_dir = "/almac/ignacio/results_srl_env/"
-#    in_text = "data/dis_test_.txt"
-#    in_open = "data/dis_test.txt.oie"
-#    out_dir = "/almac/ignacio/test_results_srl_env/"
+#    in_text = "data/dis_train_.txt"
+#    in_open = "data/dis_train.txt.oie"
+#    out_dir = "/almac/ignacio/results_srl_env/"
+    in_text = "data/dis_test_.txt"
+    in_open = "data/dis_test.txt.oie"
+    out_dir = "/almac/ignacio/test_results_srl_env/"
 
     rdn_win = 8  # 6 + 2 (mean + std)
     sampran = (10, 320)  # sample range

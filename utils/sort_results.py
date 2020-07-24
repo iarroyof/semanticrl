@@ -22,16 +22,13 @@ def semantic_reward(csv, cols, measure, sample, beta=1e8):
         pars = csv.split('/')[-1].split('csv')[0].strip('.')
     else:
         pars = csv.split('csv')[0].strip('.')
-    #pars = 'Agent-' + pars
-    pars = []
-    for i in pars.split('_'):
-        tup = i.split('-')
-        if len(tup) <= 2:
-            pars.append(tuple(tup))
-        else:
-            pars.append(
-                (tup[0], '-'.join(tup[1:]))
-            )
+    pars = 'Agent-' + pars
+    #pars = []
+    pars = [
+        tuple(i.split('-')) if len(i.split('-')) <= 2
+            else (i.split('-')[0], '-'.join(i.split('-')[1:]))
+                for i in pars.split('_')
+    ]
     try:
         line = dict(wss + pars)
     except ValueError:
@@ -71,7 +68,7 @@ def semantic_reward(csv, cols, measure, sample, beta=1e8):
 
 
 out_name = sys.argv[1]
-results_dir = "/almac/ignacio/test_results_srl_env/wsize-8"
+results_dir = "/almac/ignacio/results_srl_env/wsize-8"
 
 results = []
 
@@ -88,14 +85,15 @@ for measure_type in ['h', 'cmi', 'mi', 'jh']:
     print("COMPUTING REWARDS FOR MEASURE: %s" % posfijo)
     samples = next(walk(results_dir))[1]
     for sample in samples:
-        result_files = [f for f in next(walk('/'.join([results_dir, sample])))[2]
-                        if (f.startswith("rdn_bias-") or f.startswith("oie_bias-"))
-                        and ('bias' in f and 'hitmiss' in f and
-                        'bw' in f and 'density' in f and 'ngrams' in f)
-                    ]
+        result_files = [
+            f for f in next(walk('/'.join([results_dir, sample])))[2]
+                if (f.startswith("rdn_bias-") or f.startswith("oie_bias-"))
+                    and ('bias' in f and 'hitmiss' in f
+                        and 'bw' in f and 'density' in f and 'ngrams' in f)
+        ]
         srwd = partial(semantic_reward, cols=columns,
                     measure=posfijo, sample=sample)
-        dicts = Parallel(n_jobs=-1, verbose=10)(
+        dicts = Parallel(n_jobs=1, verbose=10)(
                     delayed(srwd)('/'.join([results_dir, sample, file]))
                                                     for file in result_files)
         results += dicts
