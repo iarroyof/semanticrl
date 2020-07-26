@@ -1,6 +1,7 @@
 from functools import partial
 from jellyfish import damerau_levenshtein_distance as dlbsh
 from srl_env_v01 import textEnv
+from scipy.stats import norm as Normal
 import itertools
 import random
 import numpy as np
@@ -48,7 +49,7 @@ class SrlEnvTest(object):
     def __init__(self, in_oie, in_txt, output_dir, sample=100, wsize=10,
                         nsteps=200, tokenizer='char', n_trajectories=2,
                         njobs=-1, toanalyze = "analysis_cols.txt",
-                        verbose=False):
+                        return_df=False, verbose=False, to_simulate=None):
         """
         Parameters
         ----------
@@ -74,6 +75,11 @@ class SrlEnvTest(object):
         toanalyze : str
             File where the resulting columns are indicated (default:
             'analysis_cols.txt').
+        return_df : bool
+            Whether the `fit()` method returns entropy-based measures or not.
+        to_simulate : str | None
+            If None, both openIE and rdn agents are simulated. Set either 'oie'
+            or 'rdn' to simulate only some of the agents.
         """
 
         self.input_oie      = in_oie
@@ -88,8 +94,15 @@ class SrlEnvTest(object):
         self.sample         = sample
         self.tokenizer      = tokenizer
         self.verbose        = verbose
-        self.oie_Akdf       = self._simulate_oie_actions()
-        self.rdn_Akdf       = self._simulate_rnd_actions()
+        self.return_df      = return_df
+        self.to_simulate    = to_simulate
+        if self.to_simulate is None:
+            self.oie_Akdf       = self._simulate_oie_actions()
+            self.rdn_Akdf       = self._simulate_rnd_actions()
+        elif self.to_simulate == 'oie':
+            self.oie_Akdf       = self._simulate_oie_actions()
+        else:
+            self.rdn_Akdf       = self._simulate_rnd_actions()
 
 
     def rdn_partition(self, state):
@@ -345,11 +358,15 @@ class SrlEnvTest(object):
                 logging.info("Estimated MIs in {}s..." \
                                 .format(time.time() - t))
 
-        pd.DataFrame(info_steps).to_csv(out_csv)
-        if os.path.exists(out_csv):
-            logging.info("Output csv saved to {}".format(out_csv))
+        out_df = pd.DataFrame(info_steps)
+        if out_csv is None:
+            return out_df
         else:
-            logging.warning("Output csv {} wasn't saved!".format(out_csv))
+            out_df.to_csv(out_csv)
+            if os.path.exists(out_csv):
+                logging.info("Output csv saved to {}".format(out_csv))
+            else:
+                logging.warning("Output csv {} wasn't saved!".format(out_csv))
 
 
     def _clean(self, x):
@@ -404,18 +421,27 @@ class SrlEnvTest(object):
             (in [0.0, 1.0]; default: 0.25: 25%% of sample size, self.sample).
         bias : float
             Bias parameter for linear separator densities (default: 1.0).
+        
+        Return
+        ------
+        entropy_df : pandas.DataFrame
+            If self.return_df is True, then this method returns dataframes
+            with the entropy-based measures (random and openIE). Otherwise,
+            it is saved to csv files '"/[oie_|rdn_]" + self.out_name'
         """
+        rdn_hdf = None
+        oie_hdf = None
         self.analyzer = CountVectorizer(analyzer=self.tokenizer,
                                         ngram_range=ngrams).build_analyzer()
         self.properties = {k: v for k, v in locals().items()
                           if k in inspect.getfullargspec(self.fit).args}
         del self.properties['self']
-        if output is None:
+        if output is None and self.to_simulate in ['oie', None]:
             self.out_name = self._make_output_name(self.properties)
             self.donot_make_oie, self.donot_make_rdn = (
                      os.path.isfile(self.output_dir + "/oie_" + self.out_name),
                      os.path.isfile(self.output_dir + "/rdn_" + self.out_name))
-        else:
+        elif self.to_simulate in ['rdn', None]:
             self.out_name = output
             self.donot_make_oie, self.donot_make_rdn = (
                      os.path.isfile(self.output_dir + "/oie_" + self.out_name),
@@ -428,29 +454,100 @@ class SrlEnvTest(object):
 
         if self.donot_make_oie:
             logging.info("MI for OpenIE actions already exists (SKIPPED)...")
-        else:
+        elif self.to_simulate in ['oie', None]:
             if self.verbose:
                 logging.info("Computing MI for OpenIE actions...")
-            self.compute_mi_steps(self.oie_Akdf, prod_cols=self.toanalyze,
-                    out_csv=self.output_dir + "/oie_" + self.out_name,
-                    sigma=bw, density=density, sample_size=self.sample,
-                    ngramr=ngrams, n_hit_miss=n_hit_miss, bias=bias)
+            oie_hdf = self.compute_mi_steps(
+                self.oie_Akdf, prod_cols=self.toanalyze,
+                out_csv=None if self.return_df
+                    else self.output_dir + "/oie_" + self.out_name,
+                sigma=bw, density=density, sample_size=self.sample,
+                ngramr=ngrams, n_hit_miss=n_hit_miss, bias=bias)
 
         if self.donot_make_rdn:
             logging.info("MI for random actions already exists (SKIPPED)...")
-        else:
+        elif self.to_simulate in ['rdn', None]:
             if self.verbose:
                 logging.info("Computing MI for random actions...")
-            self.compute_mi_steps(self.rdn_Akdf, prod_cols=self.toanalyze,
-                    out_csv=self.output_dir + "/rdn_" + self.out_name,
-                    sigma=bw, density=density, sample_size=self.sample,
-                    ngramr=ngrams, n_hit_miss=n_hit_miss, bias=bias)
-        if self.verbose:
+            rdn_hdf = self.compute_mi_steps(
+                self.rdn_Akdf, prod_cols=self.toanalyze,
+                out_csv=None if self.return_df
+                    else self.output_dir + "/rdn_" + self.out_name,
+                sigma=bw, density=density, sample_size=self.sample,
+                ngramr=ngrams, n_hit_miss=n_hit_miss, bias=bias)
+        if self.verbose and not self.return_df:
             logging.info("Results saved to: \n{}\n{}\ntime elapsed: {}" \
                         .format(self.output_dir + "/oie_" + self.out_name,
                                 self.output_dir + "/rdn_" + self.out_name,
                                 time.time() - t_start))
+        
+        return oie_hdf, rdn_hdf
 
 
     def setattrs(self, kwargs):
         self.__dict__.update(kwargs)
+
+
+    def semantic_reward(self, csv, cols, measure, sample=None, beta=1e8, in_df=None):
+        if in_df is None:
+            df = pd.read_csv(csv) \
+                    .replace(np.inf, np.NaN) \
+                    .interpolate(method='linear')
+            if '/' in csv:
+                pars = csv.split('/')[-1].split('csv')[0].strip('.')
+            else:
+                pars = csv.split('csv')[0].strip('.')
+            pars = 'Agent-' + pars
+            pars = [
+                tuple(i.split('-')) if len(i.split('-')) <= 2
+                    else (i.split('-')[0], '-'.join(i.split('-')[1:]))
+                        for i in pars.split('_')
+            ]
+            wss = [
+                ('Sample', int(sample.split('-')[1])),
+                ('Measure', measure),
+                ('wsize', 8)
+            ]
+            try:
+                line = dict(wss + pars)
+            except ValueError:
+                pars.remove(('',))
+                line = dict(wss + pars)
+
+            for i in line.items():
+                try:
+                    line[i[0]] = int(i[1])
+                except ValueError:
+                    try:
+                        line[i[0]] = float(i[1])
+                    except ValueError:
+                        pass
+
+            return line
+
+        else:
+            df = in_df
+            line = {}
+            mean_df = df[cols].mean().sort_values()
+            a, b, c = mean_df.values
+            sa, sb, sc = df[mean_df.index].std().values
+            l = abs(a - c) / 2
+            dist = abs(b - l)
+            try:
+                z = abs(a - c) / (sb * math.sqrt(2 * math.pi))
+                line["Reward"] = z * math.exp(-dist ** 2/(2 * sb ** 2))
+            except:
+                line["Reward"] = 0.0
+        
+            pvals = (
+                Normal(loc=a, scale=sa).pdf(b - 2 * sb),
+                Normal(loc=b, scale=sb).pdf(c - 2 * sc),
+                Normal(loc=c, scale=sc).pdf(a + 2 * sa)
+            )
+            line.update(
+                zip(['ABpvalue',
+                     'BCpvalue',
+                     'CApvalue'], pvals))
+            line["pReward"] = math.exp(-beta * max(pvals))            
+
+            return line

@@ -69,7 +69,7 @@ def semantic_reward(csv, cols, measure, sample, beta=1e8):
 
 out_name = sys.argv[1]
 results_dir = "/almac/ignacio/results_srl_env/wsize-8"
-
+beta = 1e4 # for gaussian | 1e8 for exponential
 results = []
 
 for measure_type in ['h', 'cmi', 'mi', 'jh']:
@@ -92,8 +92,8 @@ for measure_type in ['h', 'cmi', 'mi', 'jh']:
                         and 'bw' in f and 'density' in f and 'ngrams' in f)
         ]
         srwd = partial(semantic_reward, cols=columns,
-                    measure=posfijo, sample=sample)
-        dicts = Parallel(n_jobs=1, verbose=10)(
+                    measure=posfijo, sample=sample, beta=beta)
+        dicts = Parallel(n_jobs=-1, verbose=10)(
                     delayed(srwd)('/'.join([results_dir, sample, file]))
                                                     for file in result_files)
         results += dicts

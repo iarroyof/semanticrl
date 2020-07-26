@@ -12696,3 +12696,147 @@ ModuleNotFoundError: No module named 'jellyfish'
 07/24/2020 04:35:25 PM Computing probabilities of random sets for 59 steps.
 07/24/2020 04:38:04 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/oie_bias-2.0_hitmiss-1.0_bw-1.0E-06_density-gausset_ngrams-1t3.csv
 07/24/2020 04:38:04 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 04:41:27 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/rdn_bias-2.0_hitmiss-1.0_bw-1.0E-06_density-gausset_ngrams-1t3.csv
+07/24/2020 04:41:27 PM Window and sample: /almac/ignacio/test_results_srl_env/wsize-8/sample-310
+07/24/2020 04:41:27 PM Parameters test 141/149 (94.6 %) for 310 samples: {'bias': 8.0, 'bw': 0.0025007500000000004, 'ngrams': (1, 2)}
+07/24/2020 04:41:27 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 04:43:50 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/oie_bias-8.0_hitmiss-1.0_bw-2.5E-03_density-gausset_ngrams-1t2.csv
+07/24/2020 04:43:50 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 04:46:23 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/rdn_bias-8.0_hitmiss-1.0_bw-2.5E-03_density-gausset_ngrams-1t2.csv
+07/24/2020 04:46:23 PM Window and sample: /almac/ignacio/test_results_srl_env/wsize-8/sample-310
+07/24/2020 04:46:23 PM Parameters test 142/149 (95.3 %) for 310 samples: {'bias': 10.0, 'bw': 0.007500250000000001, 'ngrams': (1, 4)}
+07/24/2020 04:46:23 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 04:49:27 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/oie_bias-10.0_hitmiss-1.0_bw-7.5E-03_density-gausset_ngrams-1t4.csv
+07/24/2020 04:49:27 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 04:53:29 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/rdn_bias-10.0_hitmiss-1.0_bw-7.5E-03_density-gausset_ngrams-1t4.csv
+07/24/2020 04:53:29 PM Window and sample: /almac/ignacio/test_results_srl_env/wsize-8/sample-310
+07/24/2020 04:53:29 PM Parameters test 143/149 (96.0 %) for 310 samples: {'bias': 8.0, 'bw': 0.01, 'ngrams': (3, 4)}
+07/24/2020 04:53:29 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 04:55:56 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/oie_bias-8.0_hitmiss-1.0_bw-1.0E-02_density-gausset_ngrams-3t4.csv
+07/24/2020 04:55:56 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 04:58:44 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/rdn_bias-8.0_hitmiss-1.0_bw-1.0E-02_density-gausset_ngrams-3t4.csv
+07/24/2020 04:58:44 PM Window and sample: /almac/ignacio/test_results_srl_env/wsize-8/sample-310
+07/24/2020 04:58:44 PM Parameters test 144/149 (96.6 %) for 310 samples: {'bias': 5.0, 'bw': 1e-06, 'ngrams': (1, 2)}
+07/24/2020 04:58:44 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 05:00:53 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/oie_bias-5.0_hitmiss-1.0_bw-1.0E-06_density-gausset_ngrams-1t2.csv
+07/24/2020 05:00:53 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 05:03:27 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/rdn_bias-5.0_hitmiss-1.0_bw-1.0E-06_density-gausset_ngrams-1t2.csv
+07/24/2020 05:03:27 PM Window and sample: /almac/ignacio/test_results_srl_env/wsize-8/sample-310
+07/24/2020 05:03:27 PM Parameters test 145/149 (97.3 %) for 310 samples: {'bias': 5.0, 'bw': 0.007500250000000001, 'ngrams': (2, 4)}
+07/24/2020 05:03:27 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 05:06:14 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/oie_bias-5.0_hitmiss-1.0_bw-7.5E-03_density-gausset_ngrams-2t4.csv
+07/24/2020 05:06:14 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 05:10:03 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/rdn_bias-5.0_hitmiss-1.0_bw-7.5E-03_density-gausset_ngrams-2t4.csv
+07/24/2020 05:10:03 PM Window and sample: /almac/ignacio/test_results_srl_env/wsize-8/sample-310
+07/24/2020 05:10:03 PM Parameters test 146/149 (98.0 %) for 310 samples: {'bias': 2.0, 'bw': 0.005000500000000001, 'ngrams': (1, 3)}
+07/24/2020 05:10:03 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 05:12:50 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/oie_bias-2.0_hitmiss-1.0_bw-5.0E-03_density-gausset_ngrams-1t3.csv
+07/24/2020 05:12:50 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 05:16:16 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/rdn_bias-2.0_hitmiss-1.0_bw-5.0E-03_density-gausset_ngrams-1t3.csv
+07/24/2020 05:16:16 PM Window and sample: /almac/ignacio/test_results_srl_env/wsize-8/sample-310
+07/24/2020 05:16:16 PM Parameters test 147/149 (98.7 %) for 310 samples: {'bias': 8.0, 'bw': 0.005000500000000001, 'ngrams': (2, 3)}
+07/24/2020 05:16:16 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 05:18:48 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/oie_bias-8.0_hitmiss-1.0_bw-5.0E-03_density-gausset_ngrams-2t3.csv
+07/24/2020 05:18:48 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 05:22:07 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/rdn_bias-8.0_hitmiss-1.0_bw-5.0E-03_density-gausset_ngrams-2t3.csv
+07/24/2020 05:22:07 PM Window and sample: /almac/ignacio/test_results_srl_env/wsize-8/sample-310
+07/24/2020 05:22:07 PM Parameters test 148/149 (99.3 %) for 310 samples: {'bias': 8.0, 'bw': 0.007500250000000001, 'ngrams': (2, 4)}
+07/24/2020 05:22:07 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 05:25:15 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/oie_bias-8.0_hitmiss-1.0_bw-7.5E-03_density-gausset_ngrams-2t4.csv
+07/24/2020 05:25:15 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 05:29:13 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/rdn_bias-8.0_hitmiss-1.0_bw-7.5E-03_density-gausset_ngrams-2t4.csv
+07/24/2020 05:29:13 PM Window and sample: /almac/ignacio/test_results_srl_env/wsize-8/sample-310
+07/24/2020 05:29:13 PM Parameters test 149/149 (100.0 %) for 310 samples: {'bias': 10.0, 'bw': 0.005000500000000001, 'ngrams': (1, 3)}
+07/24/2020 05:29:13 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 05:32:03 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/oie_bias-10.0_hitmiss-1.0_bw-5.0E-03_density-gausset_ngrams-1t3.csv
+07/24/2020 05:32:03 PM Computing probabilities of random sets for 59 steps.
+07/24/2020 05:35:23 PM Output csv saved to /almac/ignacio/test_results_srl_env/wsize-8/sample-310/rdn_bias-10.0_hitmiss-1.0_bw-5.0E-03_density-gausset_ngrams-1t3.csv
+Traceback (most recent call last):
+  File "test_widths.py", line 28, in <module>
+    widths = np.linspace(1.5, 2.5, 10, endpoint=True)
+NameError: name 'np' is not defined
+07/26/2020 11:58:00 AM Computing probabilities of random sets for 50 steps.
+07/26/2020 11:59:41 AM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.0003320252789500899, 'ABpvalue': 6.979694869140997e-199, 'BCpvalue': 0.00819098486357001, 'CApvalue': 4.8237152181337785e-14, 'pReward': 0.0002771408039077307, 'width': 1.5}
+07/26/2020 12:01:22 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.00039401644493692955, 'ABpvalue': 2.246212406879984e-199, 'BCpvalue': 0.00791988576629521, 'CApvalue': 6.181056574267326e-14, 'pReward': 0.00036344384166030327, 'width': 1.6111111111111112}
+07/26/2020 12:03:04 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.00046060223347125384, 'ABpvalue': 3.1519648312781474e-200, 'BCpvalue': 0.007854649482451008, 'CApvalue': 7.897462479815229e-14, 'pReward': 0.0003879440295626768, 'width': 1.7222222222222223}
+07/26/2020 12:04:42 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.0005320223859252897, 'ABpvalue': 2.448104828028784e-201, 'BCpvalue': 0.007940658528344122, 'CApvalue': 1.0058194310798286e-13, 'pReward': 0.00035597198346393394, 'width': 1.8333333333333333}
+07/26/2020 12:06:24 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.000608560138437717, 'ABpvalue': 1.2532171372426296e-202, 'BCpvalue': 0.008144350450175994, 'CApvalue': 1.2766095130016712e-13, 'pReward': 0.0002903712009609488, 'width': 1.9444444444444444}
+07/26/2020 12:08:03 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.0006905057035992674, 'ABpvalue': 4.805826532262071e-204, 'BCpvalue': 0.008444813649261617, 'CApvalue': 1.6144647240865296e-13, 'pReward': 0.00021501265969632526, 'width': 2.0555555555555554}
+07/26/2020 12:09:43 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.0007781324988561208, 'ABpvalue': 1.5166240077177815e-205, 'BCpvalue': 0.008829097347121553, 'CApvalue': 2.034147717254612e-13, 'pReward': 0.00014641033756875057, 'width': 2.1666666666666665}
+07/26/2020 12:11:24 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.0008716829090787087, 'ABpvalue': 4.220502936825258e-207, 'BCpvalue': 0.009289493476568204, 'CApvalue': 2.5532371736372253e-13, 'pReward': 9.238984605191082e-05, 'width': 2.2777777777777777}
+07/26/2020 12:13:04 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.000971360666707765, 'ABpvalue': 1.0896915942322275e-208, 'BCpvalue': 0.009821906254762857, 'CApvalue': 3.19258756991691e-13, 'pReward': 5.425007110990765e-05, 'width': 2.388888888888889}
+{'Reward': 0.0010773276119610295, 'ABpvalue': 2.709838155800495e-210, 'BCpvalue': 0.010424844652307474, 'CApvalue': 3.976855020377588e-13, 'pReward': 2.9685713574651975e-05, 'width': 2.5}
+07/26/2020 02:21:50 PM Computing probabilities of random sets for 50 steps.
+07/26/2020 02:23:31 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 1.8515035036346883e-13, 'ABpvalue': 0.08702544919952722, 'BCpvalue': 0.034514080634514284, 'CApvalue': 0.02852908621130434, 'pReward': 1.6044553195951646e-38, 'width': 1.5, 'measure': 'CMI'}
+07/26/2020 02:25:12 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 9.279013473569598e-19, 'ABpvalue': 0.07920669613433891, 'BCpvalue': 0.029440928005924658, 'CApvalue': 0.024482736842320916, 'pReward': 3.9899636494737333e-35, 'width': 1.6111111111111112, 'measure': 'CMI'}
+07/26/2020 02:26:52 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 1.509187044935658e-14, 'ABpvalue': 0.07488481451655858, 'BCpvalue': 0.060652788685476064, 'CApvalue': 0.014147643088222741, 'pReward': 3.0056491027900347e-33, 'width': 1.7222222222222223, 'measure': 'CMI'}
+07/26/2020 02:28:31 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 4.7657279512398605e-14, 'ABpvalue': 0.07570396730359498, 'BCpvalue': 0.0665121769566701, 'CApvalue': 0.014383619495996898, 'pReward': 1.3249050085509147e-33, 'width': 1.8333333333333333, 'measure': 'CMI'}
+07/26/2020 02:30:11 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 5.300861645984403e-14, 'ABpvalue': 0.07737749039949314, 'BCpvalue': 0.06806501086603928, 'CApvalue': 0.014677609427534944, 'pReward': 2.4853233263805847e-34, 'width': 1.9444444444444444, 'measure': 'CMI'}
+07/26/2020 02:31:52 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 8.648116737770121e-26, 'ABpvalue': 0.01678246837309248, 'BCpvalue': 0.16119289917736476, 'CApvalue': 0.01785884339076953, 'pReward': 9.881283628291322e-71, 'width': 2.0555555555555554, 'measure': 'CMI'}
+07/26/2020 02:33:31 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 1.0597232701867311e-25, 'ABpvalue': 0.01728337425138868, 'BCpvalue': 0.1664514240759289, 'CApvalue': 0.018394790795474503, 'pReward': 5.141206155987167e-73, 'width': 2.1666666666666665, 'measure': 'CMI'}
+07/26/2020 02:35:11 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 4.620047879171376e-14, 'ABpvalue': 0.01842783401180673, 'BCpvalue': 0.12864545849688874, 'CApvalue': 0.0047533663277480815, 'pReward': 1.3489232893430552e-56, 'width': 2.2777777777777777, 'measure': 'CMI'}
+07/26/2020 02:36:52 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 5.019094645672316e-14, 'ABpvalue': 0.019122513759918233, 'BCpvalue': 0.13385540300169996, 'CApvalue': 0.004934828915236769, 'pReward': 7.367787701475174e-59, 'width': 2.388888888888889, 'measure': 'CMI'}
+{'Reward': 1.3575379391327231e-15, 'ABpvalue': 0.013588836970299575, 'BCpvalue': 0.1901662592321144, 'CApvalue': 0.003314059749321113, 'pReward': 2.5813266866285923e-83, 'width': 2.5, 'measure': 'CMI'}
+07/26/2020 03:02:22 PM Computing probabilities of random sets for 50 steps.
+07/26/2020 03:04:04 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.0012878467185454174, 'ABpvalue': 7.776039724373188e-153, 'BCpvalue': 0.35459774394018445, 'CApvalue': 3.0132135730141456e-13, 'pReward': 1.0003604458435892e-154, 'width': 1.5, 'measure': 'Entropy'}
+07/26/2020 03:05:45 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.0015322649307471612, 'ABpvalue': 2.194866568052813e-152, 'BCpvalue': 0.3680469758374898, 'CApvalue': 3.804145298683446e-13, 'pReward': 1.442877006469949e-160, 'width': 1.6111111111111112, 'measure': 'Entropy'}
+07/26/2020 03:06:22 PM Computing probabilities of random sets for 50 steps.
+07/26/2020 03:08:31 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.35519993372653114, 'ABpvalue': 2.0765639071376887e-157, 'BCpvalue': 1.507247277705806e+39, 'CApvalue': 4.465790818966989e+30, 'pReward': 0.0, 'width': 1.5, 'measure': 'Entropy'}
+07/26/2020 03:10:42 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.35793506149893334, 'ABpvalue': 1.5930593731557456e-154, 'BCpvalue': 1.6631526887086386e+42, 'CApvalue': 5.0158724452113396e+33, 'pReward': 0.0, 'width': 1.6111111111111112, 'measure': 'Entropy'}
+07/26/2020 03:12:52 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.36033980069177785, 'ABpvalue': 1.2873926005724613e-151, 'BCpvalue': 1.8477846436505714e+45, 'CApvalue': 5.6596975178631e+36, 'pReward': 0.0, 'width': 1.7222222222222223, 'measure': 'Entropy'}
+07/26/2020 03:15:01 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.3624704674330687, 'ABpvalue': 1.0863754989157008e-148, 'BCpvalue': 2.0652788879012446e+48, 'CApvalue': 6.412809011121242e+39, 'pReward': 0.0, 'width': 1.8333333333333333, 'measure': 'Entropy'}
+07/26/2020 03:17:09 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.36437129109872846, 'ABpvalue': 9.507310574797264e-146, 'BCpvalue': 2.3206706247879713e+51, 'CApvalue': 7.293659843174523e+42, 'pReward': 0.0, 'width': 1.9444444444444444, 'measure': 'Entropy'}
+07/26/2020 03:19:17 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.3660774865045802, 'ABpvalue': 8.581686396040531e-143, 'BCpvalue': 2.6200176457518434e+54, 'CApvalue': 8.324136951672319e+45, 'pReward': 0.0, 'width': 2.0555555555555554, 'measure': 'Entropy'}
+07/26/2020 03:21:25 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.36761743573522515, 'ABpvalue': 7.954514360589677e-140, 'BCpvalue': 2.9705597366619057e+57, 'CApvalue': 9.530188443366135e+48, 'pReward': 0.0, 'width': 2.1666666666666665, 'measure': 'Entropy'}
+07/26/2020 03:23:32 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.3690142663847611, 'ABpvalue': 7.544364118168129e-137, 'BCpvalue': 3.3809169660497526e+60, 'CApvalue': 1.0942573395269117e+52, 'pReward': 0.0, 'width': 2.2777777777777777, 'measure': 'Entropy'}
+07/26/2020 03:25:40 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.37028701219532567, 'ABpvalue': 7.29988337479687e-134, 'BCpvalue': 3.861331592937334e+63, 'CApvalue': 1.2597757688400942e+55, 'pReward': 0.0, 'width': 2.388888888888889, 'measure': 'Entropy'}
+{'Reward': 0.3714514794185057, 'ABpvalue': 7.188296725266732e-131, 'BCpvalue': 4.423960241573258e+66, 'CApvalue': 1.4538983905678867e+58, 'pReward': 0.0, 'width': 2.5, 'measure': 'Entropy'}
+07/26/2020 03:34:53 PM Computing probabilities of random sets for 50 steps.
+07/26/2020 03:37:03 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.04777247542826401, 'ABpvalue': 1.9059153177101187e-83, 'BCpvalue': 0.3687476973875095, 'CApvalue': 9.962441297315057e-10, 'pReward': 7.159947041680417e-161, 'width': 1.5, 'measure': 'Entropy'}
+07/26/2020 03:39:11 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.050977523693001354, 'ABpvalue': 1.431955539812844e-83, 'BCpvalue': 0.3902268073925475, 'CApvalue': 1.1936053128204708e-09, 'pReward': 3.362411471625459e-170, 'width': 1.6111111111111112, 'measure': 'Entropy'}
+07/26/2020 03:41:21 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.05433716505237434, 'ABpvalue': 1.0814387819120977e-83, 'BCpvalue': 0.4138438514922722, 'CApvalue': 1.430554829551494e-09, 'pReward': 1.8616538264291e-180, 'width': 1.7222222222222223, 'measure': 'Entropy'}
+07/26/2020 03:43:28 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.057837128771262805, 'ABpvalue': 8.224274623521462e-84, 'BCpvalue': 0.43974088473613593, 'CApvalue': 1.7137956812704874e-09, 'pReward': 1.0542904967155232e-191, 'width': 1.8333333333333333, 'measure': 'Entropy'}
+07/26/2020 03:45:34 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.06146406398774101, 'ABpvalue': 6.305715910658931e-84, 'BCpvalue': 0.4680827419214854, 'CApvalue': 2.0510482137956257e-09, 'pReward': 5.179026215429674e-204, 'width': 1.9444444444444444, 'measure': 'Entropy'}
+07/26/2020 03:47:41 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.0652054142468747, 'ABpvalue': 4.878176468299037e-84, 'BCpvalue': 0.4990569046437701, 'CApvalue': 2.451176028782477e-09, 'pReward': 1.8295326211186353e-217, 'width': 2.0555555555555554, 'measure': 'Entropy'}
+07/26/2020 03:49:47 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.0690493301460776, 'ABpvalue': 3.809692854405916e-84, 'BCpvalue': 0.5328740420533624, 'CApvalue': 2.9243294044638138e-09, 'pReward': 3.7648180043149435e-232, 'width': 2.1666666666666665, 'measure': 'Entropy'}
+07/26/2020 03:51:53 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.07298461126590342, 'ABpvalue': 3.0044509369760543e-84, 'BCpvalue': 0.5697690583683492, 'CApvalue': 3.4821077735690414e-09, 'pReward': 3.568140865480972e-248, 'width': 2.2777777777777777, 'measure': 'Entropy'}
+07/26/2020 03:54:00 PM Computing probabilities of random sets for 50 steps.
+{'Reward': 0.0770006681563476, 'ABpvalue': 2.3930347614510166e-84, 'BCpvalue': 0.610002554004487, 'CApvalue': 4.137743196976326e-09, 'pReward': 1.2002089167531634e-265, 'width': 2.388888888888889, 'measure': 'Entropy'}
+{'Reward': 0.08108749691768288, 'ABpvalue': 1.9251148946236785e-84, 'BCpvalue': 0.6538626497018464, 'CApvalue': 4.906307127268619e-09, 'pReward': 1.0741360977141598e-284, 'width': 2.5, 'measure': 'Entropy'}
