@@ -69,7 +69,9 @@ def semantic_reward(csv, cols, measure, sample, beta=1e8):
 
 out_name = sys.argv[1]
 results_dir = "/almac/ignacio/results_srl_env/wsize-8"
-beta = 1e4 # for gaussian | 1e8 for exponential
+#results_dir = "/almac/ignacio/results_srl_env/wsize-8"
+#beta = 1e4 # for gaussian | 1e8 for exponential
+beta = 1e8
 results = []
 
 for measure_type in ['h', 'cmi', 'mi', 'jh']:
