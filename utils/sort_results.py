@@ -69,10 +69,9 @@ def semantic_reward(csv, cols, measure, sample, beta=1e8):
 
 
 out_name = sys.argv[1]
-results_dir = "/almac/ignacio/results_srl_env/wsize-8"
+results_dir = "/almac/ignacio/test_results_srl_env/wsize-8"
 #results_dir = "/almac/ignacio/results_srl_env/wsize-8"
 #beta = 1e4 # for gaussian | 1e8 for exponential
-beta = 1e8
 results = []
 
 for measure_type in ['h', 'cmi', 'mi', 'jh']:
@@ -87,6 +86,7 @@ for measure_type in ['h', 'cmi', 'mi', 'jh']:
     }[measure_type]
     print("COMPUTING REWARDS FOR MEASURE: %s" % posfijo)
     samples = next(walk(results_dir))[1]
+
     for sample in samples:
         result_files = [
             f for f in next(walk('/'.join([results_dir, sample])))[2]
@@ -94,10 +94,13 @@ for measure_type in ['h', 'cmi', 'mi', 'jh']:
                     and ('bias' in f and 'hitmiss' in f
                         and 'bw' in f and 'density' in f and 'ngrams' in f)
         ]
+        
         srwd = partial(semantic_reward, cols=columns,
-                    measure=posfijo, sample=sample, beta=beta)
+                    measure=posfijo, sample=sample)
         dicts = Parallel(n_jobs=-1, verbose=10)(
-                    delayed(srwd)('/'.join([results_dir, sample, file]))
+                    delayed(srwd)(
+                        csv='/'.join([results_dir, sample, file]),
+                        beta=1e4 if "gausset" in file else 1e8)
                                                     for file in result_files)
         results += dicts
 
