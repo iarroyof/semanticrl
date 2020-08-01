@@ -16,7 +16,8 @@ def semantic_reward(csv, cols, measure, sample, beta=1e8):
     wss = [
            ('Sample', int(sample.split('-')[1])),
            ('Measure', measure),
-           ('wsize', 8)
+           ('wsize', 8),
+           ('beta', beta)
           ]
     if '/' in csv:
         pars = csv.split('/')[-1].split('csv')[0].strip('.')

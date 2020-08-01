@@ -7,11 +7,11 @@ from os import path, makedirs
 logging.basicConfig(format='%(asctime)s %(message)s',
                     datefmt='%m/%d/%Y %I:%M:%S %p',
                     level=logging.INFO)
-from pdb import set_trace as st
+#from pdb import set_trace as st
 # fit
-#NACTIONS = 28561  # Number of lines in openIE input file.
+NACTIONS = 28561  # Number of lines in openIE input file.
 # dev
-NACTIONS = 18404
+#NACTIONS = 18404
 
 def rand_ranges(a, b, N):
     j = 0
@@ -58,19 +58,20 @@ def test_settings(n_tests, ranges, steps=5):
         yield (i, last, dict(s.items()))
 
 def main():
-#    in_text = "data/dis_train_.txt"
-#    in_open = "data/dis_train.txt.oie"
-#    out_dir = "/almac/ignacio/results_srl_env/"
-    in_text = "data/dis_test_.txt"
-    in_open = "data/dis_test.txt.oie"
-    out_dir = "/almac/ignacio/test_results_srl_env/"
+    in_text = "data/dis_train_.txt"
+    in_open = "data/dis_train.txt.oie"
+    out_dir = "/almac/ignacio/results_srl_env/"
+#    in_text = "data/dis_test_.txt"
+#    in_open = "data/dis_test.txt.oie"
+#    out_dir = "/almac/ignacio/test_results_srl_env/"
 
     rdn_win = 8  # 6 + 2 (mean + std)
     sampran = (10, 320)  # sample range
     min_ngrams = 1
     max_ngrams = 5
     range_steps = 5
-    samples = list(range(*sampran, 50))
+    ##samples = list(range(*sampran, 50))
+    samples = [60, 110, 160, 210, 260, 310]
     # (0. - 10.), (.1 - 1.), (1. - 5.), (expset, gausset), (1, 5)
     max_tests_possible =  (range_steps ** 3) * 2 * (2 ** max_ngrams)
     n_tests = int(max_tests_possible * 0.3)  # 25600 * 0.3 = 2560
@@ -79,10 +80,13 @@ def main():
         #hitmiss=(0.1, 1.0),  # 10
         bw=(0.000001, 0.01),  # 4
         #density=('expset', 'gausset'), # 2
-        ngrams={'low': min_ngrams, 'high': max_ngrams} )
+        ngrams={'low': min_ngrams, 'high': max_ngrams}
+    )
 
-    settings = list(test_settings(n_tests=n_tests, steps=range_steps,
-                                                        ranges=param_ranges))
+    ##settings = list(test_settings(n_tests=n_tests, steps=range_steps,
+    ##                                                    ranges=param_ranges))
+    settings = [(1, 1,
+        {'bias': 10.0, 'bw': 5.0, 'ngrams': (1, 2), 'density': 'expset'})]
     logging.info("Performing {} experiments in {} minutes (max.)" \
                    .format(len(samples) * n_tests, len(samples) * n_tests * 3))
 
