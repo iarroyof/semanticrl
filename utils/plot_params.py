@@ -20,7 +20,7 @@ def map_measures(m):
 
 infile = sys.argv[1]
 #df = pd.read_csv("results/train_results_originalExtremaWeighted"
-#                "GaussianBayesianExpBeta1e8Pvalues_rwd.csv")
+#                "GaussianBayesianExpBothPvalues_rwd.csv")
 drop_rwd = 'Reward'
 nng = 1
 ylog = False
@@ -120,7 +120,6 @@ for density in ['expset', 'gausset']:
                     nam0 = c
                     nam1 = cv
                     
-                #if num == 'bw': st()
                 cdf[cdf[c]==cv].plot(num, rwdt,
                     label=nam0 + '_' + nam1 + '_' + density,
                     ax=axs[i, j],
