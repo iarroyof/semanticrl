@@ -175,32 +175,41 @@ class SrlEnvTest(object):
                                            .apply(np.any, axis=1)]
 
 
-    def expset(self, S, ngramr=(1, 3), sigma=1.0, bias=0.1):
+    def expset(self, S, sigma=1.0, bias=0.1):
         S = list(S)
         s = self.analyzer(S[0])
         hit_miss = [self.analyzer(m) for m in S[1:]]
         inner = lambda a, b: len(set(a).intersection(b))
-        probability = lambda filter_trap: np.mean([
-                            sigma * math.exp(
-                                -sigma * inner(filter_trap, hm) + bias)
-                                                  for hm in hit_miss])
-        return probability(s)
+        densities = []
+
+        for hm in hit_miss:
+            dens = sigma * math.exp(
+                -sigma * (inner(s, hm) + bias))
+            densities.append(dens)
+        probability = np.mean(densities)
+        #probability = lambda filter_trap: np.mean([
+        #                    sigma * math.exp(
+        #                        -sigma * inner(filter_trap, hm) + bias)
+        #                                          for hm in hit_miss])
+        #return probability(s)
+        return probability
 
 
-    def gausset(self, S, ngramr=(1, 3), sigma=1.0, bias=1.0):
+    def gausset(self, S, sigma=1.0, bias=1.0):
         S = list(S)
         s = self.analyzer(S[0])
         hit_miss = [self.analyzer(m) for m in S[1:]]
         metric = lambda a, b: len(set(a).union(b) - set(a).intersection(b))
         probability = lambda filter_trap: np.mean([
-                                      np.sqrt(sigma / np.pi) * math.exp(
-                                          -sigma * (
-                                            metric(filter_trap, hm) + bias)**2)
-                                                  for hm in hit_miss])
+            np.sqrt(sigma / np.pi) * math.exp(
+                -sigma * (
+                    metric(filter_trap, hm) + bias) ** 2)
+                        for hm in hit_miss])
+
         return probability(s)
 
 
-    def setmax(self, S, ngramr=(1, 3), sigma=1.0, bias=0.1):
+    def setmax(self, S, sigma=1.0, bias=0.1):
         """This function takes a row 'S' where the fisrt item S[0] is the string
         we want to know its probability (likelihood), with respect to the 
         reamining items.
@@ -232,8 +241,8 @@ class SrlEnvTest(object):
         return rlh / sum(evidence)
 
 
-    def compute_set_probability(self, Akdf, prod_cols, hit_miss_samples=50, sigma=5.0, 
-                            ngramr=(1, 3), density='setmax', bias=1.0):
+    def compute_set_probability(self, Akdf, prod_cols, hit_miss_samples=50,
+                        sigma=5.0, ngramr=(1, 3), density='setmax', bias=1.0):
         try:
             assert len(Akdf.index) >= hit_miss_samples, (
                                                 "The number of hit-and-miss"
@@ -243,11 +252,11 @@ class SrlEnvTest(object):
             return None
 
         if density == 'gausset':
-            capacity = partial(self.gausset, ngramr=ngramr, sigma=sigma, bias=bias)
+            capacity = partial(self.gausset, sigma=sigma, bias=bias)
         elif density == 'setmax':
-            capacity = partial(self.setmax, ngramr=ngramr, sigma=sigma)
+            capacity = partial(self.setmax, sigma=sigma)
         elif density == 'expset':
-            capacity = partial(self.expset, ngramr=ngramr, sigma=sigma, bias=bias)
+            capacity = partial(self.expset, sigma=sigma, bias=bias)
         else:
             assert density in ['gausset', 'setmax', 'expset']  # Unknown density
 
@@ -261,8 +270,8 @@ class SrlEnvTest(object):
                 continue
 
         for a, b in joints:
-            Akdf['+'.join((a, b))] = Akdf[[a, b]].apply(lambda x: ' '.join(x),
-                                                          axis=1)
+            Akdf['+'.join((a, b))] = Akdf[[a, b]].apply(
+                lambda x: ' '.join(x), axis=1)
         for a, b in prod_cols:  # This lists already contains joints
             measures = []
             rdns = ["b_" + str(i) for i in range(hit_miss_samples)]
@@ -315,8 +324,8 @@ class SrlEnvTest(object):
                     if True in ("$I[" in c, "$H[h(" in c)]].sum().to_dict()
 
 
-    def compute_mi_steps(self, Akdf, out_csv, sample_size, sigma=5.0, prod_cols=None,
-                            bias=1.0, density='setmax', n_hit_miss=50, ngramr=(1, 3)):
+    def compute_mi_steps(self, Akdf, out_csv, sample_size, sigma=5.0, bias=1.0,
+        prod_cols=None, density='setmax', n_hit_miss=50, ngramr=(1, 3)):
         """
         This method calls compute_set_probability() and compute_mutuals() 
         """
@@ -325,30 +334,31 @@ class SrlEnvTest(object):
             prod_cols = []
             for a, b in itertools.product(*[STRUCTCOLS + COMBINATIONS] * 2):
                 if not ((a, b) in prod_cols or (b, a) in prod_cols):
-                    probcs.append("$\mathcal{{N}}\{{h({0}, {1}), \sigma\}}$" \
-                                .format(a, b))
+                    probcs.append(
+                        "$\mathcal{{N}}\{{h({0}, {1}), \sigma\}}$".format(a, b))
                     prod_cols.append((a, b))
         else:
             for a, b in prod_cols:
-                probcs.append("$\mathcal{{N}}\{{h({0}, {1}), \sigma\}}$" \
-                                .format(a, b))
+                probcs.append(
+                    "$\mathcal{{N}}\{{h({0}, {1}), \sigma\}}$".format(a, b))
 
         A_tau = [Akdf[i:i + sample_size]
-                for i in range(0, self.n_steps * sample_size, sample_size)]
+            for i in range(0, self.n_steps * sample_size, sample_size)]
 
         logging.info(
-                f"Computing probabilities of random sets for {self.n_steps} steps.")
+            f"Computing probabilities of random sets for {self.n_steps} steps.")
         with parallel_backend('multiprocessing' if BACKEND == 'mp' else 'loky'):
             t = time.time()
             P_Aks = Parallel(n_jobs=self.njobs)(
-                        delayed(self.compute_set_probability)(
-                            A_k, prod_cols=prod_cols, hit_miss_samples=n_hit_miss,
-                            density=density, bias=bias, sigma=sigma, ngramr=ngramr)
-                                                                    for A_k in A_tau)
+                delayed(self.compute_set_probability)(
+                    A_k, prod_cols=prod_cols, density=density, sigma=sigma,
+                    hit_miss_samples=n_hit_miss, bias=bias, ngramr=ngramr)
+                for A_k in A_tau)
             if self.verbose:
-                logging.info("Estimated set probabilities in {}s..." \
-                            .format(time.time() - t))
-
+                logging.info(
+                    "Estimated set probabilities "
+                    "in {}s...".format(time.time() - t))
+        
         with parallel_backend('multiprocessing' if BACKEND == 'mp' else 'loky'):
             t = time.time()
             info_steps = Parallel(n_jobs=self.njobs)(

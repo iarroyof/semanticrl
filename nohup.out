@@ -12884,3 +12884,105 @@ ValueError: too many values to unpack (expected 3)
 07/31/2020 10:03:14 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-310/oie_bias-10.0_hitmiss-1.0_bw-5.0_density-expset_ngrams-1t2.csv
 07/31/2020 10:03:14 PM Computing probabilities of random sets for 92 steps.
 07/31/2020 10:05:31 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-310/rdn_bias-10.0_hitmiss-1.0_bw-5.0_density-expset_ngrams-1t2.csv
+08/16/2020 08:26:10 PM Performing 2400 experiments in 7200 minutes (max.)
+08/17/2020 03:30:13 PM Performing 4800 experiments in 14400 minutes (max.)
+08/17/2020 03:31:00 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-260
+08/17/2020 03:31:00 PM Parameters test 1/8 (12.5 %) for 260 samples: {'bias': 10.0, 'bw': 1.0, 'ngrams': (1, 4), 'density': 'expset'}
+08/17/2020 03:31:00 PM MI for OpenIE actions already exists (SKIPPED)...
+08/17/2020 03:31:00 PM MI for random actions already exists (SKIPPED)...
+08/17/2020 03:31:00 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-260
+08/17/2020 03:31:00 PM Parameters test 2/8 (25.0 %) for 260 samples: {'bias': 0.0, 'bw': 5.0, 'ngrams': (2, 4), 'density': 'gausset'}
+08/17/2020 03:31:00 PM Computing probabilities of random sets for 109 steps.
+08/17/2020 03:37:42 PM Performing 4800 experiments in 14400 minutes (max.)
+08/17/2020 03:38:29 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-260
+08/17/2020 03:38:29 PM Parameters test 1/8 (12.5 %) for 260 samples: {'bias': 10.0, 'bw': 1.0, 'ngrams': (1, 4), 'density': 'expset'}
+08/17/2020 03:38:29 PM MI for OpenIE actions already exists (SKIPPED)...
+08/17/2020 03:38:29 PM MI for random actions already exists (SKIPPED)...
+08/17/2020 03:38:29 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-260
+08/17/2020 03:38:29 PM Parameters test 2/8 (25.0 %) for 260 samples: {'bias': 0.0, 'bw': 2.0, 'ngrams': (1, 2), 'density': 'gausset'}
+08/17/2020 03:38:29 PM Computing probabilities of random sets for 109 steps.
+08/17/2020 03:41:12 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-260/oie_bias-0.0_hitmiss-1.0_bw-2.0_density-gausset_ngrams-1t2.csv
+08/17/2020 03:41:12 PM Computing probabilities of random sets for 109 steps.
+08/17/2020 03:44:16 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-260/rdn_bias-0.0_hitmiss-1.0_bw-2.0_density-gausset_ngrams-1t2.csv
+08/17/2020 03:44:16 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-260
+08/17/2020 03:44:16 PM Parameters test 3/8 (37.5 %) for 260 samples: {'bias': 10.0, 'bw': 5.0, 'ngrams': (2, 3), 'density': 'expset'}
+08/17/2020 03:44:16 PM Computing probabilities of random sets for 109 steps.
+08/17/2020 03:46:07 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-260/oie_bias-10.0_hitmiss-1.0_bw-5.0_density-expset_ngrams-2t3.csv
+08/17/2020 03:46:07 PM Computing probabilities of random sets for 109 steps.
+08/17/2020 03:48:30 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-260/rdn_bias-10.0_hitmiss-1.0_bw-5.0_density-expset_ngrams-2t3.csv
+08/17/2020 03:48:30 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-260
+08/17/2020 03:48:30 PM Parameters test 4/8 (50.0 %) for 260 samples: {'bias': 0.0, 'bw': 0.01, 'ngrams': (3, 4), 'density': 'gausset'}
+08/17/2020 03:48:30 PM Computing probabilities of random sets for 109 steps.
+08/17/2020 03:51:13 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-260/oie_bias-0.0_hitmiss-1.0_bw-1.0E-02_density-gausset_ngrams-3t4.csv
+08/17/2020 03:51:14 PM Computing probabilities of random sets for 109 steps.
+08/17/2020 03:54:35 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-260/rdn_bias-0.0_hitmiss-1.0_bw-1.0E-02_density-gausset_ngrams-3t4.csv
+08/17/2020 03:54:35 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-260
+08/17/2020 03:54:35 PM Parameters test 5/8 (62.5 %) for 260 samples: {'bias': 10.0, 'bw': 5.0, 'ngrams': (2, 4), 'density': 'expset'}
+08/17/2020 03:54:35 PM Computing probabilities of random sets for 109 steps.
+08/17/2020 03:56:56 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-260/oie_bias-10.0_hitmiss-1.0_bw-5.0_density-expset_ngrams-2t4.csv
+08/17/2020 03:56:56 PM Computing probabilities of random sets for 109 steps.
+08/17/2020 03:59:55 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-260/rdn_bias-10.0_hitmiss-1.0_bw-5.0_density-expset_ngrams-2t4.csv
+08/17/2020 03:59:55 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-260
+08/17/2020 03:59:55 PM Parameters test 6/8 (75.0 %) for 260 samples: {'bias': 0.0, 'bw': 3.0, 'ngrams': (1, 4), 'density': 'gausset'}
+08/17/2020 03:59:55 PM Computing probabilities of random sets for 109 steps.
+08/17/2020 04:03:33 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-260/oie_bias-0.0_hitmiss-1.0_bw-3.0_density-gausset_ngrams-1t4.csv
+08/17/2020 04:03:33 PM Computing probabilities of random sets for 109 steps.
+08/17/2020 04:08:34 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-260/rdn_bias-0.0_hitmiss-1.0_bw-3.0_density-gausset_ngrams-1t4.csv
+08/17/2020 04:08:34 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-260
+08/17/2020 04:08:34 PM Parameters test 7/8 (87.5 %) for 260 samples: {'bias': 0.0, 'bw': 1.0, 'ngrams': (2, 3), 'density': 'expset'}
+08/17/2020 04:08:34 PM Computing probabilities of random sets for 109 steps.
+08/17/2020 04:10:26 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-260/oie_bias-0.0_hitmiss-1.0_bw-1.0_density-expset_ngrams-2t3.csv
+08/17/2020 04:10:26 PM Computing probabilities of random sets for 109 steps.
+08/17/2020 04:12:49 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-260/rdn_bias-0.0_hitmiss-1.0_bw-1.0_density-expset_ngrams-2t3.csv
+08/17/2020 04:12:49 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-260
+08/17/2020 04:12:49 PM Parameters test 8/8 (100.0 %) for 260 samples: {'bias': 0.0, 'bw': 4.0, 'ngrams': (2, 4), 'density': 'gausset'}
+08/17/2020 04:12:49 PM Computing probabilities of random sets for 109 steps.
+08/17/2020 04:16:09 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-260/oie_bias-0.0_hitmiss-1.0_bw-4.0_density-gausset_ngrams-2t4.csv
+08/17/2020 04:16:09 PM Computing probabilities of random sets for 109 steps.
+08/17/2020 04:20:45 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-260/rdn_bias-0.0_hitmiss-1.0_bw-4.0_density-gausset_ngrams-2t4.csv
+08/17/2020 04:21:33 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-310
+08/17/2020 04:21:33 PM Parameters test 1/8 (12.5 %) for 310 samples: {'bias': 10.0, 'bw': 1.0, 'ngrams': (1, 4), 'density': 'expset'}
+08/17/2020 04:21:33 PM MI for OpenIE actions already exists (SKIPPED)...
+08/17/2020 04:21:33 PM MI for random actions already exists (SKIPPED)...
+08/17/2020 04:21:33 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-310
+08/17/2020 04:21:33 PM Parameters test 2/8 (25.0 %) for 310 samples: {'bias': 0.0, 'bw': 2.0, 'ngrams': (1, 2), 'density': 'gausset'}
+08/17/2020 04:21:33 PM Computing probabilities of random sets for 92 steps.
+08/17/2020 04:24:41 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-310/oie_bias-0.0_hitmiss-1.0_bw-2.0_density-gausset_ngrams-1t2.csv
+08/17/2020 04:24:41 PM Computing probabilities of random sets for 92 steps.
+08/17/2020 04:28:16 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-310/rdn_bias-0.0_hitmiss-1.0_bw-2.0_density-gausset_ngrams-1t2.csv
+08/17/2020 04:28:16 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-310
+08/17/2020 04:28:16 PM Parameters test 3/8 (37.5 %) for 310 samples: {'bias': 10.0, 'bw': 5.0, 'ngrams': (2, 3), 'density': 'expset'}
+08/17/2020 04:28:16 PM Computing probabilities of random sets for 92 steps.
+08/17/2020 04:30:38 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-310/oie_bias-10.0_hitmiss-1.0_bw-5.0_density-expset_ngrams-2t3.csv
+08/17/2020 04:30:39 PM Computing probabilities of random sets for 92 steps.
+08/17/2020 04:33:31 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-310/rdn_bias-10.0_hitmiss-1.0_bw-5.0_density-expset_ngrams-2t3.csv
+08/17/2020 04:33:31 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-310
+08/17/2020 04:33:31 PM Parameters test 4/8 (50.0 %) for 310 samples: {'bias': 0.0, 'bw': 0.01, 'ngrams': (3, 4), 'density': 'gausset'}
+08/17/2020 04:33:31 PM Computing probabilities of random sets for 92 steps.
+08/17/2020 04:36:51 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-310/oie_bias-0.0_hitmiss-1.0_bw-1.0E-02_density-gausset_ngrams-3t4.csv
+08/17/2020 04:36:51 PM Computing probabilities of random sets for 92 steps.
+08/17/2020 04:40:53 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-310/rdn_bias-0.0_hitmiss-1.0_bw-1.0E-02_density-gausset_ngrams-3t4.csv
+08/17/2020 04:40:53 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-310
+08/17/2020 04:40:53 PM Parameters test 5/8 (62.5 %) for 310 samples: {'bias': 10.0, 'bw': 5.0, 'ngrams': (2, 4), 'density': 'expset'}
+08/17/2020 04:40:53 PM Computing probabilities of random sets for 92 steps.
+08/17/2020 04:43:45 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-310/oie_bias-10.0_hitmiss-1.0_bw-5.0_density-expset_ngrams-2t4.csv
+08/17/2020 04:43:45 PM Computing probabilities of random sets for 92 steps.
+08/17/2020 04:47:21 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-310/rdn_bias-10.0_hitmiss-1.0_bw-5.0_density-expset_ngrams-2t4.csv
+08/17/2020 04:47:21 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-310
+08/17/2020 04:47:21 PM Parameters test 6/8 (75.0 %) for 310 samples: {'bias': 0.0, 'bw': 3.0, 'ngrams': (1, 4), 'density': 'gausset'}
+08/17/2020 04:47:21 PM Computing probabilities of random sets for 92 steps.
+08/17/2020 04:51:57 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-310/oie_bias-0.0_hitmiss-1.0_bw-3.0_density-gausset_ngrams-1t4.csv
+08/17/2020 04:51:57 PM Computing probabilities of random sets for 92 steps.
+08/17/2020 04:57:46 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-310/rdn_bias-0.0_hitmiss-1.0_bw-3.0_density-gausset_ngrams-1t4.csv
+08/17/2020 04:57:46 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-310
+08/17/2020 04:57:46 PM Parameters test 7/8 (87.5 %) for 310 samples: {'bias': 0.0, 'bw': 1.0, 'ngrams': (2, 3), 'density': 'expset'}
+08/17/2020 04:57:46 PM Computing probabilities of random sets for 92 steps.
+08/17/2020 05:00:04 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-310/oie_bias-0.0_hitmiss-1.0_bw-1.0_density-expset_ngrams-2t3.csv
+08/17/2020 05:00:04 PM Computing probabilities of random sets for 92 steps.
+08/17/2020 05:02:52 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-310/rdn_bias-0.0_hitmiss-1.0_bw-1.0_density-expset_ngrams-2t3.csv
+08/17/2020 05:02:52 PM Window and sample: /almac/ignacio/results_srl_env/wsize-8/sample-310
+08/17/2020 05:02:52 PM Parameters test 8/8 (100.0 %) for 310 samples: {'bias': 0.0, 'bw': 4.0, 'ngrams': (2, 4), 'density': 'gausset'}
+08/17/2020 05:02:52 PM Computing probabilities of random sets for 92 steps.
+08/17/2020 05:07:01 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-310/oie_bias-0.0_hitmiss-1.0_bw-4.0_density-gausset_ngrams-2t4.csv
+08/17/2020 05:07:01 PM Computing probabilities of random sets for 92 steps.
+08/17/2020 05:12:23 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-310/rdn_bias-0.0_hitmiss-1.0_bw-4.0_density-gausset_ngrams-2t4.csv

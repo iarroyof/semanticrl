@@ -65,13 +65,14 @@ def main():
 #    in_open = "data/dis_test.txt.oie"
 #    out_dir = "/almac/ignacio/test_results_srl_env/"
 
+    njobs = -1
     rdn_win = 8  # 6 + 2 (mean + std)
     sampran = (10, 320)  # sample range
     min_ngrams = 1
     max_ngrams = 5
     range_steps = 5
-    ##samples = list(range(*sampran, 50))
-    samples = [60, 110, 160, 210, 260, 310]
+    #samples = list(range(*sampran, 50))
+    samples = [260, 310]
     # (0. - 10.), (.1 - 1.), (1. - 5.), (expset, gausset), (1, 5)
     max_tests_possible =  (range_steps ** 3) * 2 * (2 ** max_ngrams)
     n_tests = int(max_tests_possible * 0.3)  # 25600 * 0.3 = 2560
@@ -83,10 +84,19 @@ def main():
         ngrams={'low': min_ngrams, 'high': max_ngrams}
     )
 
-    ##settings = list(test_settings(n_tests=n_tests, steps=range_steps,
-    ##                                                    ranges=param_ranges))
-    settings = [(1, 1,
-        {'bias': 10.0, 'bw': 5.0, 'ngrams': (1, 2), 'density': 'expset'})]
+    #settings = list(test_settings(n_tests=n_tests, steps=range_steps,
+    #                                                    ranges=param_ranges))
+    settings = [
+        (1, 8, {'bias': 10.0, 'bw': 1.0, 'ngrams': (1, 4), 'density': 'expset'}),
+        (2, 8, {'bias': 0.0, 'bw': 2.0, 'ngrams': (1, 2), 'density': 'gausset'}),
+        (3, 8, {'bias': 10.0, 'bw': 5.0, 'ngrams': (2, 3), 'density': 'expset'}),
+        (4, 8, {'bias': 0.0, 'bw': 0.01, 'ngrams': (3, 4), 'density': 'gausset'}),
+        (5, 8, {'bias': 10.0, 'bw': 5.0, 'ngrams': (2, 4), 'density': 'expset'}),
+        (6, 8, {'bias': 0.0, 'bw': 3.0, 'ngrams': (1, 4), 'density': 'gausset'}),
+        (7, 8, {'bias': 0.0, 'bw': 1.0, 'ngrams': (2, 3), 'density': 'expset'}),
+        (8, 8, {'bias': 0.0, 'bw': 4.0, 'ngrams': (2, 4), 'density': 'gausset'}),
+        
+    ]
     logging.info("Performing {} experiments in {} minutes (max.)" \
                    .format(len(samples) * n_tests, len(samples) * n_tests * 3))
 
@@ -99,7 +109,7 @@ def main():
             makedirs(out_dir_)
         
         test = SrlEnvTest(in_oie=in_open, in_txt=in_text, output_dir=out_dir_,
-                            wsize=rdn_win, sample=s, nsteps=nsteps)
+                            wsize=rdn_win, sample=s, nsteps=nsteps, njobs=njobs)
         for i, l, param in settings:
             logging.info("Window and sample: {}".format(out_dir_))
             logging.info(
