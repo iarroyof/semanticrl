@@ -273,7 +273,7 @@ class SrlEnvTest(object):
             Akdf['+'.join((a, b))] = Akdf[[a, b]].apply(
                 lambda x: ' '.join(x), axis=1)
         for a, b in prod_cols:  # This lists already contains joints
-            measures = []; st()
+            measures = []
             rdns = ["b_" + str(i) for i in range(hit_miss_samples)]
             dupst = np.array([Akdf[b].values] * hit_miss_samples)
             _ = np.apply_along_axis(np.random.shuffle, 1, dupst)
