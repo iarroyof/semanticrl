@@ -2,21 +2,23 @@ using PyCall
 using ScikitLearn
 using CSV
 using DataFrames
+using IterTools
 
 @sk_import feature_extraction.text: TfidfVectorizer
 
 
 input_tsv_triplets = "/almac/ignacio/semanticrl/data/dis_train.txt.oie"
+    
 
-
-mutable Struct SetHashedDict
-    mem::Dict{Tuple{Set{String}, Set{String}}, Float64}
-    rv_mem::Dict{Set{String}, Float64}
+mutable struct SetHashedDict
+       set_hash::Dict{Tuple{Set{String}, Set{String}}, Float64}
+       rv_mem::Dict{Set{String}, Float64}
 end
 
 
 function build_tokenizer(ngramr::Tuple)
-    text_preprocessor = TfidfVectorizer(analyzer="char_wb", ngram_range=ngramr)
+    text_preprocessor = TfidfVectorizer(
+        analyzer="char_wb", ngram_range=ngramr)
     tokenizer = text_preprocessor.build_analyzer()
     return tokenizer
 end
@@ -34,32 +36,33 @@ function build_set_RVs(input_tsv::String, ngramer::Tuple)
     return (X, Y, Z)
 end
 
-function build_set_vocabs(x_set::Set{String}, y_set::Set{String}, z_set::Set{String})
-    omega_x = Set{String}[]
-    omega_y = Set{String}[]
-    omega_z = Set{String}[]
+function build_set_vocabs(x_set::Array{Set{String}, 1},
+        y_set::Array{Set{String}, 1}, z_set::Array{Set{String}, 1})
+    omega_x = []
+    omega_y = []
+    omega_z = []
 
     for x in x_set
-        if x in omega_x:
+        if x in omega_x
             continue
         else
-            append!(omega_x, x)
+            push!(omega_x, x)
         end
     end
 
     for y in y_set
-        if y in omega_y:
+        if y in omega_y
             continue
         else
-            append!(omega_y, y)
+            push!(omega_y, y)
         end
     end
 
     for z in z_set
-        if z in omega_z:
+        if z in omega_z
             continue
         else
-            append!(omega_z, z)
+            push!(omega_z, z)
         end
     end
 
@@ -69,13 +72,13 @@ end
 
 function intersect_lens(Oa, B)
     # Generate cartesian product (Oa x B) for all \omega in Oa and b in B
-    cart_prod = [repeat(Oa, inner=[size(B, 1)]) repeat(B, outer=[size(Oa, 1)])]
-
-    return zip(cart_prod, length.(intersect.(cart_prod)))
+    cart_prod = product(Oa, B)
+    lengths = length.(broadcast(a -> intersect(a[1], a[2]), eachrow(cart_prod)))
+    return zip(permutedims(Tuple.(eachrow(cart_prod))), permutedims(lengths))
 end
 
 
-function compute_intersects(omega_x, omega_y, omega_x, X, Y, Z)
+function compute_intersects(omega_x, omega_y, omega_z, X, Y, Z)
 
     ints_x = intersect_lens(omega_x, X)
     ints_y = intersect_lens(omega_y, Y)
@@ -89,17 +92,28 @@ function compute_intersects(omega_x, omega_y, omega_x, X, Y, Z)
 end
 
 
-function compute_proba(omega_a::Array, Ua::Base.Iterators.Zip, omega_b::Array, Ub::Base.Iterators.Zip, mem::SetHashedDict)
-    P_AB = Dict{Set, Float64}
-    for a in omega_a
-        aint_lens = [b for (a_, b) in zip(Ua[:, 1], Ua[:, 2]) if a_ == a]
-        for b in omega_b
-            bint_lens = [b for (a_, b) in zip(Ub[:, 1], Ub[:, 2]) if a_ == b]
+function compute_proba(omega_a, ints_a, omega_b, ints_b)
+    set_hash = []
+    rv_mem = []
+    
+    for b in omega_b
+        partition = 0
+        bint_lens = [c for ((a_, b_), c) in ints_b if b == a_]
+
+        for a in omega_a
+            aint_lens = [c for ((a_, b_), c) in ints_a if a == a_]
+            a_dot_b = aint_lens'bint_lens
+            push!(set_hash, ((a, b), a_dot_b))
+            partition += produ
         end
-        P_AB[a] = aint_lens * bint_lens
+    push!(rv_mem, (b, partition))
     end
+    set_hash = Dict(set_hash)
+    rv_mem = Dict(rv_mem)
+    P_AB = Dict([((a, b), set_hash[(a, b)]/rv_mem[b]) for (a, b) in product(omega_a, omega_b)])
 
     return P_AB
+end
 
 
 function compute_probas()        
@@ -115,3 +129,6 @@ function compute_probas()
 function main()
     X_set, Y_set, Z_set = build_set_RVs(input_tsv_triplets, (1, 4));
     omega_x, omega_y, omega_z = build_set_vocabs(X_set, Y_set, Z_set);
+    ints_x, ints_y, ints_z, ints_xy, ints_yz, ints_zx = compute_intersects(omega_x, omega_y, omega_x, X_set, Y_set, Z_set)
+    
+    
