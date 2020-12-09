@@ -132,7 +132,7 @@ function main()
     end #   0.039684 seconds (105.95 k allocations: 2.175 MiB)
     @time begin
     xx, yy, zz, xy, yz, zx = compute_intersects(
-                            omega_x, omega_y, omega_x, X_set, Y_set, Z_set)
+                            omega_x, omega_y, omega_z, X_set, Y_set, Z_set)
     print("Ints: ")
     end #  1.370609 seconds (4.18 M allocations: 178.062 MiB, 4.65% gc time)
 
@@ -142,10 +142,10 @@ function main()
     end 
 
     # Show example
-    y = omega_y[1]
-    P_Yx = [dists["P_Y|X"][(y, x)] for x in omega_y]
-    println(P_Xy)
-    println(sum(P_Xy))
+    x = omega_x[1]
+    P_Yx = [dists["P_Y|X"][(y, x)] for y in omega_y]
+    println(P_Yx)
+    println(sum(P_Yx))
 end    
 
 
