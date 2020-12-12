@@ -3,9 +3,22 @@ using ScikitLearn
 using CSV
 using DataFrames
 using IterTools
+using HDF5
+using JLD
 
 @sk_import feature_extraction.text: TfidfVectorizer
 
+
+#=
+TODO: 1. To add density function (Gaussian and Exponential)
+TODO: 2. PMF probabilities are the expected value over the sample space
+TODO: 3. Verify wheter this programs is faster than python version (or how to 
+         optimize, cartesian products are really needed?): 778.174950 seconds 
+         (24.45 G allocations: 733.674 GiB, 66.92% gc time) (13 min, 92 steps,
+         320 samples)
+TODO: 4. To add Entropy, Conditional Entropy, Mutual Information and Divergence
+TODO: 5. Probability surfaces inducing subordered set-valued outcomes
+=#
 
 function build_tokenizer(ngramr::Tuple)
     text_preprocessor = TfidfVectorizer(
@@ -15,8 +28,7 @@ function build_tokenizer(ngramr::Tuple)
 end
 
 
-function build_set_RVs(input_tsv::String, ngramer::Tuple)
-    df = DataFrame(CSV.File(input_tsv, delim='\t', header=false))
+function build_set_RVs(df::DataFrame, ngramer::Tuple)
 
     tokenizer = build_tokenizer(ngramer)
 
@@ -26,6 +38,7 @@ function build_set_RVs(input_tsv::String, ngramer::Tuple)
 
     return (X, Y, Z)
 end
+
 
 function build_set_vocabs(x_set::Array{Set{String}, 1},
         y_set::Array{Set{String}, 1}, z_set::Array{Set{String}, 1})
@@ -98,7 +111,7 @@ function compute_proba(omega_a, ints_a, omega_b, ints_b)
             push!(set_hash, ((a, b), a_dot_b))
             partition += a_dot_b
         end
-    push!(rv_mem, (b, partition))
+        push!(rv_mem, (b, partition))
     end
     set_hash = Dict(set_hash)
     rv_mem = Dict(rv_mem)
@@ -123,30 +136,55 @@ function compute_probas(ixx, iyy, izz, ixy, iyz, izx, ohm_x, ohm_y, ohm_z)
 end
 
 
-function main()
-    input_tsv_triplets = "/almac/ignacio/semanticrl/data/dis_train_320.txt.oie"
-    X_set, Y_set, Z_set = build_set_RVs(input_tsv_triplets, (1, 4))
-    @time begin
+function process_step(X_set, Y_set, Z_set)
     omega_x, omega_y, omega_z = build_set_vocabs(X_set, Y_set, Z_set)
-    print("Vocabs: ")
-    end #   0.039684 seconds (105.95 k allocations: 2.175 MiB)
-    @time begin
     xx, yy, zz, xy, yz, zx = compute_intersects(
                             omega_x, omega_y, omega_z, X_set, Y_set, Z_set)
-    print("Ints: ")
-    end #  1.370609 seconds (4.18 M allocations: 178.062 MiB, 4.65% gc time)
+    dists = compute_probas(xx, yy, zz, xy, yz, zx, omega_x, omega_y, omega_z)
+
+    return dists
+end
+
+
+function main()
+    input_tsv_triplets = "/almac/ignacio/semanticrl/data/dis_train.txt.oie"
+    step_size = 320
+    inputs = []
+    @time begin
+    for rows in Iterators.partition(CSV.Rows(input_tsv_triplets, delim='\t', header=false), step_size)
+        df = DataFrame(rows)
+        push!(inputs, build_set_RVs(df, (1, 4)))
+    end
+    println("Chunks created... ")
+    end
+    n_steps = length(inputs)
+    results = [Dict() for _ in 1:n_steps]
+    s = @sprintf "Ready to process a total of %5.1f steps of %5.1f samples each..." n_steps step_size;
+    println(s)
 
     @time begin
-    dists = compute_probas(xx, yy, zz, xy, yz, zx, omega_x, omega_y, omega_z)
-    print("Probas: ")
-    end 
+    Threads.@threads for (i, (X_set, Y_set, Z_set)) in collect(enumerate(inputs))
+        @time begin
+        dists = process_step(X_set, Y_set, Z_set, i)
+        results[i] = dists
+        s = @sprintf "Step %5.1f" i;
+        println(s)
+        end
+    end
+    println("All finished..")
+    end
+    
+    save("results.jld", "results", results)
 
-    # Show example
-    x = omega_x[1]
-    P_Yx = [dists["P_Y|X"][(y, x)] for y in omega_y]
-    println(P_Yx)
-    println(sum(P_Yx))
-end    
-
+end
 
 main()
+#results = process_step()
+#N = 10
+#results = [Dict() for _ in 1:N]
+#@distributed for i in 1:N
+#    dist = process_step()
+#    results[i] = dist
+#end
+#print(results[1])
+
