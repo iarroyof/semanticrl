@@ -117,14 +117,14 @@ function compute_proba(omega_a, ints_a, omega_b, ints_b)
     end
     set_hash = Dict(set_hash)
     rv_mem = Dict(rv_mem)
-    f_AB = [((a, b), set_hash[(a, b)]/rv_mem[b])
-                    for (a, b) in product(omega_a, omega_b)]
+    f_AB = Dict([((a, b), set_hash[(a, b)]/rv_mem[b])
+                    for (a, b) in product(omega_a, omega_b)])
     P_AB = []
     for a in omega_a
         push!(P_AB, (a, mean(f_AB[(a, b)] for b in omega_b)))
     end
 
-    return (Dict(f_AB), Dict(P_AB))
+    return (f_AB, Dict(P_AB))
 end
 
 
@@ -140,7 +140,7 @@ function compute_probas(ixx, iyy, izz, ixy, iyz, izx, ohm_x, ohm_y, ohm_z)
     return Dict("f_X" => f_xx, "f_Y" => f_yy, "f_Z" => f_zz,
                 "f_Y|X" => f_ygx, "f_Z|Y" => f_zgy, "f_Z|X" => f_zgx,
                 "P_X" => P_XX, "P_Y" => P_YY, "P_Z" => P_ZZ,
-                "P_Y|X" => f_YgX, "P_Z|Y" => P_ZgY, "P_Z|X" => f_ZgX)
+                "P_Y|X" => P_YgX, "P_Z|Y" => P_ZgY, "P_Z|X" => P_ZgX)
 end
 
 
@@ -174,9 +174,9 @@ function compute_it(D, omega_x, omega_y, omega_z)
     "H_Y" => entropy2(D["P_Y"]),
     "H_Z" => entropy2(D["P_Z"]),
 
-    "H_YgX" => cond_entropy(D["f_YgX"], D["f_X"], omega_y, omega_x),
-    "H_ZgY" => cond_entropy(D["f_ZgY"], D["f_Y"], omega_z, omega_y),
-    "H_ZgX" => cond_entropy(D["f_ZgX"], D["f_X"], omega_z, omega_x))
+    "H_YgX" => cond_entropy(D["f_Y|X"], D["f_X"], omega_y, omega_x),
+    "H_ZgY" => cond_entropy(D["f_Z|Y"], D["f_Y"], omega_z, omega_y),
+    "H_ZgX" => cond_entropy(D["f_Z|X"], D["f_X"], omega_z, omega_x))
 
     IT["I_YX"] = mutual_inf(IT["H_Y"], IT["H_YgX"])
     IT["I_ZY"] = mutual_inf(IT["H_Z"], IT["H_ZgY"])
