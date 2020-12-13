@@ -1,10 +1,12 @@
-using PyCall
 using ScikitLearn
-using CSV
 using DataFrames
 using IterTools
-using HDF5
+using Statistics
+using StatsBase
+using PyCall
+using CSV
 using JLD
+using HDF5
 
 @sk_import feature_extraction.text: TfidfVectorizer
 
@@ -115,34 +117,83 @@ function compute_proba(omega_a, ints_a, omega_b, ints_b)
     end
     set_hash = Dict(set_hash)
     rv_mem = Dict(rv_mem)
-    P_AB = Dict([((a, b), set_hash[(a, b)]/rv_mem[b])
-                    for (a, b) in product(omega_a, omega_b)])
+    f_AB = [((a, b), set_hash[(a, b)]/rv_mem[b])
+                    for (a, b) in product(omega_a, omega_b)]
+    P_AB = []
+    for a in omega_a
+        push!(P_AB, (a, mean(f_AB[(a, b)] for b in omega_b)))
+    end
 
-    return P_AB
+    return (Dict(f_AB), Dict(P_AB))
 end
 
 
 function compute_probas(ixx, iyy, izz, ixy, iyz, izx, ohm_x, ohm_y, ohm_z)
-    P_xx = compute_proba(ohm_x, ixx, ohm_x, ixx)
-    P_yy = compute_proba(ohm_y, iyy, ohm_y, iyy)
-    P_zz = compute_proba(ohm_z, izz, ohm_z, izz)
+    f_xx, P_XX = compute_proba(ohm_x, ixx, ohm_x, ixx)
+    f_yy, P_YY = compute_proba(ohm_y, iyy, ohm_y, iyy)
+    f_zz, P_ZZ = compute_proba(ohm_z, izz, ohm_z, izz)
 
-    P_ygx = compute_proba(ohm_y, iyy, ohm_x, ixx)
-    P_zgy = compute_proba(ohm_z, izz, ohm_y, iyy)
-    P_zgx = compute_proba(ohm_z, izz, ohm_x, ixx)
+    f_ygx, P_YgX = compute_proba(ohm_y, iyy, ohm_x, ixx)
+    f_zgy, P_ZgY = compute_proba(ohm_z, izz, ohm_y, iyy)
+    f_zgx, P_ZgX = compute_proba(ohm_z, izz, ohm_x, ixx)
 
-    return Dict("P_X" => P_xx, "P_Y" => P_yy, "P_Z" => P_zz,
-                "P_Y|X" => P_ygx, "P_Z|Y" => P_zgy, "P_Z|X" => P_zgx)
+    return Dict("f_X" => f_xx, "f_Y" => f_yy, "f_Z" => f_zz,
+                "f_Y|X" => f_ygx, "f_Z|Y" => f_zgy, "f_Z|X" => f_zgx,
+                "P_X" => P_XX, "P_Y" => P_YY, "P_Z" => P_ZZ,
+                "P_Y|X" => f_YgX, "P_Z|Y" => P_ZgY, "P_Z|X" => f_ZgX)
+end
+
+
+function entropy2(P)
+    return entropy(values(P), 2.0)
+end
+
+
+function cond_entropy(f_YgX, f_X, omega_y, omega_x)
+    H_Ygx = []
+    for x in omega_x
+        push!(H_Ygx, f_X[x] * entropy2(f_YgX[(y, x)] for y in omega_y))
+
+    H_YgX = sum(H_Ygx)
+
+    return H_YgX
+end
+
+
+function mutual_inf(H_Y, H_YgX)
+
+    I_YX = H_Y - H_YgX
+    
+    return I_YX
+end
+
+
+function compute_it(D, omega_x, omega_y, omega_z)
+    IT = Dict(
+    "H_X" => entropy2(D["P_X"]),
+    "H_Y" => entropy2(D["P_Y"]),
+    "H_Z" => entropy2(D["P_Z"]),
+
+    "H_YgX" => cond_entropy(D["f_YgX"], D["f_X"], omega_y, omega_x),
+    "H_ZgY" => cond_entropy(D["f_ZgY"], D["f_Y"], omega_z, omega_y),
+    "H_ZgX" => cond_entropy(D["f_ZgX"], D["f_X"], omega_z, omega_x))
+
+    IT["I_YX"] = mutual_inf(IT["H_Y"], IT["H_YgX"])
+    IT["I_ZY"] = mutual_inf(IT["H_Z"], IT["H_ZgY"])
+    IT["I_ZX"] = mutual_inf(IT["H_Z"], IT["H_ZgX"])
+
+    return IT
 end
 
 
 function process_step(X_set, Y_set, Z_set)
-    omega_x, omega_y, omega_z = build_set_vocabs(X_set, Y_set, Z_set)
+    Omega_x, Omega_y, Omega_z = build_set_vocabs(X_set, Y_set, Z_set)
     xx, yy, zz, xy, yz, zx = compute_intersects(
-                            omega_x, omega_y, omega_z, X_set, Y_set, Z_set)
-    dists = compute_probas(xx, yy, zz, xy, yz, zx, omega_x, omega_y, omega_z)
+                            Omega_x, Omega_y, Omega_z, X_set, Y_set, Z_set)
+    dists = compute_probas(xx, yy, zz, xy, yz, zx, Omega_x, Omega_y, Omega_z)
+    inf_theo = compute_it(dists, Omega_x, Omega_y, Omega_z)
 
-    return dists
+    return inf_theo
 end
 
 
@@ -165,8 +216,8 @@ function main()
     @time begin
     Threads.@threads for (i, (X_set, Y_set, Z_set)) in collect(enumerate(inputs))
         @time begin
-        dists = process_step(X_set, Y_set, Z_set, i)
-        results[i] = dists
+        it = process_step(X_set, Y_set, Z_set)
+        results[i] = it
         s = @sprintf "Step %5.1f" i;
         println(s)
         end
