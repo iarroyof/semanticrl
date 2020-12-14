@@ -3,6 +3,7 @@ using DataFrames
 using IterTools
 using Statistics
 using StatsBase
+using Printf
 using PyCall
 using CSV
 using JLD
@@ -120,7 +121,7 @@ function compute_proba(omega_a, ints_a, omega_b, ints_b)
     f_AB = []
     for b in omega_b
         for a in omega_a
-            push!(f_AB, ((a, b), set_hash[(a, b)]/rv_mem[b]))
+            push!(f_AB, ((a, b), set_hash[(a, b)]/b_part[b]))
         end
     end
     f_AB = Dict(f_AB)
@@ -205,7 +206,8 @@ end
 
 
 function main()
-    input_tsv_triplets = "/almac/ignacio/semanticrl/data/dis_train.txt.oie"
+    input_tsv_triplets = "data/dis_train.txt.oie"
+    output_csv_it = "results/train_results_julia.csv"
     step_size = 320
     inputs = []
     @time begin
@@ -214,26 +216,22 @@ function main()
         push!(inputs, build_set_RVs(df, (1, 4)))
     end
     println("Chunks created... ")
-    end
+
     n_steps = length(inputs)
     results = [Dict() for _ in 1:n_steps]
     s = @sprintf "Ready to process a total of %5.1f steps of %5.1f samples each..." n_steps step_size;
     println(s)
 
-    @time begin
     Threads.@threads for (i, (X_set, Y_set, Z_set)) in collect(enumerate(inputs))
-        @time begin
         it = process_step(X_set, Y_set, Z_set)
         results[i] = it
-        s = @sprintf "Step %5.1f" i;
+        s = @sprintf "Step %5.1f" i
         println(s)
-        end
     end
     println("All finished..")
+    out_df = vcat(DataFrame.(results)...)
+    CSV.write(output_csv_it, out_df)
     end
-    
-    save("results.jld", "results", results)
-
 end
 
 main()

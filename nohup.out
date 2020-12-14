@@ -20185,3 +20185,39 @@ ModuleNotFoundError: No module named 'jellyfish'
 08/22/2020 03:29:25 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-360/oie_bias-10.0_hitmiss-1.0_bw-1.0_density-expset_ngrams-3t4.csv
 08/22/2020 03:29:25 PM Computing probabilities of random sets for 79 steps.
 08/22/2020 03:32:54 PM Output csv saved to /almac/ignacio/results_srl_env/wsize-8/sample-360/rdn_bias-10.0_hitmiss-1.0_bw-1.0_density-expset_ngrams-3t4.csv
+ERROR: LoadError: LoadError: UndefVarError: @sprintf not defined
+Stacktrace:
+ [1] top-level scope
+ [2] include(::Function, ::Module, ::String) at ./Base.jl:380
+ [3] include(::Module, ::String) at ./Base.jl:368
+ [4] exec_options(::Base.JLOptions) at ./client.jl:296
+ [5] _start() at ./client.jl:506
+in expression starting at /almac/ignacio/semanticrl/step_processing.jl:221
+in expression starting at /almac/ignacio/semanticrl/step_processing.jl:207
+ERROR: LoadError: TaskFailedException:
+UndefVarError: rv_mem not defined
+Stacktrace:
+ [1] compute_proba(::Array{Any,1}, ::Base.Iterators.Zip{Tuple{Array{Tuple{Any,Set{String}},2},Array{Int64,1}}}, ::Array{Any,1}, ::Base.Iterators.Zip{Tuple{Array{Tuple{Any,Set{String}},2},Array{Int64,1}}}) at /almac/ignacio/semanticrl/step_processing.jl:124
+ [2] compute_probas(::Base.Iterators.Zip{Tuple{Array{Tuple{Any,Set{String}},2},Array{Int64,1}}}, ::Base.Iterators.Zip{Tuple{Array{Tuple{Any,Set{String}},2},Array{Int64,1}}}, ::Base.Iterators.Zip{Tuple{Array{Tuple{Any,Set{String}},2},Array{Int64,1}}}, ::Base.Iterators.Zip{Tuple{Array{Tuple{Any,Set{String}},2},Array{Int64,1}}}, ::Base.Iterators.Zip{Tuple{Array{Tuple{Any,Set{String}},2},Array{Int64,1}}}, ::Base.Iterators.Zip{Tuple{Array{Tuple{Any,Set{String}},2},Array{Int64,1}}}, ::Array{Any,1}, ::Array{Any,1}, ::Array{Any,1}) at /almac/ignacio/semanticrl/step_processing.jl:139
+ [3] process_step(::Array{Set{String},1}, ::Array{Set{String},1}, ::Array{Set{String},1}) at /almac/ignacio/semanticrl/step_processing.jl:201
+ [4] macro expansion at /almac/ignacio/semanticrl/step_processing.jl:228 [inlined]
+ [5] macro expansion at ./timing.jl:174 [inlined]
+ [6] macro expansion at /almac/ignacio/semanticrl/step_processing.jl:227 [inlined]
+ [7] (::var"#47#threadsfor_fun#17"{Array{Dict{Any,Any},1},Array{Tuple{Int64,Any},1}})(::Bool) at ./threadingconstructs.jl:81
+ [8] (::var"#47#threadsfor_fun#17"{Array{Dict{Any,Any},1},Array{Tuple{Int64,Any},1}})() at ./threadingconstructs.jl:48
+Stacktrace:
+ [1] wait at ./task.jl:267 [inlined]
+ [2] threading_run(::Function) at ./threadingconstructs.jl:34
+ [3] macro expansion at ./threadingconstructs.jl:93 [inlined]
+ [4] macro expansion at /almac/ignacio/semanticrl/step_processing.jl:226 [inlined]
+ [5] macro expansion at ./timing.jl:174 [inlined]
+ [6] main() at /almac/ignacio/semanticrl/step_processing.jl:225
+ [7] top-level scope at /almac/ignacio/semanticrl/step_processing.jl:241
+ [8] include(::Function, ::Module, ::String) at ./Base.jl:380
+ [9] include(::Module, ::String) at ./Base.jl:368
+ [10] exec_options(::Base.JLOptions) at ./client.jl:296
+ [11] _start() at ./client.jl:506
+in expression starting at /almac/ignacio/semanticrl/step_processing.jl:241
+Chunks created... 
+ 22.586586 seconds (35.56 M allocations: 1.434 GiB, 6.58% gc time)
+Ready to process a total of  90.0 steps of 320.0 samples each...
