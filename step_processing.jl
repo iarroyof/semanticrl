@@ -144,10 +144,16 @@ function compute_probas(ixx, iyy, izz, ixy, iyz, izx, ohm_x, ohm_y, ohm_z)
     f_zgy, P_ZgY = compute_proba(ohm_z, izz, ohm_y, iyy)
     f_zgx, P_ZgX = compute_proba(ohm_z, izz, ohm_x, ixx)
 
+    f_xgy, P_XgY = compute_proba(ohm_x, ixx, ohm_y, iyy)
+    f_ygz, P_YgZ = compute_proba(ohm_y, iyy, ohm_z, izz)
+    f_xgz, P_XgZ = compute_proba(ohm_x, ixx, ohm_z, izz)
+
     return Dict("f_X" => f_xx, "f_Y" => f_yy, "f_Z" => f_zz,
                 "f_Y|X" => f_ygx, "f_Z|Y" => f_zgy, "f_Z|X" => f_zgx,
                 "P_X" => P_XX, "P_Y" => P_YY, "P_Z" => P_ZZ,
-                "P_Y|X" => P_YgX, "P_Z|Y" => P_ZgY, "P_Z|X" => P_ZgX)
+                "P_Y|X" => P_YgX, "P_Z|Y" => P_ZgY, "P_Z|X" => P_ZgX,
+                "f_X|Y" => f_xgy, "f_Y|Z" => f_ygz, "f_X|Z" => f_xgz,
+                "P_X|Y" => P_XgY, "P_Y|Z" => P_YgZ, "P_X|Z" => P_XgZ)
 end
 
 
@@ -184,11 +190,19 @@ function compute_it(D, omega_x, omega_y, omega_z)
 
     "H_YgX" => cond_entropy(D["f_Y|X"], D["P_X"], omega_y, omega_x),
     "H_ZgY" => cond_entropy(D["f_Z|Y"], D["P_Y"], omega_z, omega_y),
-    "H_ZgX" => cond_entropy(D["f_Z|X"], D["P_X"], omega_z, omega_x))
+    "H_ZgX" => cond_entropy(D["f_Z|X"], D["P_X"], omega_z, omega_x),
+
+    "H_XgY" => cond_entropy(D["f_X|Y"], D["P_Y"], omega_x, omega_y),
+    "H_YgZ" => cond_entropy(D["f_Y|Z"], D["P_Z"], omega_y, omega_z),
+    "H_XgZ" => cond_entropy(D["f_X|Z"], D["P_Z"], omega_x, omega_z))
 
     IT["I_YX"] = mutual_inf(IT["H_Y"], IT["H_YgX"])
     IT["I_ZY"] = mutual_inf(IT["H_Z"], IT["H_ZgY"])
     IT["I_ZX"] = mutual_inf(IT["H_Z"], IT["H_ZgX"])
+
+    IT["I_XY"] = mutual_inf(IT["H_X"], IT["H_XgY"])
+    IT["I_YZ"] = mutual_inf(IT["H_Y"], IT["H_YgZ"])
+    IT["I_XZ"] = mutual_inf(IT["H_X"], IT["H_XgZ"])
 
     return IT
 end
@@ -207,28 +221,30 @@ end
 
 function main()
     input_tsv_triplets = "data/dis_train.txt.oie"
-    output_csv_it = "results/train_results_julia_500.csv"
-    step_size = 500
+    output_csv_it = "results/train_results_julia_320.csv"
+    step_size = 320
     inputs = []
     @time begin
-    for rows in Iterators.partition(CSV.Rows(input_tsv_triplets, delim='\t', header=false), step_size)
+    for rows in Iterators.partition(
+            CSV.Rows(input_tsv_triplets, delim='\t', header=false), step_size)
         df = DataFrame(rows)
         push!(inputs, build_set_RVs(df, (1, 4)))
     end
     println("Chunks created... ")
 
     n_steps = length(inputs)
-    results = [Dict() for _ in 1:n_steps]
-    s = @sprintf "Ready to process a total of %5.1f steps of %5.1f samples each..." n_steps step_size;
-    println(s)
-
-    Threads.@threads for (i, (X_set, Y_set, Z_set)) in collect(enumerate(inputs))
+    results = Array{Dict{String, Float64}, 1}(undef, n_steps)
+    println("Ready to process a total of " * string(n_steps) *
+                        "steps of " * string(step_size) * " samples each...")
+    Threads.@threads for (i, (X_set, Y_set, Z_set)) in collect(
+                                                            enumerate(inputs))
+        @time begin
         it = process_step(X_set, Y_set, Z_set)
         results[i] = it
-        s = @sprintf "Step %5.1f" i
-        println(s)
+        println("Step " * string(i))
+        end
     end
-    println("All finished..")
+    println("All finished... Saving output CSV")
     out_df = vcat(DataFrame.(results)...)
     CSV.write(output_csv_it, out_df)
     end
