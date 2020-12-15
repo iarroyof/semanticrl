@@ -207,8 +207,8 @@ end
 
 function main()
     input_tsv_triplets = "data/dis_train.txt.oie"
-    output_csv_it = "results/train_results_julia.csv"
-    step_size = 320
+    output_csv_it = "results/train_results_julia_500.csv"
+    step_size = 500
     inputs = []
     @time begin
     for rows in Iterators.partition(CSV.Rows(input_tsv_triplets, delim='\t', header=false), step_size)
@@ -235,12 +235,4 @@ function main()
 end
 
 main()
-#results = process_step()
-#N = 10
-#results = [Dict() for _ in 1:N]
-#@distributed for i in 1:N
-#    dist = process_step()
-#    results[i] = dist
-#end
-#print(results[1])
 
