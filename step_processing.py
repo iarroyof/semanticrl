@@ -464,14 +464,14 @@ def step_processing(df):
 #    ])
     
     #start_time = time.time()
-    df = df.dropna()
-    random_sets = RandomSetDistributions(df[columns[1:]], joint_method='conditional')
+    df = df.dropna()[columns[1:]]
+    print("Number of rows {}".format(len(df)))
+    random_sets = RandomSetDistributions(df, joint_method='conditional')
     random_sets.fit(df)
-    #print("RS_IT_metrics: {}".format(random_sets.it_metrics))
     
     #end_time = time.time()
-    
     #print("STEP time: {}".format(end_time-start_time))
+
     return random_sets.it_metrics
     
 
