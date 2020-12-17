@@ -8,29 +8,7 @@ import math
 import time
 
 from pdb import set_trace as st
-
 columns = ['p', 'X', 'Y', 'Z']
-
-
-def set_product(a, b):
-    return len(set(a).intersection(b))
-    
-
-def parallel_set_kronecker(A, B, n_jobs=4, backend="threads"):
-    """
-     Computes set_kronecker product A (x) B using multiple CPUs, with A and B
-     being arrays or lists of sets.
-
-     'backend' in {"threads", "processes"}
-     
-    """
-    # this iterator returns the functions to execute for each task
-    result = Parallel(n_jobs=n_jobs, prefer=backend) (
-        delayed(set_product)(*j)
-            for j in itertools.product(A, B)
-    )
-    # merging the output of the jobs
-    return np.reshape(result, (len(A), len(B)))
 
 
 class SetHashedDict:
@@ -145,58 +123,6 @@ class RandomSetDistributions(object):
         self.Omega = {}
 
 
-
-    def _joint_pmf(self, logit):
-#        self.gamma = (self.gamma if not self.gamma is None
-#                                           else 1.0 / np.mean(logits))
-#        return math.exp(self.gamma * sum(logits))
-        try:
-            return math.exp(self.gamma * logit)
-        except TypeError:
-            print("First define 'gamma' or compute conditional distribution "
-                    "before using 'self._joint_pmf()'.")
-
-
-    def _conditional_pmf(self, logits):
-        self.gamma = (self.gamma if not self.gamma is None
-                            else np.mean(logits)/np.var(logits) ** 2)
-                            # Tom Mitchell (2017) for Gaussian priors
-                            
-        #return 1.0 / (1 + math.exp(-self.gamma * sum(logits)))
-        return math.exp(self.gamma * sum(logits))
-
-
-    def _total_prob_law(self, x, Y, mem):
-        lkhood = 1.0
-        #lkhoods = []
-        #partition = 0.0
-        if not x in mem.x_keys:
-            for y in Y:
-                intersect = x.intersection(y)
-                mem[x, y] = {
-                        'intersect': intersect,
-                        'pmf': self._joint_pmf(len(intersect))
-                }
-                lkhood *= mem[x, y]['pmf']
-        
-                self.jpartition += mem[x, y]['pmf']
-                #partition += mem[x, y]['pmf']
-            mem.set_coo_mem((x, lkhood))
-        else:
-            lkhood = 0.0
-        #lkhoods.append(lkhood)
-        return lkhood  #s, partition
-            
-
-    def _fxy(self, omegaX, omegaY, x_, y_):
-        if self.exp:
-            return self._joint_pmf(
-                len(omegaX.intersection(x_)) * len(omegaY.intersection(y_))
-            )
-        else:
-            return len(omegaX.intersection(x_)) * len(omegaY.intersection(y_))
-            
-
     def _cond_entropy(self, rvs=['X', 'Y']):
         P_XgY = self.prob_distributions['P_' + '|'.join(rvs)]
         P_Y = self.prob_distributions['P_' + rvs[1]]
@@ -262,12 +188,8 @@ class RandomSetDistributions(object):
         tokenizer = analyzer.build_analyzer()
         sets = []
         for x in self.df[rv]:
-            try:
-                sets.append(set(tokenizer(x)))
-            except:
-                print("ERROR {}".format(x))
-                exit()
-        #return [set(tokenizer(x)) for x in self.df[rv]]
+            sets.append(set(tokenizer(x)))
+
         return sets
 
     def _conditional_(self, rvs=['X', 'Y']):
@@ -335,9 +257,7 @@ class RandomSetDistributions(object):
 
         ints_x = self._build_itersec(rvs[0])
         ints_y = self._build_itersec(rvs[1])
-
         
-        #start_time = time.time()
         mem = SetHashedDict()
         for y in ints_y.keys():
             partition = 0
@@ -347,8 +267,6 @@ class RandomSetDistributions(object):
                 partition += f_xy
 
             mem.set_coo_mem((y, partition))
-        #end_time = time.time()
-        #print("Product sum: {}".format(end_time-start_time))
 
         distribution = SetHashedDict()
         for x in omega_x:
@@ -455,17 +373,10 @@ class RandomSetDistributions(object):
 
 
 def step_processing(df):
-# Create toy Random Sets in Pandas DF.
-#    df = pd.DataFrame([
-#        {'X': " ".join(np.random.randint(2000, size=(1,5))[0].astype(str)),
-#         'Y': " ".join(np.random.randint(2000, size=(1,5))[0].astype(str)),
-#         'Z': " ".join(np.random.randint(2000, size=(1,5))[0].astype(str))
-#        } for _ in range(320)
-#    ])
     
     start_time = time.time()
+
     df = df.dropna()[columns[1:]]
-#    print("Number of rows {}".format(len(df)))
     random_sets = RandomSetDistributions()
     random_sets.fit(df)
     
@@ -480,8 +391,9 @@ if __name__ == "__main__":
     start_time = time.time()
     chunk_size = 320
     input_triplets = 'data/dis_train.txt.oie'
+    output_it = "results/it_test_python.csv"
 
-
+    # Generate chunks from input csv triplets
     df_whole = pd.read_csv(
         input_triplets, sep='\t', names=columns, chunksize=chunk_size)
 
@@ -492,5 +404,5 @@ if __name__ == "__main__":
     end_time = time.time()
     print("Experiment time: {}".format(end_time-start_time))
     
-    pd.DataFrame(results).to_csv("it_test_python.csv")
+    pd.DataFrame(results).to_csv(output_it)
 
