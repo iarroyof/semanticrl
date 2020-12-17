@@ -102,10 +102,9 @@ class SetHashedDict:
 
 class RandomSetDistributions(object):
 
-    def __init__(
-            self, gamma=None, joint_method='conditional', exp=False, n_jobs=-1,
-            backend='processes', ngram_range=(1,4), analyzer='char_wb'):
-        #self.density = density
+    def __init__(self,
+            gamma=None, joint_method='conditional', density=None, n_jobs=-1,
+            backend='processes', ngram_range=(1, 4), analyzer='char_wb'):
         self.gamma = gamma
         self.analyzer = analyzer
         self.ngram_range = ngram_range
@@ -116,11 +115,36 @@ class RandomSetDistributions(object):
         self.joint_method = joint_method
         self.n_jobs = n_jobs
         self.backend=backend
-        self.exp = exp
+        self.density = density
         self.set_rvs = {}
         self.prob_distributions = {}
         self.it_metrics = {}
         self.Omega = {}
+
+
+#    def _softmax(x):
+#        e_x = np.exp(x - np.max(x))
+#        out = e_x / e_x.sum()
+
+#        return out
+    def _density(self, x):
+        try:
+            if self.density is None:
+                return x
+            elif self.density == 'gausset':
+                return math.exp(self.gamma * x ** 2)
+            elif self.density == 'expset':
+                return math.exp(self.gamma * x)
+            else:
+                print("WARNING: Bad density function specified."
+                        " Only intersect returned")
+                return x
+        except OverflowError:
+            print("OverflowError in density"
+               " computations: f({} * {}) undetermined".format(self.gamma, x))
+            
+        
+        
 
 
     def _cond_entropy(self, rvs=['X', 'Y']):
@@ -169,7 +193,7 @@ class RandomSetDistributions(object):
         mem = SetHashedDict()
         partition = 0
         for x in ints_x.keys():
-            f_X = sum(ints_x[x])
+            f_X = self._density(sum(ints_x[x]))
             mem[x] = f_X
             partition += f_X
         mem.set_coo_mem((x, partition))
@@ -228,14 +252,22 @@ class RandomSetDistributions(object):
                 omega.append(x)
                 
         return omega
-        
+    
+
+    def _inner(self, x, y):
+        if self.density == 'gausset':
+            # Return symmetric difference for Gaussian kernel
+            return len((x - y).union(y - x))
+        else:
+            return len(x.intersection(y))
         
     def _build_itersec(self, rv):
         ints_rv = SetHashedDict()
         for x in self.Omega[rv]:
             ints = []
             for x_ in self.set_rvs[rv]:
-                ints.append(len(x.intersection(x_)))
+                #ints.append(len(x.intersection(x_)))
+                ints.append(self._inner(x, x_))
             ints_rv[x] = ints
             
         return ints_rv
@@ -262,7 +294,8 @@ class RandomSetDistributions(object):
         for y in ints_y.keys():
             partition = 0
             for x in ints_x.keys():
-                f_xy = np.array(ints_x[x]).dot(np.array(ints_y[y]))
+                f_xy = self._density(
+                    np.array(ints_x[x]).dot(np.array(ints_y[y])))
                 mem[x, y] = mem[y, x] = f_xy
                 partition += f_xy
 
@@ -372,12 +405,12 @@ class RandomSetDistributions(object):
 
 
 
-def step_processing(df):
+def step_processing(df, density='expset', gamma=0.000001):
     
     start_time = time.time()
 
     df = df.dropna()[columns[1:]]
-    random_sets = RandomSetDistributions()
+    random_sets = RandomSetDistributions(density=density, gamma=gamma)
     random_sets.fit(df)
     
     end_time = time.time()
