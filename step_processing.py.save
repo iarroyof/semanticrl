@@ -114,13 +114,13 @@ class RandomSetDistributions(object):
         self.x_logits = {}
         self.joint_method = joint_method
         self.n_jobs = n_jobs
-        self.backend = backend
+        self.backend=backend
         self.density = density
         self.set_rvs = {}
         self.prob_distributions = {}
         self.it_metrics = {}
         self.Omega = {}
-        self.check_np = lambda f : type(f).__module__ == np.__name__
+
 
 #    def _softmax(x):
 #        e_x = np.exp(x - np.max(x))
@@ -128,34 +128,20 @@ class RandomSetDistributions(object):
 
 #        return out
     def _density(self, x):
-        
         try:
             if self.density is None:
-                return np.array(x)
+                return sum(x)
             elif self.density == 'gausset':
-                return np.exp(-self.gamma * np.array(x) ** 2)
+                return sum(math.exp(self.gamma * d ** 2) for d in x)
             elif self.density == 'expset':
-                return np.exp(self.gamma * np.array(x))
-            elif (isinstance(self.density, collections.abc.Callable)
-                    and self.check_np(self.density)):
-                return self.density(np.array(x)) 
+                return math.exp(self.gamma * sum(x))
             else:
                 print("WARNING: Bad density function specified."
                         " Only intersect returned")
-                return np.array(x)
+                return sum(x)
         except OverflowError:
             print("OverflowError in density"
-               " computations: f({}; {}) undetermined".format(x, self.gamma))
-            return None
-
-
-    def _projector(self, x, y):
-        if self.density == 'gausset':
-            return len((x - y).union(y - x))
-        elif self.density == 'expset':
-            return len(x.intersection(y))
-        else:
-            return len(x.intersection(y))
+               " computations: f({} * {}) undetermined".format(self.gamma, x))
 
 
     def _cond_entropy(self, rvs=['X', 'Y']):
@@ -194,17 +180,17 @@ class RandomSetDistributions(object):
 
         try:
             self.Omega[rv] = self._build_vocab(rv)
-            projs_x = self._build_projections(rv)
+            ints_x = self._build_itersec(rv)
         except:
             self.set_rvs[rv] = self._build_set_outcomes(rv)
             self.Omega[rv] = self._build_vocab(rv)
-            projs_x = self._build_projections(rv)
+            ints_x = self._build_itersec(rv)
 
         
         mem = SetHashedDict()
         partition = 0
-        for x in projs_x.keys():
-            f_X = self._density(projs_x[x]).sum()
+        for x in ints_x.keys():
+            f_X = self._density(ints_x[x])
             mem[x] = f_X
             partition += f_X
         mem.set_coo_mem((x, partition))
@@ -265,16 +251,23 @@ class RandomSetDistributions(object):
         return omega
     
 
-    def _build_projections(self, rv):
-        rv_projections = SetHashedDict()
+    def _inner(self, x, y):
+        if self.density == 'gausset':
+            # Return symmetric difference for Gaussian kernel
+            return len((x - y).union(y - x))
+        else:
+            return len(x.intersection(y))
+        
+    def _build_itersec(self, rv):
+        ints_rv = SetHashedDict()
         for x in self.Omega[rv]:
-            projection = []
+            ints = []
             for x_ in self.set_rvs[rv]:
                 #ints.append(len(x.intersection(x_)))
-                projection.append(self._projector(x, x_))
-            rv_projections[x] = projection
+                ints.append(self._inner(x, x_))
+            ints_rv[x] = ints
             
-        return rv_projections
+        return ints_rv
                        
                 
     def _conditional(self, rvs=['X', 'Y']):
@@ -291,14 +284,15 @@ class RandomSetDistributions(object):
             omega_x = self.Omega[rvs[0]]
             omega_y = self.Omega[rvs[1]]
 
-        projs_x = self._build_projections(rvs[0])
-        projs_y = self._build_projections(rvs[1])
+        ints_x = self._build_itersec(rvs[0])
+        ints_y = self._build_itersec(rvs[1])
         
         mem = SetHashedDict()
-        for y in projs_y.keys():
+        for y in ints_y.keys():
             partition = 0
-            for x in projs_x.keys():
-                f_xy = self._density(projs_x[x]).dot(self._density(projs_y[y]))
+            for x in ints_x.keys():
+                f_xy = self._density(
+                    np.array(ints_x[x]) * np.array(ints_y[y]))
                 mem[x, y] = mem[y, x] = f_xy
                 partition += f_xy
 
@@ -407,7 +401,8 @@ class RandomSetDistributions(object):
             self.it_metrics[key] = self._mutual_info(pair)
 
 
-def step_processing(df, density='gausset', gamma=1.0/50.0):
+
+def step_processing(df, density='expset', gamma=0.000001):
     
     start_time = time.time()
 
@@ -426,15 +421,15 @@ if __name__ == "__main__":
     start_time = time.time()
     chunk_size = 320
     input_triplets = 'data/dis_train.txt.oie'
-    output_it = "results/it_test_gausset.csv"
+    output_it = "results/it_test_python.csv"
 
     # Generate chunks from input csv triplets
-    df_generator = pd.read_csv(
+    df_whole = pd.read_csv(
         input_triplets, sep='\t', names=columns, chunksize=chunk_size)
 
     results = Parallel(prefer='processes', n_jobs=-1)(
             delayed(step_processing)(df)
-        for df in df_generator)
+        for df in df_whole)
     
     end_time = time.time()
     print("Experiment time: {}".format(end_time-start_time))
