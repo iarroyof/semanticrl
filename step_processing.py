@@ -103,7 +103,7 @@ class SetHashedDict:
 class RandomSetDistributions(object):
 
     def __init__(self,
-            gamma=None, joint_method='conditional', density=None, n_jobs=-1,
+            gamma=None, joint_method='conditional', kernel=None, n_jobs=-1,
             backend='processes', ngram_range=(1, 4), analyzer='char_wb'):
         self.gamma = gamma
         self.analyzer = analyzer
@@ -115,44 +115,40 @@ class RandomSetDistributions(object):
         self.joint_method = joint_method
         self.n_jobs = n_jobs
         self.backend = backend
-        self.density = density
+        self.kernel = kernel
         self.set_rvs = {}
         self.prob_distributions = {}
         self.it_metrics = {}
         self.Omega = {}
         self.check_np = lambda f : type(f).__module__ == np.__name__
 
-#    def _softmax(x):
-#        e_x = np.exp(x - np.max(x))
-#        out = e_x / e_x.sum()
 
-#        return out
-    def _density(self, x):
+    def _kernel(self, x):
         
         try:
-            if self.density is None:
+            if self.kernel is None:
                 return np.array(x)
-            elif self.density == 'gausset':
+            elif self.kernel == 'gausset':
                 return np.exp(-self.gamma * np.array(x) ** 2)
-            elif self.density == 'expset':
+            elif self.kernel == 'expset':
                 return np.exp(self.gamma * np.array(x))
-            elif (isinstance(self.density, collections.abc.Callable)
-                    and self.check_np(self.density)):
-                return self.density(np.array(x)) 
+            elif (isinstance(self.kernel, collections.abc.Callable)
+                    and self.check_np(self.kernel)):
+                return self.kernel(np.array(x)) 
             else:
-                print("WARNING: Bad density function specified."
+                print("WARNING: Bad kernel function specified."
                         " Only intersect returned")
                 return np.array(x)
         except OverflowError:
-            print("OverflowError in density"
+            print("OverflowError in kernel"
                " computations: f({}; {}) undetermined".format(x, self.gamma))
             return None
 
 
     def _projector(self, x, y):
-        if self.density == 'gausset':
+        if self.kernel == 'gausset':
             return len((x - y).union(y - x))
-        elif self.density == 'expset':
+        elif self.kernel == 'expset':
             return len(x.intersection(y))
         else:
             return len(x.intersection(y))
@@ -204,7 +200,7 @@ class RandomSetDistributions(object):
         mem = SetHashedDict()
         partition = 0
         for x in projs_x.keys():
-            f_X = self._density(projs_x[x]).sum()
+            f_X = self._kernel(projs_x[x]).sum()
             mem[x] = f_X
             partition += f_X
         mem.set_coo_mem((x, partition))
@@ -270,8 +266,8 @@ class RandomSetDistributions(object):
         for x in self.Omega[rv]:
             projection = []
             for x_ in self.set_rvs[rv]:
-                #ints.append(len(x.intersection(x_)))
                 projection.append(self._projector(x, x_))
+
             rv_projections[x] = projection
             
         return rv_projections
@@ -298,7 +294,7 @@ class RandomSetDistributions(object):
         for y in projs_y.keys():
             partition = 0
             for x in projs_x.keys():
-                f_xy = self._density(projs_x[x]).dot(self._density(projs_y[y]))
+                f_xy = self._kernel(projs_x[x]).dot(self._kernel(projs_y[y]))
                 mem[x, y] = mem[y, x] = f_xy
                 partition += f_xy
 
@@ -407,12 +403,12 @@ class RandomSetDistributions(object):
             self.it_metrics[key] = self._mutual_info(pair)
 
 
-def step_processing(df, density='gausset', gamma=1.0/50.0):
+def step_processing(df, kernel='gausset', gamma=1.0/50.0):
     
     start_time = time.time()
 
     df = df.dropna()[columns[1:]]
-    random_sets = RandomSetDistributions(density=density, gamma=gamma)
+    random_sets = RandomSetDistributions(kernel=kernel, gamma=gamma)
     random_sets.fit(df)
     
     end_time = time.time()
