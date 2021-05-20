@@ -6,8 +6,8 @@ import numpy as np
 import pandas as pd
 import math
 import time
-
-from pdb import set_trace as st
+from functools import partial
+#from pdb import set_trace as st
 columns = ['p', 'X', 'Y', 'Z']
 
 
@@ -223,32 +223,6 @@ class RandomSetDistributions(object):
 
         return sets
 
-    def _conditional_(self, rvs=['X', 'Y']):
-        assert (isinstance(rvs, list) or
-                isinstance(rvs, tuple) and
-                len(rvs) == 2), "Check 'rvs' argument for two RVs"
-
-        mem = SetHashedDict()
-        
-        for x in self.set_rvs[rvs[0]]:
-            partition = 0
-            if x in mem.x_keys:
-                continue
-            else:
-                for y in self.set_rvs[rvs[1]]:
-                    f_xy = self._fxy(omega_X, omega_Y, x, y)
-                    mem[x, y] = f_xy
-                    partition += f_xy
-                    
-                mem.set_coo_mem((x, partition))
-                
-        P_XgY = [
-            mem[x, y] / mem.get_coo_mem(x)
-                for x, y in zip(self.set_rvs[rvs[0]], self.set_rvs[rvs[1]])
-        ]   
-        self.xy_logits['_'.join(rvs)] = mem
-        self.df['P_' + '|'.join(rvs)] = P_XgY
-        
 
     def _build_vocab(self, rv):
         omega = []
@@ -308,76 +282,6 @@ class RandomSetDistributions(object):
         self.prob_distributions['P_' + '|'.join(rvs)] = distribution
         self.xy_logits['_'.join(rvs)] = mem
         self.xy_logits['_'.join(rvs[::-1])] = mem      
-
-
-    def _joint(self, rvs=['X', 'Y']):
-        assert (
-            isinstance(rvs, list) or
-            isinstance(rvs, tuple) and
-            len(rvs) == 2), "Check 'rvs' argument for two RVs"
-        assert len(set(rvs).intersection(df.columns)) == 2, (
-            "One or both RVs are not in df.columns")
- 
-        if ('_'.join(rvs) in self.xy_logits.keys()
-                and self.joint_method != 'conditional'):
-            ## Use partitions as multipliers. But, is it possible?
-            try:
-                X = self.set_rvs[rvs[0]]
-                Y = self.set_rvs[rvs[1]]
-                P_ygx = self.df['P_' + '|'.join(rvs)].values
-            except KeyError:
-                X = [
-                    set(self.analyzer(x)) for x in self.df[rvs[0]].values]
-                Y = [
-                    set(self.analyzer(y)) for y in self.df[rvs[1]].values]
-                P_ygx = self.df['P_' + '|'.join(rvs)].values
-                
-            mem = self.xy_logits['_'.join(rvs)]
-            T_x = []
-            f_ygx_times_partition = []
-            
-            for x, p_ygx in zip(X, P_ygx):
-                partition = mem.get_coo_mem(x)
-                T_x.append(partition)
-                f_ygx_times_partition.append(p_ygx * partition)
-                
-            T_xy = sum(T_x)
-
-            self.df['P_' + ','.join(rvs)] = np.array(f_ygx_times_partition) / T_xy
-
-        elif self.joint_method != 'conditional':
-            self._conditional(rvs=rvs)
-            self._joint(rvs=rvs)
-            
-        else:  # P(X,Y) = P(Y|X)P(X) = f(x,y)/T_xy
-            try:  
-                mem = self.xy_logits['_'.join(rvs)]
-                inverted = False
-            except KeyError:
-                try:
-                    mem = self.xy_logits['_'.join(rvs[::-1])]
-                    inverted = True
-                except KeyError:
-                    self._conditional(rvs=rvs)
-                    mem = self.xy_logits['_'.join(rvs)]
-                    inverted = False
-                        
-            try:
-                X = self.set_rvs[rvs[0]]
-                Y = self.set_rvs[rvs[1]]
-
-            except KeyError:
-                X = [set(self.analyzer(x)) for x in self.df[rvs[0]]]
-                Y = [set(self.analyzer(y)) for y in self.df[rvs[1]]]
-
-            T_xy = 0
-            f_xy = []
-            
-            for x, y in zip(X, Y):
-                T_xy += mem.get_coo_mem(x if (x, y) in mem else y)  # Adding partitions on 'X'
-                f_xy.append(mem[(x, y)] if (x, y) in mem else mem[(y, x)])
-
-            self.df['P_' + ','.join(rvs)] = np.array(f_xy) / T_xy        
             
        
     def fit(self, df, it_rvs=['X,Y', 'Y,Z', 'Z,X']):
@@ -403,13 +307,13 @@ class RandomSetDistributions(object):
             self.it_metrics[key] = self._mutual_info(pair)
 
 
-def step_processing(df, kernel='gausset', gamma=1.0/50.0):
+def step_processing(df, it_rvs=['X,Y', 'Y,Z', 'Z,X'], kernel='gausset', gamma=1.0/50.0):
     
     start_time = time.time()
 
     df = df.dropna()[columns[1:]]
     random_sets = RandomSetDistributions(kernel=kernel, gamma=gamma)
-    random_sets.fit(df)
+    random_sets.fit(df, it_rvs=it_rvs)
     
     end_time = time.time()
     print("STEP time: {}".format(end_time-start_time))
@@ -422,14 +326,17 @@ if __name__ == "__main__":
     start_time = time.time()
     chunk_size = 320
     input_triplets = 'data/dis_train.txt.oie'
-    output_it = "results/it_test_gausset.csv"
+    output_it = "results/it_test_expset.csv"    #gausset.csv"
+    it_rvs = ['Y,X', 'Z,Y', 'X,Z']
+    kernel = 'expset'
+    gamma = 1.0/50.0
 
     # Generate chunks from input csv triplets
     df_generator = pd.read_csv(
         input_triplets, sep='\t', names=columns, chunksize=chunk_size)
-
+    step = partial(step_processing, it_rvs=it_rvs, kernel=kernel, gamma=gamma)
     results = Parallel(prefer='processes', n_jobs=-1)(
-            delayed(step_processing)(df)
+            delayed(step)(df)
         for df in df_generator)
     
     end_time = time.time()
