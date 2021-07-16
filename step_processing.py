@@ -7,8 +7,8 @@ import pandas as pd
 import math
 import time
 from functools import partial
-#from pdb import set_trace as st
-columns = ['p', 'X', 'Y', 'Z']
+from pdb import set_trace as st
+
 
 
 class SetHashedDict:
@@ -16,10 +16,10 @@ class SetHashedDict:
     def __init__(self):
         self.x_keys = []
         self.y_keys = []
-        self.values = {}
-        self.x_memory = {}
-        self.y_memory = {}
-
+        self._values = {}
+        self.coo_keys = []
+        self.coo_mem = {}
+        
 
     def __getitem__(self, ks):
         if isinstance(ks, list) or isinstance(ks, tuple):
@@ -27,10 +27,10 @@ class SetHashedDict:
             ix = self.x_keys.index(ka)
             iy = self.y_keys.index(kb)
 
-            return self.values[(ix, iy)]
+            return self._values[(ix, iy)]
         else:
             ix = self.x_keys.index(ks)
-            return self.values[ix]
+            return self._values[ix]
         
 
     def __setitem__(self, ks, value):
@@ -42,7 +42,7 @@ class SetHashedDict:
             if not kb in self.y_keys:
                 self.y_keys.append(kb)
         
-            self.values[(
+            self._values[(
                 self.x_keys.index(ka),
                 self.y_keys.index(kb)
             )] = value
@@ -50,7 +50,7 @@ class SetHashedDict:
             if not ks in self.x_keys:
                 self.x_keys.append(ks)
             
-            self.values[self.x_keys.index(ks)] = value
+            self._values[self.x_keys.index(ks)] = value
         
 
     def __contains__(self, ks):
@@ -71,33 +71,33 @@ class SetHashedDict:
 
     def items(self):
         if len(self.y_keys) > 0:
-            for it in self.values.items():
+            for it in self._values.items():
                 yield (
                     self.x_keys[it[0][0]],
                     self.y_keys[it[0][1]], it[1])
         else:
-            for it in self.values.items():
+            for it in self._values.items():
                 yield (self.x_keys[it[0]], it[1])
 
 
-    def set_coo_mem(self, set_lk):
-        it, lk = set_lk
-        try:
-            idx = self.x_keys.index(it)
-            self.x_memory[idx] = lk
+    def values(self):
+        return self._values.values()
 
-        except ValueError:
-            print("such item {} isn't already in self.x_keys".format(it))
+
+    def set_coo_mem(self, ks):
+        assert isinstance(ks, list) or isinstance(ks, tuple)
+        k, value = ks
+        if not k in self.coo_keys:
+            self.coo_keys.append(k)
+        
+        self.coo_mem[self.coo_keys.index(k)] = value
         
         
-    def get_coo_mem(self, it):
-        try:
-            idx = self.x_keys.index(it)
-            return self.x_memory[idx]
+    def get_coo_mem(self, ks):
+        assert isinstance(ks, set)
+        idx = self.coo_keys.index(ks)
 
-        except ValueError:
-            print("such item {} isn't already in self.x_keys".format(it))
-            
+        return self.coo_mem[idx]
 
 
 class RandomSetDistributions(object):
@@ -121,10 +121,16 @@ class RandomSetDistributions(object):
         self.it_metrics = {}
         self.Omega = {}
         self.check_np = lambda f : type(f).__module__ == np.__name__
+        self.tokenizer = self.build_tokenizer()
 
 
-    def _kernel(self, x):
-        
+    def build_tokenizer(self):
+        tokenizer = CountVectorizer(
+            analyzer=self.analyzer, ngram_range=self.ngram_range)
+        return tokenizer.build_analyzer()
+
+
+    def _kernel(self, x):        
         try:
             if self.kernel is None:
                 return np.array(x)
@@ -147,8 +153,11 @@ class RandomSetDistributions(object):
 
     def _projector(self, x, y):
         if self.kernel == 'gausset':
+            # It would be great to include normalized distances
+            # \cite{conci2018distance,app11041910}
             return len((x - y).union(y - x))
         elif self.kernel == 'expset':
+            # # It would be great to include similarity metrics 
             return len(x.intersection(y))
         else:
             return len(x.intersection(y))
@@ -162,7 +171,8 @@ class RandomSetDistributions(object):
         
         H_Xgy = []
         for y in omega_y:
-            H_Xgy.append(P_Y[y] * entropy([P_XgY[x, y] for x in omega_x]))
+            H_Xgy.append(P_Y[y] * entropy(
+                                        [P_XgY[x, y] for x in omega_x], base=2))
             
         H_XgY = sum(H_Xgy)
         self.it_metrics['H(' + '|'.join(rvs) + ')'] = H_XgY
@@ -172,8 +182,7 @@ class RandomSetDistributions(object):
 
     def _entropy(self, rv):
         P_X = self.prob_distributions['P_' + rv]
-        omega_x = list(self.prob_distributions['P_' + rv].keys())
-        H_X = entropy([P_X[x] for x in omega_x], base=2)
+        H_X = entropy(list(P_X.values()), base=2)
         self.it_metrics['H(' + rv + ')'] = H_X
         
         return H_X
@@ -181,6 +190,7 @@ class RandomSetDistributions(object):
         
     def _mutual_info(self, rvs=['X', 'Y']):
         I_XY = self._entropy(rvs[0]) - self._cond_entropy(rvs)
+        self.it_metrics['I(' + ';'.join(rvs) + ')'] = I_XY
         
         return I_XY
 
@@ -190,20 +200,18 @@ class RandomSetDistributions(object):
 
         try:
             self.Omega[rv] = self._build_vocab(rv)
-            projs_x = self._build_projections(rv)
         except:
             self.set_rvs[rv] = self._build_set_outcomes(rv)
             self.Omega[rv] = self._build_vocab(rv)
-            projs_x = self._build_projections(rv)
-
         
+        projs_x = self._build_projections(rv)
+
         mem = SetHashedDict()
         partition = 0
         for x in projs_x.keys():
             f_X = self._kernel(projs_x[x]).sum()
             mem[x] = f_X
             partition += f_X
-        mem.set_coo_mem((x, partition))
 
         distribution = SetHashedDict()
         for x in self.Omega[rv]:
@@ -214,12 +222,9 @@ class RandomSetDistributions(object):
 
 
     def _build_set_outcomes(self, rv):
-        analyzer = CountVectorizer(
-            analyzer=self.analyzer, ngram_range=self.ngram_range)
-        tokenizer = analyzer.build_analyzer()
         sets = []
         for x in self.df[rv]:
-            sets.append(set(tokenizer(x)))
+            sets.append(set(self.tokenizer(x)))
 
         return sets
 
@@ -260,7 +265,8 @@ class RandomSetDistributions(object):
             self.Omega[rvs[1]] = self._build_vocab(rvs[1])
             omega_x = self.Omega[rvs[0]]
             omega_y = self.Omega[rvs[1]]
-
+        # Take this from the already done marginal computations and eliminate
+        # this double processing time
         projs_x = self._build_projections(rvs[0])
         projs_y = self._build_projections(rvs[1])
         
@@ -269,7 +275,7 @@ class RandomSetDistributions(object):
             partition = 0
             for x in projs_x.keys():
                 f_xy = self._kernel(projs_x[x]).dot(self._kernel(projs_y[y]))
-                mem[x, y] = mem[y, x] = f_xy
+                mem[x, y] = f_xy
                 partition += f_xy
 
             mem.set_coo_mem((y, partition))
@@ -280,8 +286,7 @@ class RandomSetDistributions(object):
                 distribution[x, y] = mem[x, y] / mem.get_coo_mem(y)
 
         self.prob_distributions['P_' + '|'.join(rvs)] = distribution
-        self.xy_logits['_'.join(rvs)] = mem
-        self.xy_logits['_'.join(rvs[::-1])] = mem      
+        self.xy_logits['_'.join(rvs)] = mem      
             
        
     def fit(self, df, it_rvs=['X,Y', 'Y,Z', 'Z,X']):
@@ -298,20 +303,24 @@ class RandomSetDistributions(object):
         assert len(RVs)/len(set(df.columns).intersection(RVs)) == 1.0, ("One or"
             " more of the given columns in 'it_rvs' argument to fit() is not"
             "in the columns of the input dataframe.")
-            
-        _ = [self._marginal(RV) for RV in RVs]
-        # Estimating conditionals and Information-Theoretic metrics
+        
+        for RV in RVs:
+            self._marginal(RV)
+        # Estimating pair-wise Information-Theoretic metrics
+
         for pair in pairsRV:
             self._conditional(pair)
-            key = 'I(' + ','.join(pair) + ')'
-            self.it_metrics[key] = self._mutual_info(pair)
+            self._mutual_info(pair)
+            # Change to this method if no problem when returnning the metrics:
+            #key = 'I(' + ','.join(pair) + ')'
+            #self.it_metrics[key] = self._mutual_info(pair)
 
 
-def step_processing(df, it_rvs=['X,Y', 'Y,Z', 'Z,X'], kernel='gausset', gamma=1.0/50.0):
+def step_processing(df, it_rvs=['Y,X', 'Z,Y', 'X,Z'], kernel='gausset', gamma=1.0/50.0):
     
     start_time = time.time()
 
-    df = df.dropna()[columns[1:]]
+    df = df.dropna()
     random_sets = RandomSetDistributions(kernel=kernel, gamma=gamma)
     random_sets.fit(df, it_rvs=it_rvs)
     
@@ -326,16 +335,28 @@ if __name__ == "__main__":
     start_time = time.time()
     chunk_size = 320
     input_triplets = 'data/dis_train.txt.oie'
-    output_it = "results/it_test_expset.csv"    #gausset.csv"
-    it_rvs = ['Y,X', 'Z,Y', 'X,Z']
+    it_rvs = ['Y,X', 'Z,Y', 'X,Z']  # Order verified from De Marcken (1999)
+    #kernel = 'gausset'
     kernel = 'expset'
     gamma = 1.0/50.0
+    output_it = "results/it_{}_kernel-{}_gamma-{}_sample-{}.csv".format(
+        'train' if '_train.' in input_triplets else 'test',
+        kernel,
+        gamma,
+        chunk_size)
+    n_jobs = -1
+    columns = [1, 2, 3]
+    names = ['X', 'Y', 'Z']
 
     # Generate chunks from input csv triplets
     df_generator = pd.read_csv(
-        input_triplets, sep='\t', names=columns, chunksize=chunk_size)
+        input_triplets,
+        sep='\t',
+        names=names,
+        chunksize=chunk_size,
+        usecols=columns)
     step = partial(step_processing, it_rvs=it_rvs, kernel=kernel, gamma=gamma)
-    results = Parallel(prefer='processes', n_jobs=-1)(
+    results = Parallel(prefer='processes', n_jobs=n_jobs)(
             delayed(step)(df)
         for df in df_generator)
     
