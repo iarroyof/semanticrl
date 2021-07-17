@@ -162,18 +162,45 @@ class RandomSetDistributions(object):
         else:
             return len(x.intersection(y))
 
+    # def _cond_entropy(self, rvs=['X', 'Y']):
+    #     P_XgY = self.prob_distributions['P_' + '|'.join(rvs)]
+    #     X = self.set_rvs[rvs[0]]
+    #     Y = self.set_rvs[rvs[1]]
+    #     P_Y = self.prob_distributions['P_' + rvs[1]]
+    #     H_Xgy = []
 
+    #     for y in Y:
+    #         H_Xgy.append(P_Y[y] * entropy(
+    #             [P_XgY[x, y] for x in X], base=2))
+        
+    #     H_XgY = sum(H_Xgy)
+    #     self.it_metrics['H(' + '|'.join(rvs) + ')'] = H_XgY
+
+    #     return H_XgY
+
+
+    # def _entropy(self, rv):
+    #     P_X = self.prob_distributions['P_' + rv]
+    #     X = self.set_rvs[rv]
+
+    #     H_X = entropy([P_X[x] for x in X], base=2)
+    #     self.it_metrics['H(' + rv + ')'] = H_X
+        
+    #     return H_X
     def _cond_entropy(self, rvs=['X', 'Y']):
         P_XgY = self.prob_distributions['P_' + '|'.join(rvs)]
         P_Y = self.prob_distributions['P_' + rvs[1]]
-        omega_x = list(self.prob_distributions['P_' + rvs[0]].keys())
-        omega_y = list(self.prob_distributions['P_' + rvs[1]].keys())
+        omega_x = self.Omega[rvs[0]]#list(self.prob_distributions['P_' + rvs[0]].keys())
+        omega_y = self.Omega[rvs[1]]#list(self.prob_distributions['P_' + rvs[1]].keys())
         
-        H_Xgy = []
-        for y in omega_y:
-            H_Xgy.append(P_Y[y] * entropy(
-                                        [P_XgY[x, y] for x in omega_x], base=2))
-            
+        #H_Xgy = []
+        #for y in omega_y:
+        #    H_Xgy.append(P_Y[y] * entropy(
+        #                                [P_XgY[x, y] for x in omega_x], base=2))
+        H_Xgy = [
+            P_Y[y] * entropy(
+                [P_XgY[x, y] for x in omega_x], base=2)
+                    for y in omega_y]
         H_XgY = sum(H_Xgy)
         self.it_metrics['H(' + '|'.join(rvs) + ')'] = H_XgY
         
@@ -336,8 +363,8 @@ if __name__ == "__main__":
     chunk_size = 320
     input_triplets = 'data/dis_train.txt.oie'
     it_rvs = ['Y,X', 'Z,Y', 'X,Z']  # Order verified from De Marcken (1999)
-    #kernel = 'gausset'
-    kernel = 'expset'
+    kernel = 'gausset'
+    #kernel = 'expset'
     gamma = 1.0/50.0
     output_it = "results/it_{}_kernel-{}_gamma-{}_sample-{}.csv".format(
         'train' if '_train.' in input_triplets else 'test',
@@ -364,4 +391,3 @@ if __name__ == "__main__":
     print("Experiment time: {}".format(end_time-start_time))
     
     pd.DataFrame(results).to_csv(output_it)
-
