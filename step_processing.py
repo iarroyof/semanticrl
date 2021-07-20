@@ -9,12 +9,12 @@ import time
 from functools import partial
 from pdb import set_trace as st
 
-# -------------------------
+# ------------------------------------------------------------------------------
 max_probs = {}
 min_probs = {}
 max_itms = {}
 min_itms = {}
-# -------------------------
+# ------------------------------------------------------------------------------
 
 class SetHashedDict:
     
@@ -113,12 +113,12 @@ class RandomSetDistributions(object):
         self.gamma = gamma
         self.analyzer = analyzer
         self.ngram_range = ngram_range
-        self.xy_logits = {}
+        self.projs = {}
         self.n_jobs = n_jobs
         self.backend = backend
         self.kernel = kernel
         self.set_rvs = {}
-        self.prob_distributions = {}
+        self.distributions = {}
         self.it_metrics = {}
         self.Omega = {}
         self.check_np = lambda f : type(f).__module__ == np.__name__
@@ -204,11 +204,11 @@ class RandomSetDistributions(object):
             self.set_rvs[rv] = self._build_set_outcomes(rv)
             self.Omega[rv] = self._build_vocab(rv)
         
-        projs_x = self._build_projections(rv)
+        self.projs[rv] = self._build_projections(rv)
 
         mem = SetHashedDict()
         partition = 0
-        for x, proj in projs_x.items():
+        for x, proj in self.projs[rv].items():
             f_X = self._kernel(proj).sum()
             mem[x] = f_X
             partition += f_X
@@ -217,43 +217,7 @@ class RandomSetDistributions(object):
         for x in self.Omega[rv]:
             distribution[x] = mem[x] / partition
             
-        self.prob_distributions['P_' + rv] = distribution
-        self.xy_logits[rv] = mem
-
-
-    def __conditional(self, rvs=['X', 'Y']):
-        assert (isinstance(rvs, list) or
-                isinstance(rvs, tuple) and
-                len(rvs) == 2), "Check 'rvs' argument for two RVs"
-        try:
-            omega_x = self.Omega[rvs[0]]
-        except KeyError:
-            self.Omega[rvs[0]] = self._build_vocab(rvs[0])
-            omega_x = self.Omega[rvs[0]]
-            
-        try:
-            omega_y = self.Omega[rvs[1]]
-        except KeyError:
-            self.Omega[rvs[1]] = self._build_vocab(rvs[1])
-            omega_y = self.Omega[rvs[1]]
-        # Take this from the already done marginal computations and eliminate
-        # this double processing time
-        projs_x = self._build_projections(rvs[0])
-        projs_y = self._build_projections(rvs[1])
-        
-        # (1996) Estimating and Visualizing Conditional Densities [Hyndman - Bashtannyk - Grunwald]
-        distribution = SetHashedDict()
-        
-        for y, proj_y in projs_y.items():
-            k_y = np.array(self._kernel(proj_y))
-            h_y = (self.gamma / len(k_y)) * k_y.sum()
-            for x, proj_x in projs_x.items():
-                k_x = np.array(self._kernel(proj_x))
-                f_xy = k_y.dot(k_x)
-                g_xy = (self.gamma ** 2 / len(k_y)) * f_xy
-                distribution[x, y] = g_xy / h_y
-
-        self.prob_distributions['P_' + '|'.join(rvs)] = distribution
+        self.distributions['P_' + rv] = distribution
 
 
     def _conditional(self, rvs=['X', 'Y']):
@@ -265,22 +229,25 @@ class RandomSetDistributions(object):
         except KeyError:
             self.Omega[rvs[0]] = self._build_vocab(rvs[0])
             omega_x = self.Omega[rvs[0]]
-            
         try:
             omega_y = self.Omega[rvs[1]]
         except KeyError:
             self.Omega[rvs[1]] = self._build_vocab(rvs[1])
             omega_y = self.Omega[rvs[1]]
-        # Take this from the already done marginal computations and eliminate
-        # this double processing time
-        projs_x = self._build_projections(rvs[0])
-        projs_y = self._build_projections(rvs[1])
+        try:
+            projs_x = self.projs[rvs[0]]
+        except KeyError:
+            projs_x = self._build_projections(rvs[0])
+        try:
+            projs_y = self.projs[rvs[1]]
+        except KeyError:
+            projs_y = self._build_projections(rvs[1])
         # (1996) Estimating and Visualizing Conditional Densities [Hyndman - Bashtannyk - Grunwald]
         mem = SetHashedDict()
-        for y in projs_y.keys():
+        for y, proj_y in projs_y.items():
             partition = 0
-            for x in projs_x.keys():
-                f_xy = self._kernel(projs_x[x]).dot(self._kernel(projs_y[y]))
+            for x, proj_x in projs_x.items():
+                f_xy = self._kernel(proj_x).dot(self._kernel(proj_y))
                 mem[x, y] = f_xy
                 partition += f_xy
 
@@ -290,13 +257,12 @@ class RandomSetDistributions(object):
         for x in omega_x:
             for y in omega_y:
                 distribution[x, y] = mem[x, y] / mem.get_coo_mem(y)
-        st()
-        self.prob_distributions['P_' + '|'.join(rvs)] = distribution
-        self.xy_logits['_'.join(rvs)] = mem
+
+        self.distributions['P_' + '|'.join(rvs)] = distribution
 
 
     def _entropy(self, rv):
-        P_X = self.prob_distributions['P_' + rv]
+        P_X = self.distributions['P_' + rv]
         H_X = entropy(list(P_X.values()), base=2)
         self.it_metrics['H(' + rv + ')'] = H_X
         
@@ -304,8 +270,8 @@ class RandomSetDistributions(object):
 
 
     def _cond_entropy(self, rvs=['X', 'Y']):
-        P_XgY = self.prob_distributions['P_' + '|'.join(rvs)]
-        P_Y = self.prob_distributions['P_' + rvs[1]]
+        P_XgY = self.distributions['P_' + '|'.join(rvs)]
+        P_Y = self.distributions['P_' + rvs[1]]
         omega_x = self.Omega[rvs[0]]
         omega_y = self.Omega[rvs[1]]
         
@@ -368,15 +334,15 @@ def save_extrema(set_statistics):
     global max_itms
     global min_itms
     if max_probs == {}:
-        max_probs = {k: [0, ''] for k in set_statistics.prob_distributions.keys()}
+        max_probs = {k: [0, ''] for k in set_statistics.distributions.keys()}
     if min_probs == {}:
-        min_probs = {k: [1.5, ''] for k in set_statistics.prob_distributions.keys()}
+        min_probs = {k: [1.5, ''] for k in set_statistics.distributions.keys()}
     if max_itms == {}:    
         max_itms = {k: [0, ''] for k in set_statistics.it_metrics.keys()}
     if min_itms == {}:
         min_itms = {k: [1000, ''] for k in set_statistics.it_metrics.keys()}
 
-    for k, vs in set_statistics.prob_distributions.items():
+    for k, vs in set_statistics.distributions.items():
         mean_prob = np.mean(list(vs.values()))
         if mean_prob > max_probs[k][0]: 
             max_probs[k] = (mean_prob, set_statistics)
@@ -398,9 +364,9 @@ def step_processing(
     df = df.dropna()
     random_sets = RandomSetDistributions(kernel=kernel, gamma=gamma)
     random_sets.fit(df, it_rvs=it_rvs)
-    
+    # --------------------------------------------------------------------------
     save_extrema(random_sets)
-
+    # --------------------------------------------------------------------------
     end_time = time.time()
     print("STEP time: {}".format(end_time-start_time))
 
@@ -440,7 +406,7 @@ if __name__ == "__main__":
         )(
             delayed(step)(df)
         for df in df_generator)
-    
+    st()    
     end_time = time.time()
     print("Experiment time: {}".format(end_time-start_time))
     
