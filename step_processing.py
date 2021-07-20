@@ -306,6 +306,9 @@ class RandomSetDistributions(object):
 
        
     def fit(self, df, it_rvs=['X,Y', 'Y,Z', 'Z,X']):
+        # Verify wheter time can be shorten takin the idea of recursive computation
+        # from Lodhi, Huma, et al. "Text classification using string kernels."
+        #           Journal of Machine Learning Research 2.Feb (2002): 419-444.
         assert isinstance(df, pd.DataFrame) # Input data must a pd.DataFrame
         assert len(df.columns) >= 2 # Two or more columns are needed
         
