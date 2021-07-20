@@ -108,9 +108,10 @@ class SetHashedDict:
 class RandomSetDistributions(object):
 
     def __init__(self,
-            gamma=None, joint_method='conditional', kernel=None, n_jobs=-1,
-            backend='processes', ngram_range=(1, 4), analyzer='char_wb'):
+        gamma=None, bias=4, joint_method='conditional', kernel=None,
+        n_jobs=-1, backend='processes', ngram_range=(1, 4), analyzer='char_wb'):
         self.gamma = gamma
+        self.bias = bias
         self.analyzer = analyzer
         self.ngram_range = ngram_range
         self.projs = {}
@@ -154,10 +155,13 @@ class RandomSetDistributions(object):
         try:
             if self.kernel is None:
                 return np.array(x)
+            elif self.kernel == 'gaussian':
+                #return (1/np.sqrt(2 * math.pi)) * np.exp(-self.gamma * np.array(x) ** 2)
+                return np.exp(-self.gamma * np.array(x) ** 2)
             elif self.kernel == 'gausset':
-                return (1/np.sqrt(2 * math.pi)) * np.exp(-self.gamma * np.array(x) ** 2)
+                return np.exp(-self.gamma * (np.array(x) + self.bias) ** 2)
             elif self.kernel == 'expset':
-                return np.exp(self.gamma * np.array(x))
+                return np.exp(self.gamma * (np.array(x) + self.bias))
             elif (isinstance(self.kernel, collections.abc.Callable)
                     and self.check_np(self.kernel)):
                 return self.kernel(np.array(x)) 
@@ -357,12 +361,12 @@ def save_extrema(set_statistics):
 
 
 def step_processing(
-    df, it_rvs=['Y,X', 'Z,Y', 'X,Z'], kernel='gausset', gamma=1.0/50.0):
+    df, it_rvs=['Y,X', 'Z,Y', 'X,Z'], kernel='gausset', gamma=1.0/50.0, bias=4.0):
     
     start_time = time.time()
 
     df = df.dropna()
-    random_sets = RandomSetDistributions(kernel=kernel, gamma=gamma)
+    random_sets = RandomSetDistributions(kernel=kernel, gamma=gamma, bias=bias)
     random_sets.fit(df, it_rvs=it_rvs)
     # --------------------------------------------------------------------------
     save_extrema(random_sets)
@@ -382,10 +386,12 @@ if __name__ == "__main__":
     kernel = 'gausset'
     #kernel = 'expset'
     gamma = 1.0/50.0
-    output_it = "results/it_{}_kernel-{}_gamma-{}_sample-{}.csv".format(
+    bias = 4.0
+    output_it = "results/it_{}_kernel-{}_gamma-{}_bias-{}_sample-{}.csv".format(
         'train' if '_train.' in input_triplets else 'test',
         kernel,
         gamma,
+        bias,
         chunk_size)
     n_jobs = 1
     columns = [1, 2, 3]
@@ -399,7 +405,8 @@ if __name__ == "__main__":
         chunksize=chunk_size,
         usecols=columns)
 
-    step = partial(step_processing, it_rvs=it_rvs, kernel=kernel, gamma=gamma)
+    step = partial(
+        step_processing, it_rvs=it_rvs, kernel=kernel, gamma=gamma, bias=bias)
     results = Parallel(
         n_jobs=n_jobs, require='sharedmem'
         #prefer='processes', n_jobs=n_jobs
