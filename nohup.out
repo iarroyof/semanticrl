@@ -20377,3 +20377,4655 @@ Step   6.0
 Step  36.0
 All finished..
 1758.633959 seconds (55.07 G allocations: 1.607 TiB, 67.54% gc time)
+Episode time: 27.534361362457275
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-10.csv
+Episode time: 32.25722646713257
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-10.csv
+Episode time: 298.4232702255249
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-100.csv
+Episode time: 122.89220714569092
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-50.csv
+Episode time: 765.9105236530304
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-200.csv
+Episode time: 1457.8521084785461
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-300.csv
+Episode time: 32.97340440750122
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-10.csv
+Episode time: 127.74260592460632
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-50.csv
+Episode time: 1455.2959682941437
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-300.csv
+Episode time: 700.5740075111389
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-200.csv
+Episode time: 100.85459661483765
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-50.csv
+Episode time: 289.74223375320435
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-100.csv
+Episode time: 127.82295823097229
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-50.csv
+Episode time: 816.2079808712006
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-200.csv
+Episode time: 245.9209258556366
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-100.csv
+Episode time: 700.189694404602
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-200.csv
+Episode time: 123.30228662490845
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-50.csv
+Episode time: 698.7777590751648
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-200.csv
+Episode time: 124.30240631103516
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-50.csv
+Episode time: 286.47102069854736
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-100.csv
+Episode time: 296.65111446380615
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-100.csv
+Episode time: 1321.229040145874
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-300.csv
+Episode time: 691.474720954895
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-200.csv
+Episode time: 27.03353524208069
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-10.csv
+Episode time: 31.759426593780518
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-10.csv
+Episode time: 277.3021070957184
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-100.csv
+Episode time: 31.78673267364502
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-10.csv
+Episode time: 122.47662663459778
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-50.csv
+Episode time: 806.7921280860901
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-200.csv
+Episode time: 1434.1575779914856
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-300.csv
+Episode time: 31.207261562347412
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-10.csv
+Episode time: 100.10265684127808
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-50.csv
+Episode time: 691.7167336940765
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-200.csv
+Episode time: 31.602638006210327
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-10.csv
+Episode time: 99.28694987297058
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-50.csv
+Episode time: 241.60451650619507
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-100.csv
+Episode time: 687.342337846756
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-200.csv
+Episode time: 99.2823121547699
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-50.csv
+Episode time: 754.0942628383636
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-200.csv
+Episode time: 794.4985275268555
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-200.csv
+Episode time: 31.86494469642639
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-10.csv
+Episode time: 26.2783420085907
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-10.csv
+Episode time: 99.06288623809814
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-50.csv
+Episode time: 283.3683702945709
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-100.csv
+Episode time: 1510.68741440773
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-300.csv
+Episode time: 1312.7674934864044
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-300.csv
+Episode time: 1437.1036925315857
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-300.csv
+Episode time: 1314.286169052124
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-300.csv
+Episode time: 1436.749146938324
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-300.csv
+Episode time: 770.1462543010712
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-200.csv
+Episode time: 1309.178258895874
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-300.csv
+Episode time: 686.1186091899872
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-200.csv
+Episode time: 691.5721867084503
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-200.csv
+Episode time: 1325.064082622528
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-300.csv
+Episode time: 758.8369960784912
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-200.csv
+Episode time: 692.1340749263763
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-200.csv
+Episode time: 1429.2125477790833
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-300.csv
+Episode time: 687.5742628574371
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-200.csv
+Episode time: 692.6620147228241
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-200.csv
+Episode time: 1317.4692692756653
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-300.csv
+Episode time: 807.0981252193451
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-200.csv
+Episode time: 288.9124813079834
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-100.csv
+Episode time: 26.48297953605652
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-10.csv
+Episode time: 26.413842916488647
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-10.csv
+Episode time: 99.78750848770142
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-50.csv
+Episode time: 287.25607442855835
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-100.csv
+Episode time: 1320.366420507431
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-300.csv
+Episode time: 770.4094619750977
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-200.csv
+Episode time: 26.792703866958618
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-10.csv
+Episode time: 31.680524587631226
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-10.csv
+Episode time: 242.9385747909546
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-100.csv
+Episode time: 31.997836589813232
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-10.csv
+Episode time: 26.41795563697815
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-10.csv
+Episode time: 101.29296541213989
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-50.csv
+Episode time: 293.7816753387451
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-100.csv
+Episode time: 1337.0192539691925
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-300.csv
+Episode time: 775.5793588161469
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-200.csv
+Episode time: 123.50175094604492
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-50.csv
+Episode time: 242.8085494041443
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-100.csv
+Episode time: 100.36087656021118
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-50.csv
+Episode time: 243.33619022369385
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-100.csv
+Episode time: 1445.880212545395
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-300.csv
+Episode time: 738.5397882461548
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-200.csv
+Episode time: 246.30787873268127
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-100.csv
+Episode time: 1444.8625509738922
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-300.csv
+Episode time: 1242.9401724338531
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-300.csv
+Episode time: 688.4205813407898
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-200.csv
+Episode time: 771.6305294036865
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-200.csv
+Episode time: 273.0023629665375
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-100.csv
+Episode time: 1224.6159174442291
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-300.csv
+Episode time: 32.56670308113098
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-10.csv
+Episode time: 99.83072280883789
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-50.csv
+Episode time: 773.3889715671539
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-200.csv
+Episode time: 99.48473858833313
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-50.csv
+Episode time: 690.3525545597076
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-200.csv
+Episode time: 1266.6430242061615
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-300.csv
+Episode time: 27.16365647315979
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-10.csv
+Episode time: 26.976359844207764
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-10.csv
+Episode time: 124.04316973686218
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-50.csv
+Episode time: 1497.1786143779755
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-300.csv
+Episode time: 1312.4916598796844
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-300.csv
+Episode time: 248.4401228427887
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-100.csv
+Episode time: 1440.1910111904144
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-300.csv
+Episode time: 1315.6869406700134
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-300.csv
+Episode time: 102.40727829933167
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-50.csv
+Episode time: 244.47405219078064
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-100.csv
+Episode time: 99.58467531204224
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-50.csv
+Episode time: 242.41405749320984
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-100.csv
+Episode time: 773.4117958545685
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-200.csv
+Episode time: 242.44021606445312
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-100.csv
+Episode time: 1312.238311290741
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-300.csv
+Episode time: 32.95972394943237
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-10.csv
+Episode time: 101.84482073783875
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-50.csv
+Episode time: 692.111968755722
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-200.csv
+Episode time: 31.508383989334106
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-10.csv
+Episode time: 122.43572640419006
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-50.csv
+Episode time: 758.1547334194183
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-200.csv
+Episode time: 1299.9089303016663
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-300.csv
+Episode time: 287.5604648590088
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-100.csv
+Episode time: 1435.318752527237
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-300.csv
+Episode time: 1325.1436576843262
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-300.csv
+Episode time: 126.05522131919861
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-50.csv
+Episode time: 694.6031317710876
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-200.csv
+Episode time: 32.54980731010437
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-10.csv
+Episode time: 126.58002710342407
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-50.csv
+Episode time: 692.4399697780609
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-200.csv
+Episode time: 769.3363065719604
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-200.csv
+Episode time: 613.8230996131897
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-200.csv
+Episode time: 681.2876698970795
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-200.csv
+Episode time: 766.2670531272888
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-200.csv
+Episode time: 101.78018689155579
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-50.csv
+Episode time: 688.3396828174591
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-200.csv
+Episode time: 26.662028312683105
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-10.csv
+Episode time: 33.4818160533905
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-10.csv
+Episode time: 125.57774043083191
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-50.csv
+Episode time: 651.290566444397
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-200.csv
+Episode time: 1452.1796443462372
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-300.csv
+Episode time: 240.4415900707245
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-100.csv
+Episode time: 1412.4330594539642
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-300.csv
+Episode time: 248.01377081871033
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-100.csv
+Episode time: 1322.3548188209534
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-300.csv
+Episode time: 778.4352788925171
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-200.csv
+Episode time: 122.73682403564453
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-50.csv
+Episode time: 641.754371881485
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-200.csv
+Episode time: 1317.1666235923767
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-300.csv
+Episode time: 26.379507303237915
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-10.csv
+Episode time: 31.796563148498535
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-10.csv
+Episode time: 26.320045948028564
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-10.csv
+Episode time: 99.23113298416138
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-50.csv
+Episode time: 242.7063958644867
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-100.csv
+Episode time: 1388.626662492752
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-300.csv
+Episode time: 247.84999084472656
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-100.csv
+Episode time: 1454.6494166851044
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-300.csv
+Episode time: 1459.8155817985535
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-300.csv
+Episode time: 32.54104447364807
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-10.csv
+Episode time: 127.7041368484497
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-50.csv
+Episode time: 1330.2721269130707
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-300.csv
+Episode time: 244.45219898223877
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-100.csv
+Episode time: 1434.523515701294
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-300.csv
+Episode time: 1444.914973974228
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-300.csv
+Episode time: 100.59851431846619
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-50.csv
+Episode time: 764.2078320980072
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-200.csv
+Episode time: 122.63548254966736
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-50.csv
+Episode time: 746.8111584186554
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-200.csv
+Episode time: 784.0199997425079
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-200.csv
+Episode time: 30.11415410041809
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-10.csv
+Episode time: 31.69000005722046
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-10.csv
+Episode time: 126.46330213546753
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-50.csv
+Episode time: 244.47814512252808
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-100.csv
+Episode time: 1332.4967021942139
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-300.csv
+Episode time: 636.5174462795258
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-200.csv
+Episode time: 100.64056038856506
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-50.csv
+Episode time: 286.2721309661865
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-100.csv
+Episode time: 243.25208234786987
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-100.csv
+Episode time: 683.4124329090118
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-200.csv
+Episode time: 1304.8970355987549
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-300.csv
+Episode time: 577.9564127922058
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-200.csv
+Episode time: 789.3847219944
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-200.csv
+Episode time: 26.777812004089355
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-10.csv
+Episode time: 26.802797079086304
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-10.csv
+Episode time: 100.98489713668823
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-50.csv
+Episode time: 290.24698066711426
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-100.csv
+Episode time: 1321.0693488121033
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-300.csv
+Episode time: 641.006991147995
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-200.csv
+Episode time: 27.129721641540527
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-10.csv
+Episode time: 27.07796359062195
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-10.csv
+Episode time: 101.24737620353699
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-50.csv
+Episode time: 686.8434817790985
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-200.csv
+Episode time: 115.34726977348328
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-50.csv
+Episode time: 284.06977343559265
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-100.csv
+Episode time: 1312.4928050041199
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-300.csv
+Episode time: 667.9128518104553
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-200.csv
+Episode time: 32.50763154029846
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-10.csv
+Episode time: 118.26590490341187
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-50.csv
+Episode time: 698.9211730957031
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-200.csv
+Episode time: 127.21007418632507
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-50.csv
+Episode time: 290.13832116127014
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-100.csv
+Episode time: 1330.4612498283386
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-300.csv
+Episode time: 636.2410912513733
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-200.csv
+Episode time: 105.0727288722992
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-50.csv
+Episode time: 288.3239312171936
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-100.csv
+Episode time: 243.43356037139893
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-100.csv
+Episode time: 779.6039690971375
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-200.csv
+Episode time: 99.40598225593567
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-50.csv
+Episode time: 241.57570719718933
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-100.csv
+Episode time: 29.626912355422974
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-10.csv
+Episode time: 26.379462242126465
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-10.csv
+Episode time: 31.57230544090271
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-10.csv
+Episode time: 123.14535331726074
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-50.csv
+Episode time: 241.99506092071533
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-100.csv
+Episode time: 1049.7393808364868
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-300.csv
+Episode time: 246.8429729938507
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-100.csv
+Episode time: 1322.5091931819916
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-300.csv
+Episode time: 782.4714760780334
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-200.csv
+Episode time: 244.1010980606079
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-100.csv
+Episode time: 667.4972581863403
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-200.csv
+Episode time: 1320.2543137073517
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-300.csv
+Episode time: 29.690821886062622
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-10.csv
+Episode time: 28.349371910095215
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-10.csv
+Episode time: 33.8747398853302
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-10.csv
+Episode time: 101.76891946792603
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-50.csv
+Episode time: 288.34054350852966
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-100.csv
+Episode time: 31.71429944038391
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-10.csv
+Episode time: 126.11063027381897
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-50.csv
+Episode time: 288.46147990226746
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-100.csv
+Episode time: 26.294589042663574
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-10.csv
+Episode time: 99.50574254989624
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-50.csv
+Episode time: 242.3840775489807
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-100.csv
+Episode time: 662.3784830570221
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-200.csv
+Episode time: 1324.7695000171661
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-300.csv
+Episode time: 26.757204294204712
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-10.csv
+Episode time: 31.940019607543945
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-10.csv
+Episode time: 31.841742753982544
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-10.csv
+Episode time: 123.55325102806091
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-50.csv
+Episode time: 285.8478283882141
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-100.csv
+Episode time: 115.11972618103027
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-50.csv
+Episode time: 241.01052331924438
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-100.csv
+Episode time: 1100.575441122055
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-300.csv
+Episode time: 1308.4113733768463
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-300.csv
+Episode time: 1313.6266963481903
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-300.csv
+Episode time: 665.3195052146912
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-200.csv
+Episode time: 100.47142577171326
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-50.csv
+Episode time: 242.8221938610077
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-100.csv
+Episode time: 126.0869140625
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-50.csv
+Episode time: 286.9535276889801
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-100.csv
+Episode time: 1437.9140343666077
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-300.csv
+Episode time: 1106.8515617847443
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-300.csv
+Episode time: 27.196235418319702
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-10.csv
+Episode time: 32.10766577720642
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-10.csv
+Episode time: 244.55982613563538
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-100.csv
+Episode time: 26.87398886680603
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-10.csv
+Episode time: 32.17956829071045
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-10.csv
+Episode time: 124.44056224822998
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-50.csv
+Episode time: 699.4711349010468
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-200.csv
+Episode time: 777.6583461761475
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-200.csv
+Episode time: 241.67320799827576
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-100.csv
+Episode time: 1129.3174633979797
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-300.csv
+Episode time: 684.4388725757599
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-200.csv
+Episode time: 682.325724363327
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-200.csv
+Episode time: 31.46368980407715
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-10.csv
+Episode time: 114.31381726264954
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-50.csv
+Episode time: 240.11521744728088
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-100.csv
+Episode time: 26.31469440460205
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-10.csv
+Episode time: 26.26330804824829
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-10.csv
+Episode time: 26.2478084564209
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-10.csv
+Episode time: 98.99931931495667
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-50.csv
+Episode time: 271.3137421607971
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-100.csv
+Episode time: 1150.8968019485474
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-300.csv
+Episode time: 27.32659602165222
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-10.csv
+Episode time: 26.61202597618103
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-10.csv
+Episode time: 123.24463534355164
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-50.csv
+Episode time: 1311.086006641388
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-300.csv
+Episode time: 300.8183228969574
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-100.csv
+Episode time: 32.087393283843994
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-10.csv
+Episode time: 100.72671294212341
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-50.csv
+Episode time: 243.54592871665955
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-100.csv
+Episode time: 1205.5604257583618
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-300.csv
+Episode time: 1507.0606088638306
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-300.csv
+Episode time: 287.3608772754669
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-100.csv
+Episode time: 26.55833077430725
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-10.csv
+Episode time: 31.710418462753296
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-10.csv
+Episode time: 100.56482267379761
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-50.csv
+Episode time: 246.3302092552185
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-100.csv
+Episode time: 1188.688206911087
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-300.csv
+Episode time: 287.9399263858795
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-100.csv
+Episode time: 28.428576469421387
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-10.csv
+Episode time: 34.094841718673706
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-10.csv
+Episode time: 101.65412139892578
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-50.csv
+Episode time: 286.2171938419342
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-100.csv
+Episode time: 1438.9163765907288
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-300.csv
+Episode time: 1231.5785610675812
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-300.csv
+Episode time: 770.8155031204224
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-200.csv
+Episode time: 1435.866651058197
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-300.csv
+Episode time: 1203.4885308742523
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-300.csv
+Episode time: 99.54437375068665
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-50.csv
+Episode time: 241.0218825340271
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-100.csv
+Episode time: 115.24041104316711
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-50.csv
+Episode time: 240.62227296829224
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-100.csv
+Episode time: 1506.6586632728577
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-300.csv
+Episode time: 1225.0095977783203
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-300.csv
+Episode time: 100.34638571739197
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-50.csv
+Episode time: 286.788809299469
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-100.csv
+Episode time: 274.95137310028076
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-100.csv
+Episode time: 690.8162155151367
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-200.csv
+Episode time: 28.724682331085205
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-10.csv
+Episode time: 28.454510927200317
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-10.csv
+Episode time: 129.8722219467163
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-50.csv
+Episode time: 691.9130034446716
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-200.csv
+Episode time: 1244.4876294136047
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-300.csv
+/home/iarroyof/Projects/semanticrl/step_processing.py:372: RuntimeWarning: invalid value encountered in double_scalars
+  geometric = (a * b * c) ** (1. / 3.)
+/home/iarroyof/Projects/semanticrl/step_processing.py:371: RuntimeWarning: invalid value encountered in double_scalars
+  harmonic = 3 * a * b * c / (a * b + b * c + c * a)
+/home/iarroyof/Projects/semanticrl/step_processing.py:374: RuntimeWarning: invalid value encountered in double_scalars
+  equilateral = (1. - ((geometric - harmonic) / a_c)) + (1. - ((arithmetic - geometric) / a_c))
+/home/iarroyof/anaconda3/envs/tf25/lib/python3.9/site-packages/scipy/stats/_distn_infrastructure.py:1835: RuntimeWarning: invalid value encountered in double_scalars
+  x = np.asarray((x - loc)/scale, dtype=dtyp)
+Episode time: 284.6384153366089
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-100.csv
+Episode time: 1309.2784082889557
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-300.csv
+Episode time: 772.8884015083313
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-200.csv
+Episode time: 274.7995111942291
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-100.csv
+Episode time: 922.8117845058441
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-300.csv
+Episode time: 305.8438241481781
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-100.csv
+Episode time: 32.3070433139801
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-10.csv
+Episode time: 102.54408860206604
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-50.csv
+Episode time: 247.76115584373474
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-100.csv
+Episode time: 704.4224970340729
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-200.csv
+Episode time: 100.14350295066833
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-50.csv
+Episode time: 289.3234384059906
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-100.csv
+Episode time: 31.71726369857788
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-10.csv
+Episode time: 26.298278331756592
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-10.csv
+Episode time: 99.39430952072144
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-50.csv
+Episode time: 242.33168077468872
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-100.csv
+Episode time: 1363.6917278766632
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-300.csv
+Episode time: 1437.1509113311768
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-300.csv
+Episode time: 123.90809416770935
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-50.csv
+Episode time: 819.9722385406494
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-200.csv
+Episode time: 281.8831944465637
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-100.csv
+Episode time: 925.9720225334167
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-300.csv
+Episode time: 242.99749279022217
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-100.csv
+Episode time: 1320.5275621414185
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-300.csv
+Episode time: 691.5655028820038
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-200.csv
+Episode time: 31.75652313232422
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-10.csv
+Episode time: 99.75191116333008
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-50.csv
+Episode time: 288.1601655483246
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-100.csv
+Episode time: 952.7835218906403
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-300.csv
+Episode time: 1447.608862876892
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-300.csv
+Episode time: 122.53334307670593
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-50.csv
+Episode time: 689.3397245407104
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-200.csv
+Episode time: 26.42286515235901
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-10.csv
+Episode time: 99.76224160194397
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-50.csv
+Episode time: 242.63371872901917
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-100.csv
+Episode time: 1007.7558526992798
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-300.csv
+Episode time: 33.29214382171631
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-10.csv
+Episode time: 125.31377220153809
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-50.csv
+Episode time: 779.5859267711639
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-200.csv
+Episode time: 295.3515696525574
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-100.csv
+Episode time: 1417.4769806861877
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-300.csv
+Episode time: 1013.6018750667572
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-300.csv
+Episode time: 1445.4550602436066
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-300.csv
+Episode time: 125.5711510181427
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-50.csv
+Episode time: 688.6940031051636
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-200.csv
+Episode time: 33.773061752319336
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-10.csv
+Episode time: 101.81749105453491
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-50.csv
+Episode time: 286.8390278816223
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-100.csv
+Episode time: 982.6941883563995
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-300.csv
+Episode time: 26.7311692237854
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-10.csv
+Episode time: 26.354456901550293
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-10.csv
+Episode time: 99.41241145133972
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-50.csv
+Episode time: 773.5356855392456
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-200.csv
+Episode time: 274.5359070301056
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-100.csv
+Episode time: 782.0632240772247
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-200.csv
+Episode time: 697.5062489509583
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-200.csv
+Episode time: 1025.6293318271637
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-300.csv
+Episode time: 288.0720338821411
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-100.csv
+Episode time: 32.80380201339722
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-10.csv
+Episode time: 28.514166116714478
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-10.csv
+Episode time: 127.36506581306458
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-50.csv
+Episode time: 687.8354284763336
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-200.csv
+Episode time: 687.091123342514
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-200.csv
+Episode time: 125.3082959651947
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-50.csv
+Episode time: 292.96856927871704
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-100.csv
+Episode time: 32.157474517822266
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-10.csv
+Episode time: 101.62124061584473
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-50.csv
+Episode time: 247.22171998023987
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-100.csv
+Episode time: 1080.5817577838898
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-300.csv
+Episode time: 127.60816836357117
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-50.csv
+Episode time: 693.9629266262054
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-200.csv
+Episode time: 26.56255793571472
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-10.csv
+Episode time: 100.17888927459717
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-50.csv
+Episode time: 243.7294614315033
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-100.csv
+Episode time: 773.2508735656738
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-200.csv
+Episode time: 283.2093930244446
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-100.csv
+Episode time: 30.099027633666992
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-10.csv
+Episode time: 113.51058292388916
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-50.csv
+Episode time: 240.2953917980194
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-100.csv
+Episode time: 1104.5939388275146
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-300.csv
+Episode time: 127.00867080688477
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-50.csv
+Episode time: 783.6238555908203
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-200.csv
+Episode time: 122.75022602081299
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-50.csv
+Episode time: 814.3537690639496
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-200.csv
+Episode time: 99.01610064506531
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-50.csv
+Episode time: 286.5672390460968
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-100.csv
+Episode time: 26.64458465576172
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-10.csv
+Episode time: 26.577118635177612
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-10.csv
+Episode time: 118.26732277870178
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-50.csv
+Episode time: 285.10131311416626
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-100.csv
+Episode time: 1059.424349784851
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-300.csv
+Episode time: 33.19053363800049
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-10.csv
+Episode time: 103.63459897041321
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-50.csv
+Episode time: 786.3786129951477
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-200.csv
+Episode time: 242.80089735984802
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-100.csv
+Episode time: 774.2614281177521
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-200.csv
+Episode time: 296.10495018959045
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-100.csv
+Episode time: 29.109102964401245
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-10.csv
+Episode time: 26.585009813308716
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-10.csv
+Episode time: 124.57014417648315
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-50.csv
+Episode time: 243.42414259910583
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-100.csv
+Episode time: 1122.600439786911
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-300.csv
+Episode time: 774.3517525196075
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-200.csv
+Episode time: 26.432144165039062
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-10.csv
+Episode time: 26.411900758743286
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-10.csv
+Episode time: 101.04371857643127
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-50.csv
+Episode time: 243.49627923965454
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-100.csv
+Episode time: 684.8885281085968
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-200.csv
+Episode time: 121.59050822257996
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-50.csv
+Episode time: 684.8523797988892
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-200.csv
+Episode time: 1122.050223350525
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-300.csv
+Episode time: 122.75676727294922
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-50.csv
+Episode time: 241.8120265007019
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-100.csv
+Episode time: 99.60740995407104
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-50.csv
+Episode time: 241.8707730770111
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-100.csv
+Episode time: 1312.2524514198303
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-300.csv
+Episode time: 689.9447860717773
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-200.csv
+Episode time: 34.574891567230225
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-10.csv
+Episode time: 101.73201704025269
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-50.csv
+Episode time: 778.0247113704681
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-200.csv
+Episode time: 241.81865286827087
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-100.csv
+Episode time: 691.9563646316528
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-200.csv
+Episode time: 124.62573528289795
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-50.csv
+Episode time: 291.8503267765045
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-100.csv
+Episode time: 31.872002124786377
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-10.csv
+Episode time: 124.63757181167603
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-50.csv
+Episode time: 290.5323534011841
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-100.csv
+Episode time: 27.213473796844482
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-10.csv
+Episode time: 31.937164545059204
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-10.csv
+Episode time: 243.99671912193298
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-100.csv
+Episode time: 26.855746746063232
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-10.csv
+Episode time: 26.77737069129944
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-10.csv
+Episode time: 122.99740409851074
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-50.csv
+Episode time: 769.7141301631927
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-200.csv
+Episode time: 1465.8128895759583
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-300.csv
+Episode time: 27.150647401809692
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-10.csv
+Episode time: 26.633394718170166
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-10.csv
+Episode time: 100.54217481613159
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-50.csv
+Episode time: 777.8547632694244
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-200.csv
+Episode time: 274.23313212394714
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-100.csv
+Episode time: 773.4992442131042
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-200.csv
+Episode time: 749.9490749835968
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-200.csv
+Episode time: 1300.629604101181
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-300.csv
+Episode time: 1435.235669374466
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-300.csv
+Episode time: 705.4964201450348
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-200.csv
+Episode time: 1334.4824295043945
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-300.csv
+Episode time: 698.0697147846222
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-200.csv
+Episode time: 1309.9540469646454
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-300.csv
+Episode time: 1430.0199236869812
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-300.csv
+Episode time: 28.924841165542603
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-10.csv
+Episode time: 33.13253045082092
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-10.csv
+Episode time: 298.872677564621
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-100.csv
+Episode time: 100.27439546585083
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-50.csv
+Episode time: 287.5147125720978
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-100.csv
+Episode time: 1319.7596065998077
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-300.csv
+Episode time: 689.3086605072021
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-200.csv
+Episode time: 30.643275260925293
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-10.csv
+Episode time: 99.98978638648987
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-50.csv
+Episode time: 692.6676964759827
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-200.csv
+Episode time: 26.482814073562622
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-10.csv
+Episode time: 100.26869630813599
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-50.csv
+Episode time: 287.561972618103
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-100.csv
+Episode time: 1522.311367034912
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-300.csv
+Episode time: 1320.0992839336395
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-300.csv
+Episode time: 1440.892138004303
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-300.csv
+Episode time: 783.9676339626312
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-200.csv
+Episode time: 26.69711923599243
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-10.csv
+Episode time: 26.696571111679077
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-10.csv
+Episode time: 116.67664051055908
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-50.csv
+Episode time: 244.27923965454102
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-100.csv
+Episode time: 699.199816942215
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-200.csv
+Episode time: 122.58310103416443
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-50.csv
+Episode time: 782.7653565406799
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-200.csv
+Episode time: 100.35659790039062
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-50.csv
+Episode time: 243.16091299057007
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-100.csv
+Episode time: 116.26149606704712
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-50.csv
+Episode time: 243.31434655189514
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-100.csv
+Episode time: 1435.8154265880585
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-300.csv
+Episode time: 667.6315424442291
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-200.csv
+Episode time: 694.7355625629425
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-200.csv
+Episode time: 1321.9665520191193
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-300.csv
+Episode time: 814.4922652244568
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-200.csv
+Episode time: 101.63566279411316
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-50.csv
+Episode time: 244.6637544631958
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-100.csv
+Episode time: 100.92237448692322
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-50.csv
+Episode time: 289.894095659256
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-100.csv
+Episode time: 1319.2769973278046
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-300.csv
+Episode time: 775.1641418933868
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-200.csv
+Episode time: 772.5220394134521
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-200.csv
+Episode time: 1316.3021385669708
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-300.csv
+Episode time: 758.9906725883484
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-200.csv
+Episode time: 104.95127844810486
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-50.csv
+Episode time: 291.7743797302246
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-100.csv
+Episode time: 247.67826628684998
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-100.csv
+Episode time: 781.8865101337433
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-200.csv
+Episode time: 99.49425148963928
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-50.csv
+Episode time: 241.86536145210266
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-100.csv
+Episode time: 29.466413736343384
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-10.csv
+Episode time: 26.323070287704468
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-10.csv
+Episode time: 99.38661336898804
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-50.csv
+Episode time: 242.08364534378052
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-100.csv
+Episode time: 774.7656033039093
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-200.csv
+Episode time: 240.66946244239807
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-100.csv
+Episode time: 1436.698808670044
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-300.csv
+Episode time: 1314.207934141159
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-300.csv
+Episode time: 245.04373955726624
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-100.csv
+Episode time: 1452.6392600536346
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-300.csv
+Episode time: 1317.1438629627228
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-300.csv
+Episode time: 288.1649429798126
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-100.csv
+Episode time: 1459.1567478179932
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-300.csv
+Episode time: 1278.5180156230927
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-300.csv
+Episode time: 126.10441970825195
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-50.csv
+Episode time: 776.5811610221863
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-200.csv
+Episode time: 100.60673904418945
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-50.csv
+Episode time: 703.3954818248749
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-200.csv
+Episode time: 1320.3895370960236
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-300.csv
+Episode time: 694.708065032959
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-200.csv
+Episode time: 776.7494492530823
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-200.csv
+Episode time: 242.71982145309448
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-100.csv
+Episode time: 1319.0212697982788
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-300.csv
+Episode time: 33.045724391937256
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-10.csv
+Episode time: 101.25334978103638
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-50.csv
+Episode time: 683.7430300712585
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-200.csv
+Episode time: 26.293747901916504
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-10.csv
+Episode time: 125.15206170082092
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-50.csv
+Episode time: 240.40620803833008
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-100.csv
+Episode time: 1298.9320466518402
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-300.csv
+Episode time: 533.6876180171967
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-200.csv
+Episode time: 1464.9099140167236
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-300.csv
+Episode time: 273.9772119522095
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-100.csv
+Episode time: 1311.8955540657043
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-300.csv
+Episode time: 804.15460729599
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-200.csv
+Episode time: 26.346672773361206
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-10.csv
+Episode time: 31.462566375732422
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-10.csv
+Episode time: 122.75162696838379
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-50.csv
+Episode time: 761.6687219142914
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-200.csv
+Episode time: 1315.6011106967926
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-300.csv
+Episode time: 249.30887699127197
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-100.csv
+Episode time: 1447.2247071266174
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-300.csv
+Episode time: 1386.9044082164764
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-300.csv
+Episode time: 247.92423272132874
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-100.csv
+Episode time: 1324.7687501907349
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-300.csv
+Episode time: 694.1173324584961
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-200.csv
+Episode time: 28.601844787597656
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-10.csv
+Episode time: 128.73364448547363
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-50.csv
+Episode time: 671.2876191139221
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-200.csv
+Episode time: 687.0005667209625
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-200.csv
+Episode time: 776.8595104217529
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-200.csv
+Episode time: 244.271253824234
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-100.csv
+Episode time: 1405.2165205478668
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-300.csv
+Episode time: 124.34058976173401
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-50.csv
+Episode time: 691.4456741809845
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-200.csv
+Episode time: 31.741089344024658
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-10.csv
+Episode time: 123.30198645591736
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-50.csv
+Episode time: 286.41274213790894
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-100.csv
+Episode time: 1318.8869106769562
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-300.csv
+Episode time: 537.3261227607727
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-200.csv
+Episode time: 128.31348586082458
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-50.csv
+Episode time: 690.724860906601
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-200.csv
+Episode time: 31.78322148323059
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-10.csv
+Episode time: 125.68490624427795
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-50.csv
+Episode time: 690.2185776233673
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-200.csv
+Episode time: 773.1235461235046
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-200.csv
+Episode time: 675.3272230625153
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-200.csv
+Episode time: 100.29837584495544
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-50.csv
+Episode time: 286.5159614086151
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-100.csv
+Episode time: 241.62513875961304
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-100.csv
+Episode time: 693.5580167770386
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-200.csv
+Episode time: 26.584499835968018
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-10.csv
+Episode time: 32.25866103172302
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-10.csv
+Episode time: 26.604463577270508
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-10.csv
+Episode time: 100.05111622810364
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-50.csv
+Episode time: 242.80626726150513
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-100.csv
+Episode time: 1377.2707889080048
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-300.csv
+Episode time: 693.1445639133453
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-200.csv
+Episode time: 698.9425468444824
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-200.csv
+Episode time: 100.74333882331848
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-50.csv
+Episode time: 244.74608373641968
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-100.csv
+Episode time: 1402.2829639911652
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-300.csv
+Episode time: 28.683833599090576
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-10.csv
+Episode time: 27.426533460617065
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-10.csv
+Episode time: 124.95166420936584
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-50.csv
+Episode time: 1523.7689027786255
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-300.csv
+Episode time: 1452.7361905574799
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-300.csv
+Episode time: 1446.9063713550568
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-300.csv
+Episode time: 102.61944150924683
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-50.csv
+Episode time: 754.2547943592072
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-200.csv
+Episode time: 124.9649748802185
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-50.csv
+Episode time: 730.8138716220856
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-200.csv
+Episode time: 244.52353882789612
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-100.csv
+Episode time: 1329.533627986908
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-300.csv
+Episode time: 789.3301451206207
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-200.csv
+Episode time: 242.15625834465027
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-100.csv
+Episode time: 585.2174961566925
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-200.csv
+Episode time: 1447.2897579669952
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-300.csv
+Episode time: 123.40279150009155
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-50.csv
+Episode time: 781.0250265598297
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-200.csv
+Episode time: 125.29747581481934
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-50.csv
+Episode time: 716.3207104206085
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-200.csv
+Episode time: 27.70460796356201
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-10.csv
+Episode time: 27.27895212173462
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-10.csv
+Episode time: 101.60591149330139
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-50.csv
+Episode time: 700.1559062004089
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-200.csv
+Episode time: 102.04367756843567
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-50.csv
+Episode time: 285.03410291671753
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-100.csv
+Episode time: 1327.6835100650787
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-300.csv
+Episode time: 652.4274916648865
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-200.csv
+Episode time: 779.4387919902802
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-200.csv
+Episode time: 30.28582525253296
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-10.csv
+Episode time: 31.864188194274902
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-10.csv
+Episode time: 100.32029795646667
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-50.csv
+Episode time: 293.1211335659027
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-100.csv
+Episode time: 1348.1589894294739
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-300.csv
+Episode time: 645.8187665939331
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-200.csv
+Episode time: 28.01435947418213
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-10.csv
+Episode time: 32.992595195770264
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-10.csv
+Episode time: 285.3007457256317
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-100.csv
+Episode time: 127.12252354621887
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-50.csv
+Episode time: 696.6219017505646
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-200.csv
+Episode time: 786.7963454723358
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-200.csv
+Episode time: 293.07235646247864
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-100.csv
+Episode time: 27.991804122924805
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-10.csv
+Episode time: 104.94820618629456
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-50.csv
+Episode time: 244.00637435913086
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-100.csv
+Episode time: 611.2023122310638
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-200.csv
+Episode time: 35.09463691711426
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-10.csv
+Episode time: 126.30615735054016
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-50.csv
+Episode time: 1444.5196011066437
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-300.csv
+Episode time: 780.3504829406738
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-200.csv
+Episode time: 247.08844423294067
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-100.csv
+Episode time: 649.3825280666351
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-200.csv
+Episode time: 706.5162181854248
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-200.csv
+Episode time: 1468.9450769424438
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-300.csv
+Episode time: 1110.0540840625763
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-300.csv
+Episode time: 1306.3262116909027
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-300.csv
+Episode time: 1309.955924987793
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-300.csv
+Episode time: 676.6887407302856
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-200.csv
+Episode time: 292.3008759021759
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-100.csv
+Episode time: 26.33641004562378
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-10.csv
+Episode time: 31.465256214141846
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-10.csv
+Episode time: 122.02415418624878
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-50.csv
+Episode time: 283.5495882034302
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-100.csv
+Episode time: 1422.474535703659
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-300.csv
+Episode time: 1138.1726143360138
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-300.csv
+Episode time: 104.95706009864807
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-50.csv
+Episode time: 245.40130996704102
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-100.csv
+Episode time: 101.93760466575623
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-50.csv
+Episode time: 290.1587474346161
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-100.csv
+Episode time: 1457.034205198288
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-300.csv
+Episode time: 1143.9435868263245
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-300.csv
+Episode time: 32.95133376121521
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-10.csv
+Episode time: 128.0773425102234
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-50.csv
+Episode time: 1311.9699084758759
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-300.csv
+Episode time: 295.15706968307495
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-100.csv
+Episode time: 26.2117280960083
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-10.csv
+Episode time: 31.466506004333496
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-10.csv
+Episode time: 114.61933088302612
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-50.csv
+Episode time: 240.9339542388916
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-100.csv
+Episode time: 1175.1271843910217
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-300.csv
+Episode time: 27.07799768447876
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-10.csv
+Episode time: 26.632294178009033
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-10.csv
+Episode time: 122.82433819770813
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-50.csv
+Episode time: 1317.0245246887207
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-300.csv
+Episode time: 292.4812614917755
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-100.csv
+Episode time: 33.98793816566467
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-10.csv
+Episode time: 33.870229721069336
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-10.csv
+Episode time: 103.176438331604
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-50.csv
+Episode time: 248.96306920051575
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-100.csv
+Episode time: 1150.3139736652374
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-300.csv
+Episode time: 1322.2881886959076
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-300.csv
+Episode time: 29.769679307937622
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-10.csv
+Episode time: 26.61582374572754
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-10.csv
+Episode time: 31.821619033813477
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-10.csv
+Episode time: 100.48754096031189
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-50.csv
+Episode time: 291.82887744903564
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-100.csv
+Episode time: 34.42682504653931
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-10.csv
+Episode time: 132.12108778953552
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-50.csv
+Episode time: 247.8719379901886
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-100.csv
+Episode time: 1153.2570703029633
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-300.csv
+Episode time: 774.9536130428314
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-200.csv
+Episode time: 1444.3326561450958
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-300.csv
+Episode time: 1158.88383436203
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-300.csv
+Episode time: 34.47155046463013
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-10.csv
+Episode time: 126.47384762763977
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-50.csv
+Episode time: 778.1159687042236
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-200.csv
+Episode time: 242.99309396743774
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-100.csv
+Episode time: 782.8524742126465
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-200.csv
+Episode time: 244.34436058998108
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-100.csv
+Episode time: 1169.7487988471985
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-300.csv
+Episode time: 123.86274909973145
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-50.csv
+Episode time: 286.1197407245636
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-100.csv
+Episode time: 296.07399010658264
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-100.csv
+Episode time: 1507.1022953987122
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-300.csv
+Episode time: 1186.1390888690948
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-300.csv
+Episode time: 289.3356742858887
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-100.csv
+Episode time: 26.945607900619507
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-10.csv
+Episode time: 26.854289293289185
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-10.csv
+Episode time: 100.62104415893555
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-50.csv
+Episode time: 243.60795664787292
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-100.csv
+Episode time: 689.4839317798615
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-200.csv
+Episode time: 26.64587163925171
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-10.csv
+Episode time: 115.71555662155151
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-50.csv
+Episode time: 287.9593298435211
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-100.csv
+Episode time: 26.87345290184021
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-10.csv
+Episode time: 101.06945586204529
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-50.csv
+Episode time: 276.7944185733795
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-100.csv
+Episode time: 1226.6383662223816
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-300.csv
+Episode time: 1517.0765464305878
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-300.csv
+Episode time: 242.76074743270874
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-100.csv
+Episode time: 26.704869031906128
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-10.csv
+Episode time: 26.7318172454834
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-10.csv
+Episode time: 31.954562425613403
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-10.csv
+Episode time: 100.32313060760498
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-50.csv
+Episode time: 243.6503348350525
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-100.csv
+Episode time: 1290.205218076706
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-300.csv
+Episode time: 1323.2054493427277
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-300.csv
+Episode time: 26.571300268173218
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-10.csv
+Episode time: 31.58183789253235
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-10.csv
+Episode time: 31.539122819900513
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-10.csv
+Episode time: 123.48892068862915
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-50.csv
+Episode time: 690.6017909049988
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-200.csv
+Episode time: 1254.2715628147125
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-300.csv
+/home/iarroyof/Projects/semanticrl/step_processing.py:372: RuntimeWarning: invalid value encountered in double_scalars
+  geometric = (a * b * c) ** (1. / 3.)
+/home/iarroyof/Projects/semanticrl/step_processing.py:371: RuntimeWarning: invalid value encountered in double_scalars
+  harmonic = 3 * a * b * c / (a * b + b * c + c * a)
+/home/iarroyof/Projects/semanticrl/step_processing.py:374: RuntimeWarning: invalid value encountered in double_scalars
+  equilateral = (1. - ((geometric - harmonic) / a_c)) + (1. - ((arithmetic - geometric) / a_c))
+/home/iarroyof/anaconda3/envs/tf25/lib/python3.9/site-packages/scipy/stats/_distn_infrastructure.py:1835: RuntimeWarning: invalid value encountered in double_scalars
+  x = np.asarray((x - loc)/scale, dtype=dtyp)
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+nan
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+nan
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+nan
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+nan
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+nan
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Episode time: 1451.9308342933655
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-300.csv
+Episode time: 99.96789526939392
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-50.csv
+Episode time: 814.6725361347198
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-200.csv
+Episode time: 271.82612681388855
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-100.csv
+Episode time: 1003.9728953838348
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-300.csv
+Episode time: 291.0956611633301
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-100.csv
+Episode time: 30.453398942947388
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-10.csv
+Episode time: 27.063394784927368
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-10.csv
+Episode time: 100.19673609733582
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-50.csv
+Episode time: 243.24781250953674
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-100.csv
+Episode time: 770.0587170124054
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-200.csv
+Episode time: 122.32999682426453
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-50.csv
+Episode time: 685.124175786972
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-200.csv
+Episode time: 26.398629665374756
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-10.csv
+Episode time: 103.25123119354248
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-50.csv
+Episode time: 288.67067527770996
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-100.csv
+Episode time: 940.6630821228027
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-300.csv
+Episode time: 284.8893759250641
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-100.csv
+Episode time: 1322.0011866092682
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-300.csv
+Episode time: 684.2295315265656
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-200.csv
+Episode time: 99.02111101150513
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-50.csv
+Episode time: 286.2246437072754
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-100.csv
+Episode time: 967.5975377559662
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-300.csv
+Episode time: 102.28527283668518
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-50.csv
+Episode time: 285.82294058799744
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-100.csv
+Episode time: 275.2360634803772
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-100.csv
+Episode time: 686.4198093414307
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-200.csv
+Episode time: 26.424214601516724
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-10.csv
+Episode time: 31.574302673339844
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-10.csv
+Episode time: 124.99238872528076
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-50.csv
+Episode time: 283.26743149757385
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-100.csv
+Episode time: 26.446430206298828
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-10.csv
+Episode time: 122.50764441490173
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-50.csv
+Episode time: 282.9013583660126
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-100.csv
+Episode time: 30.523143768310547
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-10.csv
+Episode time: 114.28397417068481
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-50.csv
+Episode time: 240.2181532382965
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-100.csv
+Episode time: 1019.2268617153168
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-300.csv
+Episode time: 31.972330331802368
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-10.csv
+Episode time: 119.26880621910095
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-50.csv
+Episode time: 695.0001232624054
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-200.csv
+Episode time: 100.11097693443298
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-50.csv
+Episode time: 243.8468883037567
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-100.csv
+Episode time: 771.1188628673553
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-200.csv
+Episode time: 285.35032534599304
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-100.csv
+Episode time: 26.74449849128723
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-10.csv
+Episode time: 32.31602931022644
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-10.csv
+Episode time: 103.78364753723145
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-50.csv
+Episode time: 245.3311586380005
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-100.csv
+Episode time: 1000.4617426395416
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-300.csv
+Episode time: 1439.7440543174744
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-300.csv
+Episode time: 122.02915167808533
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-50.csv
+Episode time: 691.9878096580505
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-200.csv
+Episode time: 31.61787438392639
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-10.csv
+Episode time: 99.3594560623169
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-50.csv
+Episode time: 281.9510679244995
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-100.csv
+Episode time: 1003.0417265892029
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-300.csv
+Episode time: 28.51012349128723
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-10.csv
+Episode time: 32.960734844207764
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-10.csv
+Episode time: 245.779399394989
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-100.csv
+Episode time: 33.940951347351074
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-10.csv
+Episode time: 33.38895869255066
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-10.csv
+Episode time: 125.29766893386841
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-50.csv
+Episode time: 812.2381675243378
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-200.csv
+Episode time: 1321.1133024692535
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-300.csv
+Episode time: 1040.285489320755
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-300.csv
+Episode time: 294.1357386112213
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-100.csv
+Episode time: 33.85480260848999
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-10.csv
+Episode time: 33.935242891311646
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-10.csv
+Episode time: 126.21810126304626
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-50.csv
+Episode time: 693.5809009075165
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-200.csv
+Episode time: 694.6718318462372
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-200.csv
+Episode time: 100.09940314292908
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-50.csv
+Episode time: 695.7020261287689
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-200.csv
+Episode time: 1084.027025461197
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-300.csv
+Episode time: 239.14900827407837
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-100.csv
+Episode time: 1311.1237392425537
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-300.csv
+Episode time: 682.9233856201172
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-200.csv
+Episode time: 26.466054916381836
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-10.csv
+Episode time: 26.496304035186768
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-10.csv
+Episode time: 118.13104343414307
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-50.csv
+Episode time: 284.2778809070587
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-100.csv
+Episode time: 1067.983316898346
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-300.csv
+Episode time: 32.826318979263306
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-10.csv
+Episode time: 101.2550356388092
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-50.csv
+Episode time: 777.1533305644989
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-200.csv
+Episode time: 122.04966735839844
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-50.csv
+Episode time: 808.1968779563904
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-200.csv
+Episode time: 100.36145496368408
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-50.csv
+Episode time: 297.1103825569153
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-100.csv
+Episode time: 29.483402490615845
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-10.csv
+Episode time: 31.982133626937866
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-10.csv
+Episode time: 100.52305555343628
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-50.csv
+Episode time: 246.40917992591858
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-100.csv
+Episode time: 1128.277354478836
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-300.csv
+Episode time: 129.5420913696289
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-50.csv
+Episode time: 806.6309468746185
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-200.csv
+Episode time: 297.13690853118896
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-100.csv
+Episode time: 1430.8841443061829
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-300.csv
+Episode time: 1125.9930996894836
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-300.csv
+Episode time: 776.9543724060059
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-200.csv
+Episode time: 26.570538759231567
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-10.csv
+Episode time: 32.118613719940186
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-10.csv
+Episode time: 100.11546540260315
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-50.csv
+Episode time: 243.48815250396729
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-100.csv
+Episode time: 694.5677978992462
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-200.csv
+Episode time: 122.08349823951721
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-50.csv
+Episode time: 689.5030725002289
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-200.csv
+Episode time: 1128.4965469837189
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-300.csv
+Episode time: 32.42121982574463
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-10.csv
+Episode time: 117.27137923240662
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-50.csv
+Episode time: 691.7467312812805
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-200.csv
+Episode time: 126.41428780555725
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-50.csv
+Episode time: 285.93440413475037
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-100.csv
+Episode time: 1452.5332593917847
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-300.csv
+Episode time: 246.12218022346497
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-100.csv
+Episode time: 1325.8726115226746
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-300.csv
+Episode time: 694.8027312755585
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-200.csv
+Episode time: 31.683396816253662
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-10.csv
+Episode time: 122.67217826843262
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-50.csv
+Episode time: 285.764283657074
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-100.csv
+Episode time: 99.98134279251099
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-50.csv
+Episode time: 241.79390168190002
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-100.csv
+Episode time: 115.75665354728699
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-50.csv
+Episode time: 241.7261974811554
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-100.csv
+Episode time: 1315.556836605072
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-300.csv
+Episode time: 693.2003898620605
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-200.csv
+Episode time: 300.28661346435547
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-100.csv
+Episode time: 32.226651668548584
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-10.csv
+Episode time: 31.806442260742188
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-10.csv
+Episode time: 100.54522204399109
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-50.csv
+Episode time: 244.65575885772705
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-100.csv
+Episode time: 1326.866346359253
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-300.csv
+Episode time: 694.6714589595795
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-200.csv
+Episode time: 128.19975233078003
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-50.csv
+Episode time: 807.151449918747
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-200.csv
+Episode time: 273.5940103530884
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-100.csv
+Episode time: 777.1764624118805
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-200.csv
+Episode time: 750.9092149734497
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-200.csv
+Episode time: 118.55052590370178
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-50.csv
+Episode time: 240.784898519516
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-100.csv
+Episode time: 121.64020013809204
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-50.csv
+Episode time: 757.0095181465149
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-200.csv
+Episode time: 1507.667536497116
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-300.csv
+Episode time: 1322.0978870391846
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-300.csv
+Episode time: 1427.630061864853
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-300.csv
+Episode time: 27.722256898880005
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-10.csv
+Episode time: 32.62357544898987
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-10.csv
+Episode time: 246.51647114753723
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-100.csv
+Episode time: 31.80418872833252
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-10.csv
+Episode time: 31.75454831123352
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-10.csv
+Episode time: 122.88505125045776
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-50.csv
+Episode time: 812.0174882411957
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-200.csv
+Episode time: 1444.4282155036926
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-300.csv
+Episode time: 28.981242656707764
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-10.csv
+Episode time: 33.015923500061035
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-10.csv
+Episode time: 244.63065123558044
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-100.csv
+Episode time: 26.319299936294556
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-10.csv
+Episode time: 26.303559064865112
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-10.csv
+Episode time: 99.38295459747314
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-50.csv
+Episode time: 284.65126037597656
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-100.csv
+Episode time: 1313.8193655014038
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-300.csv
+Episode time: 694.1642570495605
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-200.csv
+Episode time: 1314.3694653511047
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-300.csv
+Episode time: 1438.348960161209
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-300.csv
+Episode time: 122.77194142341614
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-50.csv
+Episode time: 283.86745429039
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-100.csv
+Episode time: 294.06077432632446
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-100.csv
+Episode time: 1423.0114426612854
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-300.csv
+Episode time: 666.1096107959747
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-200.csv
+Episode time: 782.0234382152557
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-200.csv
+Episode time: 26.8316011428833
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-10.csv
+Episode time: 32.03114175796509
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-10.csv
+Episode time: 116.98287296295166
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-50.csv
+Episode time: 245.7506139278412
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-100.csv
+Episode time: 698.8391926288605
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-200.csv
+Episode time: 123.01941227912903
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-50.csv
+Episode time: 780.1163942813873
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-200.csv
+Episode time: 27.753693103790283
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-10.csv
+Episode time: 33.04118776321411
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-10.csv
+Episode time: 282.0480000972748
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-100.csv
+Episode time: 101.56147933006287
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-50.csv
+Episode time: 291.481689453125
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-100.csv
+Episode time: 1311.1009483337402
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-300.csv
+Episode time: 771.700786113739
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-200.csv
+Episode time: 703.4699618816376
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-200.csv
+Episode time: 1310.1897933483124
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-300.csv
+Episode time: 809.2624216079712
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-200.csv
+Episode time: 780.0157551765442
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-200.csv
+Episode time: 1322.6373691558838
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-300.csv
+Episode time: 752.0902507305145
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-200.csv
+Episode time: 124.27221536636353
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-50.csv
+Episode time: 769.4391798973083
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-200.csv
+Episode time: 100.47251987457275
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-50.csv
+Episode time: 695.2816009521484
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-200.csv
+Episode time: 1220.5749320983887
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-300.csv
+Episode time: 289.12720680236816
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-100.csv
+Episode time: 30.719144821166992
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-10.csv
+Episode time: 26.95909285545349
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-10.csv
+Episode time: 102.61508631706238
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-50.csv
+Episode time: 242.8048164844513
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-100.csv
+Episode time: 681.3006019592285
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-200.csv
+Episode time: 26.297625064849854
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-10.csv
+Episode time: 31.503405570983887
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-10.csv
+Episode time: 98.92790913581848
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-50.csv
+Episode time: 239.88950371742249
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-100.csv
+Episode time: 29.50910449028015
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-10.csv
+Episode time: 26.382645845413208
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-10.csv
+Episode time: 98.9706199169159
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-50.csv
+Episode time: 240.08713912963867
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-100.csv
+Episode time: 767.8090159893036
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-200.csv
+Episode time: 693.4686169624329
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-200.csv
+Episode time: 780.6919248104095
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-200.csv
+Episode time: 244.72924661636353
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-100.csv
+Episode time: 1258.6332108974457
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-300.csv
+Episode time: 246.80867838859558
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-100.csv
+Episode time: 1436.0051000118256
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-300.csv
+Episode time: 1309.3822267055511
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-300.csv
+Episode time: 684.7371072769165
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-200.csv
+Episode time: 771.8383963108063
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-200.csv
+Episode time: 243.44456458091736
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-100.csv
+Episode time: 1303.9490880966187
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-300.csv
+Episode time: 1461.9497253894806
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-300.csv
+Episode time: 278.0235424041748
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-100.csv
+Episode time: 1269.7257254123688
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-300.csv
+Episode time: 806.4445283412933
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-200.csv
+Episode time: 26.43734908103943
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-10.csv
+Episode time: 31.720102071762085
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-10.csv
+Episode time: 122.93209385871887
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-50.csv
+Episode time: 759.0474882125854
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-200.csv
+Episode time: 1263.3583581447601
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-300.csv
+Episode time: 248.56938219070435
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-100.csv
+Episode time: 1440.1216945648193
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-300.csv
+Episode time: 1386.2032222747803
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-300.csv
+Episode time: 34.97256302833557
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-10.csv
+Episode time: 127.07686400413513
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-50.csv
+Episode time: 1472.512954711914
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-300.csv
+Episode time: 705.9019541740417
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-200.csv
+Episode time: 102.46662521362305
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-50.csv
+Episode time: 636.8244078159332
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-200.csv
+Episode time: 288.5078275203705
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-100.csv
+Episode time: 1441.318912267685
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-300.csv
+Episode time: 1356.5672166347504
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-300.csv
+Episode time: 32.313491344451904
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-10.csv
+Episode time: 100.284912109375
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-50.csv
+Episode time: 693.9247603416443
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-200.csv
+Episode time: 26.642087936401367
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-10.csv
+Episode time: 123.15738606452942
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-50.csv
+Episode time: 694.8997762203217
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-200.csv
+Episode time: 782.7859311103821
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-200.csv
+Episode time: 652.320508480072
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-200.csv
+Episode time: 127.19372916221619
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-50.csv
+Episode time: 689.5080292224884
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-200.csv
+Episode time: 31.90271759033203
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-10.csv
+Episode time: 123.99685287475586
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-50.csv
+Episode time: 288.0530574321747
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-100.csv
+Episode time: 1310.774250984192
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-300.csv
+Episode time: 538.734256029129
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-200.csv
+Episode time: 1453.0979433059692
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-300.csv
+Episode time: 99.93697309494019
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-50.csv
+Episode time: 693.218950510025
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-200.csv
+Episode time: 26.69042992591858
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-10.csv
+Episode time: 31.856940746307373
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-10.csv
+Episode time: 123.39524388313293
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-50.csv
+Episode time: 689.6710586547852
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-200.csv
+Episode time: 27.608681201934814
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-10.csv
+Episode time: 27.0313777923584
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-10.csv
+Episode time: 125.12420725822449
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-50.csv
+Episode time: 1318.9502959251404
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-300.csv
+Episode time: 243.41553258895874
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-100.csv
+Episode time: 1382.4494767189026
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-300.csv
+Episode time: 244.18911409378052
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-100.csv
+Episode time: 1324.1375815868378
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-300.csv
+Episode time: 786.8801023960114
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-200.csv
+Episode time: 122.70409154891968
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-50.csv
+Episode time: 652.4688284397125
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-200.csv
+Episode time: 28.655442237854004
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-10.csv
+Episode time: 27.77765130996704
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-10.csv
+Episode time: 125.26697134971619
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-50.csv
+Episode time: 1507.573275089264
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-300.csv
+Episode time: 1453.27628159523
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-300.csv
+Episode time: 245.81033754348755
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-100.csv
+Episode time: 1468.626696586609
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-300.csv
+Episode time: 1428.9614605903625
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-300.csv
+Episode time: 99.9822051525116
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-50.csv
+Episode time: 286.13061451911926
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-100.csv
+Episode time: 241.24158883094788
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-100.csv
+Episode time: 686.5994346141815
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-200.csv
+Episode time: 1307.6814832687378
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-300.csv
+Episode time: 539.6497604846954
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-200.csv
+Episode time: 34.352214336395264
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-10.csv
+Episode time: 126.9014527797699
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-50.csv
+Episode time: 783.5269923210144
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-200.csv
+Episode time: 292.5444576740265
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-100.csv
+Episode time: 1326.7823641300201
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-300.csv
+Episode time: 611.5017182826996
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-200.csv
+Episode time: 101.46637296676636
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-50.csv
+Episode time: 288.48923420906067
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-100.csv
+Episode time: 278.56126165390015
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-100.csv
+Episode time: 703.6677296161652
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-200.csv
+Episode time: 32.15580344200134
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-10.csv
+Episode time: 101.1372127532959
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-50.csv
+Episode time: 246.46737408638
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-100.csv
+Episode time: 1424.3316404819489
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-300.csv
+Episode time: 27.871809720993042
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-10.csv
+Episode time: 27.193727731704712
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-10.csv
+Episode time: 102.51173543930054
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-50.csv
+Episode time: 704.6022658348083
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-200.csv
+Episode time: 105.58481073379517
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-50.csv
+Episode time: 249.93190908432007
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-100.csv
+Episode time: 1341.6219074726105
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-300.csv
+Episode time: 618.9561965465546
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-200.csv
+Episode time: 1451.8973038196564
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-300.csv
+Episode time: 123.65677237510681
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-50.csv
+Episode time: 780.0723879337311
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-200.csv
+Episode time: 244.54677510261536
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-100.csv
+Episode time: 604.6274781227112
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-200.csv
+Episode time: 34.0350022315979
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-10.csv
+Episode time: 101.35607147216797
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-50.csv
+Episode time: 685.8573269844055
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-200.csv
+Episode time: 31.637815952301025
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-10.csv
+Episode time: 99.50480246543884
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-50.csv
+Episode time: 242.93434977531433
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-100.csv
+Episode time: 772.018283367157
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-200.csv
+Episode time: 285.1397240161896
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-100.csv
+Episode time: 26.23938512802124
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-10.csv
+Episode time: 99.15776896476746
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-50.csv
+Episode time: 241.6628873348236
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-100.csv
+Episode time: 595.9558999538422
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-200.csv
+Episode time: 793.4919018745422
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-200.csv
+Episode time: 27.276291370391846
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-10.csv
+Episode time: 27.213593244552612
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-10.csv
+Episode time: 105.47280836105347
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-50.csv
+Episode time: 294.21457076072693
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-100.csv
+Episode time: 1327.0180921554565
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-300.csv
+Episode time: 670.8883259296417
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-200.csv
+Episode time: 710.1585040092468
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-200.csv
+Episode time: 1469.7270300388336
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-300.csv
+Episode time: 1085.1511991024017
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-300.csv
+Episode time: 1314.9756548404694
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-300.csv
+Episode time: 1315.0334458351135
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-300.csv
+Episode time: 658.2292790412903
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-200.csv
+Episode time: 101.80678105354309
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-50.csv
+Episode time: 247.28842544555664
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-100.csv
+Episode time: 103.27278280258179
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-50.csv
+Episode time: 290.0559012889862
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-100.csv
+Episode time: 1452.3042516708374
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-300.csv
+Episode time: 1109.5499801635742
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-300.csv
+Episode time: 35.06462264060974
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-10.csv
+Episode time: 104.05593466758728
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-50.csv
+Episode time: 775.1479897499084
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-200.csv
+Episode time: 122.9512083530426
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-50.csv
+Episode time: 810.9242577552795
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-200.csv
+Episode time: 123.77453398704529
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-50.csv
+Episode time: 242.86454701423645
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-100.csv
+Episode time: 1092.640992641449
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-300.csv
+Episode time: 781.5498900413513
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-200.csv
+Episode time: 1452.7513716220856
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-300.csv
+Episode time: 1102.6409215927124
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-300.csv
+Episode time: 100.65531516075134
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-50.csv
+Episode time: 242.1486313343048
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-100.csv
+Episode time: 126.40948796272278
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-50.csv
+Episode time: 286.25784277915955
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-100.csv
+Episode time: 1429.9664418697357
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-300.csv
+Episode time: 1195.2630624771118
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-300.csv
+Episode time: 1326.410816669464
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-300.csv
+Episode time: 26.42732262611389
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-10.csv
+Episode time: 26.365489959716797
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-10.csv
+Episode time: 26.35411238670349
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-10.csv
+Episode time: 114.75959849357605
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-50.csv
+Episode time: 284.76040410995483
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-100.csv
+Episode time: 26.35440969467163
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-10.csv
+Episode time: 99.66136431694031
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-50.csv
+Episode time: 272.59173250198364
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-100.csv
+Episode time: 1192.3277637958527
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-300.csv
+Episode time: 704.6518921852112
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-200.csv
+Episode time: 1515.9777736663818
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-300.csv
+Episode time: 1191.9195063114166
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-300.csv
+Episode time: 33.002702474594116
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-10.csv
+Episode time: 128.08087468147278
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-50.csv
+Episode time: 1318.3678579330444
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-300.csv
+Episode time: 297.6964440345764
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-100.csv
+Episode time: 26.665104150772095
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-10.csv
+Episode time: 31.79729914665222
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-10.csv
+Episode time: 127.89057540893555
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-50.csv
+Episode time: 244.01209211349487
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-100.csv
+Episode time: 1230.4102747440338
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-300.csv
+Episode time: 32.446653842926025
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-10.csv
+Episode time: 102.37299752235413
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-50.csv
+Episode time: 783.470400094986
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-200.csv
+Episode time: 244.15287947654724
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-100.csv
+Episode time: 779.1890676021576
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-200.csv
+Episode time: 241.9550657272339
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-100.csv
+Episode time: 1265.597763299942
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-300.csv
+Episode time: 288.6358199119568
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-100.csv
+Episode time: 26.340580463409424
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-10.csv
+Episode time: 26.278705596923828
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-10.csv
+Episode time: 99.71938872337341
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-50.csv
+Episode time: 243.00088262557983
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-100.csv
+Episode time: 690.4697012901306
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-200.csv
+Episode time: 31.45905041694641
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-10.csv
+Episode time: 99.60788798332214
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-50.csv
+Episode time: 286.08347272872925
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-100.csv
+Episode time: 31.81968092918396
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-10.csv
+Episode time: 31.805528163909912
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-10.csv
+Episode time: 100.17602849006653
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-50.csv
+Episode time: 243.0296242237091
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-100.csv
+Episode time: 1260.974615097046
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-300.csv
+Episode time: 1326.4400095939636
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-300.csv
+Episode time: 29.643383741378784
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-10.csv
+Episode time: 26.516396045684814
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-10.csv
+Episode time: 31.664262771606445
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-10.csv
+Episode time: 100.08664584159851
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-50.csv
+Episode time: 243.22607588768005
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-100.csv
+Episode time: 26.557965993881226
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-10.csv
+Episode time: 31.964925050735474
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-10.csv
+Episode time: 31.786486625671387
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-10.csv
+Episode time: 99.6662654876709
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-50.csv
+Episode time: 286.7544455528259
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-100.csv
+Episode time: 1257.9467437267303
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-300.csv
+/home/iarroyof/Projects/semanticrl/step_processing.py:372: RuntimeWarning: invalid value encountered in double_scalars
+  geometric = (a * b * c) ** (1. / 3.)
+/home/iarroyof/Projects/semanticrl/step_processing.py:371: RuntimeWarning: invalid value encountered in double_scalars
+  harmonic = 3 * a * b * c / (a * b + b * c + c * a)
+/home/iarroyof/Projects/semanticrl/step_processing.py:374: RuntimeWarning: invalid value encountered in double_scalars
+  equilateral = (1. - ((geometric - harmonic) / a_c)) + (1. - ((arithmetic - geometric) / a_c))
+/home/iarroyof/anaconda3/envs/tf25/lib/python3.9/site-packages/scipy/stats/_distn_infrastructure.py:1835: RuntimeWarning: invalid value encountered in double_scalars
+  x = np.asarray((x - loc)/scale, dtype=dtyp)
+1.3756344439903682e-174
+7.649365054449909e-176
+9.87859050993909e-73
+1.3480906462005106e-179
+0.0
+2.683862036068342e-155
+0.0
+1.0165523168641474e-179
+0.0
+6.657202640911636e-253
+0.0
+0.0
+8.576099350256049e-221
+0.0
+4.0296404446309695e-64
+0.0
+0.0
+0.0
+0.0
+6.242213e-318
+0.0
+0.0
+0.0
+0.0
+3.671182154123238e-221
+0.0
+4.50861716626755e-72
+0.0
+0.0
+0.0
+0.0
+5.490523626393622e-180
+0.0
+0.0
+0.0
+0.0
+3.244788280771026e-141
+3.8014942176749942e-286
+1.7300364913191357e-88
+3.640115320857e-312
+0.0
+3.7125468251568635e-262
+0.0
+6.95856651346097e-45
+0.0
+0.0
+0.0
+0.0
+1.7418002843630745e-153
+4.769570492240414e-283
+5.5473875900063325e-78
+2.2263983347e-314
+0.0
+9.22864007e-315
+0.0
+1.671718111720787e-55
+0.0
+0.0
+0.0
+0.0
+1.3756344439905246e-174
+7.6282804616234e-176
+9.878590509939652e-73
+6.584709984371545e-176
+0.0
+2.2143685350909941e-162
+0.0
+1.8822711324290884e-169
+0.0
+1.0945109762111784e-241
+0.0
+0.0
+8.576099350257024e-221
+0.0
+4.0296404446306254e-64
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+3.6711821541228206e-221
+0.0
+4.508617166267806e-72
+0.0
+0.0
+0.0
+0.0
+1.310044043279363e-300
+0.0
+0.0
+0.0
+0.0
+3.244788280770657e-141
+3.752775935430507e-286
+1.730036491318988e-88
+1.1020020356043125e-286
+0.0
+0.0
+0.0
+2.636615258234917e-136
+0.0
+0.0
+0.0
+0.0
+1.7418002843630745e-153
+4.617334450980612e-283
+5.547387590006017e-78
+1.1756144474810316e-283
+0.0
+0.0
+0.0
+4.765175074451487e-165
+0.0
+0.0
+0.0
+0.0
+1.3756344439905246e-174
+7.628272854068901e-176
+9.878590509938529e-73
+7.654552071438351e-176
+0.0
+3.83091187977947e-186
+0.0
+2.0826158919039368e-165
+0.0
+1.4671103217070272e-232
+0.0
+2.57864824453769e-309
+8.576099350257024e-221
+0.0
+4.02964044463074e-64
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+3.6711821541228206e-221
+0.0
+4.5086171662674216e-72
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+3.244788280771211e-141
+3.752757789145556e-286
+1.730036491318988e-88
+3.7441385962338045e-286
+0.0
+0.0
+0.0
+4.412219996336559e-259
+0.0
+0.0
+0.0
+0.0
+1.7418002843631734e-153
+4.617282477468396e-283
+5.54738759000586e-78
+4.83858512992905e-283
+0.0
+0.0
+0.0
+3.448087569857928e-297
+0.0
+0.0
+0.0
+0.0
+1.3756344439905246e-174
+7.628272853767537e-176
+9.878590509938249e-73
+7.646352469803156e-176
+0.0
+1.3606435189567173e-180
+0.0
+8.633383037986034e-189
+0.0
+5.051764685770094e-225
+0.0
+1.2620678487982447e-285
+8.576099350256049e-221
+0.0
+4.02964044463074e-64
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+3.671182154123238e-221
+0.0
+4.508617166267678e-72
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+3.244788280771211e-141
+3.75275778836182e-286
+1.7300364913188405e-88
+3.7827514163334836e-286
+0.0
+3.4685018e-316
+0.0
+7e-323
+0.0
+0.0
+0.0
+0.0
+1.7418002843630745e-153
+4.617282475269488e-283
+5.547387590005544e-78
+4.74292044423089e-283
+0.0
+1.1e-320
+0.0
+0.0
+0.0
+1.3178746544571678e-306
+0.0
+0.0
+1.3756344439904465e-174
+0.0
+9.878590509939371e-73
+7.635577718316091e-176
+0.0
+9.304728660618554e-178
+0.0
+4.3658078633193973e-187
+0.0
+2.3465299769714555e-217
+0.0
+5.002531199199216e-270
+8.576099350257024e-221
+0.0
+4.029640444631198e-64
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+3.671182154123238e-221
+6.972628553218363e-229
+4.5086171662672934e-72
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+7.88214179430173e-263
+0.0
+0.0
+3.2447882807715797e-141
+7.83812513203223e-304
+1.7300364913187914e-88
+3.7674634203091494e-286
+0.0
+1.1244191396712862e-298
+0.0
+0.0
+0.0
+1.0746102938397257e-173
+0.0
+0.0
+1.7418002843631734e-153
+7.4e-323
+5.54738759000586e-78
+4.666413054136404e-283
+0.0
+2.823190337868406e-298
+0.0
+0.0
+0.0
+1.5898064589025e-99
+0.0
+0.0
+1.3756344439904465e-174
+0.0
+9.87859050993909e-73
+7.631022796792098e-176
+0.0
+1.4475841791702094e-176
+0.0
+2.8395692215526566e-184
+0.0
+1.0973609471516396e-211
+0.0
+2.4174762499753356e-259
+8.576099350257024e-221
+0.0
+4.0296404446305114e-64
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+3.2e-322
+0.0
+0.0
+3.671182154123238e-221
+6.972628553206473e-229
+4.508617166268319e-72
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+3.1466566374200754e-203
+0.0
+0.0
+3.2447882807715797e-141
+7.83812513203312e-304
+1.7300364913191848e-88
+3.7588242519730533e-286
+0.0
+5.285083966641295e-291
+0.0
+0.0
+0.0
+2.8947095555674728e-98
+0.0
+0.0
+1.7418002843631734e-153
+7.4e-323
+5.547387590006017e-78
+4.635832525550311e-283
+0.0
+7.442315871405149e-289
+0.0
+0.0
+0.0
+3.297828616872711e-58
+0.0
+0.0
+1.3756344439906027e-174
+nan
+9.87859050993909e-73
+7.62829156544281e-176
+0.0
+7.589793845969219e-176
+0.0
+8.451610118129758e-177
+0.0
+1.081714204505788e-186
+0.0
+1.328686873513996e-229
+8.576099350256049e-221
+nan
+4.029640444631198e-64
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+3.6711821541228206e-221
+nan
+4.5086171662674216e-72
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+3.212891146926172e-246
+0.0
+7.48e-321
+3.244788280771211e-141
+nan
+1.7300364913191357e-88
+3.752802376734976e-286
+0.0
+3.481351799495097e-286
+0.0
+1.8682353585604308e-292
+0.0
+2.431470970842438e-77
+0.0
+2.559114857914142e-255
+1.7418002843630745e-153
+nan
+5.547387590005702e-78
+4.617410277015708e-283
+0.0
+4.4399855421880435e-283
+0.0
+1.200486709414809e-290
+0.0
+3.2835974288867833e-96
+0.0
+8.545521470717912e-188
+Episode time: 1441.119493484497
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-300.csv
+Episode time: 122.66076302528381
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-50.csv
+Episode time: 687.279688835144
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-200.csv
+Episode time: 30.254194498062134
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-10.csv
+Episode time: 113.99560070037842
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-50.csv
+Episode time: 241.61055660247803
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-100.csv
+Episode time: 955.3664073944092
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-300.csv
+Episode time: 783.3937134742737
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-200.csv
+Episode time: 30.66687273979187
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-10.csv
+Episode time: 26.88013458251953
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-10.csv
+Episode time: 100.56721949577332
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-50.csv
+Episode time: 242.33321833610535
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-100.csv
+Episode time: 773.4380168914795
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-200.csv
+Episode time: 285.4494454860687
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-100.csv
+Episode time: 29.244576930999756
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-10.csv
+Episode time: 26.513843774795532
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-10.csv
+Episode time: 99.7499647140503
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-50.csv
+Episode time: 242.64984822273254
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-100.csv
+Episode time: 1015.8842449188232
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-300.csv
+Episode time: 1447.098421573639
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-300.csv
+Episode time: 98.54586911201477
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-50.csv
+Episode time: 749.3222677707672
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-200.csv
+Episode time: 100.87558841705322
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-50.csv
+Episode time: 285.1861524581909
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-100.csv
+Episode time: 987.8755962848663
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-300.csv
+Episode time: 682.7879378795624
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-200.csv
+Episode time: 772.8960335254669
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-200.csv
+Episode time: 122.31700849533081
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-50.csv
+Episode time: 684.7279245853424
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-200.csv
+Episode time: 31.56697130203247
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-10.csv
+Episode time: 122.9288387298584
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-50.csv
+Episode time: 239.9690020084381
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-100.csv
+Episode time: 1015.7370238304138
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-300.csv
+Episode time: 289.80490612983704
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-100.csv
+Episode time: 26.360673904418945
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-10.csv
+Episode time: 31.46267580986023
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-10.csv
+Episode time: 122.39419913291931
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-50.csv
+Episode time: 691.7512340545654
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-200.csv
+Episode time: 691.1492867469788
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-200.csv
+Episode time: 122.28320479393005
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-50.csv
+Episode time: 285.2074842453003
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-100.csv
+Episode time: 26.484052181243896
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-10.csv
+Episode time: 118.20513606071472
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-50.csv
+Episode time: 285.88712334632874
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-100.csv
+Episode time: 985.2514171600342
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-300.csv
+Episode time: 103.91780161857605
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-50.csv
+Episode time: 289.13527846336365
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-100.csv
+Episode time: 245.33236813545227
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-100.csv
+Episode time: 780.9310209751129
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-200.csv
+Episode time: 123.67833399772644
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-50.csv
+Episode time: 286.2120192050934
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-100.csv
+Episode time: 115.6872673034668
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-50.csv
+Episode time: 243.41806960105896
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-100.csv
+Episode time: 1345.9111094474792
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-300.csv
+Episode time: 285.36348485946655
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-100.csv
+Episode time: 1322.4575471878052
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-300.csv
+Episode time: 776.6165943145752
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-200.csv
+Episode time: 285.1336085796356
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-100.csv
+Episode time: 1028.1334767341614
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-300.csv
+Episode time: 1354.7611508369446
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-300.csv
+Episode time: 32.49060368537903
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-10.csv
+Episode time: 26.818994283676147
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-10.csv
+Episode time: 129.03860712051392
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-50.csv
+Episode time: 710.0707154273987
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-200.csv
+Episode time: 32.32150363922119
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-10.csv
+Episode time: 102.28876185417175
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-50.csv
+Episode time: 249.73858380317688
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-100.csv
+Episode time: 1060.9399919509888
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-300.csv
+Episode time: 123.2983078956604
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-50.csv
+Episode time: 683.0910520553589
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-200.csv
+Episode time: 31.80193328857422
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-10.csv
+Episode time: 98.62146544456482
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-50.csv
+Episode time: 239.60355424880981
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-100.csv
+Episode time: 680.4112961292267
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-200.csv
+Episode time: 121.53256464004517
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-50.csv
+Episode time: 682.0119440555573
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-200.csv
+Episode time: 1075.0913429260254
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-300.csv
+Episode time: 27.022689819335938
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-10.csv
+Episode time: 26.64069366455078
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-10.csv
+Episode time: 102.67149329185486
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-50.csv
+Episode time: 780.9187426567078
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-200.csv
+Episode time: 297.31182193756104
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-100.csv
+Episode time: 1437.648716211319
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-300.csv
+Episode time: 1086.7690162658691
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-300.csv
+Episode time: 1503.0657629966736
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-300.csv
+Episode time: 288.2320463657379
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-100.csv
+Episode time: 26.54772973060608
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-10.csv
+Episode time: 26.503270387649536
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-10.csv
+Episode time: 99.81517481803894
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-50.csv
+Episode time: 294.9739921092987
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-100.csv
+Episode time: 26.457916259765625
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-10.csv
+Episode time: 26.766470432281494
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-10.csv
+Episode time: 100.29407262802124
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-50.csv
+Episode time: 291.17403769493103
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-100.csv
+Episode time: 1105.5272648334503
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-300.csv
+Episode time: 28.9300696849823
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-10.csv
+Episode time: 33.26402831077576
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-10.csv
+Episode time: 300.4027545452118
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-100.csv
+Episode time: 123.60976481437683
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-50.csv
+Episode time: 702.6853721141815
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-200.csv
+Episode time: 702.1432785987854
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-200.csv
+Episode time: 103.01293110847473
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-50.csv
+Episode time: 700.7073528766632
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-200.csv
+Episode time: 1103.681510925293
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-300.csv
+Episode time: 247.26568937301636
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-100.csv
+Episode time: 1312.8158345222473
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-300.csv
+Episode time: 812.6491422653198
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-200.csv
+Episode time: 271.762900352478
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-100.csv
+Episode time: 1163.8738124370575
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-300.csv
+Episode time: 1331.731924533844
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-300.csv
+Episode time: 30.179571628570557
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-10.csv
+Episode time: 32.20768594741821
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-10.csv
+Episode time: 101.43915867805481
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-50.csv
+Episode time: 291.1197900772095
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-100.csv
+Episode time: 32.47446155548096
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-10.csv
+Episode time: 26.945725917816162
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-10.csv
+Episode time: 101.50156164169312
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-50.csv
+Episode time: 303.74364137649536
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-100.csv
+Episode time: 26.7335262298584
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-10.csv
+Episode time: 31.97050976753235
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-10.csv
+Episode time: 100.77303552627563
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-50.csv
+Episode time: 287.8708198070526
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-100.csv
+Episode time: 249.9510190486908
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-100.csv
+Episode time: 1345.330804824829
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-300.csv
+Episode time: 702.1774933338165
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-200.csv
+Episode time: 126.45770835876465
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-50.csv
+Episode time: 286.65418124198914
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-100.csv
+Episode time: 705.049058675766
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-200.csv
+Episode time: 1319.8882653713226
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-300.csv
+Episode time: 692.0525631904602
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-200.csv
+Episode time: 101.0090446472168
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-50.csv
+Episode time: 243.46963953971863
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-100.csv
+Episode time: 116.76465320587158
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-50.csv
+Episode time: 287.2744176387787
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-100.csv
+Episode time: 1310.3037762641907
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-300.csv
+Episode time: 684.4171538352966
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-200.csv
+Episode time: 103.60185050964355
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-50.csv
+Episode time: 243.83357763290405
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-100.csv
+Episode time: 100.70720839500427
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-50.csv
+Episode time: 289.1823036670685
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-100.csv
+Episode time: 1315.2271180152893
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-300.csv
+Episode time: 690.9006340503693
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-200.csv
+Episode time: 28.731077909469604
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-10.csv
+Episode time: 33.08046627044678
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-10.csv
+Episode time: 277.70571184158325
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-100.csv
+Episode time: 31.599621295928955
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-10.csv
+Episode time: 122.47453808784485
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-50.csv
+Episode time: 807.2476871013641
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-200.csv
+Episode time: 1443.8911345005035
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-300.csv
+Episode time: 124.6044819355011
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-50.csv
+Episode time: 688.9307670593262
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-200.csv
+Episode time: 26.69667649269104
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-10.csv
+Episode time: 117.20542693138123
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-50.csv
+Episode time: 243.64979815483093
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-100.csv
+Episode time: 687.3672006130219
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-200.csv
+Episode time: 102.06061625480652
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-50.csv
+Episode time: 757.7535498142242
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-200.csv
+Episode time: 1312.2793374061584
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-300.csv
+Episode time: 1440.7523865699768
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-300.csv
+Episode time: 1321.9752027988434
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-300.csv
+Episode time: 1438.0538580417633
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-300.csv
+Episode time: 125.36239624023438
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-50.csv
+Episode time: 698.2438216209412
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-200.csv
+Episode time: 29.08865475654602
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-10.csv
+Episode time: 101.42433953285217
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-50.csv
+Episode time: 286.5726499557495
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-100.csv
+Episode time: 1521.640644788742
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-300.csv
+Episode time: 123.47167730331421
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-50.csv
+Episode time: 285.1626217365265
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-100.csv
+Episode time: 295.4477798938751
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-100.csv
+Episode time: 1417.9442384243011
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-300.csv
+Episode time: 682.5781753063202
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-200.csv
+Episode time: 27.12571406364441
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-10.csv
+Episode time: 31.8624324798584
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-10.csv
+Episode time: 243.38372015953064
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-100.csv
+Episode time: 26.689908027648926
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-10.csv
+Episode time: 31.907614946365356
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-10.csv
+Episode time: 99.7449221611023
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-50.csv
+Episode time: 242.98292064666748
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-100.csv
+Episode time: 1322.7473163604736
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-300.csv
+Episode time: 788.4166612625122
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-200.csv
+Episode time: 707.4519801139832
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-200.csv
+Episode time: 1347.0923619270325
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-300.csv
+Episode time: 781.4658062458038
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-200.csv
+Episode time: 29.71349287033081
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-10.csv
+Episode time: 34.63778567314148
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-10.csv
+Episode time: 299.7901940345764
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-100.csv
+Episode time: 123.17943239212036
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-50.csv
+Episode time: 696.7332031726837
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-200.csv
+Episode time: 709.4265511035919
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-200.csv
+Episode time: 125.72601842880249
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-50.csv
+Episode time: 822.4309046268463
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-200.csv
+Episode time: 775.044430732727
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-200.csv
+Episode time: 1316.4255285263062
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-300.csv
+Episode time: 778.659939289093
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-200.csv
+Episode time: 123.42651844024658
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-50.csv
+Episode time: 242.17303657531738
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-100.csv
+Episode time: 99.3881471157074
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-50.csv
+Episode time: 242.47010707855225
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-100.csv
+Episode time: 1439.1850442886353
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-300.csv
+Episode time: 768.5647535324097
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-200.csv
+Episode time: 251.03939080238342
+results/it_train_kernel-expset_gamma-1.0_bias-1_sample-100.csv
+Episode time: 1447.7682826519012
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-300.csv
+Episode time: 1274.3212342262268
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-300.csv
+Episode time: 243.5750813484192
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-100.csv
+Episode time: 1448.8035778999329
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-300.csv
+Episode time: 1291.7754967212677
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-300.csv
+Episode time: 124.67561960220337
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-50.csv
+Episode time: 771.436422586441
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-200.csv
+Episode time: 100.43070030212402
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-50.csv
+Episode time: 690.8112897872925
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-200.csv
+Episode time: 1316.129077911377
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-300.csv
+Episode time: 27.451614379882812
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-10.csv
+Episode time: 26.83504366874695
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-10.csv
+Episode time: 122.84309363365173
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-50.csv
+Episode time: 1305.8749611377716
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-300.csv
+Episode time: 249.09209513664246
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-100.csv
+Episode time: 1279.6528959274292
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-300.csv
+Episode time: 288.28111481666565
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-100.csv
+Episode time: 28.839811325073242
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-10.csv
+Episode time: 28.46622109413147
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-10.csv
+Episode time: 103.2367684841156
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-50.csv
+Episode time: 242.65387344360352
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-100.csv
+Episode time: 772.2135789394379
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-200.csv
+Episode time: 274.96716952323914
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-100.csv
+Episode time: 1280.5129673480988
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-300.csv
+Episode time: 1461.4924573898315
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-300.csv
+Episode time: 248.07773303985596
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-100.csv
+Episode time: 1316.1180396080017
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-300.csv
+Episode time: 104.01760864257812
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-50.csv
+Episode time: 291.4764451980591
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-100.csv
+Episode time: 279.6032817363739
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-100.csv
+Episode time: 689.3484644889832
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-200.csv
+Episode time: 26.40632152557373
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-10.csv
+Episode time: 31.586333751678467
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-10.csv
+Episode time: 123.03110694885254
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-50.csv
+Episode time: 757.8912930488586
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-200.csv
+Episode time: 123.76917219161987
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-50.csv
+Episode time: 608.3371493816376
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-200.csv
+Episode time: 33.6406090259552
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-10.csv
+Episode time: 125.6575608253479
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-50.csv
+Episode time: 1305.1958904266357
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-300.csv
+Episode time: 241.96932935714722
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-100.csv
+Episode time: 1357.4008412361145
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-300.csv
+Episode time: 32.46833658218384
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-10.csv
+Episode time: 123.16213464736938
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-50.csv
+Episode time: 689.5210931301117
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-200.csv
+Episode time: 126.17467308044434
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-50.csv
+Episode time: 242.8522822856903
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-100.csv
+Episode time: 1315.3082089424133
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-300.csv
+Episode time: 545.8509511947632
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-200.csv
+Episode time: 246.2448709011078
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-100.csv
+Episode time: 1442.2109966278076
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-300.csv
+Episode time: 1400.9150903224945
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-300.csv
+Episode time: 32.44149875640869
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-10.csv
+Episode time: 99.54386830329895
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-50.csv
+Episode time: 695.9066622257233
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-200.csv
+Episode time: 29.070635080337524
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-10.csv
+Episode time: 124.94760608673096
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-50.csv
+Episode time: 691.5475697517395
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-200.csv
+Episode time: 777.0744760036469
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-200.csv
+Episode time: 639.5214583873749
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-200.csv
+Episode time: 29.16456651687622
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-10.csv
+Episode time: 28.653069972991943
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-10.csv
+Episode time: 124.77055406570435
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-50.csv
+Episode time: 1509.477030992508
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-300.csv
+Episode time: 1408.5268495082855
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-300.csv
+Episode time: 287.71791100502014
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-100.csv
+Episode time: 1432.5304169654846
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-300.csv
+Episode time: 1392.7615242004395
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-300.csv
+Episode time: 779.5628354549408
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-200.csv
+Episode time: 30.028480052947998
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-10.csv
+Episode time: 26.409010887145996
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-10.csv
+Episode time: 31.569528579711914
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-10.csv
+Episode time: 122.21700835227966
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-50.csv
+Episode time: 755.3925199508667
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-200.csv
+Episode time: 1380.7967441082
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-300.csv
+Episode time: 1495.8122942447662
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-300.csv
+Episode time: 241.0415859222412
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-100.csv
+Episode time: 1389.8395028114319
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-300.csv
+Episode time: 29.30028223991394
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-10.csv
+Episode time: 28.456266403198242
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-10.csv
+Episode time: 101.69773125648499
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-50.csv
+Episode time: 1446.865379333496
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-300.csv
+Episode time: 704.511328458786
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-200.csv
+Episode time: 121.65763115882874
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-50.csv
+Episode time: 696.5969047546387
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-200.csv
+Episode time: 285.34965777397156
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-100.csv
+Episode time: 1314.1429026126862
+results/it_train_kernel-expset_gamma-0.001_bias-5_sample-300.csv
+Episode time: 777.1719059944153
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-200.csv
+Episode time: 243.8692421913147
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-100.csv
+Episode time: 537.6517515182495
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-200.csv
+Episode time: 244.2991189956665
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-100.csv
+Episode time: 1326.7696297168732
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-300.csv
+Episode time: 783.0342319011688
+results/it_train_kernel-gausset_gamma-0.02_bias-20_sample-200.csv
+Episode time: 123.08591055870056
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-50.csv
+Episode time: 681.5565311908722
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-200.csv
+Episode time: 300.0239543914795
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-100.csv
+Episode time: 32.362454652786255
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-10.csv
+Episode time: 26.716206550598145
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-10.csv
+Episode time: 123.87008428573608
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-50.csv
+Episode time: 762.5160343647003
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-200.csv
+Episode time: 1318.2050187587738
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-300.csv
+Episode time: 603.8849151134491
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-200.csv
+Episode time: 1310.8925120830536
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-300.csv
+Episode time: 1303.0051231384277
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-300.csv
+Episode time: 571.3837766647339
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-200.csv
+Episode time: 26.937554836273193
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-10.csv
+Episode time: 26.23688840866089
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-10.csv
+Episode time: 99.12689757347107
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-50.csv
+Episode time: 776.6704077720642
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-200.csv
+Episode time: 274.3649637699127
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-100.csv
+Episode time: 774.8136265277863
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-200.csv
+Episode time: 284.80040407180786
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-100.csv
+Episode time: 31.529626607894897
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-10.csv
+Episode time: 99.1495451927185
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-50.csv
+Episode time: 241.53507590293884
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-100.csv
+Episode time: 566.9401898384094
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-200.csv
+Episode time: 782.9461715221405
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-200.csv
+Episode time: 26.722091913223267
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-10.csv
+Episode time: 33.1207218170166
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-10.csv
+Episode time: 103.64894676208496
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-50.csv
+Episode time: 290.2378828525543
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-100.csv
+Episode time: 1310.7454199790955
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-300.csv
+Episode time: 676.7256278991699
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-200.csv
+Episode time: 685.1652731895447
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-200.csv
+Episode time: 771.6728692054749
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-200.csv
+Episode time: 126.30749368667603
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-50.csv
+Episode time: 777.2706713676453
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-200.csv
+Episode time: 242.191335439682
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-100.csv
+Episode time: 632.1459314823151
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-200.csv
+Episode time: 31.881452083587646
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-10.csv
+Episode time: 119.84683346748352
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-50.csv
+Episode time: 699.9456593990326
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-200.csv
+Episode time: 122.89854145050049
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-50.csv
+Episode time: 286.3581266403198
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-100.csv
+Episode time: 1321.3752028942108
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-300.csv
+Episode time: 692.5791702270508
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-200.csv
+Episode time: 288.31621384620667
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-100.csv
+Episode time: 30.71057438850403
+results/it_train_kernel-gausset_gamma-1.0_bias-10_sample-10.csv
+Episode time: 26.9285786151886
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-10.csv
+Episode time: 127.26355218887329
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-50.csv
+Episode time: 288.33306670188904
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-100.csv
+Episode time: 1439.1613371372223
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-300.csv
+Episode time: 1134.3125705718994
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-300.csv
+Episode time: 1438.9810478687286
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-300.csv
+Episode time: 101.66915082931519
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-50.csv
+Episode time: 286.3008146286011
+results/it_train_kernel-gausset_gamma-0.001_bias-20_sample-100.csv
+Episode time: 99.66431593894958
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-50.csv
+Episode time: 244.6266474723816
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-100.csv
+Episode time: 1173.6090211868286
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-300.csv
+Episode time: 31.33702516555786
+results/it_train_kernel-gausset_gamma-1.0_bias-5_sample-10.csv
+Episode time: 100.98731994628906
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-50.csv
+Episode time: 781.8903658390045
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-200.csv
+Episode time: 244.04848670959473
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-100.csv
+Episode time: 690.8156695365906
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-200.csv
+Episode time: 100.5455276966095
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-50.csv
+Episode time: 243.927640914917
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-100.csv
+Episode time: 1158.5955572128296
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-300.csv
+Episode time: 29.15717339515686
+results/it_train_kernel-expset_gamma-1.0_bias-5_sample-10.csv
+Episode time: 34.20481586456299
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-10.csv
+Episode time: 244.78327775001526
+results/it_train_kernel-expset_gamma-0.1_bias-5_sample-100.csv
+Episode time: 31.689154148101807
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-10.csv
+Episode time: 100.52319049835205
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-50.csv
+Episode time: 249.44634652137756
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-100.csv
+Episode time: 698.170645236969
+results/it_train_kernel-expset_gamma-0.001_bias-10_sample-200.csv
+Episode time: 31.55536437034607
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-10.csv
+Episode time: 99.63199377059937
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-50.csv
+Episode time: 243.56597065925598
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-100.csv
+Episode time: 26.805912494659424
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-10.csv
+Episode time: 26.86030626296997
+results/it_train_kernel-expset_gamma-0.02_bias-25_sample-10.csv
+Episode time: 32.078534841537476
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-10.csv
+Episode time: 125.85092902183533
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-50.csv
+Episode time: 243.03782320022583
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-100.csv
+Episode time: 1149.8464691638947
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-300.csv
+Episode time: 686.9828703403473
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-200.csv
+Episode time: 689.686333656311
+results/it_train_kernel-expset_gamma-0.002_bias-10_sample-200.csv
+Episode time: 31.84455633163452
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-10.csv
+Episode time: 115.4849054813385
+results/it_train_kernel-gausset_gamma-1.0_bias-20_sample-50.csv
+Episode time: 286.73203706741333
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-100.csv
+Episode time: 26.65359377861023
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-10.csv
+Episode time: 101.08192586898804
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-50.csv
+Episode time: 272.9025194644928
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-100.csv
+Episode time: 1185.805757522583
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-300.csv
+Episode time: 105.17079544067383
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-50.csv
+Episode time: 290.4818458557129
+results/it_train_kernel-gausset_gamma-0.002_bias-5_sample-100.csv
+Episode time: 244.70192742347717
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-100.csv
+Episode time: 689.7741270065308
+results/it_train_kernel-expset_gamma-0.02_bias-10_sample-200.csv
+Episode time: 26.76298999786377
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-10.csv
+Episode time: 32.368183851242065
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-10.csv
+Episode time: 26.785900354385376
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-10.csv
+Episode time: 126.77693843841553
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-50.csv
+Episode time: 687.3096704483032
+results/it_train_kernel-expset_gamma-1.0_bias-20_sample-200.csv
+Episode time: 1172.0516312122345
+results/it_train_kernel-expset_gamma-0.001_bias-25_sample-300.csv
+Episode time: 32.45020866394043
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-10.csv
+Episode time: 126.34864735603333
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-50.csv
+Episode time: 777.0444827079773
+results/it_train_kernel-gausset_gamma-0.001_bias-5_sample-200.csv
+Episode time: 243.75280618667603
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-100.csv
+Episode time: 786.9484412670135
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-200.csv
+Episode time: 245.63263535499573
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-100.csv
+Episode time: 1199.7182564735413
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-300.csv
+Episode time: 689.3722851276398
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-200.csv
+Episode time: 777.6677489280701
+results/it_train_kernel-gausset_gamma-0.002_bias-10_sample-200.csv
+Episode time: 297.82127022743225
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-100.csv
+Episode time: 29.541353702545166
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-10.csv
+Episode time: 31.5900559425354
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-10.csv
+Episode time: 31.55228877067566
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-10.csv
+Episode time: 99.57289409637451
+results/it_train_kernel-expset_gamma-0.002_bias-25_sample-50.csv
+Episode time: 243.09715843200684
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-100.csv
+Episode time: 1211.5344023704529
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-300.csv
+Episode time: 777.1090366840363
+results/it_train_kernel-gausset_gamma-1.0_bias-1_sample-200.csv
+Episode time: 1448.45281291008
+results/it_train_kernel-gausset_gamma-0.001_bias-10_sample-300.csv
+Episode time: 1186.5962600708008
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-300.csv
+Episode time: 102.36747717857361
+results/it_train_kernel-expset_gamma-0.1_bias-1_sample-50.csv
+Episode time: 292.7694790363312
+results/it_train_kernel-gausset_gamma-0.02_bias-5_sample-100.csv
+Episode time: 247.55675721168518
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-100.csv
+Episode time: 788.0824217796326
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-200.csv
+Episode time: 100.59484052658081
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-50.csv
+Episode time: 244.56258893013
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-100.csv
+Episode time: 26.634141445159912
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-10.csv
+Episode time: 26.67349362373352
+results/it_train_kernel-expset_gamma-0.01_bias-25_sample-10.csv
+Episode time: 116.08468055725098
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-50.csv
+Episode time: 244.8261787891388
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-100.csv
+Episode time: 1271.4629364013672
+results/it_train_kernel-gausset_gamma-1.0_bias-25_sample-300.csv
+Episode time: 705.0467467308044
+results/it_train_kernel-expset_gamma-0.02_bias-1_sample-200.csv
+Episode time: 1537.0801484584808
+results/it_train_kernel-gausset_gamma-0.1_bias-10_sample-300.csv
+Episode time: 1230.6171271800995
+results/it_train_kernel-gausset_gamma-0.001_bias-25_sample-300.csv
+Episode time: 288.80754232406616
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-100.csv
+Episode time: 28.950373888015747
+results/it_train_kernel-expset_gamma-0.1_bias-10_sample-10.csv
+Episode time: 34.22326111793518
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-10.csv
+Episode time: 104.32778835296631
+results/it_train_kernel-expset_gamma-0.01_bias-10_sample-50.csv
+Episode time: 287.460209608078
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-100.csv
+Episode time: 1457.7703025341034
+results/it_train_kernel-gausset_gamma-0.01_bias-10_sample-300.csv
+Episode time: 1272.0329110622406
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-300.csv
+/home/iarroyof/Projects/semanticrl/step_processing.py:372: RuntimeWarning: invalid value encountered in double_scalars
+  geometric = (a * b * c) ** (1. / 3.)
+/home/iarroyof/Projects/semanticrl/step_processing.py:371: RuntimeWarning: invalid value encountered in double_scalars
+  harmonic = 3 * a * b * c / (a * b + b * c + c * a)
+/home/iarroyof/Projects/semanticrl/step_processing.py:374: RuntimeWarning: invalid value encountered in double_scalars
+  equilateral = (1. - ((geometric - harmonic) / a_c)) + (1. - ((arithmetic - geometric) / a_c))
+/home/iarroyof/anaconda3/envs/tf25/lib/python3.9/site-packages/scipy/stats/_distn_infrastructure.py:1835: RuntimeWarning: invalid value encountered in double_scalars
+  x = np.asarray((x - loc)/scale, dtype=dtyp)
+4.110080273766824e-18
+3.0786657395910822e-18
+6.301870847034426e-08
+1.2970953712465012e-18
+0.0
+3.490406580152549e-16
+0.0
+1.2609938644398584e-18
+0.0
+6.057998726207672e-26
+0.0
+1.0782435188455473e-39
+9.847567817270979e-23
+1.8541205367400373e-47
+4.5764279535610063e-07
+1.5093889418158323e-47
+0.0
+5.386839840624187e-37
+0.0
+1.903416644157839e-32
+0.0
+5.141146685815332e-74
+0.0
+4.0758253028534794e-110
+9.046500121418177e-23
+1.068331205836217e-55
+7.335071237486857e-08
+7.426966388390797e-56
+0.0
+3.401339997293512e-41
+0.0
+1.1856632977424808e-18
+0.0
+6.082723441702655e-147
+0.0
+2.6787927821259175e-261
+8.935495418477337e-15
+2.870750396122113e-29
+1.6741930177777166e-09
+7.179786237387811e-32
+0.0
+7.193946338790265e-27
+0.0
+3.839299375820429e-05
+0.0
+5.465248036169217e-300
+0.0
+0.0
+5.297852170376009e-16
+5.859329579555875e-29
+1.8810868656899614e-08
+4.312809613093215e-32
+0.0
+3.949242215879284e-32
+0.0
+3.3290192370222914e-06
+0.0
+0.0
+0.0
+0.0
+4.1100802737668824e-18
+3.07781608645573e-18
+6.30187084703447e-08
+3.0328690916542337e-18
+0.0
+6.831640274749473e-17
+0.0
+1.3411217880293654e-17
+0.0
+8.015341159947171e-25
+0.0
+2.882703641048686e-35
+9.847567817271048e-23
+1.8540810389161981e-47
+4.5764279535609735e-07
+1.830692877800287e-47
+0.0
+1.9488951757074027e-43
+0.0
+1.5802742012702582e-37
+0.0
+6.828389674293327e-63
+0.0
+2.856484160413976e-113
+9.046500121418048e-23
+1.0673975445685239e-55
+7.335071237486909e-08
+1.0565084367984836e-55
+0.0
+5.35099908570019e-51
+0.0
+1.027374044809486e-30
+0.0
+9.619587250653022e-109
+0.0
+8.314064216010875e-276
+8.935495418477209e-15
+2.8670499775624164e-29
+1.6741930177777046e-09
+2.536402891867635e-29
+0.0
+3.3985778009156906e-36
+0.0
+2.7676086296569086e-14
+0.0
+3.1176452904787534e-190
+0.0
+0.0
+5.297852170376009e-16
+5.840353483987924e-29
+1.8810868656899547e-08
+5.093619405986594e-29
+0.0
+2.399323894153671e-40
+0.0
+3.6966461931832136e-17
+0.0
+0.0
+0.0
+0.0
+4.1100802737668824e-18
+3.0778157795102144e-18
+6.30187084703438e-08
+3.078874439536738e-18
+0.0
+2.872964212863264e-19
+0.0
+3.4029919191324804e-17
+0.0
+6.556110688323938e-24
+0.0
+1.38400994358363e-31
+9.847567817271048e-23
+1.8540810160062299e-47
+4.576427953560982e-07
+1.8530695237676042e-47
+0.0
+1.196038955839582e-46
+0.0
+9.714286685431789e-40
+0.0
+1.659515655159743e-49
+0.0
+1.1048544269265728e-107
+9.046500121418048e-23
+1.0673972379480471e-55
+7.335071237486857e-08
+1.0697987894405201e-55
+0.0
+1.1079378265446669e-54
+0.0
+3.934810922778124e-44
+0.0
+3.209542074877594e-66
+0.0
+1.42720787595864e-259
+8.935495418477337e-15
+2.86704859121745e-29
+1.6741930177777046e-09
+2.866389416710405e-29
+0.0
+2.6936613722926126e-35
+0.0
+1.4603794593739353e-26
+0.0
+1.064260882482602e-87
+0.0
+0.0
+5.297852170376047e-16
+5.840346909952089e-29
+1.8810868656899412e-08
+5.867753195711577e-29
+0.0
+5.021187552784129e-37
+0.0
+2.2581762147550495e-30
+0.0
+7.573061048055005e-112
+0.0
+0.0
+4.1100802737668824e-18
+3.077815779498077e-18
+6.301870847034358e-08
+3.0785444695875467e-18
+0.0
+1.0312748716647985e-18
+0.0
+1.5617736851171107e-19
+0.0
+3.718299012449431e-23
+0.0
+3.2367433941212644e-29
+9.847567817270979e-23
+1.854081016004965e-47
+4.576427953560982e-07
+1.8540185367074527e-47
+0.0
+2.2779136593440824e-47
+0.0
+1.1332910364382667e-43
+0.0
+3.1949595049822373e-40
+0.0
+1.668847520976192e-96
+9.046500121418177e-23
+1.0673972379344408e-55
+7.335071237486882e-08
+1.0682968071799789e-55
+0.0
+1.4608263435022678e-55
+0.0
+1.2851446011586061e-50
+0.0
+4.618576496687827e-40
+0.0
+9.418425699041685e-219
+8.935495418477337e-15
+2.8670485911575984e-29
+1.6741930177776928e-09
+2.8693318577020037e-29
+0.0
+2.8445540631233906e-32
+0.0
+6.097342276903177e-33
+0.0
+9.205149223184127e-38
+0.0
+0.0
+5.297852170376009e-16
+5.840346909673968e-29
+1.881086865689928e-08
+5.856047409092107e-29
+0.0
+1.0095641004134851e-32
+0.0
+3.9950284253521687e-36
+0.0
+2.5821853365307146e-31
+0.0
+0.0
+4.110080273766853e-18
+4.6404694100999065e-43
+6.301870847034448e-08
+3.078110385436402e-18
+0.0
+1.9809356656713045e-18
+0.0
+2.312099191680061e-19
+0.0
+2.172914363234865e-22
+0.0
+1.1746783934365792e-27
+9.847567817271048e-23
+4.3260150998908e-99
+4.5764279535610386e-07
+1.8540868077642003e-47
+0.0
+1.7822190834909279e-47
+0.0
+9.299529662894475e-46
+0.0
+4.5864943912638456e-35
+0.0
+8.443566282078264e-84
+9.046500121418177e-23
+1.5287612043000148e-23
+7.335071237486831e-08
+1.0677126013165705e-55
+0.0
+1.024607852471614e-55
+0.0
+1.9684442663693328e-53
+0.0
+6.161187481392366e-27
+0.0
+3.001937698810192e-172
+8.935495418477463e-15
+4.89126529837704e-31
+1.6741930177776868e-09
+2.8681701023383637e-29
+0.0
+1.6035880933383952e-30
+0.0
+1.7522810120814428e-34
+0.0
+5.048066874865445e-18
+0.0
+0.0
+5.297852170376047e-16
+6.120745009757928e-33
+1.8810868656899412e-08
+5.846531821945438e-29
+0.0
+1.7582232387414314e-30
+0.0
+1.1467350519097051e-36
+0.0
+1.318664837272832e-10
+0.0
+0.0
+4.110080273766853e-18
+4.640469410099973e-43
+6.301870847034426e-08
+3.077926714771239e-18
+0.0
+2.606539932760953e-18
+0.0
+4.4190126624834525e-19
+0.0
+8.017425813935267e-22
+0.0
+1.375106141157328e-26
+9.847567817271048e-23
+4.326015099892398e-99
+4.5764279535609576e-07
+1.854086889641578e-47
+0.0
+1.7777832223516083e-47
+0.0
+9.421463440761457e-47
+0.0
+7.08892837982724e-33
+0.0
+1.0552409305897784e-71
+9.046500121418177e-23
+1.528761204299754e-23
+7.335071237486987e-08
+1.0675107060694318e-55
+0.0
+1.0109316667934626e-55
+0.0
+1.0298923774810543e-54
+0.0
+5.6206292032823255e-21
+0.0
+1.3203962596589e-130
+8.935495418477463e-15
+4.89126529837704e-31
+1.6741930177777226e-09
+2.867511722742553e-29
+0.0
+9.382210857947918e-30
+0.0
+6.882369264150662e-34
+0.0
+1.7626273291339733e-10
+0.0
+2.2029017059128136e-246
+5.297852170376047e-16
+6.120745009757928e-33
+1.8810868656899478e-08
+5.842689052746291e-29
+0.0
+1.5387597220496532e-29
+0.0
+3.3331037667618436e-35
+0.0
+1.7857588381397654e-06
+0.0
+0.0
+4.1100802737668824e-18
+nan
+6.301870847034426e-08
+3.0778165344661533e-18
+0.0
+3.0762597131254226e-18
+0.0
+2.4699828934134946e-18
+0.0
+2.5316942385396683e-19
+0.0
+1.295216190172778e-23
+9.847567817270979e-23
+nan
+4.5764279535610386e-07
+1.8540810721925542e-47
+0.0
+1.8516671858227002e-47
+0.0
+1.7860667507548284e-47
+0.0
+1.8159715578779705e-38
+0.0
+4.541078019385809e-38
+9.046500121418048e-23
+nan
+7.335071237486857e-08
+1.067397992197343e-55
+0.0
+1.0689336270081877e-55
+0.0
+1.0219977074134562e-55
+0.0
+2.822861698935195e-25
+0.0
+9.713820692578549e-33
+8.935495418477337e-15
+nan
+1.6741930177777166e-09
+2.8670519976217546e-29
+0.0
+2.8456061527475366e-29
+0.0
+6.716502159731064e-30
+0.0
+2.1806547355100454e-08
+0.0
+3.473833330808298e-26
+5.297852170376009e-16
+nan
+1.8810868656899346e-08
+5.840363074966801e-29
+0.0
+5.817523624444359e-29
+0.0
+1.0184406739904246e-29
+0.0
+2.829013309700302e-10
+0.0
+1.9641464074739265e-19
+Episode time: 1434.0763659477234
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-300.csv
+Episode time: 122.35382747650146
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-50.csv
+Episode time: 810.588799238205
+results/it_train_kernel-gausset_gamma-0.1_bias-20_sample-200.csv
+Episode time: 274.2636342048645
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-100.csv
+Episode time: 991.0490844249725
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-300.csv
+Episode time: 1452.123279094696
+results/it_train_kernel-gausset_gamma-0.02_bias-1_sample-300.csv
+Episode time: 123.32867383956909
+results/it_train_kernel-gausset_gamma-0.002_bias-20_sample-50.csv
+Episode time: 689.9180333614349
+results/it_train_kernel-expset_gamma-0.01_bias-20_sample-200.csv
+Episode time: 26.623993158340454
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-10.csv
+Episode time: 116.2468101978302
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-50.csv
+Episode time: 244.19963717460632
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-100.csv
+Episode time: 994.7008256912231
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-300.csv
+Episode time: 816.2303206920624
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-200.csv
+Episode time: 31.533326387405396
+results/it_train_kernel-gausset_gamma-0.01_bias-15_sample-10.csv
+Episode time: 99.41549730300903
+results/it_train_kernel-expset_gamma-0.02_bias-15_sample-50.csv
+Episode time: 242.02888369560242
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-100.csv
+Episode time: 774.5192635059357
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-200.csv
+Episode time: 286.29154992103577
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-100.csv
+Episode time: 30.62923789024353
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-10.csv
+Episode time: 99.8827908039093
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-50.csv
+Episode time: 282.6741404533386
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-100.csv
+Episode time: 929.0147135257721
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-300.csv
+Episode time: 242.35538935661316
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-100.csv
+Episode time: 1317.231941461563
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-300.csv
+Episode time: 688.1141855716705
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-200.csv
+Episode time: 26.732720613479614
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-10.csv
+Episode time: 26.69873046875
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-10.csv
+Episode time: 100.28481101989746
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-50.csv
+Episode time: 244.68540120124817
+results/it_train_kernel-expset_gamma-0.01_bias-50_sample-100.csv
+Episode time: 1031.3810653686523
+results/it_train_kernel-expset_gamma-0.1_bias-50_sample-300.csv
+Episode time: 1318.0124247074127
+results/it_train_kernel-expset_gamma-0.002_bias-1_sample-300.csv
+Episode time: 1325.1691341400146
+results/it_train_kernel-expset_gamma-0.001_bias-15_sample-300.csv
+Episode time: 1048.1693725585938
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-300.csv
+Episode time: 1335.159548997879
+results/it_train_kernel-expset_gamma-0.001_bias-1_sample-300.csv
+Episode time: 26.487858533859253
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-10.csv
+Episode time: 26.4525408744812
+results/it_train_kernel-expset_gamma-0.02_bias-20_sample-10.csv
+Episode time: 26.594682216644287
+results/it_train_kernel-expset_gamma-0.002_bias-20_sample-10.csv
+Episode time: 101.74492907524109
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-50.csv
+Episode time: 294.0518035888672
+results/it_train_kernel-gausset_gamma-0.01_bias-20_sample-100.csv
+Episode time: 32.251495599746704
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-10.csv
+Episode time: 128.79292607307434
+results/it_train_kernel-gausset_gamma-0.1_bias-25_sample-50.csv
+Episode time: 293.5139207839966
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-100.csv
+Episode time: 31.673460245132446
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-10.csv
+Episode time: 99.4293270111084
+results/it_train_kernel-expset_gamma-0.02_bias-50_sample-50.csv
+Episode time: 289.5351092815399
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-100.csv
+Episode time: 1019.0207965373993
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-300.csv
+Episode time: 126.96515107154846
+results/it_train_kernel-gausset_gamma-0.1_bias-1_sample-50.csv
+Episode time: 808.108865737915
+results/it_train_kernel-gausset_gamma-0.1_bias-5_sample-200.csv
+Episode time: 243.7453248500824
+results/it_train_kernel-expset_gamma-0.1_bias-15_sample-100.csv
+Episode time: 695.246663570404
+results/it_train_kernel-expset_gamma-0.01_bias-15_sample-200.csv
+Episode time: 126.05693316459656
+results/it_train_kernel-gausset_gamma-0.002_bias-25_sample-50.csv
+Episode time: 692.3775494098663
+results/it_train_kernel-expset_gamma-0.1_bias-25_sample-200.csv
+Episode time: 1013.0423998832703
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-300.csv
+Episode time: 778.069283246994
+results/it_train_kernel-gausset_gamma-0.01_bias-1_sample-200.csv
+Episode time: 26.2768235206604
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-10.csv
+Episode time: 31.72775959968567
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-10.csv
+Episode time: 99.30080056190491
+results/it_train_kernel-expset_gamma-1.0_bias-15_sample-50.csv
+Episode time: 294.2251114845276
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-100.csv
+Episode time: 1422.3539271354675
+results/it_train_kernel-gausset_gamma-1.0_bias-15_sample-300.csv
+Episode time: 1065.5579438209534
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-300.csv
+Episode time: 1454.0142238140106
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-300.csv
+Episode time: 99.48515582084656
+results/it_train_kernel-expset_gamma-0.001_bias-20_sample-50.csv
+Episode time: 691.0323340892792
+results/it_train_kernel-expset_gamma-0.1_bias-20_sample-200.csv
+Episode time: 29.36343502998352
+results/it_train_kernel-gausset_gamma-1.0_bias-50_sample-10.csv
+Episode time: 31.853507041931152
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-10.csv
+Episode time: 100.0367603302002
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-50.csv
+Episode time: 286.3826949596405
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-100.csv
+Episode time: 1045.414796113968
+results/it_train_kernel-gausset_gamma-0.002_bias-50_sample-300.csv
+Episode time: 33.4227728843689
+results/it_train_kernel-gausset_gamma-0.001_bias-1_sample-10.csv
+Episode time: 101.95970273017883
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-50.csv
+Episode time: 778.6582355499268
+results/it_train_kernel-gausset_gamma-0.01_bias-5_sample-200.csv
+Episode time: 125.59436368942261
+results/it_train_kernel-gausset_gamma-0.001_bias-15_sample-50.csv
+Episode time: 816.5178153514862
+results/it_train_kernel-gausset_gamma-0.1_bias-15_sample-200.csv
+Episode time: 126.79707479476929
+results/it_train_kernel-gausset_gamma-0.01_bias-25_sample-50.csv
+Episode time: 686.2051620483398
+results/it_train_kernel-expset_gamma-1.0_bias-25_sample-200.csv
+Episode time: 1101.164359331131
+results/it_train_kernel-gausset_gamma-0.01_bias-50_sample-300.csv
+Episode time: 32.60192084312439
+results/it_train_kernel-gausset_gamma-0.002_bias-1_sample-10.csv
+Episode time: 100.70064210891724
+results/it_train_kernel-expset_gamma-0.02_bias-5_sample-50.csv
+Episode time: 690.5200047492981
+results/it_train_kernel-expset_gamma-0.01_bias-5_sample-200.csv
+Episode time: 34.00685739517212
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-10.csv
+Episode time: 103.9655590057373
+results/it_train_kernel-expset_gamma-0.002_bias-15_sample-50.csv
+Episode time: 289.8481214046478
+results/it_train_kernel-gausset_gamma-0.002_bias-15_sample-100.csv
+Episode time: 1446.6060345172882
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-300.csv
+Episode time: 1073.0896582603455
+results/it_train_kernel-gausset_gamma-0.001_bias-50_sample-300.csv
+Episode time: 105.1702950000763
+results/it_train_kernel-expset_gamma-0.01_bias-1_sample-50.csv
+Episode time: 244.53253626823425
+results/it_train_kernel-expset_gamma-0.002_bias-5_sample-100.csv
+Episode time: 125.33587408065796
+results/it_train_kernel-gausset_gamma-0.02_bias-10_sample-50.csv
+Episode time: 693.0632345676422
+results/it_train_kernel-expset_gamma-1.0_bias-10_sample-200.csv
+Episode time: 784.8753952980042
+results/it_train_kernel-gausset_gamma-0.02_bias-15_sample-200.csv
+Episode time: 289.27742528915405
+results/it_train_kernel-gausset_gamma-0.02_bias-25_sample-100.csv
+Episode time: 26.449061393737793
+results/it_train_kernel-expset_gamma-1.0_bias-50_sample-10.csv
+Episode time: 26.40774917602539
+results/it_train_kernel-expset_gamma-0.002_bias-50_sample-10.csv
+Episode time: 118.26887202262878
+results/it_train_kernel-gausset_gamma-0.1_bias-50_sample-50.csv
+Episode time: 241.7159707546234
+results/it_train_kernel-expset_gamma-0.001_bias-50_sample-100.csv
+Episode time: 1137.8271520137787
+results/it_train_kernel-gausset_gamma-0.02_bias-50_sample-300.csv

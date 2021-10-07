@@ -1,16 +1,13 @@
-
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import ParameterGrid
 from joblib import Parallel, delayed
 from functools import partial
 from scipy.stats import entropy
-from scipy.stats import norm as Normal
 import numpy as np
 import pandas as pd
 import math
 import time
 from functools import partial
-import warnings
 from pdb import set_trace as st
 
 # ------------------------------------------------------------------------------
@@ -226,11 +223,7 @@ class RandomSetDistributions(object):
 
         distribution = SetHashedDict()
         for x in self.Omega[rv]:
-            lkhood = mem[x]
-            if not 0.0 in [lkhood, partition]:
-                distribution[x] = mem[x] / partition
-            else:
-                distribution[x] = 0.0
+            distribution[x] = mem[x] / partition
 
         self.distributions['P_' + rv] = distribution
 
@@ -258,8 +251,6 @@ class RandomSetDistributions(object):
         except KeyError:
             projs_y = self._build_projections(rvs[1])
         # (1996) Estimating and Visualizing Conditional Densities [Hyndman - Bashtannyk - Grunwald]
-        # (2005) From error probability to information theoretic (multi-modal) signal processing%0a[Butz - Thiran]
-        # Estimating joint density using kernel product estimator (joint histogram, Butz)
         mem = SetHashedDict()
         for y, proj_y in projs_y.items():
             partition = 0
@@ -273,25 +264,14 @@ class RandomSetDistributions(object):
         distribution = SetHashedDict()
         for x in omega_x:
             for y in omega_y:
-                lkhood = mem[x, y]
-                partition = mem.get_coo_mem(y)
-                if not 0.0 in [lkhood, partition]:
-                    distribution[x, y] = mem[x, y] / mem.get_coo_mem(y)
-                else:
-                    distribution[x, y] = 0.0
+                distribution[x, y] = mem[x, y] / mem.get_coo_mem(y)
 
         self.distributions['P_' + '|'.join(rvs)] = distribution
 
 
     def _entropy(self, rv):
         P_X = self.distributions['P_' + rv]
-        P_X = np.array(list(P_X.values()))
-        P_X = P_X[P_X != 0]
-        if len(P_X) == 0:
-            self.it_metrics['H(' + rv + ')'] = 0.0
-            return 0.0
-
-        H_X = entropy(P_X, base=2)
+        H_X = entropy(list(P_X.values()), base=2)
         self.it_metrics['H(' + rv + ')'] = H_X
 
         return H_X
@@ -302,10 +282,10 @@ class RandomSetDistributions(object):
         P_Y = self.distributions['P_' + rvs[1]]
         omega_x = self.Omega[rvs[0]]
         omega_y = self.Omega[rvs[1]]
-        entropi = lambda P: -sum([px * np.log2(px) for px in P if px > 0])
+
         H_Xgy = [
-            P_Y[y] * entropi(
-                [P_XgY[x, y] for x in omega_x])#, base=2)
+            P_Y[y] * entropy(
+                [P_XgY[x, y] for x in omega_x], base=2)
                     for y in omega_y]
         H_XgY = sum(H_Xgy)
         self.it_metrics['H(' + '|'.join(rvs) + ')'] = H_XgY
@@ -358,41 +338,6 @@ class RandomSetDistributions(object):
             #key = 'I(' + ','.join(pair) + ')'
             #self.it_metrics[key] = self._mutual_info(pair)
 
-
-def semantic_reward(df, cols, beta=1e3):
-    line = {}
-    mean_df = df[cols].mean().sort_values()
-    a, b, c = mean_df.values
-    sa, sb, sc = df[mean_df.index].std().values
-    a_c = abs(a - c)
-    #l = a_c / 2
-    #dist = abs(b - l)
-    # https://en.wikipedia.org/wiki/List_of_triangle_inequalities
-    harmonic = 3 * a * b * c / (a * b + b * c + c * a)
-    geometric = (a * b * c) ** (1. / 3.)
-    arithmetic = np.mean([a, b, c])
-    equilateral = (1. - ((geometric - harmonic) / a_c)) + (1. - ((arithmetic - geometric) / a_c))
-    line["Reward"] = equilateral
-    #try:
-    #    z = abs(a - c) / (sb * math.sqrt(2 * math.pi))
-    #    line["Reward"] = z * math.exp(-dist ** 2/(2 * sb ** 2))
-    #except:
-    #    line["Reward"] = 0.0
-
-    pvals = (
-                Normal(loc=a, scale=sa).pdf(b - 2 * sb),
-                Normal(loc=b, scale=sb).pdf(c - 2 * sc),
-                Normal(loc=c, scale=sc).pdf(a + 2 * sa)  # verificar (b + 2 * sb), etc. es decir en todas direcciones
-            )
-    line.update(
-                zip(['ABpvalue',
-                     'BCpvalue',
-                     'CApvalue'], pvals))
-    line["pReward"] = math.exp(-beta * max(pvals))
-    print(line["pReward"])
-    return line
-
-
 def save_extrema(set_statistics):
 
     global max_probs
@@ -425,7 +370,7 @@ def save_extrema(set_statistics):
 def step_processing(
     df, it_rvs=['Y,X', 'Z,Y', 'X,Z'], kernel='gausset', gamma=1.0/50.0, bias=4.0):
 
-    #start_time = time.time()
+    start_time = time.time()
 
     df = df.dropna()
     random_sets = RandomSetDistributions(kernel=kernel, gamma=gamma, bias=bias)
@@ -434,21 +379,28 @@ def step_processing(
 #### Activate for plotting
     #save_extrema(random_sets)
     # --------------------------------------------------------------------------
-    #end_time = time.time()
-    #print("STEP time: {}".format(end_time-start_time))
+    end_time = time.time()
+    print("STEP time: {}".format(end_time-start_time))
 
     return random_sets.it_metrics
 
 
 def episode_processing(chunk_size, kernel, gamma,bias, input_triplets, n_jobs=1):
     start_time = time.time()
+    #chunk_size = 320
+    #input_triplets = 'data/dis_train.txt.oie'
     it_rvs = ['Y,X', 'Z,Y', 'X,Z']  # Order verified from De Marcken (1999)
+    #kernel = 'gausset'
+    #kernel = 'expset'
+    #gamma = 1.0/50.0
+    #bias = 4.0
     output_it = "results/it_{}_kernel-{}_gamma-{}_bias-{}_sample-{}.csv".format(
         'train' if '_train.' in input_triplets else 'test',
         kernel,
         gamma,
         bias,
         chunk_size)
+    #n_jobs = n_jobs
     columns = [1, 2, 3]
     names = ['X', 'Y', 'Z']
 
@@ -462,33 +414,22 @@ def episode_processing(chunk_size, kernel, gamma,bias, input_triplets, n_jobs=1)
 
     step = partial(
         step_processing, it_rvs=it_rvs, kernel=kernel, gamma=gamma, bias=bias)
-    result = Parallel(
+    results = Parallel(
         n_jobs=n_jobs,
 ####### Activate for plotting
 	#require='sharedmem'
         prefer='processes'
         )(
             delayed(step)(df)
-                for df in df_generator)
-
+        for df in df_generator)
+    #st()
     end_time = time.time()
-    print("Episode time: {}".format(end_time-start_time))
-    print(output_it)
-    return output_it, pd.DataFrame(result)
+    print("Experiment time: {}".format(end_time-start_time))
+
 #    pd.DataFrame(results).to_csv(output_it)
-
-
-def parse_params(strg):
-    pairs = strg.split('/')[-1].replace('.csv', '').split('_')[2:]
-    lpairs = dict([tuple(p.split('-')) if p.split('-')[0] == 'kernel'
-                           else (p.split('-')[0], float(p.split('-')[1])) for p in pairs])
-    return lpairs
-
-
 if __name__ == "__main__":
 
     input_triplets = 'data/dis_train.txt.oie'
-    beta = 1.0
     hyperpar = {
         'kernel': ['expset', 'gausset'],
         'gamma': [1., 1./10, 1./50., 1./100., 1./500., 1./1000.],
@@ -500,8 +441,8 @@ if __name__ == "__main__":
     grid = ParameterGrid(hyperpar)
     episode = partial(
         episode_processing, input_triplets=input_triplets)
-    #param = [p for p in grid if p['kernel'] == 'gausset' and p['gamma'] == 1][-1]
-    #episode(**param)
+
+#    episode(**grid[1])
 
     results = Parallel(
         n_jobs=-1,
@@ -509,9 +450,4 @@ if __name__ == "__main__":
         )(
             delayed(episode)(**params)
         for params in grid)
-    its = ['I(Y;X)', 'I(Z;Y)', 'I(X;Z)']
 
-    rewards = [{**semantic_reward(rdf, its, beta=beta), **parse_params(params)}
-        for params, rdf in results]
-
-    pd.DataFrame(rewards).to_csv('rewards.csv')
